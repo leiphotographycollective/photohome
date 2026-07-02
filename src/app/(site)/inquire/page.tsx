@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
@@ -12,23 +13,11 @@ export const metadata: Metadata = {
 };
 
 /*
-  ─────────────────────────────────────────────────────────────────
-  HOW TO ADD YOUR HONEYBOOK CONTACT FORM
-  ─────────────────────────────────────────────────────────────────
-  1. In HoneyBook, go to  Tools → Contact Forms  (or Company Settings →
-     Contact Form), design your form, then click  "Publish" → "Embed on
-     your website".  HoneyBook gives you TWO pieces:
-         (a) a placement DIV, e.g.   <div class="hb-p-123abc-1"></div>
-         (b) a loader SCRIPT, e.g.
-             <script src="https://widget.honeybook.com/assets_users_production/websiteplacements/placement-loader.js?placement_id=123abc"></script>
-  2. Replace the ENTIRE "HONEYBOOK EMBED SLOT" <div id="honeybook-embed">
-     … </div> below with HoneyBook's placement DIV (a).
-  3. Load the SCRIPT (b) with next/script — add to this page:
-         import Script from "next/script";
-         …and inside the returned JSX:
-         <Script src="https://widget.honeybook.com/…placement-loader.js?placement_id=YOUR_ID" strategy="afterInteractive" />
-  4. Deploy. The form loads in place (HoneyBook styles the form itself).
-  ─────────────────────────────────────────────────────────────────
+  HoneyBook contact form is embedded below (placement id
+  6916a511bece1a003537f355). The loader script is injected with
+  next/script; HoneyBook renders and styles the form inside the
+  .hb-p-…-1 div. To swap forms, replace the placement id in both
+  the div className and the Script content.
 */
 
 const DETAILS: Array<{ label: string; value: string; href?: string }> = [
@@ -218,62 +207,16 @@ export default function InquirePage() {
           </p>
         </div>
 
-        {/* ▼▼▼ HONEYBOOK EMBED SLOT — replace this div with your HoneyBook
-            placement div (see the comment at the top of this file). ▼▼▼ */}
+        {/* ══ HoneyBook placement (pid 6916a511bece1a003537f355) ══ */}
         <div
           data-fadeup=""
-          id="honeybook-embed"
-          style={{
-            maxWidth: 920,
-            margin: "0 auto",
-            minHeight: 640,
-            background: "#FFFFFF",
-            border: "1px dashed #C9BFB2",
-            borderRadius: "var(--radius-lg)",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 18,
-            padding: "48px 24px",
-            textAlign: "center",
-          }}
+          style={{ maxWidth: 920, margin: "0 auto", minHeight: 640 }}
         >
-          <div
-            style={{
-              width: 54,
-              height: 54,
-              borderRadius: "50%",
-              border: `1px solid ${GOLD}`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontFamily: SERIF,
-              fontStyle: "italic",
-              fontSize: 22,
-              color: GOLD,
-            }}
-          >
-            hb
-          </div>
-          <div style={{ fontFamily: SERIF, fontSize: 24, fontWeight: 500 }}>
-            Your HoneyBook form will appear here
-          </div>
-          <p
-            style={{
-              maxWidth: 440,
-              margin: 0,
-              fontSize: 14,
-              lineHeight: 1.7,
-              color: DIM,
-            }}
-          >
-            This is the placeholder for your HoneyBook contact form. Paste your
-            placement code where indicated (instructions are in this file, at the
-            top) and this message will be replaced by your live form.
-          </p>
+          <div className="hb-p-6916a511bece1a003537f355-1" />
         </div>
-        {/* ▲▲▲ END HONEYBOOK EMBED SLOT ▲▲▲ */}
+        <Script id="honeybook-loader" strategy="afterInteractive">
+          {`(function(h,b,s,n,i){h._HB_=h._HB_||{};h._HB_.pid=i;var t=b.createElement(s);t.type="text/javascript";t.async=true;t.src=n;var e=b.getElementsByTagName(s)[0];e.parentNode.insertBefore(t,e);})(window,document,"script","https://widget.honeybook.com/assets_users_production/websiteplacements/placement-controller.min.js","6916a511bece1a003537f355");`}
+        </Script>
       </section>
 
       {/* ══ Footer ══ */}
