@@ -1,12 +1,5 @@
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-
+// The Lei experience pages carry their own fixed header, cursor and footer
+// (see src/components/lei) — this layout intentionally adds no chrome.
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <Nav />
-      <main className="pt-16">{children}</main>
-      <Footer />
-    </>
-  );
+  return <>{children}</>;
 }

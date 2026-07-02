@@ -35,10 +35,10 @@
 @layer base {
   html {
     background: var(--bg);
-    scroll-behavior: smooth;
   }
 
   body {
+    margin: 0;
     background: var(--bg);
     color: var(--ink);
     font-family: var(--font-dm-sans), sans-serif;
@@ -46,8 +46,8 @@
   }
 
   ::selection {
-    background: rgba(184, 144, 90, 0.18);
-    color: var(--ink);
+    background: var(--accent);
+    color: #fff;
   }
 
   :focus-visible {
@@ -57,31 +57,128 @@
   }
 }
 
-/* ── SCROLL REVEAL ─────────────────────────────────────────────────────── */
-.js-scroll-reveal [data-reveal] {
-  opacity: 0;
-  transform: translateY(20px);
-  will-change: transform, opacity;
-  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+/* ── LENIS SMOOTH SCROLL ───────────────────────────────────────────────── */
+html.lenis {
+  height: auto;
 }
-.js-scroll-reveal [data-reveal="left"] { transform: translateX(-24px); }
-.js-scroll-reveal [data-reveal="scale"] { transform: scale(0.96); }
-.js-scroll-reveal [data-reveal][data-visible="true"] {
-  opacity: 1;
-  transform: none;
-  will-change: auto;
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
-.js-scroll-reveal [data-delay="1"] { transition-delay: 0.07s; }
-.js-scroll-reveal [data-delay="2"] { transition-delay: 0.14s; }
-.js-scroll-reveal [data-delay="3"] { transition-delay: 0.21s; }
-.js-scroll-reveal [data-delay="4"] { transition-delay: 0.28s; }
-.js-scroll-reveal [data-delay="5"] { transition-delay: 0.35s; }
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ── CUSTOM CURSOR ─────────────────────────────────────────────────────── */
+@media (pointer: fine) {
+  body.lx-cursor,
+  body.lx-cursor a,
+  body.lx-cursor button {
+    cursor: none;
+  }
+}
 
 /* ── KEYFRAMES ─────────────────────────────────────────────────────────── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes lxScroll {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  45%  { transform: scaleY(1); transform-origin: top; }
+  55%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+@keyframes lxMarquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes lxSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── HOVER TREATMENTS (portfolio cards / galleries / dropdown) ─────────── */
+.lx-dd-item {
+  transition: background 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.lx-dd-item:hover {
+  background: rgba(247, 245, 242, 0.07);
+}
+
+.lx-explore {
+  transition: padding-left 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.lx-explore:hover {
+  padding-left: 14px;
+}
+
+.lx-proj {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  break-inside: avoid;
+  margin-bottom: 2.4vw;
+}
+.lx-proj .lx-imgwrap {
+  overflow: hidden;
+  background: #EDE9E3;
+}
+.lx-proj img {
+  width: 100%;
+  display: block;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.lx-proj:hover img {
+  transform: scale(1.05);
+}
+.lx-proj .lx-arrow {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.lx-proj:hover .lx-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.lx-gitem {
+  break-inside: avoid;
+  margin-bottom: 2.4vw;
+  overflow: hidden;
+  background: #EDE9E3;
+}
+.lx-gitem img {
+  width: 100%;
+  display: block;
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.lx-gitem:hover img {
+  transform: scale(1.04);
+}
+
+.lx-rel img {
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.lx-rel:hover img {
+  transform: scale(1.05);
+}
+
+/* ── RESPONSIVE FALLBACKS (the design is desktop-first) ────────────────── */
+@media (max-width: 860px) {
+  .lx-header {
+    padding: 18px 20px !important;
+  }
+  .lx-header nav {
+    gap: 14px !important;
+  }
+  .lx-grid-2col {
+    grid-template-columns: 1fr !important;
+  }
+  .lx-cols-3 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .lx-masonry {
+    column-count: 1 !important;
+  }
+  .lx-float {
+    display: none !important;
+  }
 }
 
 /* ── REDUCED MOTION ────────────────────────────────────────────────────── */
@@ -89,9 +186,5 @@
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
-  }
-  .js-scroll-reveal [data-reveal] {
-    opacity: 1;
-    transform: none;
   }
 }

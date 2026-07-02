@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { img, PHOTOS } from "@/content/portfolio";
 import { GOLD, SERIF, cream } from "./tokens";
 
@@ -6,11 +7,11 @@ import { GOLD, SERIF, cream } from "./tokens";
    translates [data-htrack] by scroll). */
 
 const CARDS = [
-  { label: "Weddings", n: "01", photo: PHOTOS.firstDanceCine, width: "min(44vw,560px)" },
-  { label: "Graduations", n: "02", photo: PHOTOS.gradPortrait, width: "min(34vw,440px)", marginTop: "8vh" },
-  { label: "Portraits & Editorials", n: "03", photo: PHOTOS.editorial, width: "min(38vw,480px)" },
-  { label: "Headshots & Events", n: "04", photo: PHOTOS.naomi, width: "min(34vw,440px)", marginTop: "-6vh", alt: "Portrait session, natural light" },
-  { label: "Engagements & Proposals", n: "05", photo: PHOTOS.proposal, width: "min(40vw,500px)", marginTop: "6vh", alt: "Proposal moment" },
+  { label: "Weddings", n: "01", href: "/portfolio/weddings", photo: PHOTOS.firstDanceCine, width: "min(44vw,560px)" },
+  { label: "Graduations", n: "02", href: "/portfolio/graduations", photo: PHOTOS.gradPortrait, width: "min(34vw,440px)", marginTop: "8vh" },
+  { label: "Portraits & Editorials", n: "03", href: "/portfolio/portraits", photo: PHOTOS.editorial, width: "min(38vw,480px)" },
+  { label: "Headshots & Events", n: "04", href: "/portfolio/events", photo: PHOTOS.naomi, width: "min(34vw,440px)", marginTop: "-6vh", alt: "Portrait session, natural light" },
+  { label: "Engagements & Proposals", n: "05", href: "/portfolio/engagements", photo: PHOTOS.proposal, width: "min(40vw,500px)", marginTop: "6vh", alt: "Proposal moment" },
 ];
 
 export default function HorizontalCollection() {
@@ -71,13 +72,17 @@ export default function HorizontalCollection() {
           }}
         >
           {CARDS.map((c) => (
-            <div
+            <Link
               key={c.n}
+              href={c.href}
+              data-hover=""
               style={{
                 flex: "0 0 auto",
                 width: c.width,
                 marginTop: c.marginTop,
                 color: "#F7F5F2",
+                textDecoration: "none",
+                display: "block",
               }}
             >
               <div style={{ overflow: "hidden", background: "#171411" }}>
@@ -123,7 +128,7 @@ export default function HorizontalCollection() {
                   {c.n}
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
           <div style={{ flex: "0 0 auto", width: "20vw" }} />
         </div>
