@@ -160,12 +160,28 @@ html.lenis {
 }
 
 /* ── RESPONSIVE FALLBACKS (the design is desktop-first) ────────────────── */
+.lx-burger {
+  display: none;
+}
+.lx-overlay {
+  display: none;
+}
+
 @media (max-width: 860px) {
   .lx-header {
-    padding: 18px 20px !important;
+    padding: 16px 20px !important;
   }
-  .lx-header nav {
-    gap: 14px !important;
+  .lx-nav {
+    display: none !important;
+  }
+  .lx-burger {
+    display: flex !important;
+  }
+  .lx-overlay {
+    display: flex !important;
+  }
+  .lx-logo {
+    font-size: 15px !important;
   }
   .lx-grid-2col {
     grid-template-columns: 1fr !important;

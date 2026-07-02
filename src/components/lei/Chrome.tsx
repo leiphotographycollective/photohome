@@ -1,4 +1,5 @@
 import Link from "next/link";
+import MobileMenu from "./MobileMenu";
 import { GOLD, SERIF, cream, navLink } from "./tokens";
 
 /* Fixed chrome shared by every Lei page: the custom cursor elements, the
@@ -85,8 +86,10 @@ export default function Chrome({ active }: { active?: Active }) {
         <Link
           href="/"
           data-hover=""
+          className="lx-logo"
           style={{
             pointerEvents: "auto",
+            whiteSpace: "nowrap",
             fontFamily: SERIF,
             fontWeight: 600,
             fontSize: 17,
@@ -97,6 +100,7 @@ export default function Chrome({ active }: { active?: Active }) {
           Lei Photography <em style={{ fontWeight: 400 }}>Collective</em>
         </Link>
         <nav
+          className="lx-nav"
           style={{
             display: "flex",
             gap: 28,
@@ -141,6 +145,7 @@ export default function Chrome({ active }: { active?: Active }) {
             Inquire
           </Link>
         </nav>
+        <MobileMenu />
       </header>
 
       {/* ══ Weddings dropdown ══ */}
