@@ -5,6 +5,8 @@ const BASE =
   "https://images.squarespace-cdn.com/content/v1/697c1d6344a3b1154bcbc39e/";
 
 export function img(path: string, w = 1200): string {
+  // Local images (public/images/...) are already sized for the web — serve as-is.
+  if (path.startsWith("/")) return path;
   return `${BASE}${path}?format=${w}w`;
 }
 
@@ -53,6 +55,13 @@ export const PHOTOS = {
   groomPrep: { path: "bfb2b2c5-62c2-447d-ac15-c7b4ac7b80b2/bay-area-wedding-groom-getting-ready-candid-lei-photography-collective", a: "Groom laughing with a groomsman while getting ready", r: "p" },
   brideMother: { path: "477b873d-0c83-4d5e-8856-d0275ab31300/bay-area-wedding-bride-mother-getting-ready-black-and-white-lei-photography-collective", a: "Bride sharing an emotional moment with her mother, black and white", r: "t" },
   coastKiss: { path: "8664ce35-1a25-42be-8c14-9f85890ee554/Couple+sharing+an+intimate+kiss+during+a+black+and+white+engagement+session+along+the+San+Francisco+coast%2C+photographed+by+Lei+Photography+Collective.", a: "Couple sharing a kiss on the San Francisco coast, black and white", r: "p" },
+  // Local images — 2025 fall shoots, not yet migrated to the CDN
+  gradCapToss: { path: "/images/portfolio/graduation/grad-akp-toss.jpg", a: "AKP graduates tossing their caps on campus", r: "p" },
+  gradDylan: { path: "/images/portfolio/graduation/grad-dylan-3.jpg", a: "Graduate in cap and gown in front of Tower Hall", r: "p" },
+  gradRei: { path: "/images/portfolio/graduation/grad-rei-2.jpg", a: "Graduate laughing beside white roses, golden hour", r: "p" },
+  eventPwc: { path: "/images/portfolio/events/event-pwc.jpg", a: "Colleagues smiling together at a corporate networking event", r: "l" },
+  eventAssyrian: { path: "/images/portfolio/events/event-assyrian-5.jpg", a: "Couple in evening attire at a gala, garden view behind them", r: "l" },
+  eventEmmys: { path: "/images/portfolio/events/event-emmys.jpg", a: "Emmy award statues in gold light", r: "l" },
 } satisfies Record<string, Photo>;
 
 export interface Project {
@@ -92,6 +101,7 @@ export const CATEGORIES: Record<string, Category> = {
     projects: [
       { id: "naomi-fall-25", title: "Naomi · Fall '25", place: "Berkeley, CA", year: "2025", cover: P.naomi, photos: [P.naomi, P.gradLaughing] },
       { id: "lauren-fall-25", title: "Lauren · Fall '25", place: "San Jose, CA", year: "2025", cover: P.lauren, photos: [P.lauren, P.gradPortrait] },
+      { id: "akp-class-of-25", title: "AKP · Class of 2025", place: "San Jose, CA", year: "2025", cover: P.gradCapToss, photos: [P.gradCapToss, P.gradDylan, P.gradRei] },
     ],
   },
   portraits: {
@@ -111,6 +121,7 @@ export const CATEGORIES: Record<string, Category> = {
       "Candid coverage that keeps the energy of the room without ever interrupting it.",
     projects: [
       { id: "on-the-floor", title: "On the Floor", place: "Bay Area, CA", year: "2025", cover: P.weddingParty, photos: [P.bridesmaidsToast, P.weddingParty, P.detailsFlat] },
+      { id: "galas-and-gatherings", title: "Galas & Gatherings", place: "Bay Area, CA", year: "2025", cover: P.eventEmmys, photos: [P.eventEmmys, P.eventPwc, P.eventAssyrian] },
     ],
   },
   engagements: {
