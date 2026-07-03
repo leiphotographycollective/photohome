@@ -198,20 +198,21 @@ export function ParallaxGallery({ columns }: { columns: GalleryColumn[] }) {
           }}
         >
           {col.images.map((im) => (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <img
-              key={im.src}
-              data-gimg=""
-              data-cursor={im.cursor}
-              src={im.src}
-              alt={im.alt}
-              style={{
-                width: "100%",
-                aspectRatio: im.ratio,
-                objectFit: "cover",
-                display: "block",
-              }}
-            />
+            <div key={im.src} style={{ background: "#EDE9E3", aspectRatio: im.ratio }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-gimg=""
+                data-cursor={im.cursor}
+                src={im.src}
+                alt={im.alt}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+            </div>
           ))}
         </div>
       ))}
