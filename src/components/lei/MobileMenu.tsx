@@ -16,7 +16,8 @@ const LINKS = [
   { href: "/weddings", label: "Weddings", n: "02" },
   { href: "/portfolio/weddings", label: "Portfolio", n: "03" },
   { href: "/experience", label: "Experience", n: "04" },
-  { href: "/about", label: "About", n: "05" },
+  { href: "/free-session", label: "Free Session", n: "05" },
+  { href: "/about", label: "About", n: "06" },
 ];
 
 const bar = (open: boolean, top: boolean) =>
