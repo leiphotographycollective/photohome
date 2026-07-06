@@ -5,7 +5,7 @@ import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
 import { DIM, GOLD, MUTED, SERIF, cream, kicker, ink } from "@/components/lei/tokens";
-import { CATEGORIES, CAT_ORDER, RATIO_CSS, img } from "@/content/portfolio";
+import { CATEGORIES, CAT_ORDER, aspect, img } from "@/content/portfolio";
 
 export function generateStaticParams() {
   return CAT_ORDER.map((cat) => ({ cat }));
@@ -173,7 +173,7 @@ export default async function CategoryPage({
             >
               <div
                 className="lx-imgwrap"
-                style={{ aspectRatio: RATIO_CSS[p.cover.r] }}
+                style={{ aspectRatio: aspect(p.cover) }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={img(p.cover.path, 1200)} alt={p.cover.a} />

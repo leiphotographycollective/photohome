@@ -24,6 +24,13 @@ export interface Photo {
   path: string;
   a: string;
   r: Ratio;
+  /** Exact width/height for galleries that should render native aspect
+   * ratios instead of snapping to one of the four RATIO_CSS presets. */
+  ratio?: number;
+}
+
+export function aspect(photo: Photo): string {
+  return photo.ratio ? String(photo.ratio) : RATIO_CSS[photo.r];
 }
 
 export const PHOTOS = {
@@ -64,6 +71,45 @@ export const PHOTOS = {
   eventEmmys: { path: "/images/portfolio/events/event-emmys.jpg", a: "Emmy award statues in gold light", r: "l" },
 } satisfies Record<string, Photo>;
 
+// Full "Sargon & Odelya" wedding gallery — local images at native aspect
+// ratio (see `ratio` on each Photo), not the 4 RATIO_CSS presets above.
+const SO_DIR = "/images/portfolio/weddings/sargon-odelya";
+export const SARGON_ODELYA_PHOTOS: Photo[] = [
+  { path: `${SO_DIR}/sargon-odelya-01.jpg`, a: "Bride's hands holding the wedding ring box", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-02.jpg`, a: "Bridal shoes, perfume and jewelry flat lay", r: "l", ratio: 1.7778 },
+  { path: `${SO_DIR}/sargon-odelya-03.jpg`, a: "Bride sharing an emotional moment with her mother, black and white", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-04.jpg`, a: "Bride and bridesmaids toasting champagne while getting ready", r: "l", ratio: 1.5 },
+  { path: `${SO_DIR}/sargon-odelya-05.jpg`, a: "Bridesmaids toasting champagne with the bride, alternate angle", r: "l", ratio: 1.5 },
+  { path: `${SO_DIR}/sargon-odelya-06.jpg`, a: "Groom descending the stairs carrying a pearl-beaded scepter", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-07.jpg`, a: "Guests cheering as the couple descends the staircase", r: "l", ratio: 1.5 },
+  { path: `${SO_DIR}/sargon-odelya-08.jpg`, a: "Family and friends celebrating on the staircase, aerial view", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-09.jpg`, a: "Bride's veil catching the light in warm golden hour sun", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-10.jpg`, a: "Bride's veil lifted and moving in the breeze", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-11.jpg`, a: "Close-up of the bride's engagement ring beneath her veil", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-12.jpg`, a: "Bride beneath her veil, black and white portrait", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-13.jpg`, a: "Bridesmaids toasting the bride on a garden balcony at golden hour", r: "l", ratio: 1.4999 },
+  { path: `${SO_DIR}/sargon-odelya-14.jpg`, a: "Bride touching the groom's face at golden hour", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-15.jpg`, a: "Bride and groom smiling together on a garden balcony", r: "l", ratio: 1.5 },
+  { path: `${SO_DIR}/sargon-odelya-16.jpg`, a: "Bride's veil blowing across her face in soft light", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-17.jpg`, a: "Bride lifting her cathedral veil overhead, laughing", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-18.jpg`, a: "Bride's veil trailing in the wind, black and white", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-19.jpg`, a: "Bride looking back over her shoulder, veil catching the sunset", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-20.jpg`, a: "Bride and groom walking hand in hand across the lawn", r: "l", ratio: 1.5 },
+  { path: `${SO_DIR}/sargon-odelya-21.jpg`, a: "Bride and groom walking together, alternate edit", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-22.jpg`, a: "Groom spraying champagne over the bride under a redwood tree", r: "p", ratio: 1.5001 },
+  { path: `${SO_DIR}/sargon-odelya-23.jpg`, a: "Champagne spray celebration, alternate edit", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-24.jpg`, a: "First dance beneath string lights, fog across the floor, black and white", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-25.jpg`, a: "Reception fireplace mantle dressed in white florals and candlelight", r: "l", ratio: 1.5 },
+  { path: `${SO_DIR}/sargon-odelya-26.jpg`, a: "Groom carrying the bride through a cheering crowd", r: "l", ratio: 1.4999 },
+  { path: `${SO_DIR}/sargon-odelya-27.jpg`, a: "Groom lifted on guests' shoulders during the reception", r: "l", ratio: 1.5 },
+  { path: `${SO_DIR}/sargon-odelya-28.jpg`, a: "Groom dipping the bride for a kiss by the reception fireplace", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-29.jpg`, a: "Bride and groom laughing mid-twirl on the dance floor", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-30.jpg`, a: "Bride and groom embracing on the dance floor, reception lights above", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-31.jpg`, a: "Traditional money dance with the newlyweds, black and white", r: "l", ratio: 1.5 },
+  { path: `${SO_DIR}/sargon-odelya-32.jpg`, a: "Groomsmen sharing a laugh while getting ready", r: "l", ratio: 1.4999 },
+  { path: `${SO_DIR}/sargon-odelya-33.jpg`, a: "Groomsmen laughing together while adjusting cufflinks", r: "l", ratio: 1.5 },
+];
+
 export interface Project {
   id: string;
   title: string;
@@ -89,7 +135,7 @@ export const CATEGORIES: Record<string, Category> = {
     intro:
       "The full arc of a day — the quiet preparation, the vows, the first dance. A curated record of the genuine.",
     projects: [
-      { id: "sargon-odelya", title: "Sargon & Odelya", place: "Bay Area, CA", year: "2025", cover: P.firstDance04, photos: [P.sargonPrep, P.sargon046, P.detailsFlat, P.sargon225, P.bridesmaidsToast, P.weddingParty, P.firstDance04, P.firstDance03] },
+      { id: "sargon-odelya", title: "Sargon & Odelya", place: "Bay Area, CA", year: "2025", cover: SARGON_ODELYA_PHOTOS[12], photos: SARGON_ODELYA_PHOTOS },
       { id: "first-dance-film", title: "The First Dance", place: "Bay Area, CA", year: "2025", cover: P.firstDanceCine, photos: [P.firstDanceCine, P.firstDance04, P.firstDance03] },
     ],
   },
