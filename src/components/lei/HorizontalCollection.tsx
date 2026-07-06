@@ -6,12 +6,16 @@ import { GOLD, SERIF, cream } from "./tokens";
    the home page and the Work page (the motion engine pins [data-hwrap] and
    translates [data-htrack] by scroll). */
 
+// Every card is the same width; combined with the shared 4/5 crop below this
+// gives all five images an identical size and fit, aligned on one baseline.
+const CARD_WIDTH = "min(38vw,460px)";
+
 const CARDS = [
-  { label: "Weddings", n: "01", href: "/portfolio/weddings", photo: PHOTOS.firstDanceCine, width: "min(44vw,560px)" },
-  { label: "Graduations", n: "02", href: "/portfolio/graduations", photo: PHOTOS.gradPortrait, width: "min(34vw,440px)", marginTop: "8vh" },
-  { label: "Portraits & Editorials", n: "03", href: "/portfolio/portraits", photo: PHOTOS.editorial, width: "min(38vw,480px)" },
-  { label: "Headshots & Events", n: "04", href: "/portfolio/events", photo: PHOTOS.naomi, width: "min(34vw,440px)", marginTop: "-6vh", alt: "Portrait session, natural light" },
-  { label: "Engagements & Proposals", n: "05", href: "/portfolio/engagements", photo: PHOTOS.proposal, width: "min(40vw,500px)", marginTop: "6vh", alt: "Proposal moment" },
+  { label: "Weddings", n: "01", href: "/portfolio/weddings", photo: PHOTOS.firstDanceCine },
+  { label: "Graduations", n: "02", href: "/portfolio/graduations", photo: PHOTOS.gradPortrait },
+  { label: "Portraits & Editorials", n: "03", href: "/portfolio/portraits", photo: PHOTOS.editorial },
+  { label: "Headshots & Events", n: "04", href: "/portfolio/events", photo: PHOTOS.naomi, alt: "Portrait session, natural light" },
+  { label: "Engagements & Proposals", n: "05", href: "/portfolio/engagements", photo: PHOTOS.proposal, alt: "Proposal moment" },
 ];
 
 export default function HorizontalCollection() {
@@ -68,7 +72,9 @@ export default function HorizontalCollection() {
             gap: "6vw",
             padding: "0 38px",
             width: "max-content",
-            alignItems: "center",
+            // Top-align so all images sit on one line even when a longer
+            // label (e.g. "Engagements & Proposals") wraps to two lines.
+            alignItems: "flex-start",
           }}
         >
           {CARDS.map((c) => (
@@ -78,8 +84,7 @@ export default function HorizontalCollection() {
               data-hover=""
               style={{
                 flex: "0 0 auto",
-                width: c.width,
-                marginTop: c.marginTop,
+                width: CARD_WIDTH,
                 color: "#F7F5F2",
                 textDecoration: "none",
                 display: "block",
