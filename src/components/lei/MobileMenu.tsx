@@ -12,12 +12,12 @@ import { GOLD, SERIF } from "./tokens";
    header uses mix-blend-difference, which would bleed into any child. */
 
 const LINKS = [
-  { href: "/work", label: "Work", n: "01" },
-  { href: "/weddings", label: "Weddings", n: "02" },
-  { href: "/portfolio/weddings", label: "Portfolio", n: "03" },
-  { href: "/experience", label: "Experience", n: "04" },
-  { href: "/free-session", label: "Free Session", n: "05" },
-  { href: "/about", label: "About", n: "06" },
+  { href: "/about", label: "About", n: "03" },
+];
+
+const WEDDINGS_SUB = [
+  { href: "/experience", label: "Experience" },
+  { href: "/free-session", label: "Free Session" },
 ];
 
 const bar = (open: boolean, top: boolean) =>
@@ -35,9 +35,10 @@ const bar = (open: boolean, top: boolean) =>
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [weddingsOpen, setWeddingsOpen] = useState(false);
   const pathname = usePathname();
   useEffect(() => setMounted(true), []);
-  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => { setOpen(false); setWeddingsOpen(false); }, [pathname]);
 
   const overlay = (
     <div
@@ -88,33 +89,90 @@ export default function MobileMenu() {
         Menu
       </div>
       <nav style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+        {/* Portfolio */}
+        <Link
+          href="/work"
+          onClick={() => setOpen(false)}
+          style={{
+            display: "flex", alignItems: "baseline", gap: 14,
+            fontFamily: SERIF, fontSize: 38, fontWeight: 500, lineHeight: 1.35,
+            color: pathname === "/work" ? GOLD : "#F7F5F2", textDecoration: "none",
+          }}
+        >
+          Portfolio
+          <span style={{ fontSize: 12, letterSpacing: ".18em", color: "rgba(247,245,242,.4)" }}>01</span>
+        </Link>
+
+        {/* Weddings — hover (or tap on touch) to expand sub-items */}
+        <div
+          onMouseEnter={() => setWeddingsOpen(true)}
+          onMouseLeave={() => setWeddingsOpen(false)}
+        >
+          <button
+            onClick={() => setWeddingsOpen((v) => !v)}
+            style={{
+              display: "flex", alignItems: "center", gap: 14,
+              fontFamily: SERIF, fontSize: 38, fontWeight: 500, lineHeight: 1.35,
+              color: pathname.startsWith("/weddings") || pathname === "/experience" || pathname === "/free-session" ? GOLD : "#F7F5F2",
+              background: "none", border: "none", padding: 0, cursor: "pointer", width: "100%", textAlign: "left",
+            }}
+          >
+            Weddings
+            <span style={{ fontSize: 12, letterSpacing: ".18em", color: "rgba(247,245,242,.4)", alignSelf: "baseline" }}>02</span>
+            {/* Dropdown indicator — gold chevron */}
+            <svg
+              width="14" height="9" viewBox="0 0 14 9" fill="none"
+              style={{
+                marginLeft: 6,
+                flexShrink: 0,
+                transform: weddingsOpen ? "rotate(180deg)" : "rotate(0deg)",
+                transition: "transform .35s cubic-bezier(0.4,0,0.2,1)",
+              }}
+            >
+              <path d="M1 1L7 7L13 1" stroke="#B8905A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          {/* Animated sub-menu */}
+          <div
+            style={{
+              overflow: "hidden",
+              maxHeight: weddingsOpen ? 220 : 0,
+              opacity: weddingsOpen ? 1 : 0,
+              transition: "max-height .4s cubic-bezier(0.4,0,0.2,1), opacity .3s ease",
+            }}
+          >
+            {WEDDINGS_SUB.map((s) => (
+              <Link
+                key={s.href}
+                href={s.href}
+                onClick={() => setOpen(false)}
+                style={{
+                  display: "block", paddingLeft: 24, paddingTop: 6, paddingBottom: 2,
+                  fontFamily: SERIF, fontSize: 24, fontWeight: 400,
+                  color: pathname === s.href ? GOLD : "rgba(247,245,242,.7)", textDecoration: "none",
+                  letterSpacing: ".01em",
+                }}
+              >
+                {s.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Remaining top-level links */}
         {LINKS.map((l) => (
           <Link
             key={l.href}
             href={l.href}
             onClick={() => setOpen(false)}
             style={{
-              display: "flex",
-              alignItems: "baseline",
-              gap: 14,
-              fontFamily: SERIF,
-              fontSize: 38,
-              fontWeight: 500,
-              lineHeight: 1.35,
-              color: pathname === l.href ? GOLD : "#F7F5F2",
-              textDecoration: "none",
+              display: "flex", alignItems: "baseline", gap: 14,
+              fontFamily: SERIF, fontSize: 38, fontWeight: 500, lineHeight: 1.35,
+              color: pathname === l.href ? GOLD : "#F7F5F2", textDecoration: "none",
             }}
           >
             {l.label}
-            <span
-              style={{
-                fontSize: 12,
-                letterSpacing: ".18em",
-                color: "rgba(247,245,242,.4)",
-              }}
-            >
-              {l.n}
-            </span>
+            <span style={{ fontSize: 12, letterSpacing: ".18em", color: "rgba(247,245,242,.4)" }}>{l.n}</span>
           </Link>
         ))}
       </nav>
