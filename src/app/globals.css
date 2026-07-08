@@ -152,6 +152,23 @@ html.lenis {
   transform: scale(1.04);
 }
 
+/* Project gallery: a 2-column grid where landscape frames span the full
+   width so horizontal photos are shown large instead of squeezed into a
+   half-width column. Dense flow backfills the gaps left by wide items. */
+.lx-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.4vw;
+  align-items: start;
+  grid-auto-flow: row dense;
+}
+.lx-gallery .lx-gitem {
+  margin-bottom: 0;
+}
+.lx-gallery .lx-gitem.wide {
+  grid-column: 1 / -1;
+}
+
 .lx-rel img {
   transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -191,6 +208,9 @@ html.lenis {
   }
   .lx-masonry {
     column-count: 1 !important;
+  }
+  .lx-gallery {
+    grid-template-columns: 1fr !important;
   }
   .lx-float {
     display: none !important;

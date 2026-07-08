@@ -64,8 +64,6 @@ export const PHOTOS = {
   coastKiss: { path: "8664ce35-1a25-42be-8c14-9f85890ee554/Couple+sharing+an+intimate+kiss+during+a+black+and+white+engagement+session+along+the+San+Francisco+coast%2C+photographed+by+Lei+Photography+Collective.", a: "Couple sharing a kiss on the San Francisco coast, black and white", r: "p" },
   // Local images — 2025 fall shoots, not yet migrated to the CDN
   gradCapToss: { path: "/images/portfolio/graduation/grad-akp-toss.jpg", a: "AKP graduates tossing their caps on campus", r: "p" },
-  gradDylan: { path: "/images/portfolio/graduation/grad-dylan-3.jpg", a: "Graduate in cap and gown in front of Tower Hall", r: "p" },
-  gradRei: { path: "/images/portfolio/graduation/grad-rei-2.jpg", a: "Graduate laughing beside white roses, golden hour", r: "p" },
   eventPwc: { path: "/images/portfolio/events/event-pwc.jpg", a: "Colleagues smiling together at a corporate networking event", r: "l" },
   eventAssyrian: { path: "/images/portfolio/events/event-assyrian-5.jpg", a: "Couple in evening attire at a gala, garden view behind them", r: "l" },
   eventEmmys: { path: "/images/portfolio/events/event-emmys.jpg", a: "Emmy award statues in gold light", r: "l" },
@@ -88,15 +86,15 @@ export const SARGON_ODELYA_PHOTOS: Photo[] = [
   { path: `${SO_DIR}/sargon-odelya-11.jpg`, a: "Close-up of the bride's engagement ring beneath her veil", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-12.jpg`, a: "Bride beneath her veil, black and white portrait", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-13.jpg`, a: "Bridesmaids toasting the bride on a garden balcony at golden hour", r: "l", ratio: 1.4999 },
-  { path: `${SO_DIR}/sargon-odelya-14.jpg`, a: "Bride touching the groom's face at golden hour", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-14.jpg`, a: "Bride touching the groom's face at golden hour", r: "l", ratio: 1.5004 },
   { path: `${SO_DIR}/sargon-odelya-15.jpg`, a: "Bride and groom smiling together on a garden balcony", r: "l", ratio: 1.5 },
   { path: `${SO_DIR}/sargon-odelya-16.jpg`, a: "Bride's veil blowing across her face in soft light", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-17.jpg`, a: "Bride lifting her cathedral veil overhead, laughing", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-18.jpg`, a: "Bride's veil trailing in the wind, black and white", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-19.jpg`, a: "Bride looking back over her shoulder, veil catching the sunset", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-20.jpg`, a: "Bride and groom walking hand in hand across the lawn", r: "l", ratio: 1.5 },
-  { path: `${SO_DIR}/sargon-odelya-21.jpg`, a: "Bride and groom walking together, alternate edit", r: "p", ratio: 0.6667 },
-  { path: `${SO_DIR}/sargon-odelya-22.jpg`, a: "Groom spraying champagne over the bride under a redwood tree", r: "p", ratio: 1.5001 },
+  { path: `${SO_DIR}/sargon-odelya-21.jpg`, a: "Bride and groom walking together, alternate edit", r: "l", ratio: 1.5004 },
+  { path: `${SO_DIR}/sargon-odelya-22.jpg`, a: "Groom spraying champagne over the bride under a redwood tree", r: "l", ratio: 1.5001 },
   { path: `${SO_DIR}/sargon-odelya-23.jpg`, a: "Champagne spray celebration, alternate edit", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-24.jpg`, a: "First dance beneath string lights, fog across the floor, black and white", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-25.jpg`, a: "Reception fireplace mantle dressed in white florals and candlelight", r: "l", ratio: 1.5 },
@@ -104,10 +102,71 @@ export const SARGON_ODELYA_PHOTOS: Photo[] = [
   { path: `${SO_DIR}/sargon-odelya-27.jpg`, a: "Groom lifted on guests' shoulders during the reception", r: "l", ratio: 1.5 },
   { path: `${SO_DIR}/sargon-odelya-28.jpg`, a: "Groom dipping the bride for a kiss by the reception fireplace", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-29.jpg`, a: "Bride and groom laughing mid-twirl on the dance floor", r: "p", ratio: 0.6667 },
-  { path: `${SO_DIR}/sargon-odelya-30.jpg`, a: "Bride and groom embracing on the dance floor, reception lights above", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-30.jpg`, a: "Bride and groom embracing on the dance floor, reception lights above", r: "l", ratio: 1.5 },
   { path: `${SO_DIR}/sargon-odelya-31.jpg`, a: "Traditional money dance with the newlyweds, black and white", r: "l", ratio: 1.5 },
   { path: `${SO_DIR}/sargon-odelya-32.jpg`, a: "Groomsmen sharing a laugh while getting ready", r: "l", ratio: 1.4999 },
   { path: `${SO_DIR}/sargon-odelya-33.jpg`, a: "Groomsmen laughing together while adjusting cufflinks", r: "l", ratio: 1.5 },
+];
+
+// New 2025 sets imported from local exports
+const SARGON_ODELYA_MORE: Photo[] = [
+  { path: "/images/portfolio/weddings/sargon-odelya-more/sargon-odelya-more-08.jpg", a: "Sargon & Odelya — couple's portrait at golden hour", r: "l", ratio: 1.5 },
+  { path: "/images/portfolio/weddings/sargon-odelya-more/sargon-odelya-more-32.jpg", a: "Sargon & Odelya — a moment from the wedding day", r: "p", ratio: 0.6667 },
+];
+const DYLAN_GRAD: Photo[] = [
+  { path: "/images/portfolio/graduation/dylan/dylan-01.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/dylan/dylan-02.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/dylan/dylan-03.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/dylan/dylan-04.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/dylan/dylan-05.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/dylan/dylan-06.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/dylan/dylan-07.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/dylan/dylan-08.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
+];
+const NAOMI_GRAD: Photo[] = [
+  { path: "/images/portfolio/graduation/naomi/naomi-01.jpg", a: "Naomi — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/naomi/naomi-02.jpg", a: "Naomi — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/naomi/naomi-03.jpg", a: "Naomi — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/naomi/naomi-04.jpg", a: "Naomi — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/naomi/naomi-05.jpg", a: "Naomi — fall graduation session", r: "p", ratio: 0.6667 },
+];
+const LAUREN_GRAD: Photo[] = [
+  { path: "/images/portfolio/graduation/lauren/lauren-01.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/lauren/lauren-02.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/lauren/lauren-03.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/lauren/lauren-04.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/lauren/lauren-05.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/lauren/lauren-06.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/lauren/lauren-07.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/lauren/lauren-08.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/lauren/lauren-09.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
+];
+const REI_GRAD: Photo[] = [
+  { path: "/images/portfolio/graduation/rei/rei-01.jpg", a: "Rei — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/rei/rei-02.jpg", a: "Rei — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/rei/rei-03.jpg", a: "Rei — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/rei/rei-04.jpg", a: "Rei — fall graduation session", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/graduation/rei/rei-05.jpg", a: "Rei — fall graduation session", r: "p", ratio: 0.6667 },
+];
+const ASSYRIAN_EVENT: Photo[] = [
+  { path: "/images/portfolio/events/assyrian/assyrian-01.jpg", a: "The Assyrian gala — guests and celebration", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/events/assyrian/assyrian-02.jpg", a: "The Assyrian gala — guests and celebration", r: "l", ratio: 1.5 },
+  { path: "/images/portfolio/events/assyrian/assyrian-03.jpg", a: "The Assyrian gala — guests and celebration", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/events/assyrian/assyrian-04.jpg", a: "The Assyrian gala — guests and celebration", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/events/assyrian/assyrian-06.jpg", a: "The Assyrian gala — guests and celebration", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/events/assyrian/assyrian-07.jpg", a: "The Assyrian gala — guests and celebration", r: "p", ratio: 0.6667 },
+  { path: "/images/portfolio/events/assyrian/assyrian-08.jpg", a: "The Assyrian gala — guests and celebration", r: "t", ratio: 0.75 },
+  { path: "/images/portfolio/events/assyrian/assyrian-09.jpg", a: "The Assyrian gala — guests and celebration", r: "l", ratio: 1.3333 },
+  { path: "/images/portfolio/events/assyrian/assyrian-10.jpg", a: "The Assyrian gala — guests and celebration", r: "l", ratio: 1.3333 },
+  { path: "/images/portfolio/events/assyrian/assyrian-11.jpg", a: "The Assyrian gala — guests and celebration", r: "l", ratio: 1.3333 },
+  { path: "/images/portfolio/events/assyrian/assyrian-12.jpg", a: "The Assyrian gala — guests and celebration", r: "l", ratio: 1.3333 },
+  { path: "/images/portfolio/events/assyrian/assyrian-13.jpg", a: "The Assyrian gala — guests and celebration", r: "l", ratio: 1.3333 },
+];
+const CORPORATE_EVENT: Photo[] = [
+  { path: "/images/portfolio/events/corporate/corporate-01.jpg", a: "AKP fall banquet — highlight of the evening", r: "l", ratio: 1.5 },
+  { path: "/images/portfolio/events/corporate/corporate-02.jpg", a: "Corporate event coverage", r: "l", ratio: 1.5 },
+  { path: "/images/portfolio/events/corporate/corporate-04.jpg", a: "SJSU University Police — team portrait", r: "l", ratio: 1.3321 },
+  { path: "/images/portfolio/events/corporate/corporate-06.jpg", a: "PwC networking reception", r: "l", ratio: 1.3333 },
 ];
 
 export interface Project {
@@ -135,7 +194,7 @@ export const CATEGORIES: Record<string, Category> = {
     intro:
       "The full arc of a day — the quiet preparation, the vows, the first dance. A curated record of the genuine.",
     projects: [
-      { id: "sargon-odelya", title: "Sargon & Odelya", place: "Bay Area, CA", year: "2025", cover: SARGON_ODELYA_PHOTOS[12], photos: SARGON_ODELYA_PHOTOS },
+      { id: "sargon-odelya", title: "Sargon & Odelya", place: "Bay Area, CA", year: "2025", cover: SARGON_ODELYA_PHOTOS[12], photos: [...SARGON_ODELYA_PHOTOS, ...SARGON_ODELYA_MORE] },
       { id: "first-dance-film", title: "The First Dance", place: "Bay Area, CA", year: "2025", cover: P.firstDanceCine, photos: [P.firstDanceCine, P.firstDance04, P.firstDance03] },
     ],
   },
@@ -145,9 +204,11 @@ export const CATEGORIES: Record<string, Category> = {
     intro:
       "Candid, natural-light sessions that celebrate the milestone — and the person who earned it.",
     projects: [
-      { id: "naomi-fall-25", title: "Naomi · Fall '25", place: "Berkeley, CA", year: "2025", cover: P.naomi, photos: [P.naomi, P.gradLaughing] },
-      { id: "lauren-fall-25", title: "Lauren · Fall '25", place: "San Jose, CA", year: "2025", cover: P.lauren, photos: [P.lauren, P.gradPortrait] },
-      { id: "akp-class-of-25", title: "AKP · Class of 2025", place: "San Jose, CA", year: "2025", cover: P.gradCapToss, photos: [P.gradCapToss, P.gradDylan, P.gradRei] },
+      { id: "naomi-fall-25", title: "Naomi · Fall '25", place: "Berkeley, CA", year: "2025", cover: NAOMI_GRAD[0], photos: NAOMI_GRAD },
+      { id: "lauren-fall-25", title: "Lauren · Fall '25", place: "San Jose, CA", year: "2025", cover: LAUREN_GRAD[0], photos: LAUREN_GRAD },
+      { id: "dylan-fall-25", title: "Dylan · Fall '25", place: "San Jose, CA", year: "2025", cover: DYLAN_GRAD[0], photos: DYLAN_GRAD },
+      { id: "rei-fall-25", title: "Rei · Fall '25", place: "San Jose, CA", year: "2025", cover: REI_GRAD[0], photos: REI_GRAD },
+      { id: "akp-class-of-25", title: "AKP · Class of 2025", place: "San Jose, CA", year: "2025", cover: P.gradCapToss, photos: [P.gradCapToss] },
     ],
   },
   portraits: {
@@ -168,6 +229,8 @@ export const CATEGORIES: Record<string, Category> = {
     projects: [
       { id: "on-the-floor", title: "On the Floor", place: "Bay Area, CA", year: "2025", cover: P.weddingParty, photos: [P.bridesmaidsToast, P.weddingParty, P.detailsFlat] },
       { id: "galas-and-gatherings", title: "Galas & Gatherings", place: "Bay Area, CA", year: "2025", cover: P.eventEmmys, photos: [P.eventEmmys, P.eventPwc, P.eventAssyrian] },
+      { id: "assyrian-gala", title: "The Assyrian Gala", place: "San Jose, CA", year: "2025", cover: ASSYRIAN_EVENT[0], photos: ASSYRIAN_EVENT },
+      { id: "corporate-community", title: "Corporate & Community", place: "Bay Area, CA", year: "2025", cover: CORPORATE_EVENT[0], photos: CORPORATE_EVENT },
     ],
   },
   engagements: {

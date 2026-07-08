@@ -16,6 +16,7 @@ const LINKS = [
 ];
 
 const WEDDINGS_SUB = [
+  { href: "/portfolio/weddings", label: "The Portfolio" },
   { href: "/experience", label: "Experience" },
   { href: "/free-session", label: "Free Session" },
 ];
@@ -89,7 +90,7 @@ export default function MobileMenu() {
         Menu
       </div>
       <nav style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-        {/* Portfolio */}
+        {/* Work — the portfolio index page */}
         <Link
           href="/work"
           onClick={() => setOpen(false)}
@@ -99,7 +100,7 @@ export default function MobileMenu() {
             color: pathname === "/work" ? GOLD : "#F7F5F2", textDecoration: "none",
           }}
         >
-          Portfolio
+          Work
           <span style={{ fontSize: 12, letterSpacing: ".18em", color: "rgba(247,245,242,.4)" }}>01</span>
         </Link>
 

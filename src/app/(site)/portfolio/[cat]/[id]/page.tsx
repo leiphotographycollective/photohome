@@ -142,16 +142,16 @@ export default async function ProjectPage({
 
       {/* ══ Gallery ══ */}
       <section style={{ position: "relative", padding: "2vh 38px 14vh" }}>
-        <div className="lx-masonry" style={{ columnCount: 2, columnGap: "2.4vw" }}>
+        <div className="lx-gallery">
           {proj.photos.map((ph, i) => (
             <div
               key={`${ph.path}-${i}`}
-              className="lx-gitem"
+              className={ph.r === "l" ? "lx-gitem wide" : "lx-gitem"}
               data-gitem=""
               style={{ aspectRatio: aspect(ph) }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={img(ph.path, 1400)} alt={ph.a} />
+              <img src={img(ph.path, ph.r === "l" ? 2000 : 1400)} alt={ph.a} />
             </div>
           ))}
         </div>
