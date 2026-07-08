@@ -223,10 +223,14 @@ export function initLeiMotion(
       const mWords: HTMLElement[] = [];
       words.forEach((w, i) => {
         const s = document.createElement("span");
-        s.textContent = w + (i < words.length - 1 ? " " : "");
+        s.textContent = w;
         s.style.cssText = "display:inline-block;opacity:.14;will-change:opacity";
         manifesto.appendChild(s);
         mWords.push(s);
+        // Keep the space as a real text node between the inline-block spans so the
+        // line can soft-wrap. A trailing space inside an inline-block gets trimmed,
+        // which is why the manifesto was overflowing on one line.
+        if (i < words.length - 1) manifesto.appendChild(document.createTextNode(" "));
       });
       gsap.to(mWords, {
         opacity: 1,

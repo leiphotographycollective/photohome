@@ -39,6 +39,27 @@ export default function WeddingsPage() {
           padding: "0 6vw",
         }}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={img(PHOTOS.brideMother.path, 2400)}
+          alt={PHOTOS.brideMother.a}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to top, rgba(14,13,11,.86) 0%, rgba(14,13,11,.58) 55%, rgba(14,13,11,.74) 100%)",
+          }}
+        />
         <div
           aria-hidden="true"
           style={{
