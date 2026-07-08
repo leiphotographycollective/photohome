@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties, type FormEvent } from "react";
+import { useEffect, useState, type CSSProperties, type FormEvent } from "react";
 import { GOLD, MUTED, SERIF, cream, pill } from "./tokens";
 
 /* Lead-capture form for the free-engagement-session ad funnel. Submits to
@@ -31,9 +31,32 @@ const labelStyle: CSSProperties = {
   marginBottom: 9,
 };
 
+const textareaStyle: CSSProperties = {
+  ...inputStyle,
+  minHeight: 160,
+  padding: "16px",
+  lineHeight: 1.6,
+  resize: "vertical",
+};
+
+/* UTM params from the Meta ad click are carried into the form as hidden
+   fields so the notification email shows which ad drove the entry. */
+const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"] as const;
+
 export default function FreeSessionForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [noDateYet, setNoDateYet] = useState(false);
+  const [utm, setUtm] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const found: Record<string, string> = {};
+    for (const key of UTM_KEYS) {
+      const value = params.get(key);
+      if (value) found[key] = value;
+    }
+    setUtm(found);
+  }, []);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -76,11 +99,12 @@ export default function FreeSessionForm() {
             fontSize: "clamp(26px,5vw,34px)",
           }}
         >
-          You&rsquo;re in! I&rsquo;ll be in touch within 24 hours.
+          You&rsquo;re entered!
         </h3>
         <p style={{ maxWidth: 400, margin: "12px auto 0", color: MUTED, lineHeight: 1.7 }}>
-          Keep an eye on your inbox (and your spam folder, just in case) — I reply to
-          every couple personally. Congratulations on your engagement!
+          I read every story myself. If yours is one of the 4 I pick this
+          month, I&rsquo;ll email you within a few days to schedule your
+          session. Congratulations on your engagement!
         </p>
       </div>
     );
@@ -161,9 +185,25 @@ export default function FreeSessionForm() {
         />
       </div>
 
+      <div style={{ marginBottom: 30 }}>
+        <label htmlFor="fs-story" style={labelStyle}>
+          Tell us your story
+        </label>
+        <textarea
+          id="fs-story"
+          name="Your story"
+          placeholder="How'd you two meet? How did the proposal happen? What makes your relationship, your relationship? (A few sentences is plenty.)"
+          required
+          style={textareaStyle}
+        />
+      </div>
+
       {/* honeypot spam trap */}
       <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
-      <input type="hidden" name="_subject" value="New FREE engagement session request" />
+      <input type="hidden" name="_subject" value="New Free Engagement Session Giveaway Entry" />
+      {UTM_KEYS.map((key) =>
+        utm[key] ? <input key={key} type="hidden" name={key} value={utm[key]} /> : null
+      )}
 
       <button
         type="submit"
@@ -178,7 +218,7 @@ export default function FreeSessionForm() {
           opacity: status === "sending" ? 0.7 : 1,
         }}
       >
-        {status === "sending" ? "Sending…" : "Claim My Free Session"}
+        {status === "sending" ? "Sending…" : "Submit My Entry"}
       </button>
 
       {status === "error" && (

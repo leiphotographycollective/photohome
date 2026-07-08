@@ -10,7 +10,7 @@ import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens
 export const metadata: Metadata = {
   title: "Your Free Engagement Session",
   description:
-    "A completely free engagement session for newly engaged Bay Area couples. Experience Lei Photography Collective's style before you choose your wedding photographer. Only five spots each month.",
+    "A free engagement session giveaway for newly engaged Bay Area couples. Raymond reads every entry personally and hand-picks 4 couples each month based on their story.",
 };
 
 /* ── META PIXEL ────────────────────────────────────────────────────────
@@ -36,9 +36,10 @@ const BENEFITS = [
 ];
 
 const STEPS = [
-  { n: "01", title: "Say hello", body: "Fill out the short form below. I read every message myself and reply within 24 hours." },
-  { n: "02", title: "We plan your session", body: "Together we'll pick a spot that means something to you, the right golden-hour light, and what to wear." },
-  { n: "03", title: "Enjoy your shoot", body: "A relaxed hour in front of the camera — then a gallery of finished photos lands in your inbox." },
+  { n: "01", title: "Tell us your story", body: "Fill out the form below and tell us your story — how you met, how the proposal happened, what makes you, you." },
+  { n: "02", title: "I read every entry", body: "I personally read every entry, in full, every single month." },
+  { n: "03", title: "I hand-pick 4 couples", body: "I choose the 4 couples whose story stands out to me the most." },
+  { n: "04", title: "You hear back", body: "Winners are contacted by email within a few days to schedule their session." },
 ];
 
 /* Gallery photos — drop files at these exact paths under public/images/
@@ -147,9 +148,9 @@ export default function FreeSessionPage() {
               color: cream(0.85),
             }}
           >
-            A completely free engagement shoot for newly engaged couples — feel
-            what it&rsquo;s like on the other side of my camera before you choose
-            your wedding photographer.
+            Every month I hand-pick 4 newly engaged couples for a completely
+            free engagement session — no random drawing, just me reading real
+            stories and choosing the ones that pull me in.
           </p>
           <div data-fadeup="" style={{ marginTop: "4vh" }}>
             <a
@@ -158,7 +159,7 @@ export default function FreeSessionPage() {
               data-hover=""
               style={pill("#F7F5F2", "#0E0D0B")}
             >
-              Book Your Free Session
+              Enter the Giveaway
             </a>
           </div>
           <div
@@ -172,7 +173,7 @@ export default function FreeSessionPage() {
               color: cream(0.65),
             }}
           >
-            No cost &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; A real, full session
+            Free to enter &nbsp;·&nbsp; No purchase necessary &nbsp;·&nbsp; 4 couples hand-picked every month
           </div>
         </div>
       </section>
@@ -236,7 +237,7 @@ export default function FreeSessionPage() {
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", maxWidth: 640, margin: "0 auto 8vh" }}>
             <div data-fadeup="" style={{ ...kicker({}, 10, ".3em"), display: "block", marginBottom: 16 }}>
-              The offer
+              Why this giveaway exists
             </div>
             <h2
               data-fadeup=""
@@ -248,14 +249,18 @@ export default function FreeSessionPage() {
                 lineHeight: 1.1,
               }}
             >
-              A real session. <em>Actually</em> free.
+              Why I <em>give this away.</em>
             </h2>
             <p
               data-fadeup=""
               style={{ marginTop: 18, fontSize: 16, lineHeight: 1.8, color: cream(0.72) }}
             >
-              Choosing a wedding photographer usually means guessing from a
-              portfolio. I&rsquo;d rather you know.
+              Most couples who win end up booking me for their wedding — so
+              instead of just telling you about the experience, I&rsquo;d
+              rather show you. I read every single entry myself and pick the
+              4 couples whose story pulls me in. No random drawing, no
+              algorithm — just me looking for couples I&rsquo;m genuinely
+              excited to photograph.
             </p>
           </div>
 
@@ -301,7 +306,7 @@ export default function FreeSessionPage() {
 
           <div data-fadeup="" style={{ textAlign: "center", marginTop: "8vh" }}>
             <a href="#claim" data-mag="" data-hover="" style={pill("#F7F5F2", "#0E0D0B")}>
-              Book Your Free Session
+              Enter the Giveaway
             </a>
           </div>
         </div>
@@ -321,6 +326,7 @@ export default function FreeSessionPage() {
           style={{
             maxWidth: 780,
             margin: "0 auto",
+            textAlign: "center",
             fontFamily: SERIF,
             fontStyle: "italic",
             fontWeight: 400,
@@ -330,8 +336,10 @@ export default function FreeSessionPage() {
             textWrap: "pretty",
           }}
         >
-          I photograph only <em style={{ color: GOLD }}>five</em> free sessions
-          each month — so every couple gets my full attention.
+          I give away <em style={{ color: GOLD }}>4</em> free engagement
+          sessions every month, hand-picked from every couple who applies, so
+          every winner gets the same full experience as my paid wedding
+          clients — real time, real coverage, real photos to keep.
         </p>
         <div
           data-fadeup=""
@@ -341,10 +349,11 @@ export default function FreeSessionPage() {
             fontWeight: 700,
             letterSpacing: ".24em",
             textTransform: "uppercase",
+            textAlign: "center",
             color: "#9C9490",
           }}
         >
-          When the month is booked, it&rsquo;s booked
+          Entries are read at the end of every month — make yours count
         </div>
       </section>
 
@@ -364,7 +373,7 @@ export default function FreeSessionPage() {
                 fontSize: "clamp(30px,5vw,48px)",
               }}
             >
-              Three easy steps.
+              Four simple steps.
             </h2>
           </div>
         </div>
@@ -384,7 +393,7 @@ export default function FreeSessionPage() {
         <div style={{ maxWidth: 920, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "8vh" }}>
             <div data-fadeup="" style={{ ...kicker({}, 10, ".3em"), display: "block", marginBottom: 20 }}>
-              The booking form
+              The entry form
             </div>
             <h2
               data-fadeup=""
@@ -396,7 +405,7 @@ export default function FreeSessionPage() {
                 lineHeight: 1.12,
               }}
             >
-              Claim your <em>free</em> session.
+              Enter the <em>Giveaway</em>
             </h2>
             <p
               data-fadeup=""
@@ -408,8 +417,8 @@ export default function FreeSessionPage() {
                 color: MUTED,
               }}
             >
-              Tell me a little about you two. I&rsquo;ll be in touch within 24
-              hours.
+              Tell me about you two — the couples I pick are the ones whose
+              story I can&rsquo;t stop thinking about.
             </p>
           </div>
           <div data-fadeup="">
