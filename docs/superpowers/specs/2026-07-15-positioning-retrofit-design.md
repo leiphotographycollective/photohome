@@ -43,11 +43,11 @@ Placement (beneath the gold pill): desktop hero, mobile hero, Who I photograph, 
 
 | Surface | New copy |
 |---|---|
-| Desktop hero lockup | **YOUR / COVER / STORY.** (three `data-hero-line` divs; STORY remains the last line — the WebGL image blooms out of the O in STORY, so the cinematic keeps working) |
+| Desktop hero lockup | **YOUR / COVER / STORY.** (three `data-hero-line` divs; the motion engine anchors the WebGL bloom to the letter O in the *second* line — COVER has exactly one O, so the cinematic keeps working) |
 | Hero kicker (both heroes) | `San Francisco Bay Area · Editorial Wedding Photography` |
 | Desktop hero sub-line | "Your wedding, shot like the cover story it is — for couples who bring the style and the party." |
 | Mobile hero h1 | "Your wedding, shot like the cover story it is." |
-| Manifesto | "You two, at your absolute best — the style, the party, and every real moment in between." (*absolute best* in the existing gold italic `em` treatment) |
+| Manifesto | "You two, at your absolute best — the style, the party, and every real moment in between." (plain text — the manifesto word-reveal animation flattens child elements at runtime, so no inline `em` here) |
 | Who I photograph h2 | "You two are the story. I just know where to point the camera." |
 | Who I photograph intro | "Hi — I'm Raymond. I shoot weddings the way magazines shoot cover stories — except the story is real, it's yours, and nobody has to hold a pose through it. If you're bringing the style and the party, I am SO in." |
 | Who I photograph bullets | Couple-first rewrites, e.g. "I'll work the room all night so you two can just be in it"; "Engagements and couples sessions that feel like a good date, not a photoshoot"; "Ever said 'I'm awkward in front of a camera'? Perfect — most of my favorite people have." |
@@ -71,7 +71,7 @@ Exact final wording may be polished during implementation **in the same register
 
 1. Hero lockup word change (the visual event; no layout change).
 2. `SecondaryCta` treatment as described in §2.
-3. Gold italic `em` on "absolute best" in the manifesto.
+3. Gold italic `em` on "cover stories" in the Recent weddings h2 ("Real weddings, shot like *cover stories*.") — h2s are not text-flattened by the motion engine, unlike the manifesto.
 
 ## Constraints carried forward from Phase 1
 
