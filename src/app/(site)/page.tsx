@@ -3,15 +3,16 @@ import Link from "next/link";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
-import HorizontalCollection from "@/components/lei/HorizontalCollection";
 import { Marquee } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
-import { img, PHOTOS } from "@/content/portfolio";
+import { aspect, img, PHOTOS } from "@/content/portfolio";
+import { CtaLink, SecondaryCta, TestimonialSlot } from "@/components/lei/Cta";
+import { CITY, DOORS, HERO_MOBILE, POSITIONING, RECENT_WEDDINGS } from "@/content/homepage";
 
 export const metadata: Metadata = {
-  title: "Presence, Story & Feeling — Bay Area Photographer",
+  title: "Editorial Wedding Photography in the San Francisco Bay Area",
   description:
-    "Photographed with intention — so your moments aren't just seen, they're felt. Weddings, graduations and portraits across the San Francisco Bay Area by Raymond Lei.",
+    `${POSITIONING} Editorial wedding photography for fun, stylish couples in the ${CITY} & beyond — by Raymond Lei.`,
 };
 
 export default function HomePage() {
@@ -61,7 +62,7 @@ export default function HomePage() {
               color: cream(0.45),
             }}
           >
-            Presence · Story · Feeling
+            San Francisco Bay Area · Editorial Weddings
           </div>
         </div>
         <div
@@ -107,6 +108,7 @@ export default function HomePage() {
       <section
         id="top"
         data-hero=""
+        className="lx-hero-desktop"
         style={{ position: "relative", height: "300vh", background: "#F7F5F2" }}
       >
         <div
@@ -181,7 +183,7 @@ export default function HomePage() {
                 marginBottom: "3vh",
               }}
             >
-              Bay Area · Weddings · Graduations · Portraits
+              San Francisco Bay Area · Editorial Wedding Photography
             </div>
             <h1
               style={{
@@ -193,13 +195,13 @@ export default function HomePage() {
               }}
             >
               <div data-hero-line="" style={{ fontSize: "clamp(64px,13vw,190px)" }}>
-                PRESENCE,
+                YOUR
               </div>
               <div data-hero-line="" style={{ fontSize: "clamp(64px,13vw,190px)" }}>
-                STORY <em style={{ fontWeight: 400 }}>&</em>
+                COVER
               </div>
               <div data-hero-line="" style={{ fontSize: "clamp(64px,13vw,190px)" }}>
-                <em style={{ fontWeight: 500 }}>FEELING.</em>
+                <em style={{ fontWeight: 500 }}>STORY.</em>
               </div>
             </h1>
             <div
@@ -213,7 +215,21 @@ export default function HomePage() {
                 opacity: 0.8,
               }}
             >
-              Photographed with intention — by Raymond Lei
+              Your wedding, shot like the cover story it is — for couples who bring the style and the party.
+            </div>
+            <div
+              data-hero-sub=""
+              style={{
+                marginTop: "3.5vh",
+                pointerEvents: "auto",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: 18,
+              }}
+            >
+              <CtaLink />
+              <SecondaryCta />
             </div>
           </div>
 
@@ -255,6 +271,77 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ══ Mobile hero — static and instant; the scroll cinematics are
+          desktop-only (see motion.ts mobile guard) ══ */}
+      <link
+        rel="preload"
+        as="image"
+        href={HERO_MOBILE.path}
+        media="(max-width: 860px)"
+      />
+      <section
+        className="lx-hero-mobile"
+        style={{
+          position: "relative",
+          minHeight: "100svh",
+          background: "#0E0D0B",
+          color: "#F7F5F2",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+          overflow: "hidden",
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={HERO_MOBILE.path}
+          alt={HERO_MOBILE.a}
+          fetchPriority="high"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to top, rgba(14,13,11,.74) 0%, rgba(14,13,11,.12) 55%)",
+          }}
+        />
+        <div style={{ position: "relative", padding: "0 24px 56px" }}>
+          <div style={kicker({ marginBottom: 16 }, 10, ".26em")}>
+            San Francisco Bay Area · Editorial Wedding Photography
+          </div>
+          <h1
+            style={{
+              margin: "0 0 24px",
+              fontFamily: SERIF,
+              fontWeight: 500,
+              fontSize: "clamp(34px,9.5vw,46px)",
+              lineHeight: 1.12,
+              textWrap: "pretty",
+            }}
+          >
+            Your wedding, shot like the <em>cover story</em> it is.
+          </h1>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: 16,
+            }}
+          >
+            <CtaLink />
+            <SecondaryCta dark />
+          </div>
+        </div>
+      </section>
+
       {/* ══ Manifesto ══ */}
       <section
         style={{
@@ -273,6 +360,7 @@ export default function HomePage() {
           className="lx-float"
           src={img(PHOTOS.bridal.path, 750)}
           alt="Bride holding her veil in soft light"
+          loading="lazy"
           style={{
             position: "absolute",
             left: "4vw",
@@ -291,6 +379,7 @@ export default function HomePage() {
           className="lx-float"
           src={img(PHOTOS.gradLaughing.path, 750)}
           alt={PHOTOS.gradLaughing.a}
+          loading="lazy"
           style={{
             position: "absolute",
             right: "5vw",
@@ -319,13 +408,363 @@ export default function HomePage() {
             textWrap: "pretty",
           }}
         >
-          Photographed with intention — so your moments aren&rsquo;t just seen,
-          they&rsquo;re felt.
+          You two, at your absolute best — the style, the party, and every real moment in between.
         </p>
       </section>
 
-      {/* ══ Horizontal collection (identical to Work) ══ */}
-      <HorizontalCollection />
+      {/* ══ Who I photograph ══ */}
+      <section
+        className="lx-grid-2col"
+        style={{
+          position: "relative",
+          background: "#F7F5F2",
+          color: "#0E0D0B",
+          padding: "0 6vw 22vh",
+          display: "grid",
+          gridTemplateColumns: "minmax(300px,560px) minmax(280px,440px)",
+          gap: "7vw",
+          alignItems: "center",
+          justifyContent: "center",
+          maxWidth: "100%",
+        }}
+      >
+        <div>
+          <div data-fadeup="" style={kicker({ marginBottom: 20 }, 10, ".3em")}>
+            Who I photograph
+          </div>
+          <h2
+            data-fadeup=""
+            style={{
+              margin: "0 0 26px",
+              fontFamily: SERIF,
+              fontWeight: 500,
+              fontSize: "clamp(36px,4.4vw,58px)",
+              lineHeight: 1.08,
+              textWrap: "pretty",
+            }}
+          >
+            You two are <em>the story.</em> I just know where to point the camera.
+          </h2>
+          <p
+            data-fadeup=""
+            style={{ margin: "0 0 26px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
+          >
+            Hi — I&rsquo;m Raymond. I shoot weddings the way magazines shoot
+            cover stories — except the story is real, it&rsquo;s yours, and
+            nobody has to hold a pose through it. If you&rsquo;re bringing the
+            style and the party, I am SO in.
+          </p>
+          <ul
+            style={{
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
+              display: "flex",
+              flexDirection: "column",
+              gap: 16,
+            }}
+          >
+            {[
+              `Weddings, from the quiet getting-ready hours to the last song — I'll work the room all night so you two can just be in it.`,
+              `Engagements and couples sessions that feel like a good date, not a photoshoot.`,
+              `Ever said “I'm awkward in front of a camera”? Perfect — most of my favorite people have.`,
+            ].map((line) => (
+              <li
+                key={line}
+                data-fadeup=""
+                style={{ display: "flex", gap: 14, alignItems: "baseline" }}
+              >
+                <span style={{ color: GOLD, fontSize: 11, flexShrink: 0 }}>★</span>
+                <span style={{ fontSize: 15, lineHeight: 1.7, color: MUTED }}>
+                  {line}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <div
+            data-fadeup=""
+            style={{
+              marginTop: 34,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: 16,
+            }}
+          >
+            <CtaLink />
+            <SecondaryCta />
+          </div>
+          <TestimonialSlot index={0} />
+        </div>
+
+        <div style={{ position: "relative", margin: "0 0 12%" }}>
+          <div data-reveal="" style={{ overflow: "hidden" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={img(PHOTOS.coastal.path, 1000)}
+              alt={PHOTOS.coastal.a}
+              loading="lazy"
+              style={{
+                width: "100%",
+                aspectRatio: "4 / 5",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            data-fadeup=""
+            src={img(PHOTOS.naomi.path, 750)}
+            alt={PHOTOS.naomi.a}
+            loading="lazy"
+            style={{
+              position: "absolute",
+              left: "-6%",
+              bottom: "-12%",
+              width: "48%",
+              aspectRatio: "3 / 4",
+              objectFit: "cover",
+              border: "6px solid #F7F5F2",
+              boxShadow: "0 30px 60px rgba(14,13,11,.22)",
+            }}
+          />
+        </div>
+      </section>
+
+      {/* ══ The Collection — four category doors ══ */}
+      <section
+        style={{
+          position: "relative",
+          background: "#0E0D0B",
+          color: "#F7F5F2",
+          padding: "16vh 6vw",
+        }}
+      >
+        <div style={{ maxWidth: 1360, margin: "0 auto" }}>
+          <div data-fadeup="" style={kicker({ marginBottom: 18 }, 10, ".3em")}>
+            The Collection
+          </div>
+          <h2
+            data-fadeup=""
+            style={{
+              margin: "0 0 7vh",
+              fontFamily: SERIF,
+              fontWeight: 500,
+              fontSize: "clamp(34px,4.4vw,58px)",
+              lineHeight: 1.08,
+            }}
+          >
+            Where would you like to <em>begin?</em>
+          </h2>
+          <div
+            className="lx-doors"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gap: "1.8vw",
+            }}
+          >
+            {DOORS.map((d, i) => (
+              <Link
+                key={d.cat}
+                href={`/portfolio/${d.cat}`}
+                className="lx-proj"
+                data-proj=""
+                style={{ marginBottom: 0 }}
+              >
+                <div className="lx-imgwrap" style={{ aspectRatio: "3 / 4" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={img(d.photo.path, 750)}
+                    alt={d.photo.a}
+                    loading="lazy"
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "baseline",
+                    gap: 10,
+                    marginTop: 16,
+                  }}
+                >
+                  <span
+                    style={{ fontSize: 10, color: GOLD, letterSpacing: ".18em" }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: SERIF,
+                      fontSize: "clamp(20px,1.8vw,26px)",
+                      fontWeight: 500,
+                      color: "#F7F5F2",
+                    }}
+                  >
+                    {d.label}
+                  </span>
+                  <span className="lx-arrow" style={{ color: GOLD }}>
+                    →
+                  </span>
+                </div>
+                <div
+                  style={{
+                    marginTop: 6,
+                    fontSize: 12,
+                    letterSpacing: ".04em",
+                    color: cream(0.55),
+                  }}
+                >
+                  {d.tagline}
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div
+            data-fadeup=""
+            style={{ marginTop: "8vh", display: "flex", justifyContent: "center" }}
+          >
+            <CtaLink />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ Recent weddings — proof of consistency ══ */}
+      <section
+        style={{
+          position: "relative",
+          background: "#F7F5F2",
+          color: "#0E0D0B",
+          padding: "18vh 6vw",
+        }}
+      >
+        <div style={{ maxWidth: 1360, margin: "0 auto" }}>
+          <div data-fadeup="" style={kicker({ marginBottom: 18 }, 10, ".3em")}>
+            Recent weddings
+          </div>
+          <h2
+            data-fadeup=""
+            style={{
+              margin: "0 0 7vh",
+              fontFamily: SERIF,
+              fontWeight: 500,
+              fontSize: "clamp(34px,4.4vw,58px)",
+              lineHeight: 1.08,
+            }}
+          >
+            Real weddings, shot like <em style={{ color: GOLD }}>cover stories.</em>
+          </h2>
+
+          {RECENT_WEDDINGS.map((w) => (
+            <Link
+              key={w.href}
+              href={w.href}
+              className="lx-proj lx-grid-2col"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1.5fr 1fr",
+                gap: "3vw",
+                alignItems: "end",
+                marginBottom: "8vh",
+              }}
+            >
+              <div className="lx-imgwrap" data-reveal="" style={{ overflow: "hidden" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={img(w.cover.path, 1500)}
+                  alt={w.cover.a}
+                  loading="lazy"
+                  style={{
+                    width: "100%",
+                    aspectRatio: aspect(w.cover),
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+              </div>
+              <div>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: 14,
+                    marginBottom: 26,
+                  }}
+                >
+                  {w.frames.map((f) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      key={f.path}
+                      src={img(f.path, 750)}
+                      alt={f.a}
+                      loading="lazy"
+                      data-fadeup=""
+                      style={{
+                        width: "100%",
+                        aspectRatio: "3 / 4",
+                        objectFit: "cover",
+                        display: "block",
+                      }}
+                    />
+                  ))}
+                </div>
+                <div data-fadeup="">
+                  <div
+                    style={{
+                      fontFamily: SERIF,
+                      fontWeight: 500,
+                      fontSize: "clamp(26px,2.6vw,38px)",
+                      lineHeight: 1.1,
+                    }}
+                  >
+                    {w.title}
+                  </div>
+                  <div
+                    style={{
+                      marginTop: 10,
+                      fontSize: 12,
+                      letterSpacing: ".14em",
+                      textTransform: "uppercase",
+                      color: MUTED,
+                    }}
+                  >
+                    {w.place} · {w.year}
+                  </div>
+                  <div
+                    className="lx-explore"
+                    style={{
+                      marginTop: 18,
+                      fontSize: 11,
+                      fontWeight: 700,
+                      letterSpacing: ".22em",
+                      textTransform: "uppercase",
+                      color: GOLD,
+                    }}
+                  >
+                    View the gallery →
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+
+          <div
+            data-fadeup=""
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 8,
+              textAlign: "center",
+            }}
+          >
+            <CtaLink />
+            <TestimonialSlot index={1} />
+          </div>
+        </div>
+      </section>
 
       {/* ══ About ══ */}
       <section
@@ -350,6 +789,7 @@ export default function HomePage() {
             data-about-img=""
             src={img(PHOTOS.headshot.path, 1000)}
             alt={PHOTOS.headshot.a}
+            loading="lazy"
             style={{
               width: "100%",
               aspectRatio: "4 / 5",
@@ -413,6 +853,60 @@ export default function HomePage() {
           >
             More about me
           </Link>
+        </div>
+      </section>
+
+      {/* ══ Pricing ══ */}
+      <section
+        style={{
+          position: "relative",
+          background: "#F7F5F2",
+          color: "#0E0D0B",
+          padding: "0 6vw 18vh",
+          textAlign: "center",
+        }}
+      >
+        <div data-fadeup="" style={kicker({ marginBottom: 18 }, 10, ".3em")}>
+          Investment
+        </div>
+        <h2
+          data-fadeup=""
+          style={{
+            margin: 0,
+            fontFamily: SERIF,
+            fontWeight: 500,
+            fontSize: "clamp(34px,4.6vw,60px)",
+            lineHeight: 1.1,
+          }}
+        >
+          Collections from <em>$2,400</em>
+        </h2>
+        <p
+          data-fadeup=""
+          style={{
+            maxWidth: 520,
+            margin: "22px auto 0",
+            fontSize: 15,
+            lineHeight: 1.75,
+            color: MUTED,
+          }}
+        >
+          Full days, intimate ceremonies, and everything in between — every
+          collection is built around how you two actually want the day to go.
+          Tell me about yours and I&rsquo;ll send the full breakdown.
+        </p>
+        <div
+          data-fadeup=""
+          style={{
+            marginTop: 30,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 16,
+          }}
+        >
+          <CtaLink />
+          <SecondaryCta />
         </div>
       </section>
 
@@ -509,6 +1003,7 @@ export default function HomePage() {
               className="lx-float"
               src={img(PHOTOS.editorial.path, 750)}
               alt={PHOTOS.editorial.a}
+              loading="lazy"
               style={{
                 marginTop: 48,
                 width: 200,
@@ -519,15 +1014,10 @@ export default function HomePage() {
             />
           </div>
 
-          {/* ▼▼▼ HONEYBOOK EMBED SLOT (home) — replace this whole div's inner
-              content with your HoneyBook placement div, and load HoneyBook's
-              placement-loader script (see the inquire page for the full
-              instructions). Prefer a button? It already is one. ▼▼▼ */}
           <div
             data-fadeup=""
-            id="honeybook-embed-home"
             style={{
-              minHeight: 520,
+              minHeight: 420,
               background: "#F7F5F2",
               borderRadius: "var(--radius-lg)",
               display: "flex",
@@ -541,53 +1031,30 @@ export default function HomePage() {
           >
             <div
               style={{
-                width: 54,
-                height: 54,
-                borderRadius: "50%",
-                border: `1px solid ${GOLD}`,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
                 fontFamily: SERIF,
-                fontStyle: "italic",
-                fontSize: 22,
-                color: GOLD,
-              }}
-            >
-              hb
-            </div>
-            <div
-              style={{
-                fontFamily: SERIF,
-                fontSize: 26,
+                fontSize: "clamp(26px,2.4vw,34px)",
                 fontWeight: 500,
                 color: "#0E0D0B",
+                lineHeight: 1.15,
               }}
             >
-              Ready when you are
+              Now booking 2026 &amp; 2027 weddings
             </div>
             <p
               style={{
-                maxWidth: 340,
+                maxWidth: 360,
                 margin: 0,
                 fontSize: 15,
                 lineHeight: 1.7,
                 color: MUTED,
               }}
             >
-              Head to the inquiry page to share your day — or drop your HoneyBook
-              form right here.
+              Tell me everything — you&rsquo;ll hear back from me personally
+              within 48 hours. (I genuinely can&rsquo;t wait to read it.)
             </p>
-            <Link
-              data-mag=""
-              data-hover=""
-              href="/inquire"
-              style={pill("#0E0D0B", "#F7F5F2")}
-            >
-              Start your inquiry
-            </Link>
+            <CtaLink />
+            <SecondaryCta />
           </div>
-          {/* ▲▲▲ END HOME HONEYBOOK SLOT ▲▲▲ */}
         </div>
 
         <div style={{ padding: "0 38px" }}>

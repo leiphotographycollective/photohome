@@ -31,8 +31,8 @@ export default function LeiFooter({
 }: LeiFooterProps) {
   const blurb =
     brand === "raymond"
-      ? "Raymond Lei is a San Francisco Bay Area photographer, specializing in weddings, engagements, couples, and fashion portraits."
-      : "Raymond Lei is a San Francisco Bay Area photographer specializing in weddings, engagements, graduations, and portraits.";
+      ? "Raymond Lei photographs editorial, fashion-influenced weddings, engagements, and portraits for fun, stylish couples in the San Francisco Bay Area."
+      : "Editorial wedding photography for fun, stylish couples in the San Francisco Bay Area & beyond — weddings, couples, engagements, and events.";
   return (
     <footer
       style={{

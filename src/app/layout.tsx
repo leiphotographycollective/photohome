@@ -21,11 +21,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://photohome-three.vercel.app"),
   title: {
     default:
-      "Lei Photography Collective | Bay Area Wedding, Graduation & Portrait Photography",
+      "Lei Photography Collective | San Francisco Bay Area Editorial Wedding Photography",
     template: "%s | Lei Photography Collective",
   },
   description:
-    "Raymond Lei is a San Francisco Bay Area photographer specializing in weddings, engagements, graduations, and portraits — photographed with intention, so your moments aren't just seen, they're felt.",
+    "Your wedding, shot like the cover story it is. Raymond Lei photographs editorial, fashion-influenced weddings for fun, stylish couples in the San Francisco Bay Area & beyond.",
   applicationName: "Lei Photography Collective",
   openGraph: {
     siteName: "Lei Photography Collective",

@@ -212,6 +212,10 @@ html.lenis {
   .lx-gallery {
     grid-template-columns: 1fr !important;
   }
+  .lx-doors {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 18px !important;
+  }
   .lx-float {
     display: none !important;
   }
@@ -223,4 +227,30 @@ html.lenis {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ── CONVERSION LAYER (mobile-first hero + preloader guard) ────────────── */
+.lx-hero-mobile {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .lx-hero-desktop {
+    display: none !important;
+  }
+  .lx-hero-mobile {
+    display: flex !important;
+  }
+  [data-preloader] {
+    display: none !important;
+  }
+}
+
+/* ── Track B secondary CTA — gold brightens on hover ───────────────────── */
+.lx-cta2 {
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+.lx-cta2:hover {
+  color: #b8905a !important;
+  text-decoration-color: #b8905a;
 }

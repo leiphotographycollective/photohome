@@ -2,7 +2,7 @@
 // A faithful port of the Claude Design prototypes' logic classes:
 // Lenis smooth scroll, custom gold cursor + magnetic buttons, the Weddings
 // header dropdown, letter-split title entrances, the home preloader + "O in
-// STORY" hero bloom (with WebGL ripple), pinned horizontal collection,
+// COVER" hero bloom (with WebGL ripple), pinned horizontal collection,
 // parallax columns/floats, manifesto word reveals and all scroll reveals —
 // each keyed off the same data-* attributes as the prototypes.
 
@@ -29,6 +29,15 @@ export function initLeiMotion(
     Array.from(root.querySelectorAll<T>(sel));
   const pre = root.querySelector<HTMLElement>("[data-preloader]");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Desktop-only cinematics: the preloader, 300vh hero bloom and WebGL
+  // ripple are skipped on small screens — mobile ships a static hero for
+  // instant first paint (evaluated once per init; the breakpoint matches
+  // the responsive fallbacks in globals.css).
+  const mobile = window.matchMedia("(max-width: 860px)").matches;
+  const home = !!opts.home && !mobile;
+  const preloader = !!opts.preloader && !mobile;
+  if (pre && mobile) pre.style.display = "none";
 
   if (reduced) {
     if (pre) pre.style.display = "none";
@@ -74,8 +83,8 @@ export function initLeiMotion(
       });
     }
 
-    // ── Home hero: split, preloader, bloom from the O in STORY ──
-    if (opts.home) {
+    // ── Home hero: split, preloader, bloom from the O in COVER (second lockup line) ──
+    if (home) {
       const heroLetters = splitLines(q("[data-hero-line]"));
       gsap.set(heroLetters, { yPercent: 120, opacity: 0 });
       gsap.set(q("[data-hero-kicker],[data-hero-sub],[data-hero-hint]"), {
@@ -109,7 +118,7 @@ export function initLeiMotion(
           "-=0.6"
         );
 
-      if (opts.preloader && pre) {
+      if (preloader && pre) {
         const counter = pre.querySelector<HTMLElement>("[data-pl-counter]");
         const num = { v: 0 };
         gsap
@@ -149,7 +158,7 @@ export function initLeiMotion(
         heroIn.play();
       }
 
-      // Hero scroll cinematics — image blooms out of the O in STORY
+      // Hero scroll cinematics — image blooms out of the O in COVER
       const heroSec = root.querySelector<HTMLElement>("[data-hero]");
       const media = root.querySelector<HTMLElement>("[data-hero-media]");
       if (heroSec && media) {
@@ -480,7 +489,7 @@ export function initLeiMotion(
 
   // ── WebGL hero ripple (home only, loaded lazily) ───────────────────────
   let glMouse: ((e: MouseEvent) => void) | null = null;
-  if (opts.home) {
+  if (home) {
     cleanups.push(
       initHeroGL(root, (fn) => {
         glMouse = fn;

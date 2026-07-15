@@ -113,6 +113,25 @@ const SARGON_ODELYA_MORE: Photo[] = [
   { path: "/images/portfolio/weddings/sargon-odelya-more/sargon-odelya-more-08.jpg", a: "Sargon & Odelya — couple's portrait at golden hour", r: "l", ratio: 1.5 },
   { path: "/images/portfolio/weddings/sargon-odelya-more/sargon-odelya-more-32.jpg", a: "Sargon & Odelya — a moment from the wedding day", r: "p", ratio: 0.6667 },
 ];
+
+// Curated 13-frame selection shown on the project page and homepage —
+// the spec caps displayed wedding galleries at 10-15 photos. The full
+// arrays above are retained (no-deletions rule) but not rendered.
+export const SARGON_ODELYA_CURATED: Photo[] = [
+  SARGON_ODELYA_PHOTOS[0], // ring box
+  SARGON_ODELYA_PHOTOS[2], // bride & mother, black and white
+  SARGON_ODELYA_PHOTOS[3], // bridesmaids toast
+  SARGON_ODELYA_PHOTOS[5], // groom descending the stairs
+  SARGON_ODELYA_PHOTOS[8], // veil at golden hour
+  SARGON_ODELYA_PHOTOS[11], // veil portrait, black and white
+  SARGON_ODELYA_PHOTOS[13], // touching the groom's face at golden hour
+  SARGON_ODELYA_PHOTOS[19], // walking hand in hand
+  SARGON_ODELYA_PHOTOS[21], // champagne spray under the redwood
+  SARGON_ODELYA_PHOTOS[23], // first dance, black and white
+  SARGON_ODELYA_PHOTOS[25], // carried through the cheering crowd
+  SARGON_ODELYA_PHOTOS[27], // dip kiss by the fireplace
+  SARGON_ODELYA_PHOTOS[28], // mid-twirl on the dance floor
+];
 const DYLAN_GRAD: Photo[] = [
   { path: "/images/portfolio/graduation/dylan/dylan-01.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
   { path: "/images/portfolio/graduation/dylan/dylan-02.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
@@ -194,8 +213,17 @@ export const CATEGORIES: Record<string, Category> = {
     intro:
       "The full arc of a day — the quiet preparation, the vows, the first dance. A curated record of the genuine.",
     projects: [
-      { id: "sargon-odelya", title: "Sargon & Odelya", place: "Bay Area, CA", year: "2025", cover: SARGON_ODELYA_PHOTOS[12], photos: [...SARGON_ODELYA_PHOTOS, ...SARGON_ODELYA_MORE] },
+      { id: "sargon-odelya", title: "Sargon & Odelya", place: "Bay Area, CA", year: "2025", cover: SARGON_ODELYA_PHOTOS[12], photos: SARGON_ODELYA_CURATED },
       { id: "first-dance-film", title: "The First Dance", place: "Bay Area, CA", year: "2025", cover: P.firstDanceCine, photos: [P.firstDanceCine, P.firstDance04, P.firstDance03] },
+    ],
+  },
+  couples: {
+    label: "Couples",
+    tagline: "The two of you, as you really are",
+    intro:
+      "Unposed sessions for couples — coastal walks, golden hour, the everyday closeness worth keeping.",
+    projects: [
+      { id: "along-the-coast", title: "Along the Coast", place: "San Francisco, CA", year: "2025", cover: P.coastalCandid, photos: [P.coastalCandid, P.coastal, P.coastKiss] },
     ],
   },
   graduations: {
@@ -246,6 +274,7 @@ export const CATEGORIES: Record<string, Category> = {
 
 export const CAT_ORDER = [
   "weddings",
+  "couples",
   "graduations",
   "portraits",
   "events",

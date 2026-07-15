@@ -160,7 +160,7 @@ export default function InquirePage() {
 
       {/* ══ HoneyBook embed ══ */}
       <section
-        id="inquire"
+        id="form"
         style={{
           position: "relative",
           background: "#F7F5F2",
