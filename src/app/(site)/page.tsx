@@ -6,13 +6,13 @@ import LeiFooter from "@/components/lei/LeiFooter";
 import { Marquee } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { aspect, img, PHOTOS } from "@/content/portfolio";
-import { CtaLink, TestimonialSlot } from "@/components/lei/Cta";
+import { CtaLink, SecondaryCta, TestimonialSlot } from "@/components/lei/Cta";
 import { DOORS, HERO_MOBILE, RECENT_WEDDINGS } from "@/content/homepage";
 
 export const metadata: Metadata = {
-  title: "Presence, Story & Feeling — Bay Area Photographer",
+  title: "Editorial Wedding Photography in the San Francisco Bay Area",
   description:
-    "Photographed with intention — so your moments aren't just seen, they're felt. Weddings, graduations and portraits across the San Francisco Bay Area by Raymond Lei.",
+    "Your wedding, shot like the cover story it is. Editorial wedding photography for fun, stylish couples in the San Francisco Bay Area & beyond — by Raymond Lei.",
 };
 
 export default function HomePage() {
@@ -62,7 +62,7 @@ export default function HomePage() {
               color: cream(0.45),
             }}
           >
-            Presence · Story · Feeling
+            San Francisco Bay Area · Editorial Weddings
           </div>
         </div>
         <div
@@ -183,7 +183,7 @@ export default function HomePage() {
                 marginBottom: "3vh",
               }}
             >
-              San Francisco Bay Area · Weddings &amp; Couples
+              San Francisco Bay Area · Editorial Wedding Photography
             </div>
             <h1
               style={{
@@ -195,13 +195,13 @@ export default function HomePage() {
               }}
             >
               <div data-hero-line="" style={{ fontSize: "clamp(64px,13vw,190px)" }}>
-                PRESENCE,
+                YOUR
               </div>
               <div data-hero-line="" style={{ fontSize: "clamp(64px,13vw,190px)" }}>
-                STORY <em style={{ fontWeight: 400 }}>&</em>
+                COVER
               </div>
               <div data-hero-line="" style={{ fontSize: "clamp(64px,13vw,190px)" }}>
-                <em style={{ fontWeight: 500 }}>FEELING.</em>
+                <em style={{ fontWeight: 500 }}>STORY.</em>
               </div>
             </h1>
             <div
@@ -215,13 +215,21 @@ export default function HomePage() {
                 opacity: 0.8,
               }}
             >
-              For couples who&rsquo;d rather live it than pose for it
+              Your wedding, shot like the cover story it is — for couples who bring the style and the party.
             </div>
             <div
               data-hero-sub=""
-              style={{ marginTop: "3.5vh", pointerEvents: "auto" }}
+              style={{
+                marginTop: "3.5vh",
+                pointerEvents: "auto",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: 18,
+              }}
             >
               <CtaLink />
+              <SecondaryCta />
             </div>
           </div>
 
@@ -306,7 +314,7 @@ export default function HomePage() {
         />
         <div style={{ position: "relative", padding: "0 24px 56px" }}>
           <div style={kicker({ marginBottom: 16 }, 10, ".26em")}>
-            San Francisco Bay Area · Weddings &amp; Couples
+            San Francisco Bay Area · Editorial Wedding Photography
           </div>
           <h1
             style={{
@@ -318,9 +326,19 @@ export default function HomePage() {
               textWrap: "pretty",
             }}
           >
-            For couples who&rsquo;d rather <em>live it</em> than pose for it.
+            Your wedding, shot like the <em>cover story</em> it is.
           </h1>
-          <CtaLink />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: 16,
+            }}
+          >
+            <CtaLink />
+            <SecondaryCta dark />
+          </div>
         </div>
       </section>
 
