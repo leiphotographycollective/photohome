@@ -3,12 +3,12 @@ import Link from "next/link";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
-import { Marquee } from "@/components/lei/blocks";
+import { Marquee, ProcessSteps } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, ink, kicker, pill } from "@/components/lei/tokens";
 import { aspect, img, PHOTOS } from "@/content/portfolio";
 import { CtaLink, SecondaryCta, SoftLink, TestimonialSlot } from "@/components/lei/Cta";
 import { CITY, DOORS, HERO_MOBILE, POSITIONING, RECENT_WEDDINGS } from "@/content/homepage";
-import { QUALIFIERS } from "@/content/experience";
+import { HOME_PROCESS, QUALIFIERS } from "@/content/experience";
 
 export const metadata: Metadata = {
   title: "Editorial Wedding Photography in the San Francisco Bay Area",
@@ -995,6 +995,11 @@ export default function HomePage() {
           <CtaLink />
           <SecondaryCta />
         </div>
+      </section>
+
+      {/* ══ The Process — transplanted from /experience: price above, ask below ══ */}
+      <section style={{ position: "relative", background: "#0E0D0B", color: "#F7F5F2" }}>
+        <ProcessSteps steps={HOME_PROCESS} />
       </section>
 
       {/* ══ Inquire ══ */}
