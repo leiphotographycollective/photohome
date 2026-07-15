@@ -31,20 +31,24 @@ export function CtaLink({
   );
 }
 
-/** Track B soft CTA — a quiet text link that sits directly beneath a gold
- *  pill. Deliberately subordinate: gold stays reserved for the primary
- *  conversion action, so this carries gold only in its underline. */
-export function SecondaryCta({
+/** Generic quiet underlined link — the subordinate treatment for non-primary
+ *  destinations (free session, experience, investment). Gold appears only in
+ *  the underline, so the gold pill stays the page's one conversion action. */
+export function SoftLink({
+  href,
+  label,
   dark = false,
   style,
 }: {
+  href: string;
+  label: string;
   dark?: boolean;
   style?: CSSProperties;
 }) {
   return (
     <Link
       data-hover=""
-      href={SECONDARY_CTA_HREF}
+      href={href}
       className="lx-cta2"
       style={{
         fontSize: 12,
@@ -58,8 +62,26 @@ export function SecondaryCta({
         ...style,
       }}
     >
-      {SECONDARY_CTA_LABEL} &rarr;
+      {label} &rarr;
     </Link>
+  );
+}
+
+/** Track B soft CTA — hard-wired to the free-session funnel. */
+export function SecondaryCta({
+  dark = false,
+  style,
+}: {
+  dark?: boolean;
+  style?: CSSProperties;
+}) {
+  return (
+    <SoftLink
+      href={SECONDARY_CTA_HREF}
+      label={SECONDARY_CTA_LABEL}
+      dark={dark}
+      style={style}
+    />
   );
 }
 
