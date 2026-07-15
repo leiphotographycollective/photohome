@@ -2,7 +2,7 @@
 // A faithful port of the Claude Design prototypes' logic classes:
 // Lenis smooth scroll, custom gold cursor + magnetic buttons, the Weddings
 // header dropdown, letter-split title entrances, the home preloader + "O in
-// STORY" hero bloom (with WebGL ripple), pinned horizontal collection,
+// COVER" hero bloom (with WebGL ripple), pinned horizontal collection,
 // parallax columns/floats, manifesto word reveals and all scroll reveals —
 // each keyed off the same data-* attributes as the prototypes.
 
@@ -83,7 +83,7 @@ export function initLeiMotion(
       });
     }
 
-    // ── Home hero: split, preloader, bloom from the O in STORY ──
+    // ── Home hero: split, preloader, bloom from the O in COVER (second lockup line) ──
     if (home) {
       const heroLetters = splitLines(q("[data-hero-line]"));
       gsap.set(heroLetters, { yPercent: 120, opacity: 0 });
@@ -158,7 +158,7 @@ export function initLeiMotion(
         heroIn.play();
       }
 
-      // Hero scroll cinematics — image blooms out of the O in STORY
+      // Hero scroll cinematics — image blooms out of the O in COVER
       const heroSec = root.querySelector<HTMLElement>("[data-hero]");
       const media = root.querySelector<HTMLElement>("[data-hero-media]");
       if (heroSec && media) {

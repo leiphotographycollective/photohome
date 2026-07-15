@@ -7,12 +7,12 @@ import { Marquee } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { aspect, img, PHOTOS } from "@/content/portfolio";
 import { CtaLink, SecondaryCta, TestimonialSlot } from "@/components/lei/Cta";
-import { DOORS, HERO_MOBILE, RECENT_WEDDINGS } from "@/content/homepage";
+import { CITY, DOORS, HERO_MOBILE, POSITIONING, RECENT_WEDDINGS } from "@/content/homepage";
 
 export const metadata: Metadata = {
   title: "Editorial Wedding Photography in the San Francisco Bay Area",
   description:
-    "Your wedding, shot like the cover story it is. Editorial wedding photography for fun, stylish couples in the San Francisco Bay Area & beyond — by Raymond Lei.",
+    `${POSITIONING} Editorial wedding photography for fun, stylish couples in the ${CITY} & beyond — by Raymond Lei.`,
 };
 
 export default function HomePage() {

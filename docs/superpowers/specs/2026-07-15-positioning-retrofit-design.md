@@ -87,7 +87,7 @@ Exact final wording may be polished during implementation **in the same register
 - **Unit (vitest, `tests/homepage-content.test.ts`):** new constants match this spec exactly; `SECONDARY_CTA_HREF === "/free-session"`; existing CTA/doors/testimonial assertions still pass.
 - **Build:** `npm run build` clean.
 - **Rendered HTML (curl against dev/prod server):** homepage contains `POSITIONING` text; `San Francisco Bay Area` appears ≥ 3 times; `href="/free-session"` appears ≥ 4 times; `Check my availability` count unchanged (≥ 6); `$2,400` exactly once; `blockquote` count 0.
-- **Browser:** 1440×900 — preloader plays with new tagline, YOUR/COVER/STORY lockup animates, image still blooms from the O in STORY, secondary links visible and subordinate; 390×844 — static mobile hero shows new h1/kicker/CTA/secondary link; reduced-motion still shows all content.
+- **Browser:** 1440×900 — preloader plays with new tagline, YOUR/COVER/STORY lockup animates, image still blooms from the O in COVER (the second lockup line), secondary links visible and subordinate; 390×844 — static mobile hero shows new h1/kicker/CTA/secondary link; reduced-motion still shows all content.
 
 ## Out of scope (later sub-projects)
 
