@@ -622,7 +622,7 @@ export default function HomePage() {
                 color: GOLD,
               }}
             >
-              That&rsquo;s when I come in.
+              That&rsquo;s when I come through for you.
             </div>
             <div data-fadeup="" style={{ marginTop: 28 }}>
               <SoftLink href="/experience" label="Read about the full experience" />

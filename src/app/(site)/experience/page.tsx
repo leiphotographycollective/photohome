@@ -167,7 +167,7 @@ export default function ExperiencePage() {
                 color: GOLD,
               }}
             >
-              That&rsquo;s when I come in for you.
+              That&rsquo;s when I come through for you.
             </div>
           </div>
           <div data-reveal="" style={{ overflow: "hidden" }}>
