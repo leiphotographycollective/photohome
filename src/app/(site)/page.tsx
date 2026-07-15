@@ -7,7 +7,7 @@ import HorizontalCollection from "@/components/lei/HorizontalCollection";
 import { Marquee } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
-import { CtaLink } from "@/components/lei/Cta";
+import { CtaLink, TestimonialSlot } from "@/components/lei/Cta";
 import { HERO_MOBILE } from "@/content/homepage";
 
 export const metadata: Metadata = {
@@ -425,15 +425,16 @@ export default function HomePage() {
               textWrap: "pretty",
             }}
           >
-            For the ones who&rsquo;d rather <em>live it</em> than pose for it.
+            Your day, remembered the way it actually <em>felt.</em>
           </h2>
           <p
             data-fadeup=""
             style={{ margin: "0 0 26px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
           >
-            I photograph people at the moments their lives change — and I care
-            more about how an image feels than how perfectly staged it looks.
-            If that sounds like you, we&rsquo;ll get along.
+            Hi — I&rsquo;m Raymond. I photograph couples at the moments their
+            lives change, and I care more about how an image feels than how
+            perfectly staged it looks. If that sounds like you, we&rsquo;ll get
+            along.
           </p>
           <ul
             style={{
@@ -446,9 +447,9 @@ export default function HomePage() {
             }}
           >
             {[
-              "Couples who want their wedding remembered the way it actually felt — the nerves, the laughter, the quiet in-between.",
-              "Graduates closing one chapter and celebrating the people who carried them there.",
-              "Anyone who's ever said “I'm awkward in front of a camera” — gentle direction and real conversation are the whole point.",
+              'Weddings, from the quiet getting-ready hours to the last dance — I stay for the real moments, not just the scheduled ones.',
+              'Engagements and couples sessions that feel like a good date, not a photoshoot.',
+              'Anyone who\'s ever said “I\'m awkward in front of a camera” — gentle direction and real conversation are the whole point.',
             ].map((line) => (
               <li
                 key={line}
@@ -462,6 +463,10 @@ export default function HomePage() {
               </li>
             ))}
           </ul>
+          <div data-fadeup="" style={{ marginTop: 34 }}>
+            <CtaLink />
+          </div>
+          <TestimonialSlot index={0} />
         </div>
 
         <div style={{ position: "relative", margin: "0 0 12%" }}>
