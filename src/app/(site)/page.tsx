@@ -408,8 +408,7 @@ export default function HomePage() {
             textWrap: "pretty",
           }}
         >
-          Photographed with intention — so your moments aren&rsquo;t just seen,
-          they&rsquo;re felt.
+          You two, at your absolute best — the style, the party, and every real moment in between.
         </p>
       </section>
 
@@ -444,16 +443,16 @@ export default function HomePage() {
               textWrap: "pretty",
             }}
           >
-            Your day, remembered the way it actually <em>felt.</em>
+            You two are <em>the story.</em> I just know where to point the camera.
           </h2>
           <p
             data-fadeup=""
             style={{ margin: "0 0 26px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
           >
-            Hi — I&rsquo;m Raymond. I photograph couples at the moments their
-            lives change, and I care more about how an image feels than how
-            perfectly staged it looks. If that sounds like you, we&rsquo;ll get
-            along.
+            Hi — I&rsquo;m Raymond. I shoot weddings the way magazines shoot
+            cover stories — except the story is real, it&rsquo;s yours, and
+            nobody has to hold a pose through it. If you&rsquo;re bringing the
+            style and the party, I am SO in.
           </p>
           <ul
             style={{
@@ -466,9 +465,9 @@ export default function HomePage() {
             }}
           >
             {[
-              'Weddings, from the quiet getting-ready hours to the last dance — I stay for the real moments, not just the scheduled ones.',
-              'Engagements and couples sessions that feel like a good date, not a photoshoot.',
-              'Anyone who\'s ever said “I\'m awkward in front of a camera” — gentle direction and real conversation are the whole point.',
+              `Weddings, from the quiet getting-ready hours to the last song — I'll work the room all night so you two can just be in it.`,
+              `Engagements and couples sessions that feel like a good date, not a photoshoot.`,
+              `Ever said “I'm awkward in front of a camera”? Perfect — most of my favorite people have.`,
             ].map((line) => (
               <li
                 key={line}
@@ -482,8 +481,18 @@ export default function HomePage() {
               </li>
             ))}
           </ul>
-          <div data-fadeup="" style={{ marginTop: 34 }}>
+          <div
+            data-fadeup=""
+            style={{
+              marginTop: 34,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: 16,
+            }}
+          >
             <CtaLink />
+            <SecondaryCta />
           </div>
           <TestimonialSlot index={0} />
         </div>
@@ -645,7 +654,7 @@ export default function HomePage() {
               lineHeight: 1.08,
             }}
           >
-            Whole days, told <em>honestly.</em>
+            Real weddings, shot like <em style={{ color: GOLD }}>cover stories.</em>
           </h2>
 
           {RECENT_WEDDINGS.map((w) => (
@@ -882,11 +891,22 @@ export default function HomePage() {
             color: MUTED,
           }}
         >
-          Tailored to full days, intimate ceremonies, and everything in
-          between. Tell me about your day and I&rsquo;ll share full pricing.
+          Full days, intimate ceremonies, and everything in between — every
+          collection is built around how you two actually want the day to go.
+          Tell me about yours and I&rsquo;ll send the full breakdown.
         </p>
-        <div data-fadeup="" style={{ marginTop: 30 }}>
+        <div
+          data-fadeup=""
+          style={{
+            marginTop: 30,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 16,
+          }}
+        >
           <CtaLink />
+          <SecondaryCta />
         </div>
       </section>
 
@@ -1029,10 +1049,11 @@ export default function HomePage() {
                 color: MUTED,
               }}
             >
-              Share a few details about your day — you&rsquo;ll hear back from
-              me personally within 48 hours.
+              Tell me everything — you&rsquo;ll hear back from me personally
+              within 48 hours. (I genuinely can&rsquo;t wait to read it.)
             </p>
             <CtaLink />
+            <SecondaryCta />
           </div>
         </div>
 
