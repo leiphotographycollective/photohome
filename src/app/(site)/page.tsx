@@ -342,6 +342,7 @@ export default function HomePage() {
           className="lx-float"
           src={img(PHOTOS.bridal.path, 750)}
           alt="Bride holding her veil in soft light"
+          loading="lazy"
           style={{
             position: "absolute",
             left: "4vw",
@@ -360,6 +361,7 @@ export default function HomePage() {
           className="lx-float"
           src={img(PHOTOS.gradLaughing.path, 750)}
           alt={PHOTOS.gradLaughing.a}
+          loading="lazy"
           style={{
             position: "absolute",
             right: "5vw",
@@ -474,6 +476,7 @@ export default function HomePage() {
             <img
               src={img(PHOTOS.coastal.path, 1000)}
               alt={PHOTOS.coastal.a}
+              loading="lazy"
               style={{
                 width: "100%",
                 aspectRatio: "4 / 5",
@@ -487,6 +490,7 @@ export default function HomePage() {
             data-fadeup=""
             src={img(PHOTOS.naomi.path, 750)}
             alt={PHOTOS.naomi.a}
+            loading="lazy"
             style={{
               position: "absolute",
               left: "-6%",
@@ -758,6 +762,7 @@ export default function HomePage() {
             data-about-img=""
             src={img(PHOTOS.headshot.path, 1000)}
             alt={PHOTOS.headshot.a}
+            loading="lazy"
             style={{
               width: "100%",
               aspectRatio: "4 / 5",
@@ -821,6 +826,49 @@ export default function HomePage() {
           >
             More about me
           </Link>
+        </div>
+      </section>
+
+      {/* ══ Pricing ══ */}
+      <section
+        style={{
+          position: "relative",
+          background: "#F7F5F2",
+          color: "#0E0D0B",
+          padding: "0 6vw 18vh",
+          textAlign: "center",
+        }}
+      >
+        <div data-fadeup="" style={kicker({ marginBottom: 18 }, 10, ".3em")}>
+          Investment
+        </div>
+        <h2
+          data-fadeup=""
+          style={{
+            margin: 0,
+            fontFamily: SERIF,
+            fontWeight: 500,
+            fontSize: "clamp(34px,4.6vw,60px)",
+            lineHeight: 1.1,
+          }}
+        >
+          Collections from <em>$2,400</em>
+        </h2>
+        <p
+          data-fadeup=""
+          style={{
+            maxWidth: 520,
+            margin: "22px auto 0",
+            fontSize: 15,
+            lineHeight: 1.75,
+            color: MUTED,
+          }}
+        >
+          Tailored to full days, intimate ceremonies, and everything in
+          between. Tell me about your day and I&rsquo;ll share full pricing.
+        </p>
+        <div data-fadeup="" style={{ marginTop: 30 }}>
+          <CtaLink />
         </div>
       </section>
 
@@ -917,6 +965,7 @@ export default function HomePage() {
               className="lx-float"
               src={img(PHOTOS.editorial.path, 750)}
               alt={PHOTOS.editorial.a}
+              loading="lazy"
               style={{
                 marginTop: 48,
                 width: 200,
@@ -927,15 +976,10 @@ export default function HomePage() {
             />
           </div>
 
-          {/* ▼▼▼ HONEYBOOK EMBED SLOT (home) — replace this whole div's inner
-              content with your HoneyBook placement div, and load HoneyBook's
-              placement-loader script (see the inquire page for the full
-              instructions). Prefer a button? It already is one. ▼▼▼ */}
           <div
             data-fadeup=""
-            id="honeybook-embed-home"
             style={{
-              minHeight: 520,
+              minHeight: 420,
               background: "#F7F5F2",
               borderRadius: "var(--radius-lg)",
               display: "flex",
@@ -949,53 +993,29 @@ export default function HomePage() {
           >
             <div
               style={{
-                width: 54,
-                height: 54,
-                borderRadius: "50%",
-                border: `1px solid ${GOLD}`,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
                 fontFamily: SERIF,
-                fontStyle: "italic",
-                fontSize: 22,
-                color: GOLD,
-              }}
-            >
-              hb
-            </div>
-            <div
-              style={{
-                fontFamily: SERIF,
-                fontSize: 26,
+                fontSize: "clamp(26px,2.4vw,34px)",
                 fontWeight: 500,
                 color: "#0E0D0B",
+                lineHeight: 1.15,
               }}
             >
-              Ready when you are
+              Now booking 2026 &amp; 2027 weddings
             </div>
             <p
               style={{
-                maxWidth: 340,
+                maxWidth: 360,
                 margin: 0,
                 fontSize: 15,
                 lineHeight: 1.7,
                 color: MUTED,
               }}
             >
-              Head to the inquiry page to share your day — or drop your HoneyBook
-              form right here.
+              Share a few details about your day — you&rsquo;ll hear back from
+              me personally within 48 hours.
             </p>
-            <Link
-              data-mag=""
-              data-hover=""
-              href="/inquire"
-              style={pill("#0E0D0B", "#F7F5F2")}
-            >
-              Start your inquiry
-            </Link>
+            <CtaLink />
           </div>
-          {/* ▲▲▲ END HOME HONEYBOOK SLOT ▲▲▲ */}
         </div>
 
         <div style={{ padding: "0 38px" }}>
