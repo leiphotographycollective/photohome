@@ -113,9 +113,10 @@ copy one click away).
 - `LeiFooter.tsx` `NAV` map: add `investment` key; include it in the footer
   `links` of the homepage and the investment page.
 - Homepage Investment section ("Collections from $2,400"): add a quiet
-  underlined **"See the collections →"** soft link to `/investment` (same
-  `SoftLink` treatment as the experience link; keeps gold reserved for
-  inquire).
+  underlined **"See the collections →"** soft link to `/investment`, placed
+  directly under the body paragraph and above the existing
+  `CtaLink`/`SecondaryCta` pair (same `SoftLink` treatment as the experience
+  link; keeps gold reserved for inquire).
 
 ### Content module
 
