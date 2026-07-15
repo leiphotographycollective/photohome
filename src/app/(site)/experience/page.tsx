@@ -6,26 +6,13 @@ import LeiFooter from "@/components/lei/LeiFooter";
 import { ProcessSteps, ScrollHint } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
+import { PROCESS, QUALIFIERS } from "@/content/experience";
 
 export const metadata: Metadata = {
   title: "The Experience",
   description:
     "Personalized, supportive photography for life's milestones. What working with Lei Photography Collective feels like — before, during and after the shutter clicks.",
 };
-
-const QUALIFIERS = [
-  "You want wedding photos that look editorial — not like every Pinterest board you've already seen.",
-  "You've said “we're not photo people” on every photographer call. You want to feel at ease, not posed.",
-  "You want the day back the way it felt — not a performance of it.",
-  "You care about how things look. You want a photographer who does too — and who's already planned for it.",
-];
-
-const PROCESS = [
-  { n: "01", title: "Inquire", body: "Start by telling me a bit about what you're envisioning via the inquiry form. This is where your story begins." },
-  { n: "02", title: "Connect", body: "We'll get on a call — your venue, your vision, what you're nervous about, and what actually matters to you in the photos." },
-  { n: "03", title: "Customize", body: "No two milestones are alike. I'll design a proposal that reflects your priorities, so the experience fits you." },
-  { n: "04", title: "Reserve", body: "Date locked, plan started. From here, the photography is handled." },
-];
 
 export default function ExperiencePage() {
   return (
