@@ -324,6 +324,109 @@ export default function HomePage() {
         </p>
       </section>
 
+      {/* ══ Who I photograph ══ */}
+      <section
+        className="lx-grid-2col"
+        style={{
+          position: "relative",
+          background: "#F7F5F2",
+          color: "#0E0D0B",
+          padding: "0 6vw 22vh",
+          display: "grid",
+          gridTemplateColumns: "minmax(300px,560px) minmax(280px,440px)",
+          gap: "7vw",
+          alignItems: "center",
+          justifyContent: "center",
+          maxWidth: "100%",
+        }}
+      >
+        <div>
+          <div data-fadeup="" style={kicker({ marginBottom: 20 }, 10, ".3em")}>
+            Who I photograph
+          </div>
+          <h2
+            data-fadeup=""
+            style={{
+              margin: "0 0 26px",
+              fontFamily: SERIF,
+              fontWeight: 500,
+              fontSize: "clamp(36px,4.4vw,58px)",
+              lineHeight: 1.08,
+              textWrap: "pretty",
+            }}
+          >
+            For the ones who&rsquo;d rather <em>live it</em> than pose for it.
+          </h2>
+          <p
+            data-fadeup=""
+            style={{ margin: "0 0 26px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
+          >
+            I photograph people at the moments their lives change — and I care
+            more about how an image feels than how perfectly staged it looks.
+            If that sounds like you, we&rsquo;ll get along.
+          </p>
+          <ul
+            style={{
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
+              display: "flex",
+              flexDirection: "column",
+              gap: 16,
+            }}
+          >
+            {[
+              "Couples who want their wedding remembered the way it actually felt — the nerves, the laughter, the quiet in-between.",
+              "Graduates closing one chapter and celebrating the people who carried them there.",
+              "Anyone who's ever said “I'm awkward in front of a camera” — gentle direction and real conversation are the whole point.",
+            ].map((line) => (
+              <li
+                key={line}
+                data-fadeup=""
+                style={{ display: "flex", gap: 14, alignItems: "baseline" }}
+              >
+                <span style={{ color: GOLD, fontSize: 11, flexShrink: 0 }}>★</span>
+                <span style={{ fontSize: 15, lineHeight: 1.7, color: MUTED }}>
+                  {line}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div style={{ position: "relative", margin: "0 0 12%" }}>
+          <div data-reveal="" style={{ overflow: "hidden" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={img(PHOTOS.coastal.path, 1000)}
+              alt={PHOTOS.coastal.a}
+              style={{
+                width: "100%",
+                aspectRatio: "4 / 5",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            data-fadeup=""
+            src={img(PHOTOS.naomi.path, 750)}
+            alt={PHOTOS.naomi.a}
+            style={{
+              position: "absolute",
+              left: "-6%",
+              bottom: "-12%",
+              width: "48%",
+              aspectRatio: "3 / 4",
+              objectFit: "cover",
+              border: "6px solid #F7F5F2",
+              boxShadow: "0 30px 60px rgba(14,13,11,.22)",
+            }}
+          />
+        </div>
+      </section>
+
       {/* ══ Horizontal collection (identical to Work) ══ */}
       <HorizontalCollection />
 
