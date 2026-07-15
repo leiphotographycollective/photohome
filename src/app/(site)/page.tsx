@@ -5,9 +5,9 @@ import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
 import { Marquee } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
-import { img, PHOTOS } from "@/content/portfolio";
+import { aspect, img, PHOTOS } from "@/content/portfolio";
 import { CtaLink, TestimonialSlot } from "@/components/lei/Cta";
-import { DOORS, HERO_MOBILE } from "@/content/homepage";
+import { DOORS, HERO_MOBILE, RECENT_WEDDINGS } from "@/content/homepage";
 
 export const metadata: Metadata = {
   title: "Presence, Story & Feeling — Bay Area Photographer",
@@ -596,6 +596,141 @@ export default function HomePage() {
             style={{ marginTop: "8vh", display: "flex", justifyContent: "center" }}
           >
             <CtaLink />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ Recent weddings — proof of consistency ══ */}
+      <section
+        style={{
+          position: "relative",
+          background: "#F7F5F2",
+          color: "#0E0D0B",
+          padding: "18vh 6vw",
+        }}
+      >
+        <div style={{ maxWidth: 1360, margin: "0 auto" }}>
+          <div data-fadeup="" style={kicker({ marginBottom: 18 }, 10, ".3em")}>
+            Recent weddings
+          </div>
+          <h2
+            data-fadeup=""
+            style={{
+              margin: "0 0 7vh",
+              fontFamily: SERIF,
+              fontWeight: 500,
+              fontSize: "clamp(34px,4.4vw,58px)",
+              lineHeight: 1.08,
+            }}
+          >
+            Whole days, told <em>honestly.</em>
+          </h2>
+
+          {RECENT_WEDDINGS.map((w) => (
+            <Link
+              key={w.href}
+              href={w.href}
+              className="lx-proj lx-grid-2col"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1.5fr 1fr",
+                gap: "3vw",
+                alignItems: "end",
+                marginBottom: "8vh",
+              }}
+            >
+              <div className="lx-imgwrap" data-reveal="" style={{ overflow: "hidden" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={img(w.cover.path, 1500)}
+                  alt={w.cover.a}
+                  loading="lazy"
+                  style={{
+                    width: "100%",
+                    aspectRatio: aspect(w.cover),
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+              </div>
+              <div>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: 14,
+                    marginBottom: 26,
+                  }}
+                >
+                  {w.frames.map((f) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      key={f.path}
+                      src={img(f.path, 750)}
+                      alt={f.a}
+                      loading="lazy"
+                      data-fadeup=""
+                      style={{
+                        width: "100%",
+                        aspectRatio: "3 / 4",
+                        objectFit: "cover",
+                        display: "block",
+                      }}
+                    />
+                  ))}
+                </div>
+                <div data-fadeup="">
+                  <div
+                    style={{
+                      fontFamily: SERIF,
+                      fontWeight: 500,
+                      fontSize: "clamp(26px,2.6vw,38px)",
+                      lineHeight: 1.1,
+                    }}
+                  >
+                    {w.title}
+                  </div>
+                  <div
+                    style={{
+                      marginTop: 10,
+                      fontSize: 12,
+                      letterSpacing: ".14em",
+                      textTransform: "uppercase",
+                      color: MUTED,
+                    }}
+                  >
+                    {w.place} · {w.year}
+                  </div>
+                  <div
+                    className="lx-explore"
+                    style={{
+                      marginTop: 18,
+                      fontSize: 11,
+                      fontWeight: 700,
+                      letterSpacing: ".22em",
+                      textTransform: "uppercase",
+                      color: GOLD,
+                    }}
+                  >
+                    View the gallery →
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+
+          <div
+            data-fadeup=""
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 8,
+              textAlign: "center",
+            }}
+          >
+            <CtaLink />
+            <TestimonialSlot index={1} />
           </div>
         </div>
       </section>
