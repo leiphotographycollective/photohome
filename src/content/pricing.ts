@@ -14,7 +14,7 @@ export const TIERS: Tier[] = [
     name: "The Collection",
     price: "$3,800",
     blurb:
-      "Ten hours, two photographers. My eye on the big moments, a second lens catching everything else — your partner's face when you walk in, the details you'll forget by Monday. For the couples who want the full story told.",
+      "Ten hours, two photographers. My eye on the big moments, a second lens catching everything else — your partner’s face when you walk in, the details you’ll forget by Monday. For the couples who want the full story told.",
     facts: [
       "Up to 10 hours of coverage",
       "Including: getting ready (both sides), portraits, wedding party, family formals, ceremony, cocktail hour, full reception",
@@ -27,7 +27,7 @@ export const TIERS: Tier[] = [
     name: "The Signature",
     price: "$2,900",
     blurb:
-      "Eight hours and a full day of coverage. Enough time to breathe, enough time to document everything from getting ready to the first dances. Clean edits, real moments, no posing you into something you're not.",
+      "Eight hours and a full day of coverage. Enough time to breathe, enough time to document everything from getting ready to the first dances. Clean edits, real moments, no posing you into something you’re not.",
     facts: [
       "Up to 8 hours of coverage",
       "Including: getting ready, portraits, wedding party, family formals, ceremony, cocktail hour, reception",
