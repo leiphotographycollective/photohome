@@ -224,3 +224,20 @@ html.lenis {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ── CONVERSION LAYER (mobile-first hero + preloader guard) ────────────── */
+.lx-hero-mobile {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .lx-hero-desktop {
+    display: none !important;
+  }
+  .lx-hero-mobile {
+    display: flex !important;
+  }
+  [data-preloader] {
+    display: none !important;
+  }
+}

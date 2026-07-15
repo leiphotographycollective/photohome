@@ -30,6 +30,15 @@ export function initLeiMotion(
   const pre = root.querySelector<HTMLElement>("[data-preloader]");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // Desktop-only cinematics: the preloader, 300vh hero bloom and WebGL
+  // ripple are skipped on small screens — mobile ships a static hero for
+  // instant first paint (evaluated once per init; the breakpoint matches
+  // the responsive fallbacks in globals.css).
+  const mobile = window.matchMedia("(max-width: 860px)").matches;
+  const home = !!opts.home && !mobile;
+  const preloader = !!opts.preloader && !mobile;
+  if (pre && mobile) pre.style.display = "none";
+
   if (reduced) {
     if (pre) pre.style.display = "none";
     return () => {};
@@ -75,7 +84,7 @@ export function initLeiMotion(
     }
 
     // ── Home hero: split, preloader, bloom from the O in STORY ──
-    if (opts.home) {
+    if (home) {
       const heroLetters = splitLines(q("[data-hero-line]"));
       gsap.set(heroLetters, { yPercent: 120, opacity: 0 });
       gsap.set(q("[data-hero-kicker],[data-hero-sub],[data-hero-hint]"), {
@@ -109,7 +118,7 @@ export function initLeiMotion(
           "-=0.6"
         );
 
-      if (opts.preloader && pre) {
+      if (preloader && pre) {
         const counter = pre.querySelector<HTMLElement>("[data-pl-counter]");
         const num = { v: 0 };
         gsap
@@ -476,7 +485,7 @@ export function initLeiMotion(
 
   // ── WebGL hero ripple (home only, loaded lazily) ───────────────────────
   let glMouse: ((e: MouseEvent) => void) | null = null;
-  if (opts.home) {
+  if (home) {
     cleanups.push(
       initHeroGL(root, (fn) => {
         glMouse = fn;
