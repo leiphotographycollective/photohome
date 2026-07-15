@@ -212,6 +212,10 @@ html.lenis {
   .lx-gallery {
     grid-template-columns: 1fr !important;
   }
+  .lx-doors {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 18px !important;
+  }
   .lx-float {
     display: none !important;
   }

@@ -3,12 +3,11 @@ import Link from "next/link";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
-import HorizontalCollection from "@/components/lei/HorizontalCollection";
 import { Marquee } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
 import { CtaLink, TestimonialSlot } from "@/components/lei/Cta";
-import { HERO_MOBILE } from "@/content/homepage";
+import { DOORS, HERO_MOBILE } from "@/content/homepage";
 
 export const metadata: Metadata = {
   title: "Presence, Story & Feeling — Bay Area Photographer",
@@ -502,8 +501,104 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ Horizontal collection (identical to Work) ══ */}
-      <HorizontalCollection />
+      {/* ══ The Collection — four category doors ══ */}
+      <section
+        style={{
+          position: "relative",
+          background: "#0E0D0B",
+          color: "#F7F5F2",
+          padding: "16vh 6vw",
+        }}
+      >
+        <div style={{ maxWidth: 1360, margin: "0 auto" }}>
+          <div data-fadeup="" style={kicker({ marginBottom: 18 }, 10, ".3em")}>
+            The Collection
+          </div>
+          <h2
+            data-fadeup=""
+            style={{
+              margin: "0 0 7vh",
+              fontFamily: SERIF,
+              fontWeight: 500,
+              fontSize: "clamp(34px,4.4vw,58px)",
+              lineHeight: 1.08,
+            }}
+          >
+            Where would you like to <em>begin?</em>
+          </h2>
+          <div
+            className="lx-doors"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gap: "1.8vw",
+            }}
+          >
+            {DOORS.map((d, i) => (
+              <Link
+                key={d.cat}
+                href={`/portfolio/${d.cat}`}
+                className="lx-proj"
+                data-proj=""
+                style={{ marginBottom: 0 }}
+              >
+                <div className="lx-imgwrap" style={{ aspectRatio: "3 / 4" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={img(d.photo.path, 750)}
+                    alt={d.photo.a}
+                    loading="lazy"
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "baseline",
+                    gap: 10,
+                    marginTop: 16,
+                  }}
+                >
+                  <span
+                    style={{ fontSize: 10, color: GOLD, letterSpacing: ".18em" }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: SERIF,
+                      fontSize: "clamp(20px,1.8vw,26px)",
+                      fontWeight: 500,
+                      color: "#F7F5F2",
+                    }}
+                  >
+                    {d.label}
+                  </span>
+                  <span className="lx-arrow" style={{ color: GOLD }}>
+                    →
+                  </span>
+                </div>
+                <div
+                  style={{
+                    marginTop: 6,
+                    fontSize: 12,
+                    letterSpacing: ".04em",
+                    color: cream(0.55),
+                  }}
+                >
+                  {d.tagline}
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div
+            data-fadeup=""
+            style={{ marginTop: "8vh", display: "flex", justifyContent: "center" }}
+          >
+            <CtaLink />
+          </div>
+        </div>
+      </section>
 
       {/* ══ About ══ */}
       <section
