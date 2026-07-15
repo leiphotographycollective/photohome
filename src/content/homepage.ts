@@ -93,11 +93,11 @@ export interface PortfolioRow {
  *  Swapping a photo is a one-line edit; the section renders whatever's here. */
 export const WEDDING_PORTFOLIO: PortfolioRow[] = [
   { layout: "full", photos: [PHOTOS.receptionEntrance] },
-  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[8], PHOTOS.marinaKiss] },
+  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[8], SARGON_ODELYA_PHOTOS[27]] },
   { layout: "full", photos: [PHOTOS.danceLift] },
   { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[2], PHOTOS.ringsEmbrace] },
   { layout: "full", photos: [PHOTOS.firstDance04] },
-  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[21], PHOTOS.shoulderDance] },
-  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[19], PHOTOS.firstDanceClouds] },
+  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[28], PHOTOS.shoulderDance] },
+  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[18], PHOTOS.firstDanceClouds] },
   { layout: "full", photos: [PHOTOS.sargonPrep] },
 ];
