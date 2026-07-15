@@ -796,19 +796,19 @@ export default function HomePage() {
             data-fadeup=""
             style={{ margin: "0 0 18px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
           >
-            I&rsquo;m Raymond — a photographer based in San Jose, California. My
-            love for photography began when I saw my friends&rsquo; faces light up
-            at the images I&rsquo;d made for them, and I realized how powerful a
-            single frame can be.
+            I&rsquo;m Raymond &mdash; a photographer based in San Jose, California.
+            My love for photography began when I saw my friends&rsquo; faces light
+            up at the images I&rsquo;d made for them &mdash; the same feeling I want
+            you to have every time you open your gallery.
           </p>
           <p
             data-fadeup=""
             style={{ margin: "0 0 34px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
           >
-            I don&rsquo;t have one singular style — I adapt from light and airy to
-            editorial while keeping the moment authentic. Most of all, I want you
-            to look and feel your absolute best, with the whole experience
-            tailored personally to you.
+            I don&rsquo;t have one singular style &mdash; I adapt from light and
+            airy to editorial, so the photos look like you, not like my formula.
+            Most of all, I want you to look and feel your absolute best, with the
+            whole experience tailored personally to you.
           </p>
           <Link
             data-fadeup=""
