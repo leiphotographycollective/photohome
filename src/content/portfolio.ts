@@ -35,6 +35,10 @@ export function aspect(photo: Photo): string {
 
 export const PHOTOS = {
   marinaKiss: { path: "/images/bay-area-wedding-marina-golden-hour-kiss-lei-photography-collective.jpg", a: "Bride and groom kissing at golden hour, sailboat masts behind them at the marina", r: "p" },
+  receptionEntrance: { path: "/images/bay-area-wedding-reception-entrance-fog-string-lights-lei-photography-collective.jpg", a: "Bride and groom walking onto a fog-covered dance floor beneath a canopy of string lights", r: "l" },
+  shoulderDance: { path: "/images/bay-area-wedding-reception-groom-shoulder-dance-celebration-lei-photography-collective.jpg", a: "Groom lifted on shoulders during reception dancing, guests clapping around him", r: "p" },
+  ringsEmbrace: { path: "/images/bay-area-wedding-rings-embrace-detail-lei-photography-collective.jpg", a: "Close-up of the couple's hands and rings as the groom embraces the bride in her beaded gown", r: "p" },
+  firstDanceClouds: { path: "/images/bay-area-wedding-first-dance-clouds-lei-photography-collective.jpg", a: "First dance on a cloud of fog beneath string lights", r: "p" },
   firstDance04: { path: "128f88b3-0b33-486f-a168-7d3b3f98bd13/bay-area-wedding-photography-portfolio-first-dance-lei-photography-collective-04.jpg", a: "First dance beneath string lights, fog across the floor", r: "l" },
   firstDance03: { path: "24bb3601-4fd9-49bf-9fa1-8b2ecd9a4057/bay-area-wedding-photography-portfolio-first-dance-lei-photography-collective03.jpg", a: "First dance under warm string lights", r: "l" },
   firstDanceCine: { path: "13b436d7-c955-46a1-bc5c-e4faf35bb78c/bay-area-wedding-first-dance-cinematic-natural-light-lei-photography-collective", a: "Cinematic first dance in low light", r: "p" },

@@ -134,8 +134,8 @@ export default function HomePage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               data-hero-img=""
-              src={img(PHOTOS.sargonPrep.path, 1500)}
-              alt={PHOTOS.sargonPrep.a}
+              src={img(PHOTOS.receptionEntrance.path, 1500)}
+              alt={PHOTOS.receptionEntrance.a}
               style={{
                 position: "absolute",
                 inset: 0,
@@ -378,8 +378,8 @@ export default function HomePage() {
           data-float=""
           data-speed="110"
           className="lx-float"
-          src={img(PHOTOS.gradLaughing.path, 750)}
-          alt={PHOTOS.gradLaughing.a}
+          src={img(PHOTOS.shoulderDance.path, 750)}
+          alt={PHOTOS.shoulderDance.a}
           loading="lazy"
           style={{
             position: "absolute",
@@ -502,8 +502,8 @@ export default function HomePage() {
           <div data-reveal="" style={{ overflow: "hidden" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={img(PHOTOS.coastal.path, 1000)}
-              alt={PHOTOS.coastal.a}
+              src={img(PHOTOS.firstDanceClouds.path, 1000)}
+              alt={PHOTOS.firstDanceClouds.a}
               loading="lazy"
               style={{
                 width: "100%",
@@ -516,8 +516,8 @@ export default function HomePage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             data-fadeup=""
-            src={img(PHOTOS.naomi.path, 750)}
-            alt={PHOTOS.naomi.a}
+            src={img(PHOTOS.ringsEmbrace.path, 750)}
+            alt={PHOTOS.ringsEmbrace.a}
             loading="lazy"
             style={{
               position: "absolute",
