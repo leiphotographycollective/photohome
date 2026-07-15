@@ -214,7 +214,7 @@ export default function WeddingsPage() {
                 images: [
                   { src: img(PHOTOS.sargon225.path, 1200), alt: PHOTOS.sargon225.a, ratio: "4 / 5", cursor: "Portraits" },
                   { src: img(PHOTOS.firstDance03.path, 1200), alt: "First dance under string lights", ratio: "3 / 2", cursor: "Reception" },
-                  { src: img(PHOTOS.sargonPrep.path, 1200), alt: "Wedding preparation moment", ratio: "4 / 5", cursor: "Getting ready" },
+                  { src: img(PHOTOS.sargonPrep.path, 1200), alt: PHOTOS.sargonPrep.a, ratio: "4 / 5", cursor: "First dance" },
                 ],
               },
               {

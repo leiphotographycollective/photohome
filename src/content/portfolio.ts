@@ -38,7 +38,7 @@ export const PHOTOS = {
   firstDance04: { path: "128f88b3-0b33-486f-a168-7d3b3f98bd13/bay-area-wedding-photography-portfolio-first-dance-lei-photography-collective-04.jpg", a: "First dance beneath string lights, fog across the floor", r: "l" },
   firstDance03: { path: "24bb3601-4fd9-49bf-9fa1-8b2ecd9a4057/bay-area-wedding-photography-portfolio-first-dance-lei-photography-collective03.jpg", a: "First dance under warm string lights", r: "l" },
   firstDanceCine: { path: "13b436d7-c955-46a1-bc5c-e4faf35bb78c/bay-area-wedding-first-dance-cinematic-natural-light-lei-photography-collective", a: "Cinematic first dance in low light", r: "p" },
-  sargonPrep: { path: "652fef9d-196e-4248-92d2-83d8abebf683/Lei.Photography.Co-PreSargon+lReEdit-12.jpg", a: "Quiet preparation moment before the ceremony", r: "p" },
+  sargonPrep: { path: "652fef9d-196e-4248-92d2-83d8abebf683/Lei.Photography.Co-PreSargon+lReEdit-12.jpg", a: "First dance in low fog beneath string lights, guests watching by the fireplace", r: "l" },
   sargon046: { path: "cdced7af-418e-4b56-a31b-fde12cfa3e02/Sargon+%26+Odelya-046.jpg", a: "Getting ready — the shoe moment", r: "p" },
   sargon225: { path: "dd09e3e4-c49d-4d8c-814c-82279c3dc384/Sargon+%26+Odelya-225.jpg", a: "Bride with bouquet in a vintage living room", r: "p" },
   detailsFlat: { path: "a8cacf12-ca27-4443-b9ec-03d98fd0a52f/bay-area-wedding-details-flat-lay-shoes-perfume-lei-photography-collective", a: "Wedding details flat lay — shoes and perfume", r: "s" },

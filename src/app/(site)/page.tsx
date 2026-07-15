@@ -134,8 +134,8 @@ export default function HomePage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               data-hero-img=""
-              src={img(PHOTOS.firstDance04.path, 1500)}
-              alt={PHOTOS.firstDance04.a}
+              src={img(PHOTOS.sargonPrep.path, 1500)}
+              alt={PHOTOS.sargonPrep.a}
               style={{
                 position: "absolute",
                 inset: 0,

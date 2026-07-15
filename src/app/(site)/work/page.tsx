@@ -141,7 +141,7 @@ export default function WorkPage() {
               speed: 60,
               images: [
                 { src: img(PHOTOS.coastal.path, 1200), alt: PHOTOS.coastal.a, ratio: "4 / 5", cursor: "Couples" },
-                { src: img(PHOTOS.sargonPrep.path, 1200), alt: "Wedding preparation moment", ratio: "3 / 2", cursor: "Weddings" },
+                { src: img(PHOTOS.sargonPrep.path, 1200), alt: PHOTOS.sargonPrep.a, ratio: "3 / 2", cursor: "Weddings" },
               ],
             },
             {
