@@ -167,7 +167,7 @@ export default function ExperiencePage() {
                 color: GOLD,
               }}
             >
-              That&rsquo;s when I come in.
+              That&rsquo;s when I come in for you.
             </div>
           </div>
           <div data-reveal="" style={{ overflow: "hidden" }}>
@@ -277,7 +277,7 @@ export default function ExperiencePage() {
               lineHeight: 1,
             }}
           >
-            My Approach
+            The Approach
           </h2>
           <div
             className="lx-grid-2col"
