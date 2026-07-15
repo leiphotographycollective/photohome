@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { GOLD, SERIF, pill } from "./tokens";
+import { GOLD, SERIF, pill, cream, ink } from "./tokens";
 import {
   CTA_HREF,
   CTA_LABEL,
@@ -51,7 +51,7 @@ export function SecondaryCta({
         fontWeight: 500,
         letterSpacing: ".12em",
         textTransform: "uppercase",
-        color: dark ? "rgba(247,245,242,.72)" : "rgba(14,13,11,.62)",
+        color: dark ? cream(0.72) : ink(0.62),
         textDecoration: "underline",
         textUnderlineOffset: 5,
         textDecorationColor: "rgba(184,144,90,.55)",
