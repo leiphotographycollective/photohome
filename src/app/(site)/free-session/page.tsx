@@ -37,8 +37,8 @@ const BENEFITS = [
 
 const STEPS = [
   { n: "01", title: "Tell us your story", body: "Fill out the form below and tell us your story — how you met, how the proposal happened, what makes you, you." },
-  { n: "02", title: "I read every entry", body: "I personally read every entry, in full, every single month." },
-  { n: "03", title: "I hand-pick 4 couples", body: "I choose the 4 couples whose story stands out to me the most." },
+  { n: "02", title: "I read every entry", body: "I personally read every entry, in full, every single month — including yours." },
+  { n: "03", title: "I hand-pick 4 couples", body: "I choose the 4 couples whose story stands out to me the most — it could easily be you." },
   { n: "04", title: "You hear back", body: "Winners are contacted by email within a few days to schedule their session." },
 ];
 
@@ -150,7 +150,7 @@ export default function FreeSessionPage() {
           >
             Every month I hand-pick 4 newly engaged couples for a completely
             free engagement session — no random drawing, just me reading real
-            stories and choosing the ones that pull me in.
+            stories, maybe yours, and choosing the ones that pull me in.
           </p>
           <div data-fadeup="" style={{ marginTop: "4vh" }}>
             <a
@@ -249,7 +249,7 @@ export default function FreeSessionPage() {
                 lineHeight: 1.1,
               }}
             >
-              Why I <em>give this away.</em>
+              Why this <em>exists for you.</em>
             </h2>
             <p
               data-fadeup=""
@@ -260,7 +260,7 @@ export default function FreeSessionPage() {
               rather show you. I read every single entry myself and pick the
               4 couples whose story pulls me in. No random drawing, no
               algorithm — just me looking for couples I&rsquo;m genuinely
-              excited to photograph.
+              excited to photograph, and maybe that&rsquo;s you.
             </p>
           </div>
 
@@ -338,8 +338,8 @@ export default function FreeSessionPage() {
         >
           I give away <em style={{ color: GOLD }}>4</em> free engagement
           sessions every month, hand-picked from every couple who applies, so
-          every winner gets the same full experience as my paid wedding
-          clients — real time, real coverage, real photos to keep.
+          every winner — maybe you — gets the same full experience as my paid
+          wedding clients — real time, real coverage, real photos to keep.
         </p>
         <div
           data-fadeup=""
