@@ -604,8 +604,8 @@ export default function HomePage() {
           <div data-reveal="" style={{ overflow: "hidden" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={img(PHOTOS.gownEditorial.path, 1000)}
-              alt={PHOTOS.gownEditorial.a}
+              src={img(PHOTOS.marinaKiss.path, 1000)}
+              alt={PHOTOS.marinaKiss.a}
               loading="lazy"
               style={{
                 width: "100%",
