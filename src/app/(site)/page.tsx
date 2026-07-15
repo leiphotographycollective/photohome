@@ -982,6 +982,9 @@ export default function HomePage() {
           collection is built around how you two actually want the day to go.
           Tell me about yours and I&rsquo;ll send the full breakdown.
         </p>
+        <div data-fadeup="" style={{ marginTop: 26 }}>
+          <SoftLink href="/investment" label="See the collections" />
+        </div>
         <div
           data-fadeup=""
           style={{
@@ -1150,7 +1153,7 @@ export default function HomePage() {
         </div>
 
         <div style={{ padding: "0 38px" }}>
-          <LeiFooter links={["work", "weddings", "about", "inquire"]} />
+          <LeiFooter links={["work", "weddings", "investment", "about", "inquire"]} />
         </div>
       </section>
     </LeiPage>

@@ -212,6 +212,21 @@ export default function Chrome({ active }: { active?: Active }) {
           Experience
         </Link>
         <Link
+          href="/investment"
+          data-hover=""
+          className="lx-dd-item"
+          style={{
+            fontFamily: SERIF,
+            fontSize: 18,
+            fontWeight: 500,
+            color: "#F7F5F2",
+            textDecoration: "none",
+            padding: "12px 14px",
+          }}
+        >
+          Investment
+        </Link>
+        <Link
           href="/free-session"
           data-hover=""
           className="lx-dd-item"

@@ -11,6 +11,7 @@ const NAV: Record<string, { href: string; label: string }> = {
   work: { href: "/work", label: "Work" },
   weddings: { href: "/weddings", label: "Weddings" },
   about: { href: "/about", label: "About" },
+  investment: { href: "/investment", label: "Investment" },
   inquire: { href: "/inquire", label: "Inquire" },
 };
 
