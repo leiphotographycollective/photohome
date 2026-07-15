@@ -431,7 +431,7 @@ export default function HomePage() {
       >
         <div>
           <div data-fadeup="" style={kicker({ marginBottom: 20 }, 10, ".3em")}>
-            Who I photograph
+            For couples like you
           </div>
           <h2
             data-fadeup=""
@@ -468,7 +468,7 @@ export default function HomePage() {
             {[
               `Weddings, from the quiet getting-ready hours to the last song — I'll work the room all night so you two can just be in it.`,
               `Engagements and couples sessions that feel like a good date, not a photoshoot.`,
-              `Ever said “I'm awkward in front of a camera”? Perfect — most of my favorite people have.`,
+              `Ever said “I'm awkward in front of a camera”? Perfect — you're in good company; most of my favorite people have.`,
             ].map((line) => (
               <li
                 key={line}
