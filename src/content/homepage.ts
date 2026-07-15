@@ -12,6 +12,22 @@ import {
 export const CTA_LABEL = "Check my availability";
 export const CTA_HREF = "/inquire#form";
 
+/** SEO anchor — must appear in hero kickers, page titles, and footer. */
+export const CITY = "San Francisco Bay Area";
+
+/** The site-wide positioning line (cover-story angle) and support line.
+ *  Later pages (pricing, about, FAQ) import these — never retype them. */
+export const POSITIONING = "Your wedding, shot like the cover story it is.";
+export const POSITIONING_SUB =
+  "Bay Area wedding photographer for couples who bring the style and the party.";
+
+/** Track B soft CTA for early planners — points at the live /free-session
+ *  capture page until the Planning Guide funnel ships (then only the href
+ *  changes; every placement updates automatically). */
+export const SECONDARY_CTA_LABEL =
+  "Just started planning? Claim a free engagement session";
+export const SECONDARY_CTA_HREF = "/free-session";
+
 /** Optimized full-bleed frame for the static mobile hero (LCP-critical). */
 export const HERO_MOBILE: Photo = {
   path: "/images/hero-mobile.jpg",

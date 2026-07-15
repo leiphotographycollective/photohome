@@ -245,3 +245,12 @@ html.lenis {
     display: none !important;
   }
 }
+
+/* ── Track B secondary CTA — gold brightens on hover ───────────────────── */
+.lx-cta2 {
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+.lx-cta2:hover {
+  color: #b8905a !important;
+  text-decoration-color: #b8905a;
+}

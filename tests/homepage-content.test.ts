@@ -1,9 +1,14 @@
 import { describe, expect, it } from "vitest";
 import {
+  CITY,
   CTA_HREF,
   CTA_LABEL,
   DOORS,
+  POSITIONING,
+  POSITIONING_SUB,
   RECENT_WEDDINGS,
+  SECONDARY_CTA_HREF,
+  SECONDARY_CTA_LABEL,
   TESTIMONIALS,
 } from "@/content/homepage";
 import { CATEGORIES } from "@/content/portfolio";
@@ -12,6 +17,23 @@ describe("CTA constants", () => {
   it("match the spec exactly", () => {
     expect(CTA_LABEL).toBe("Check my availability");
     expect(CTA_HREF).toBe("/inquire#form");
+  });
+});
+
+describe("positioning constants", () => {
+  it("match the approved spec exactly", () => {
+    expect(CITY).toBe("San Francisco Bay Area");
+    expect(POSITIONING).toBe("Your wedding, shot like the cover story it is.");
+    expect(POSITIONING_SUB).toBe(
+      "Bay Area wedding photographer for couples who bring the style and the party."
+    );
+  });
+
+  it("secondary CTA points at the live free-session page", () => {
+    expect(SECONDARY_CTA_LABEL).toBe(
+      "Just started planning? Claim a free engagement session"
+    );
+    expect(SECONDARY_CTA_HREF).toBe("/free-session");
   });
 });
 
