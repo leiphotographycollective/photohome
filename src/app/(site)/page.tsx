@@ -309,7 +309,7 @@ export default function HomePage() {
           <div style={kicker({ marginBottom: 16 }, 10, ".26em")}>
             San Francisco Bay Area · Weddings &amp; Couples
           </div>
-          <h2
+          <h1
             style={{
               margin: "0 0 24px",
               fontFamily: SERIF,
@@ -320,7 +320,7 @@ export default function HomePage() {
             }}
           >
             For couples who&rsquo;d rather <em>live it</em> than pose for it.
-          </h2>
+          </h1>
           <CtaLink />
         </div>
       </section>
