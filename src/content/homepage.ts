@@ -82,3 +82,22 @@ export const RECENT_WEDDINGS: RecentWedding[] = [
     ],
   },
 ];
+
+export interface PortfolioRow {
+  layout: "full" | "pair";
+  photos: Photo[]; // 1 photo for "full", 2 for "pair"
+}
+
+/** The homepage wedding gallery — the page's centerpiece. Seeded with the
+ *  strongest existing selects; Raymond swaps rows as new selects arrive.
+ *  Swapping a photo is a one-line edit; the section renders whatever's here. */
+export const WEDDING_PORTFOLIO: PortfolioRow[] = [
+  { layout: "full", photos: [PHOTOS.receptionEntrance] },
+  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[8], PHOTOS.marinaKiss] },
+  { layout: "full", photos: [PHOTOS.danceLift] },
+  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[2], PHOTOS.ringsEmbrace] },
+  { layout: "full", photos: [PHOTOS.firstDance04] },
+  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[21], PHOTOS.shoulderDance] },
+  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[19], PHOTOS.firstDanceClouds] },
+  { layout: "full", photos: [PHOTOS.sargonPrep] },
+];

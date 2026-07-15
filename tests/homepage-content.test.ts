@@ -10,6 +10,7 @@ import {
   SECONDARY_CTA_HREF,
   SECONDARY_CTA_LABEL,
   TESTIMONIALS,
+  WEDDING_PORTFOLIO,
 } from "@/content/homepage";
 import { CATEGORIES } from "@/content/portfolio";
 
@@ -72,5 +73,25 @@ describe("testimonials", () => {
       expect(t.quote.trim().length).toBeGreaterThan(0);
       expect(t.names.trim().length).toBeGreaterThan(0);
     }
+  });
+});
+
+describe("wedding portfolio", () => {
+  it("has valid row shapes: 1 photo per full, 2 per pair, all with path+alt", () => {
+    expect(WEDDING_PORTFOLIO.length).toBeGreaterThanOrEqual(1);
+    for (const row of WEDDING_PORTFOLIO) {
+      expect(["full", "pair"]).toContain(row.layout);
+      expect(row.photos).toHaveLength(row.layout === "full" ? 1 : 2);
+      for (const p of row.photos) {
+        expect(p.path.length).toBeGreaterThan(0);
+        expect(p.a.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("holds 10-14 photos (spec: homepage centerpiece density)", () => {
+    const count = WEDDING_PORTFOLIO.reduce((n, r) => n + r.photos.length, 0);
+    expect(count).toBeGreaterThanOrEqual(10);
+    expect(count).toBeLessThanOrEqual(14);
   });
 });
