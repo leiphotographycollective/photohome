@@ -326,7 +326,7 @@ With `npm run dev` running:
 ```bash
 curl -s http://localhost:3000/ | grep -o "COVER" | wc -l                      # expect >= 1
 curl -s http://localhost:3000/ | grep -o "cover story it is" | wc -l          # expect >= 2 (meta description + desktop hero sub; the mobile h1's <em> splits the phrase)
-curl -s http://localhost:3000/ | grep -o 'href="/free-session"' | wc -l       # expect 2 (both heroes)
+curl -s http://localhost:3000/ | grep -o 'href="/free-session"' | wc -l       # expect 3 (both heroes + pre-existing mobile-menu nav link)
 curl -s http://localhost:3000/ | grep -o "San Francisco Bay Area" | wc -l     # expect >= 3
 curl -s http://localhost:3000/ | grep -o "Presence · Story · Feeling" | wc -l # expect 0
 ```
@@ -486,7 +486,7 @@ Run: `npm test && npm run build` — expected: PASS + success.
 With `npm run dev` running:
 
 ```bash
-curl -s http://localhost:3000/ | grep -o 'href="/free-session"' | wc -l   # expect 5 (2 heroes + who + pricing + final)
+curl -s http://localhost:3000/ | grep -o 'href="/free-session"' | wc -l   # expect 6 (2 heroes + who + pricing + final + pre-existing mobile-menu nav link)
 curl -s http://localhost:3000/ | grep -o "Check my availability" | wc -l  # expect 6 (unchanged)
 curl -s http://localhost:3000/ | grep -o "\$2,400" | wc -l                # expect 1
 curl -s http://localhost:3000/ | grep -o "cover stor" | wc -l             # expect >= 5
@@ -574,7 +574,7 @@ Run `npm run start` in the background (after `npm run build`), then:
 ```bash
 curl -s http://localhost:3000/ | grep -o "Your wedding, shot like the" | wc -l   # expect >= 3 (meta + desktop sub + mobile h1 prefix)
 curl -s http://localhost:3000/ | grep -o "San Francisco Bay Area" | wc -l        # expect >= 3
-curl -s http://localhost:3000/ | grep -o 'href="/free-session"' | wc -l          # expect 5
+curl -s http://localhost:3000/ | grep -o 'href="/free-session"' | wc -l          # expect 6
 curl -s http://localhost:3000/ | grep -o "Check my availability" | wc -l         # expect 6
 curl -s http://localhost:3000/ | grep -o "\$2,400" | wc -l                       # expect 1
 curl -s http://localhost:3000/ | grep -o "blockquote" | wc -l                    # expect 0
