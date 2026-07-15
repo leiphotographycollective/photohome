@@ -67,10 +67,10 @@ export default function ExperiencePage() {
               letterSpacing: ".01em",
             }}
           >
-            <div data-title-line="" style={{ fontSize: "clamp(58px,12vw,180px)" }}>
+            <div data-title-line="" style={{ fontSize: "clamp(40px,8vw,120px)" }}>
               THE
             </div>
-            <div data-title-line="" style={{ fontSize: "clamp(58px,12vw,180px)" }}>
+            <div data-title-line="" style={{ fontSize: "clamp(40px,8vw,120px)" }}>
               <em style={{ fontWeight: 400 }}>EXPERIENCE</em>
             </div>
           </h1>
