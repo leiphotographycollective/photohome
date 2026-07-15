@@ -109,10 +109,10 @@ export default function WeddingsPage() {
               letterSpacing: ".01em",
             }}
           >
-            <div data-title-line="" style={{ fontSize: "clamp(54px,9vw,140px)" }}>
+            <div data-title-line="" style={{ fontSize: "clamp(40px,9vw,140px)" }}>
               DOCUMENTED
             </div>
-            <div data-title-line="" style={{ fontSize: "clamp(54px,9vw,140px)" }}>
+            <div data-title-line="" style={{ fontSize: "clamp(40px,9vw,140px)" }}>
               <em style={{ fontWeight: 400 }}>GRACEFULLY.</em>
             </div>
           </h1>

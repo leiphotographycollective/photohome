@@ -98,7 +98,7 @@ export default async function CategoryPage({
               margin: 0,
               fontFamily: SERIF,
               fontWeight: 600,
-              fontSize: "clamp(48px,9vw,150px)",
+              fontSize: "clamp(38px,9vw,150px)",
               lineHeight: 0.9,
               letterSpacing: ".01em",
             }}
