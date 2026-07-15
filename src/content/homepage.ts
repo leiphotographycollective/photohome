@@ -92,12 +92,14 @@ export interface PortfolioRow {
  *  strongest existing selects; Raymond swaps rows as new selects arrive.
  *  Swapping a photo is a one-line edit; the section renders whatever's here. */
 export const WEDDING_PORTFOLIO: PortfolioRow[] = [
-  { layout: "full", photos: [PHOTOS.receptionEntrance] },
-  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[8], SARGON_ODELYA_PHOTOS[27]] },
-  { layout: "full", photos: [PHOTOS.danceLift] },
-  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[2], PHOTOS.ringsEmbrace] },
-  { layout: "full", photos: [PHOTOS.firstDance04] },
-  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[28], PHOTOS.shoulderDance] },
-  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[18], PHOTOS.firstDanceClouds] },
-  { layout: "full", photos: [PHOTOS.sargonPrep] },
+  // Fulls are natively landscape; pairs natively portrait. No photo here may
+  // appear anywhere else on the homepage (hero, manifesto, who-I-photograph…).
+  { layout: "full", photos: [SARGON_ODELYA_PHOTOS[13]] }, // touching the groom's face at golden hour
+  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[8], SARGON_ODELYA_PHOTOS[27]] }, // veil golden hour · dip kiss
+  { layout: "full", photos: [SARGON_ODELYA_PHOTOS[25]] }, // carried through the cheering crowd
+  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[2], SARGON_ODELYA_PHOTOS[0]] }, // bride & mother b&w · ring box
+  { layout: "full", photos: [SARGON_ODELYA_PHOTOS[29]] }, // embracing on the dance floor
+  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[28], SARGON_ODELYA_PHOTOS[22]] }, // mid-twirl · champagne spray
+  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[18], SARGON_ODELYA_PHOTOS[7]] }, // veil sunset · staircase aerial
+  { layout: "full", photos: [PHOTOS.sargonPrep] }, // first dance in low fog
 ];

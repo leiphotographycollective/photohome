@@ -566,7 +566,7 @@ export default function HomePage() {
           position: "relative",
           background: "#F7F5F2",
           color: "#0E0D0B",
-          padding: "0 6vw 20vh",
+          padding: "16vh 6vw 20vh",
           overflow: "hidden",
         }}
       >
