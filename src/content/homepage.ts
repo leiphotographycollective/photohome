@@ -12,6 +12,13 @@ import {
 export const CTA_LABEL = "Check my availability";
 export const CTA_HREF = "/inquire#form";
 
+/** Optimized full-bleed frame for the static mobile hero (LCP-critical). */
+export const HERO_MOBILE: Photo = {
+  path: "/images/hero-mobile.jpg",
+  a: "Bride's veil catching the light at golden hour",
+  r: "p",
+};
+
 export interface Testimonial {
   quote: string;
   names: string; // e.g. "Sargon & Odelya"

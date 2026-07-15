@@ -7,6 +7,8 @@ import HorizontalCollection from "@/components/lei/HorizontalCollection";
 import { Marquee } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
+import { CtaLink } from "@/components/lei/Cta";
+import { HERO_MOBILE } from "@/content/homepage";
 
 export const metadata: Metadata = {
   title: "Presence, Story & Feeling — Bay Area Photographer",
@@ -107,6 +109,7 @@ export default function HomePage() {
       <section
         id="top"
         data-hero=""
+        className="lx-hero-desktop"
         style={{ position: "relative", height: "300vh", background: "#F7F5F2" }}
       >
         <div
@@ -181,7 +184,7 @@ export default function HomePage() {
                 marginBottom: "3vh",
               }}
             >
-              Bay Area · Weddings · Graduations · Portraits
+              San Francisco Bay Area · Weddings &amp; Couples
             </div>
             <h1
               style={{
@@ -213,7 +216,13 @@ export default function HomePage() {
                 opacity: 0.8,
               }}
             >
-              Photographed with intention — by Raymond Lei
+              For couples who&rsquo;d rather live it than pose for it
+            </div>
+            <div
+              data-hero-sub=""
+              style={{ marginTop: "3.5vh", pointerEvents: "auto" }}
+            >
+              <CtaLink />
             </div>
           </div>
 
@@ -252,6 +261,67 @@ export default function HomePage() {
               }}
             />
           </div>
+        </div>
+      </section>
+
+      {/* ══ Mobile hero — static and instant; the scroll cinematics are
+          desktop-only (see motion.ts mobile guard) ══ */}
+      <link
+        rel="preload"
+        as="image"
+        href={HERO_MOBILE.path}
+        media="(max-width: 860px)"
+      />
+      <section
+        className="lx-hero-mobile"
+        style={{
+          position: "relative",
+          minHeight: "100svh",
+          background: "#0E0D0B",
+          color: "#F7F5F2",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+          overflow: "hidden",
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={HERO_MOBILE.path}
+          alt={HERO_MOBILE.a}
+          fetchPriority="high"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to top, rgba(14,13,11,.74) 0%, rgba(14,13,11,.12) 55%)",
+          }}
+        />
+        <div style={{ position: "relative", padding: "0 24px 56px" }}>
+          <div style={kicker({ marginBottom: 16 }, 10, ".26em")}>
+            San Francisco Bay Area · Weddings &amp; Couples
+          </div>
+          <h2
+            style={{
+              margin: "0 0 24px",
+              fontFamily: SERIF,
+              fontWeight: 500,
+              fontSize: "clamp(34px,9.5vw,46px)",
+              lineHeight: 1.12,
+              textWrap: "pretty",
+            }}
+          >
+            For couples who&rsquo;d rather <em>live it</em> than pose for it.
+          </h2>
+          <CtaLink />
         </div>
       </section>
 
