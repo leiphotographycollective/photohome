@@ -36,57 +36,84 @@ export default function ExperiencePage() {
       <section
         style={{
           position: "relative",
-          minHeight: "96vh",
+          minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
           padding: "0 38px 9vh",
+          background: "#0E0D0B",
+          overflow: "hidden",
         }}
       >
-        <div data-fadeup="" style={kicker({ marginBottom: "3vh" }, 11, ".34em")}>
-          Personalized, supportive photography for life&rsquo;s milestones
-        </div>
-        <h1
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={img(PHOTOS.coastal.path, 2400)}
+          alt={PHOTOS.coastal.a}
           style={{
-            margin: 0,
-            fontFamily: SERIF,
-            fontWeight: 600,
-            lineHeight: 0.88,
-            letterSpacing: ".01em",
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center 30%",
+            display: "block",
           }}
-        >
-          <div data-title-line="" style={{ fontSize: "clamp(58px,13vw,200px)" }}>
-            THE
-          </div>
-          <div data-title-line="" style={{ fontSize: "clamp(58px,13vw,200px)" }}>
-            <em style={{ fontWeight: 400 }}>EXPERIENCE</em>
-          </div>
-        </h1>
+        />
         <div
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-end",
-            marginTop: "5vh",
-            gap: 32,
-            flexWrap: "wrap",
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to top, rgba(14,13,11,.86) 0%, rgba(14,13,11,.22) 52%, rgba(14,13,11,.42) 100%)",
           }}
-        >
-          <p
-            data-fadeup=""
+        />
+        <div style={{ position: "relative", zIndex: 2, color: "#F7F5F2" }}>
+          <div data-fadeup="" style={kicker({ marginBottom: "3vh" }, 11, ".34em")}>
+            Personalized, supportive photography for life&rsquo;s milestones
+          </div>
+          <h1
             style={{
-              maxWidth: 460,
               margin: 0,
-              fontSize: 16,
-              lineHeight: 1.8,
-              color: MUTED,
+              fontFamily: SERIF,
+              fontWeight: 600,
+              lineHeight: 0.88,
+              letterSpacing: ".01em",
             }}
           >
-            More than a set of photographs — a record of how your moment truly
-            felt, made with artistry and care.
-          </p>
-          <div data-fadeup="">
-            <ScrollHint />
+            <div data-title-line="" style={{ fontSize: "clamp(58px,12vw,180px)" }}>
+              THE
+            </div>
+            <div data-title-line="" style={{ fontSize: "clamp(58px,12vw,180px)" }}>
+              <em style={{ fontWeight: 400 }}>EXPERIENCE</em>
+            </div>
+          </h1>
+          <div
+            className="lx-hero-row"
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "flex-end",
+              marginTop: "5vh",
+              gap: 32,
+              flexWrap: "wrap",
+            }}
+          >
+            <p
+              data-fadeup=""
+              style={{
+                maxWidth: 460,
+                margin: 0,
+                fontSize: 16,
+                lineHeight: 1.8,
+                color: cream(0.8),
+              }}
+            >
+              More than a set of photographs — a record of how your moment truly
+              felt, made with artistry and care.
+            </p>
+            <div data-fadeup="">
+              <ScrollHint color={cream(0.55)} />
+            </div>
           </div>
         </div>
       </section>

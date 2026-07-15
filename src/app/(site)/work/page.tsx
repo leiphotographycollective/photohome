@@ -5,7 +5,7 @@ import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
 import HorizontalCollection from "@/components/lei/HorizontalCollection";
 import { ParallaxGallery, ScrollHint } from "@/components/lei/blocks";
-import { DIM, GOLD, MUTED, SERIF, kicker, pill } from "@/components/lei/tokens";
+import { DIM, GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
 
 export const metadata: Metadata = {
@@ -23,60 +23,87 @@ export default function WorkPage() {
       <section
         style={{
           position: "relative",
-          minHeight: "88vh",
+          minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
           padding: "0 38px 8vh",
-          background: "#F7F5F2",
+          background: "#0E0D0B",
+          overflow: "hidden",
         }}
       >
-        <div
-          data-fadeup=""
-          style={kicker({ marginBottom: "3vh" }, 11, ".34em")}
-        >
-          Step into a collection of
-        </div>
-        <h1
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={img(PHOTOS.danceLift.path, 2400)}
+          alt={PHOTOS.danceLift.a}
           style={{
-            margin: 0,
-            fontFamily: SERIF,
-            fontWeight: 600,
-            lineHeight: 0.86,
-            letterSpacing: ".01em",
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
           }}
-        >
-          <div data-title-line="" style={{ fontSize: "clamp(64px,14vw,210px)" }}>
-            ARTISTRY BORN
-          </div>
-          <div data-title-line="" style={{ fontSize: "clamp(64px,14vw,210px)" }}>
-            FROM <em style={{ fontWeight: 400 }}>PRESENCE</em>
-          </div>
-        </h1>
+        />
         <div
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-end",
-            marginTop: "5vh",
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to top, rgba(14,13,11,.88) 0%, rgba(14,13,11,.32) 52%, rgba(14,13,11,.5) 100%)",
           }}
-        >
-          <p
+        />
+        <div style={{ position: "relative", zIndex: 2, color: "#F7F5F2" }}>
+          <div
             data-fadeup=""
+            style={kicker({ marginBottom: "3vh" }, 11, ".34em")}
+          >
+            Step into a collection of
+          </div>
+          <h1
             style={{
-              maxWidth: 420,
               margin: 0,
-              fontSize: 15,
-              lineHeight: 1.75,
-              color: MUTED,
+              fontFamily: SERIF,
+              fontWeight: 600,
+              lineHeight: 0.88,
+              letterSpacing: ".01em",
             }}
           >
-            Weddings, graduations, portraits &amp; editorials, headshots &amp;
-            events, engagements &amp; proposals — photographed with intention
-            across the Bay Area.
-          </p>
-          <div data-fadeup="">
-            <ScrollHint />
+            <div data-title-line="" style={{ fontSize: "clamp(52px,10vw,148px)" }}>
+              ARTISTRY BORN
+            </div>
+            <div data-title-line="" style={{ fontSize: "clamp(52px,10vw,148px)" }}>
+              FROM <em style={{ fontWeight: 400 }}>PRESENCE</em>
+            </div>
+          </h1>
+          <div
+            className="lx-hero-row"
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "flex-end",
+              gap: 32,
+              marginTop: "5vh",
+              flexWrap: "wrap",
+            }}
+          >
+            <p
+              data-fadeup=""
+              style={{
+                maxWidth: 420,
+                margin: 0,
+                fontSize: 15,
+                lineHeight: 1.75,
+                color: cream(0.8),
+              }}
+            >
+              Weddings, graduations, portraits &amp; editorials, headshots &amp;
+              events, engagements &amp; proposals — photographed with intention
+              across the Bay Area.
+            </p>
+            <div data-fadeup="">
+              <ScrollHint color={cream(0.55)} />
+            </div>
           </div>
         </div>
       </section>
