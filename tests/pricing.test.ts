@@ -11,6 +11,11 @@ describe("investment tiers", () => {
     expect(TIERS.map((t) => t.price)).toEqual(["$3,800", "$2,900", "$2,400"]);
   });
 
+  it("keeps typographic apostrophes in blurb copy", () => {
+    expect(TIERS[0].blurb).toContain("partner’s face");
+    expect(TIERS[1].blurb).toContain("you’re not");
+  });
+
   it("keeps shared inclusions out of per-tier facts (rendered once in the strip)", () => {
     for (const t of TIERS) {
       for (const fact of t.facts) {

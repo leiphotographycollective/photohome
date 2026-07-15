@@ -6,6 +6,9 @@ describe("qualifiers", () => {
     expect(QUALIFIERS).toHaveLength(4);
     expect(QUALIFIERS[0]).toContain("editorial");
     expect(QUALIFIERS[3]).toContain("already planned for it");
+    // typographic characters are load-bearing copy — regression-guard them
+    expect(QUALIFIERS[1]).toContain("“we're not photo people”");
+    expect(QUALIFIERS[3]).toContain("does too — and who's already planned for it");
   });
 });
 
