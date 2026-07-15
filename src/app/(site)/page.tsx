@@ -4,10 +4,11 @@ import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
 import { Marquee } from "@/components/lei/blocks";
-import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
+import { GOLD, MUTED, SERIF, cream, ink, kicker, pill } from "@/components/lei/tokens";
 import { aspect, img, PHOTOS } from "@/content/portfolio";
-import { CtaLink, SecondaryCta, TestimonialSlot } from "@/components/lei/Cta";
+import { CtaLink, SecondaryCta, SoftLink, TestimonialSlot } from "@/components/lei/Cta";
 import { CITY, DOORS, HERO_MOBILE, POSITIONING, RECENT_WEDDINGS } from "@/content/homepage";
+import { QUALIFIERS } from "@/content/experience";
 
 export const metadata: Metadata = {
   title: "Editorial Wedding Photography in the San Francisco Bay Area",
@@ -529,6 +530,92 @@ export default function HomePage() {
               boxShadow: "0 30px 60px rgba(14,13,11,.22)",
             }}
           />
+        </div>
+      </section>
+
+      {/* ══ You're here because… — transplanted from /experience, cream-inverted ══ */}
+      <section
+        style={{
+          position: "relative",
+          background: "#F7F5F2",
+          color: "#0E0D0B",
+          padding: "0 6vw 20vh",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          className="lx-grid-2col"
+          style={{
+            maxWidth: 1200,
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "1.1fr .9fr",
+            gap: "6vw",
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <div data-fadeup="" style={kicker({ marginBottom: 30 }, 10, ".3em")}>
+              You&rsquo;re here because&hellip;
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
+              {QUALIFIERS.map((text) => (
+                <div
+                  key={text}
+                  data-step=""
+                  style={{
+                    display: "flex",
+                    gap: 20,
+                    alignItems: "baseline",
+                    borderTop: `1px solid ${ink(0.14)}`,
+                    paddingTop: 26,
+                  }}
+                >
+                  <span style={{ color: GOLD, fontSize: 20, lineHeight: 1 }}>•</span>
+                  <span
+                    style={{
+                      fontFamily: SERIF,
+                      fontSize: "clamp(20px,2.1vw,30px)",
+                      fontWeight: 500,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {text}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div
+              data-fadeup=""
+              style={{
+                marginTop: 44,
+                fontFamily: SERIF,
+                fontStyle: "italic",
+                fontSize: "clamp(26px,3vw,44px)",
+                color: GOLD,
+              }}
+            >
+              That&rsquo;s when I come in.
+            </div>
+            <div data-fadeup="" style={{ marginTop: 28 }}>
+              <SoftLink href="/experience" label="Read about the full experience" />
+            </div>
+          </div>
+          <div data-reveal="" style={{ overflow: "hidden" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={img(PHOTOS.gownEditorial.path, 1000)}
+              alt={PHOTOS.gownEditorial.a}
+              loading="lazy"
+              style={{
+                width: "100%",
+                aspectRatio: "4 / 5",
+                objectFit: "cover",
+                display: "block",
+                transform: "scale(1.14)",
+              }}
+            />
+          </div>
         </div>
       </section>
 
