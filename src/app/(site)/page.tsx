@@ -450,10 +450,7 @@ export default function HomePage() {
             data-fadeup=""
             style={{ margin: "0 0 26px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
           >
-            Hi — I&rsquo;m Raymond. I shoot weddings the way magazines shoot
-            cover stories — except the story is real, it&rsquo;s yours, and
-            nobody has to hold a pose through it. If you&rsquo;re bringing the
-            style and the party, I am SO in.
+            Hi! I’m Raymond. I shoot weddings the way magazines shoot cover stories — except the story is real, it’s yours, and nobody has to hold a pose through it. If you’re bringing the style and the party, I am SO in.
           </p>
           <ul
             style={{
