@@ -42,3 +42,6 @@ next-env.d.ts
 
 # ShipStudio metadata
 .shipstudio/
+
+# Superpowers scratch (SDD ledger, brainstorm sessions) — never commit
+.superpowers/
