@@ -22,7 +22,10 @@ describe("investment tiers", () => {
         expect(fact).not.toMatch(/Pic-Time|printing rights|per hour of coverage/);
       }
     }
-    expect(INCLUDED_EVERYWHERE).toHaveLength(3);
+    expect(INCLUDED_EVERYWHERE).toHaveLength(4);
+    expect(INCLUDED_EVERYWHERE[3]).toBe(
+      "Monthly payment plans — every collection can be split into monthly payments"
+    );
   });
 
   it("sneak peek is a fact on Collection and Signature only", () => {

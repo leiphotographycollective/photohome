@@ -55,6 +55,7 @@ export const INCLUDED_EVERYWHERE = [
   "100–150 fully edited images per hour of coverage",
   "Online gallery to view, download and order prints (Pic-Time, 12-month access)",
   "Full-resolution downloads + printing rights",
+  "Monthly payment plans — every collection can be split into monthly payments",
 ];
 
 export interface AddOn {
