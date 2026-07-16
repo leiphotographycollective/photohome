@@ -47,9 +47,9 @@ export interface Testimonial {
 export const TESTIMONIALS: Testimonial[] = [
   {
     pull:
-      "He took the time to understand which shots were critical to our culture — and didn't miss a single beat.",
+      "He took the time to understand which shots were critical to our culture — and didn’t miss a single beat.",
     quote:
-      "We had a traditional Middle Eastern wedding, and we were so impressed by how quickly Raymond got up to speed on our specific traditions. His organization and talent far exceed his years — really top-tier. He met with us for an engagement shoot to understand our energy and post-production preferences, and on the big day he was a total pro — complete with a full itinerary and backup equipment. He worked seamlessly with our videographer, and his artistic touch resulted in an excellent final gallery. We absolutely loved the photos and can't wait to book our anniversary shoot with him!",
+      "We had a traditional Middle Eastern wedding, and we were so impressed by how quickly Raymond got up to speed on our specific traditions. His organization and talent far exceed his years — really top-tier. He met with us for an engagement shoot to understand our energy and post-production preferences, and on the big day he was a total pro — complete with a full itinerary and backup equipment. He worked seamlessly with our videographer, and his artistic touch resulted in an excellent final gallery. We absolutely loved the photos and can’t wait to book our anniversary shoot with him!",
     names: "Sargon & Odelya",
     context: "Wedding · Bay Area, CA",
     photo: SARGON_ODELYA_PHOTOS[23], // first dance in fog, black & white — unused elsewhere on the homepage
