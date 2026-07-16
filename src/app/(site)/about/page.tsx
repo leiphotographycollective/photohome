@@ -67,8 +67,7 @@ export default function AboutPage() {
               color: MUTED,
             }}
           >
-            Welcome — I&rsquo;m genuinely glad you&rsquo;re here, and that
-            you&rsquo;re considering trusting me with your moments.
+            Welcome — I&rsquo;m really glad you&rsquo;re here.
           </p>
           <p
             data-fadeup=""
@@ -80,11 +79,10 @@ export default function AboutPage() {
               color: MUTED,
             }}
           >
-            I&rsquo;m a photographer based in San Jose, California. My work began
-            with a simple realization — watching friends&rsquo; faces light up at
-            the images I&rsquo;d made for them, I understood how much a single
-            frame can hold: how it translates emotion, and preserves not just how
-            a moment looked, but how it truly felt.
+            I&rsquo;m a photographer based in San Jose, California. This all
+            started with watching my friends&rsquo; faces light up at photos
+            I&rsquo;d made of them — that&rsquo;s the feeling I&rsquo;m chasing
+            for you, every time you open your gallery.
           </p>
           <p
             data-fadeup=""
@@ -96,13 +94,11 @@ export default function AboutPage() {
               color: MUTED,
             }}
           >
-            I&rsquo;ve never confined myself to a single style. I move fluidly
-            between light, airy frames and more editorial, atmospheric work —
-            always in service of the authenticity of the moment rather than a
-            formula. On set, I build a space that&rsquo;s calm, easy, and
-            genuinely fun, because the finest images come from people who feel at
-            ease. Above all, my intention is that you look and feel your absolute
-            best, with the entire experience shaped around you.
+            I don&rsquo;t have one singular style — I adapt from light and airy
+            to editorial, so the photos look like you, not like my formula.
+            Shoots with me are calm, easy, and honestly pretty fun — people at
+            ease make the best photos. Most of all, I want you to look and feel
+            your absolute best, with the whole experience tailored to you.
           </p>
         </div>
         <div
@@ -144,7 +140,7 @@ export default function AboutPage() {
           }}
         >
           <span style={kicker({})}>Selected frames</span>
-          <span style={kicker({ color: cream(0.4) })}>A range, kept authentic</span>
+          <span style={kicker({ color: cream(0.4) })}>Different styles, same feeling.</span>
         </div>
         <ParallaxGallery
           columns={[
@@ -202,7 +198,7 @@ export default function AboutPage() {
             textWrap: "pretty",
           }}
         >
-          A curated record of the genuine — something deep, meaningful &amp; real.
+          Photos that feel like the day — every time you open them.
         </p>
         <Link
           data-fadeup=""

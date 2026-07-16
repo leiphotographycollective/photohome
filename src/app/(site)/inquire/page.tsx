@@ -81,10 +81,9 @@ export default function InquirePage() {
               color: MUTED,
             }}
           >
-            Thank you for being here. Tell me a little about what you&rsquo;re
-            envisioning — the moments, the milestone, the feeling you want to
-            keep. Every story begins with a simple hello, and I read each inquiry
-            personally.
+            Tell me what you&rsquo;re planning — the venue, the vibe, the parts
+            you&rsquo;re most excited about. I read every inquiry personally,
+            and you&rsquo;ll hear back within 48 hours.
           </p>
         </div>
         <div

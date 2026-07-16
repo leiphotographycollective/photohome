@@ -11,7 +11,7 @@ import { PROCESS, QUALIFIERS } from "@/content/experience";
 export const metadata: Metadata = {
   title: "The Experience",
   description:
-    "Personalized, supportive photography for life's milestones. What working with Lei Photography Collective feels like — before, during and after the shutter clicks.",
+    "What it's like to work with me — how I make the day feel easy and the photos feel like you, before, during and after the shutter clicks.",
 };
 
 export default function ExperiencePage() {
@@ -56,7 +56,7 @@ export default function ExperiencePage() {
         />
         <div style={{ position: "relative", zIndex: 2, color: "#F7F5F2" }}>
           <div data-fadeup="" style={kicker({ marginBottom: "3vh" }, 11, ".34em")}>
-            Personalized, supportive photography for life&rsquo;s milestones
+            What it&rsquo;s like to work with me
           </div>
           <h1
             style={{
@@ -95,8 +95,8 @@ export default function ExperiencePage() {
                 color: cream(0.8),
               }}
             >
-              More than a set of photographs — a record of how your moment truly
-              felt, made with artistry and care.
+              Here&rsquo;s how I make the day feel easy — and the photos feel
+              like you.
             </p>
             <div data-fadeup="">
               <ScrollHint color={cream(0.55)} />
@@ -213,8 +213,7 @@ export default function ExperiencePage() {
             textWrap: "pretty",
           }}
         >
-          Whether you&rsquo;re celebrating a milestone, marking a new chapter, or
-          creating something uniquely your own…
+          Wedding, graduation, or something only you two would think up&hellip;
         </h2>
         <p
           data-fadeup=""
@@ -226,8 +225,8 @@ export default function ExperiencePage() {
             color: MUTED,
           }}
         >
-          I&rsquo;ll bring my calm, supportive demeanor and thoughtful approach.
-          Together, we&rsquo;ll create an experience that&rsquo;s uniquely yours.
+          I show up calm, prepared, and genuinely excited. You bring the day;
+          I&rsquo;ll take care of how it&rsquo;s remembered.
         </p>
       </section>
 
@@ -496,7 +495,7 @@ export default function ExperiencePage() {
         }}
       >
         <div data-fadeup="" style={kicker({ marginBottom: 22 }, 10, ".3em")}>
-          Begin the experience
+          Ready when you are
         </div>
         <h2
           data-fadeup=""
@@ -510,7 +509,7 @@ export default function ExperiencePage() {
             textWrap: "pretty",
           }}
         >
-          Let&rsquo;s create something <em>uniquely yours</em>.
+          Let&rsquo;s talk about <em>your day</em>.
         </h2>
         <Link
           data-fadeup=""

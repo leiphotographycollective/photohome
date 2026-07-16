@@ -15,20 +15,14 @@ export interface ProcessStep {
   body: string;
 }
 
-/** Inquire → Connect → Customize → Reserve, as rendered by ProcessSteps. */
+/** Inquire → Connect → Customize → Reserve, as rendered by ProcessSteps.
+ *  One copy for home, /experience and /weddings. */
 export const PROCESS: ProcessStep[] = [
   { n: "01", title: "Inquire", body: "Start by telling me a bit about what you're envisioning via the inquiry form. This is where your story begins." },
   { n: "02", title: "Connect", body: "We'll get on a call — your venue, your vision, what you're nervous about, and what actually matters to you in the photos." },
-  { n: "03", title: "Customize", body: "No two milestones are alike. I'll design a proposal that reflects your priorities, so the experience fits you." },
+  { n: "03", title: "Customize", body: "No two weddings are alike. I'll design a proposal that reflects your priorities, so the experience fits you." },
   { n: "04", title: "Reserve", body: "Date locked, plan started. From here, the photography is handled." },
 ];
 
-/** Homepage variant — identical except step 03 speaks weddings, not milestones. */
-export const HOME_PROCESS: ProcessStep[] = PROCESS.map((s) =>
-  s.n === "03"
-    ? {
-        ...s,
-        body: "No two weddings are alike. I'll design a proposal that reflects your priorities, so the experience fits you.",
-      }
-    : s
-);
+/** Alias kept so existing imports stay valid — the copy is now identical. */
+export const HOME_PROCESS = PROCESS;

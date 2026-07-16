@@ -23,10 +23,8 @@ describe("process", () => {
     ]);
   });
 
-  it("homepage variant swaps milestones for weddings in step 03 only", () => {
-    expect(PROCESS[2].body).toContain("No two milestones are alike");
-    expect(HOME_PROCESS[2].body).toContain("No two weddings are alike");
-    // every other step is the identical object
-    expect(HOME_PROCESS.filter((s, i) => s !== PROCESS[i])).toHaveLength(1);
+  it("speaks weddings everywhere — home and experience share one copy", () => {
+    expect(PROCESS[2].body).toContain("No two weddings are alike");
+    expect(HOME_PROCESS).toBe(PROCESS);
   });
 });
