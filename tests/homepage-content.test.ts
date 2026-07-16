@@ -70,9 +70,19 @@ describe("recent weddings", () => {
 describe("testimonials", () => {
   it("never contains an empty quote or unattributed entry", () => {
     for (const t of TESTIMONIALS) {
+      expect(t.pull.trim().length).toBeGreaterThan(0);
       expect(t.quote.trim().length).toBeGreaterThan(0);
       expect(t.names.trim().length).toBeGreaterThan(0);
+      expect(t.photo.path.length).toBeGreaterThan(0);
+      expect(t.photo.a.length).toBeGreaterThan(0);
     }
+  });
+
+  it("features Sargon & Odelya with the culture pull-quote", () => {
+    expect(TESTIMONIALS.length).toBeGreaterThanOrEqual(1);
+    expect(TESTIMONIALS[0].names).toBe("Sargon & Odelya");
+    expect(TESTIMONIALS[0].pull).toContain("critical to our culture");
+    expect(TESTIMONIALS[0].quote).toContain("Middle Eastern wedding");
   });
 });
 
