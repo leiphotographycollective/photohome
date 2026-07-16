@@ -533,30 +533,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ Marina band — full-bleed breather ══ */}
-      <section style={{ position: "relative", height: "90vh", overflow: "hidden" }}>
+      {/* ══ Marina band — the full frame, uncropped (no cover/zoom: the
+          photo renders at its native aspect ratio edge to edge) ══ */}
+      <section style={{ position: "relative", background: "#F7F5F2" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          data-band=""
           src={img(PHOTOS.marinaBoardwalk.path, 2000)}
           alt={PHOTOS.marinaBoardwalk.a}
           loading="lazy"
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            transform: "scale(1.16)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(to top,rgba(14,13,11,.5),rgba(14,13,11,0) 55%)",
-          }}
+          style={{ width: "100%", height: "auto", display: "block" }}
         />
       </section>
 
