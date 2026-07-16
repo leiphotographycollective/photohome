@@ -105,13 +105,13 @@ export default function MobileMenu() {
           <span style={{ fontSize: 12, letterSpacing: ".18em", color: "rgba(247,245,242,.4)" }}>01</span>
         </Link>
 
-        {/* Weddings — hover (or tap on touch) to expand sub-items */}
-        <div
-          onMouseEnter={() => setWeddingsOpen(true)}
-          onMouseLeave={() => setWeddingsOpen(false)}
-        >
+        {/* Weddings — tap to expand sub-items. Toggle on click only: hover
+            handlers here break touch, where a tap fires a synthetic
+            mouseenter (open) then click (toggle back closed). */}
+        <div>
           <button
             onClick={() => setWeddingsOpen((v) => !v)}
+            aria-expanded={weddingsOpen}
             style={{
               display: "flex", alignItems: "center", gap: 14,
               fontFamily: SERIF, fontSize: 38, fontWeight: 500, lineHeight: 1.35,
