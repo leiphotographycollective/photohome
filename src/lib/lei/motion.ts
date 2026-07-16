@@ -30,14 +30,13 @@ export function initLeiMotion(
   const pre = root.querySelector<HTMLElement>("[data-preloader]");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Desktop-only cinematics: the preloader, 300vh hero bloom and WebGL
-  // ripple are skipped on small screens — mobile ships a static hero for
-  // instant first paint (evaluated once per init; the breakpoint matches
-  // the responsive fallbacks in globals.css).
+  // The hero cinematics (preloader, entrance, scroll bloom) run at every
+  // width; only the WebGL mouse ripple stays desktop-only — it has no touch
+  // equivalent and costs GPU on phones. Reduced-motion phones fall back to
+  // the static mobile hero via globals.css (breakpoint matches there).
   const mobile = window.matchMedia("(max-width: 860px)").matches;
-  const home = !!opts.home && !mobile;
-  const preloader = !!opts.preloader && !mobile;
-  if (pre && mobile) pre.style.display = "none";
+  const home = !!opts.home;
+  const preloader = !!opts.preloader;
 
   if (reduced) {
     if (pre) pre.style.display = "none";
@@ -487,9 +486,9 @@ export function initLeiMotion(
   }, root);
   cleanups.push(() => ctx.revert());
 
-  // ── WebGL hero ripple (home only, loaded lazily) ───────────────────────
+  // ── WebGL hero ripple (home + desktop only, loaded lazily) ─────────────
   let glMouse: ((e: MouseEvent) => void) | null = null;
-  if (home) {
+  if (home && !mobile) {
     cleanups.push(
       initHeroGL(root, (fn) => {
         glMouse = fn;

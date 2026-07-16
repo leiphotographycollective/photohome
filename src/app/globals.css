@@ -229,12 +229,12 @@ html.lenis {
   }
 }
 
-/* ── CONVERSION LAYER (mobile-first hero + preloader guard) ────────────── */
+/* ── CONVERSION LAYER (static mobile hero = reduced-motion fallback) ───── */
 .lx-hero-mobile {
   display: none;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 860px) and (prefers-reduced-motion: reduce) {
   .lx-hero-desktop {
     display: none !important;
   }

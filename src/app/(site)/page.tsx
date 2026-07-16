@@ -39,7 +39,7 @@ export default function HomePage() {
           overflow: "hidden",
         }}
       >
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center", maxWidth: "100%", padding: "0 24px" }}>
           <div
             data-pl-name=""
             style={{
@@ -272,13 +272,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ Mobile hero — static and instant; the scroll cinematics are
-          desktop-only (see motion.ts mobile guard) ══ */}
+      {/* ══ Mobile hero — reduced-motion fallback only; every other phone
+          gets the full hero cinematic above (see globals.css guard) ══ */}
       <link
         rel="preload"
         as="image"
         href={HERO_MOBILE.path}
-        media="(max-width: 860px)"
+        media="(max-width: 860px) and (prefers-reduced-motion: reduce)"
       />
       <section
         className="lx-hero-mobile"
