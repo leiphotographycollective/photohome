@@ -13,7 +13,7 @@ import { HOME_PROCESS, QUALIFIERS } from "@/content/experience";
 export const metadata: Metadata = {
   title: "Editorial Wedding Photography in the San Francisco Bay Area",
   description:
-    `${POSITIONING} Editorial wedding photography for fun, stylish couples in the ${CITY} & beyond — by Raymond Lei.`,
+    `${POSITIONING} Editorial wedding photography for couples who want to be present in their wedding, not stress about it — ${CITY} & beyond, by Raymond Lei.`,
 };
 
 export default function HomePage() {
@@ -216,7 +216,7 @@ export default function HomePage() {
                 opacity: 0.8,
               }}
             >
-              Your wedding, shot like the cover story it is — for couples who bring the style and the party.
+              Your wedding, shot like the cover story it is — for couples who want to be present in their wedding, not stress about it.
             </div>
             <div
               data-hero-sub=""
@@ -319,7 +319,7 @@ export default function HomePage() {
           </div>
           <h1
             style={{
-              margin: "0 0 24px",
+              margin: "0 0 14px",
               fontFamily: SERIF,
               fontWeight: 500,
               fontSize: "clamp(34px,9.5vw,46px)",
@@ -329,6 +329,18 @@ export default function HomePage() {
           >
             Your wedding, shot like the <em>cover story</em> it is.
           </h1>
+          <p
+            style={{
+              margin: "0 0 24px",
+              maxWidth: 340,
+              fontSize: 14,
+              lineHeight: 1.6,
+              color: cream(0.85),
+            }}
+          >
+            For couples who want to be present in their wedding — not stress
+            about it.
+          </p>
           <div
             style={{
               display: "flex",

@@ -26,7 +26,7 @@ describe("positioning constants", () => {
     expect(CITY).toBe("San Francisco Bay Area");
     expect(POSITIONING).toBe("Your wedding, shot like the cover story it is.");
     expect(POSITIONING_SUB).toBe(
-      "Bay Area wedding photographer for couples who bring the style and the party."
+      "Bay Area wedding photography for couples who want to be present in their wedding — not stressed about it."
     );
   });
 

@@ -19,7 +19,7 @@ export const CITY = "San Francisco Bay Area";
  *  Later pages (pricing, about, FAQ) import these — never retype them. */
 export const POSITIONING = "Your wedding, shot like the cover story it is.";
 export const POSITIONING_SUB =
-  "Bay Area wedding photographer for couples who bring the style and the party.";
+  "Bay Area wedding photography for couples who want to be present in their wedding — not stressed about it.";
 
 /** Track B soft CTA for early planners — points at the live /free-session
  *  capture page until the Planning Guide funnel ships (then only the href
