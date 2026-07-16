@@ -11,7 +11,7 @@ import { img, PHOTOS } from "@/content/portfolio";
 export const metadata: Metadata = {
   title: "The Work",
   description:
-    "Weddings, graduations, portraits & editorials, headshots & events, engagements & proposals — photographed with intention across the Bay Area.",
+    "Weddings, graduations, portraits & editorials, headshots & events, engagements & proposals — all over the Bay Area.",
 };
 
 export default function WorkPage() {
@@ -58,7 +58,7 @@ export default function WorkPage() {
             data-fadeup=""
             style={kicker({ marginBottom: "3vh" }, 11, ".34em")}
           >
-            Step into a collection of
+            The full portfolio — five chapters
           </div>
           <h1
             style={{
@@ -70,10 +70,13 @@ export default function WorkPage() {
             }}
           >
             <div data-title-line="" style={{ fontSize: "clamp(52px,10vw,148px)" }}>
-              ARTISTRY BORN
+              REAL DAYS,
             </div>
             <div data-title-line="" style={{ fontSize: "clamp(52px,10vw,148px)" }}>
-              FROM <em style={{ fontWeight: 400 }}>PRESENCE</em>
+              SHOT LIKE
+            </div>
+            <div data-title-line="" style={{ fontSize: "clamp(52px,10vw,148px)" }}>
+              <em style={{ fontWeight: 400 }}>COVER STORIES.</em>
             </div>
           </h1>
           <div
@@ -98,8 +101,7 @@ export default function WorkPage() {
               }}
             >
               Weddings, graduations, portraits &amp; editorials, headshots &amp;
-              events, engagements &amp; proposals — photographed with intention
-              across the Bay Area.
+              events, engagements &amp; proposals — all over the Bay Area.
             </p>
             <div data-fadeup="">
               <ScrollHint color={cream(0.55)} />
@@ -178,8 +180,7 @@ export default function WorkPage() {
             textWrap: "pretty",
           }}
         >
-          A curated record of the genuine — something deep, meaningful &amp;{" "}
-          <em>real</em>.
+          If it mattered to you, it&rsquo;ll be in the <em>photos</em>.
         </h2>
         <Link
           data-fadeup=""

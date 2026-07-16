@@ -217,7 +217,7 @@ export const CATEGORIES: Record<string, Category> = {
     label: "Weddings",
     tagline: "Documented gracefully",
     intro:
-      "The full arc of a day — the quiet preparation, the vows, the first dance. A curated record of the genuine.",
+      "The full arc of a day — the quiet getting-ready hours, the vows, the dance floor.",
     projects: [
       { id: "sargon-odelya", title: "Sargon & Odelya", place: "Bay Area, CA", year: "2025", cover: SARGON_ODELYA_PHOTOS[12], photos: SARGON_ODELYA_CURATED },
       { id: "first-dance-film", title: "The First Dance", place: "Bay Area, CA", year: "2025", cover: P.firstDanceCine, photos: [P.firstDanceCine, P.firstDance04, P.firstDance03] },

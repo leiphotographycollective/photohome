@@ -892,7 +892,7 @@ export default function HomePage() {
           overflow: "hidden",
         }}
       >
-        <Marquee phrase="A curated record of the genuine" />
+        <Marquee phrase="You live it. I'll keep it." />
 
         <div
           className="lx-grid-2col"

@@ -6,19 +6,13 @@ import LeiFooter from "@/components/lei/LeiFooter";
 import { Marquee, ParallaxGallery, ProcessSteps, ScrollHint } from "@/components/lei/blocks";
 import { GOLD, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
+import { HOME_PROCESS } from "@/content/experience";
 
 export const metadata: Metadata = {
-  title: "Weddings — Documented Gracefully",
+  title: "Weddings — Present for All of It",
   description:
-    "Bay Area wedding photography with artistry, intention and presence. The full arc of your day — the quiet preparation, the vows, the first dance.",
+    "Bay Area wedding photography for couples who want to be present in their wedding — not stressed about it. The full arc of your day, from getting ready to the last song.",
 };
-
-const PROCESS = [
-  { n: "01", title: "Inquire", body: "Tell me a little about what you're envisioning. This is where your story begins." },
-  { n: "02", title: "Connect", body: "A personal conversation about your story, your vision, and the feelings you want to keep." },
-  { n: "03", title: "Customize", body: "No two milestones are alike — your proposal is designed around your priorities." },
-  { n: "04", title: "Reserve", body: "With your date held, move forward knowing the day will be documented with artistry and intention." },
-];
 
 export default function WeddingsPage() {
   return (
@@ -110,10 +104,10 @@ export default function WeddingsPage() {
             }}
           >
             <div data-title-line="" style={{ fontSize: "clamp(40px,9vw,140px)" }}>
-              DOCUMENTED
+              PRESENT FOR
             </div>
             <div data-title-line="" style={{ fontSize: "clamp(40px,9vw,140px)" }}>
-              <em style={{ fontWeight: 400 }}>GRACEFULLY.</em>
+              <em style={{ fontWeight: 400 }}>ALL OF IT.</em>
             </div>
           </h1>
           <p
@@ -126,9 +120,8 @@ export default function WeddingsPage() {
               color: cream(0.72),
             }}
           >
-            I create space for you to slow down and experience your day as it
-            unfolds — thoughtful guidance and intentional planning, before the
-            camera ever comes out.
+            You two stay in the day — I&rsquo;ll make sure you get it back. The
+            planning happens before the camera ever comes out.
           </p>
         </div>
         <div
@@ -258,8 +251,7 @@ export default function WeddingsPage() {
             textWrap: "pretty",
           }}
         >
-          Your milestones deserve to be documented gracefully — with artistry,
-          intention, and presence.
+          The moments you&rsquo;ll want back, kept the way they felt.
         </p>
         <Link
           data-fadeup=""
@@ -276,7 +268,7 @@ export default function WeddingsPage() {
       <section
         style={{ position: "relative", background: "#0E0D0B", color: "#F7F5F2" }}
       >
-        <ProcessSteps steps={PROCESS} />
+        <ProcessSteps steps={HOME_PROCESS} />
       </section>
 
       {/* ══ CTA + footer ══ */}
@@ -304,7 +296,7 @@ export default function WeddingsPage() {
               textWrap: "pretty",
             }}
           >
-            Currently booking 2026 <em>weddings</em>.
+            Now booking 2026 &amp; 2027 <em>weddings</em>.
           </h2>
           <Link
             data-fadeup=""
