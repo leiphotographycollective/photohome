@@ -10,7 +10,7 @@ import { img, PHOTOS } from "@/content/portfolio";
 export const metadata: Metadata = {
   title: "About Raymond Lei",
   description:
-    "Raymond Lei is a photographer based in San Jose, California — moving fluidly between light, airy frames and editorial, atmospheric work, always in service of the authenticity of the moment.",
+    "Meet Raymond Lei — a San Jose photographer who adapts from light and airy to editorial, so your photos look like you, not a formula. Calm, easy shoots across the San Francisco Bay Area.",
 };
 
 export default function AboutPage() {

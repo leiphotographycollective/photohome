@@ -13,9 +13,10 @@ const BANNED: RegExp[] = [
   /life.s milestones/i,
   /milestones are alike/i,
   /celebrating a milestone/i,
+  /authenticity of the moment/i,
 ];
 
-const ROOTS = ["src/app", "src/content", "src/components"];
+const ROOTS = ["src"];
 
 function walk(dir: string): string[] {
   return readdirSync(dir).flatMap((name) => {

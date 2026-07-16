@@ -37,7 +37,7 @@ export function ScrollHint({
   );
 }
 
-/** Bordered marquee band ("You live it. I'll keep it. · Inquire ·"). */
+/** Bordered marquee band ("You live it. I’ll keep it. · Inquire ·"). */
 export function Marquee({
   phrase,
   margin = "0 0 12vh",

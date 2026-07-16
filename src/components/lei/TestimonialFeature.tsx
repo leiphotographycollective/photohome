@@ -64,6 +64,7 @@ export default function TestimonialFeature() {
           />
         </div>
         <div style={{ maxWidth: 560 }}>
+          {/* Assumes the featured couple is the gallery couple above — revisit when a second testimonial arrives. */}
           <div data-fadeup="" style={kicker({ marginBottom: 26 }, 10, ".3em")}>
             From the couple above
           </div>
