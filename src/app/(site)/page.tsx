@@ -6,9 +6,10 @@ import LeiFooter from "@/components/lei/LeiFooter";
 import { Marquee, ProcessSteps } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, ink, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
-import { CtaLink, SecondaryCta, SoftLink, TestimonialSlot } from "@/components/lei/Cta";
+import { CtaLink, SecondaryCta, SoftLink } from "@/components/lei/Cta";
 import { CITY, HERO_MOBILE, POSITIONING, WEDDING_PORTFOLIO } from "@/content/homepage";
 import { HOME_PROCESS, QUALIFIERS } from "@/content/experience";
+import TestimonialFeature from "@/components/lei/TestimonialFeature";
 
 export const metadata: Metadata = {
   title: "Editorial Wedding Photography in the San Francisco Bay Area",
@@ -504,7 +505,6 @@ export default function HomePage() {
             <CtaLink />
             <SecondaryCta />
           </div>
-          <TestimonialSlot index={0} />
         </div>
 
         <div style={{ position: "relative", margin: "0 0 12%" }}>
@@ -725,6 +725,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ══ From the couple above — Sargon & Odelya, on working with me ══ */}
+      <TestimonialFeature />
 
       {/* ══ About ══ */}
       <section
