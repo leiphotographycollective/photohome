@@ -215,7 +215,7 @@ const P = PHOTOS;
 export const CATEGORIES: Record<string, Category> = {
   weddings: {
     label: "Weddings",
-    tagline: "Documented gracefully",
+    tagline: "Present for all of it",
     intro:
       "The full arc of a day — the quiet getting-ready hours, the vows, the dance floor.",
     projects: [
