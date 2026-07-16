@@ -3,7 +3,7 @@
 
 /** The four "You're here because…" self-selection lines. */
 export const QUALIFIERS = [
-  "You want wedding photos that look editorial — not like every Pinterest board you've already seen.",
+  "You want a photographer you can trust with the day — someone calm, prepared, and impossible to rattle.",
   "You've said “we're not photo people” on every photographer call. You want to feel at ease, not posed.",
   "You want the day back the way it felt — not a performance of it.",
   "You care about how things look. You want a photographer who does too — and who's already planned for it.",

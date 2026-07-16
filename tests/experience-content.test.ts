@@ -4,7 +4,7 @@ import { HOME_PROCESS, PROCESS, QUALIFIERS } from "@/content/experience";
 describe("qualifiers", () => {
   it("has the four approved self-selection lines", () => {
     expect(QUALIFIERS).toHaveLength(4);
-    expect(QUALIFIERS[0]).toContain("editorial");
+    expect(QUALIFIERS[0]).toContain("trust with the day");
     expect(QUALIFIERS[3]).toContain("already planned for it");
     // typographic characters are load-bearing copy — regression-guard them
     expect(QUALIFIERS[1]).toContain("“we're not photo people”");
