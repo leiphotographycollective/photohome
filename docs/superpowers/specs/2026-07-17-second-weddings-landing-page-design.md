@@ -23,6 +23,17 @@ main nav. Copy is adapted from `Second_Wedding_Landing_Page_Copy.docx`.
 - **Pricing is intentionally below the main site.** This page shows
   $750–$1,550; the main site advertises "Collections from $2,400." The two do
   not collide because this page is out of nav and framed as short coverage.
+- **No comparison to the premium product on this page.** Per Raymond's
+  positioning notes, the premium price and the second-wedding price must never
+  sit side by side (it drags the premium anchor down) and the copy must never
+  read as a discount or "smaller budget" story. The difference between the two
+  products is conveyed only through the *concreteness of what each
+  second-wedding package delivers* (hours, photo count, portrait time, editing,
+  guest fit, what is a paid add-on). A premium client reads that specificity,
+  sees it does not fit a large production, and self-selects out; the FAQ's soft
+  routing to the main brand is the only "bigger day?" signal, and Raymond
+  handles any direct question personally. No premium tier, dollar figure, or
+  two-product comparison table appears on the page.
 - Reuse the existing design system: cream `#F7F5F2`, ink `#0E0D0B`, gold
   `#B8905A`, Bodoni `SERIF`, DM Sans body; `kicker`/`pill` helpers; the
   `data-fadeup` / `data-reveal` / `data-step` / `data-title-line` animation
@@ -75,14 +86,25 @@ Sections top to bottom. Alternating cream / ink backgrounds per the site rhythm.
      BENEFITS grid.
 
 4. **Packages** (`Simple packages, honest prices`)
-   - Three price cards, data-driven from an array:
-     - Intimate — $750 — 2 hours, ~25 photos
-     - Classic — $1,150 — `Most popular` flag — 3 hours, ~40 photos
-     - Full Afternoon — $1,550 — 4 hours, ~60 photos
-   - "All packages include" line: planning call, private gallery, print rights,
-     sneak peek in 48 hours, full gallery in 3 weeks.
+   - Three price cards, data-driven from an array. Each card is specific about
+     what the couple gets for the price (this specificity IS the
+     differentiator — see "Positioning the two products" below):
+     - Intimate — $750 — 2 hours, one photographer, ~25 edited photos
+     - Classic — $1,150 — `Most popular` flag — 3 hours, one photographer, ~40 edited photos
+     - Full Afternoon — $1,550 — 4 hours, one photographer, ~60 edited photos
+   - **What every package includes / good to know** block (shared, below the
+     cards). Drawn from Raymond's granular list so a reader knows exactly what
+     the price buys and, implicitly, the shape of the product:
+     - One planning call before the day
+     - Short, candid-style portraits of the two of you (10–15 minutes)
+     - Standard batch editing, consistent color across the gallery
+     - A private online gallery, print rights
+     - Sneak peek in 48 hours, full gallery in 3 weeks
+     - Suited to intimate celebrations of up to ~50 guests with simpler family
+       groupings
    - Add-ons line: extra hour ($350), heirloom album (from $450), pre-wedding
-     session ($400).
+     session ($400). (Engagement session and album are paid add-ons here, not
+     included — stated plainly as part of "what you get.")
    - **Founding-rate line** (approved): `2026 introductory pricing. These rates
      rise next season.` Kept as a small, easily removable line.
 
@@ -137,8 +159,9 @@ Typed exports, all consumed by the page so JSX holds no raw copy:
 - `HERO` — kicker, headline, subheadline, cta label, hero image `Photo`.
 - `OPENING` — array of paragraph strings.
 - `VALUE_PROPS` — `{ title, body }[]`.
-- `PACKAGES` — `{ name, price, hours, photos, blurb, popular? }[]`.
-- `PACKAGE_INCLUDES` — string; `ADDONS` — string; `FOUNDING_RATE` — string.
+- `PACKAGES` — `{ name, price, hours, photographers, photos, blurb, popular? }[]`.
+- `PACKAGE_INCLUDES` — `string[]` (the "what every package includes / good to
+  know" bullets); `ADDONS` — string; `FOUNDING_RATE` — string.
 - `SOCIAL_PROOF` — `{ images: Photo[], caption, href }`, plus an optional
   `TESTIMONIAL` slot (empty until a real one lands).
 - `STEPS` — `{ n, title, body }[]` for `ProcessSteps`.
