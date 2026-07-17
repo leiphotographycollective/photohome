@@ -9,7 +9,7 @@ import { img, PHOTOS } from "@/content/portfolio";
 import { HOME_PROCESS } from "@/content/experience";
 
 export const metadata: Metadata = {
-  title: "Weddings — Present for All of It",
+  title: "Weddings: Present for All of It",
   description:
     "Bay Area wedding photography for couples who want to be present in their wedding, not stressed about it. The full arc of your day, from getting ready to the last song.",
 };

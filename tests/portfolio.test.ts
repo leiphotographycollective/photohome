@@ -11,12 +11,14 @@ describe("curated Sargon & Odelya gallery", () => {
     expect(SARGON_ODELYA_CURATED.length).toBeLessThanOrEqual(15);
   });
 
-  it("is exactly what the sargon-odelya project displays", () => {
-    const proj = CATEGORIES.weddings.projects.find(
-      (p) => p.id === "sargon-odelya"
-    );
-    expect(proj).toBeDefined();
-    expect(proj!.photos).toEqual(SARGON_ODELYA_CURATED);
+  // The /portfolio/weddings category (and its sargon-odelya project page) were
+  // removed. The curated array is retained for reuse but is no longer routed.
+  it("is not routed by any portfolio category", () => {
+    for (const cat of CAT_ORDER) {
+      const projectIds = CATEGORIES[cat].projects.map((p) => p.id);
+      expect(projectIds).not.toContain("sargon-odelya");
+    }
+    expect(CATEGORIES.weddings).toBeUndefined();
   });
 });
 

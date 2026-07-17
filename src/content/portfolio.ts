@@ -213,16 +213,6 @@ export interface Category {
 const P = PHOTOS;
 
 export const CATEGORIES: Record<string, Category> = {
-  weddings: {
-    label: "Weddings",
-    tagline: "Present for all of it",
-    intro:
-      "The full arc of a day: the quiet getting-ready hours, the vows, the dance floor.",
-    projects: [
-      { id: "sargon-odelya", title: "Sargon & Odelya", place: "Bay Area, CA", year: "2025", cover: SARGON_ODELYA_PHOTOS[12], photos: SARGON_ODELYA_CURATED },
-      { id: "first-dance-film", title: "The First Dance", place: "Bay Area, CA", year: "2025", cover: P.firstDanceCine, photos: [P.firstDanceCine, P.firstDance04, P.firstDance03] },
-    ],
-  },
   couples: {
     label: "Couples",
     tagline: "The two of you, as you really are",
@@ -279,7 +269,6 @@ export const CATEGORIES: Record<string, Category> = {
 };
 
 export const CAT_ORDER = [
-  "weddings",
   "couples",
   "graduations",
   "portraits",

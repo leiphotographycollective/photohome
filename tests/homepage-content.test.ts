@@ -30,9 +30,9 @@ describe("positioning constants", () => {
 });
 
 describe("category doors", () => {
-  it("are the four approved categories, each routable", () => {
+  it("are the approved categories, each routable", () => {
+    // Weddings was removed as a portfolio category; its door went with it.
     expect(DOORS.map((d) => d.cat)).toEqual([
-      "weddings",
       "couples",
       "engagements",
       "events",
@@ -50,7 +50,7 @@ describe("recent weddings", () => {
   it("has at least one wedding with 1-3 teaser frames each", () => {
     expect(RECENT_WEDDINGS.length).toBeGreaterThanOrEqual(1);
     for (const w of RECENT_WEDDINGS) {
-      expect(w.href.startsWith("/portfolio/weddings/")).toBe(true);
+      expect(w.href.startsWith("/weddings")).toBe(true);
       expect(w.frames.length).toBeGreaterThanOrEqual(1);
       expect(w.frames.length).toBeLessThanOrEqual(3);
       expect(w.title.length).toBeGreaterThan(0);

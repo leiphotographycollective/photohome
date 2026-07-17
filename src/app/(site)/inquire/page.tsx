@@ -7,7 +7,7 @@ import { DIM, GOLD, MUTED, SERIF, kicker } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
 
 export const metadata: Metadata = {
-  title: "Inquire — Let's Make Something Felt",
+  title: "Inquire: Let's Make Something Felt",
   description:
     "Tell me about your day: weddings, graduations, portraits and events across the San Francisco Bay Area. Every inquiry is read personally, with a response within 48 hours.",
 };

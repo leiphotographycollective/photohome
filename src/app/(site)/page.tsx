@@ -7,7 +7,8 @@ import { Marquee, ProcessSteps } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, ink, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
 import { CtaLink, SoftLink } from "@/components/lei/Cta";
-import { CITY, HERO_PHOTO, POSITIONING, WEDDING_PORTFOLIO } from "@/content/homepage";
+import { CITY, POSITIONING, WEDDING_PORTFOLIO } from "@/content/homepage";
+import HeroSlideshow from "@/components/lei/HeroSlideshow";
 import { HOME_PROCESS, QUALIFIERS } from "@/content/experience";
 import TestimonialFeature from "@/components/lei/TestimonialFeature";
 
@@ -22,8 +23,9 @@ export default function HomePage() {
     <LeiPage>
       <Chrome />
 
-      {/* ══ Hero — static split: photo left, introduction right. No load-in
-          or scroll animation, identical on every platform. ══ */}
+      {/* ══ Hero — split: rotating photo left, introduction right. The photo
+          cross-fades through HERO_PHOTOS (~4s each); the first frame is the
+          LCP image and the rotation is a motion-respecting enhancement. ══ */}
       <section
         id="top"
         className="lx-hero"
@@ -33,15 +35,7 @@ export default function HomePage() {
           color: "#0E0D0B",
         }}
       >
-        <div className="lx-hero-photo">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={HERO_PHOTO.path}
-            alt={HERO_PHOTO.a}
-            fetchPriority="high"
-            style={{ display: "block", width: "100%", height: "auto" }}
-          />
-        </div>
+        <HeroSlideshow />
         <div
           className="lx-hero-copy"
           style={{
@@ -149,7 +143,7 @@ export default function HomePage() {
             textWrap: "pretty",
           }}
         >
-          You two, at your absolute best — the style, the party, and every real moment in between.
+          You two, at your absolute best: the style, the party, and every real moment in between.
         </p>
       </section>
 
@@ -446,7 +440,7 @@ export default function HomePage() {
             data-fadeup=""
             style={{ marginTop: "7vh", display: "flex", justifyContent: "center" }}
           >
-            <SoftLink href="/work" label="View the full portfolio" dark />
+            <SoftLink href="/weddings" label="View the full portfolio" dark />
           </div>
         </div>
       </section>
@@ -518,16 +512,16 @@ export default function HomePage() {
             data-fadeup=""
             style={{ margin: "0 0 18px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
           >
-            I&rsquo;m Raymond &mdash; a photographer based in San Jose, California.
+            I&rsquo;m Raymond, a photographer based in San Jose, California.
             My love for photography began when I saw my friends&rsquo; faces light
-            up at the images I&rsquo;d made for them &mdash; the same feeling I want
+            up at the images I&rsquo;d made for them; the same feeling I want
             you to have every time you open your gallery.
           </p>
           <p
             data-fadeup=""
             style={{ margin: "0 0 34px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
           >
-            I don&rsquo;t have one singular style &mdash; I adapt from light and
+            I don&rsquo;t have one singular style: I adapt from light and
             airy to editorial, so the photos look like you, not like my formula.
             Most of all, I want you to look and feel your absolute best, with the
             whole experience tailored personally to you.

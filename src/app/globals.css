@@ -223,7 +223,7 @@ html.lenis {
   }
 }
 
-/* ── HERO (static split: photo left at natural size, text right) ───────── */
+/* ── HERO (split: rotating photo left, text right) ────────────────────── */
 .lx-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -231,10 +231,23 @@ html.lenis {
   min-height: calc(100svh - var(--lx-header-h));
 }
 
+/* The photo column stacks the slideshow frames absolutely, so it needs a
+   definite box. On desktop it fills the hero height; the frames cover-crop. */
+.lx-hero-photo {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100svh - var(--lx-header-h));
+}
+
 @media (max-width: 860px) {
   .lx-hero {
     grid-template-columns: 1fr;
     min-height: 0;
+  }
+  .lx-hero-photo {
+    /* Single column: give the box a portrait shape to crop into. */
+    min-height: 0;
+    aspect-ratio: 4 / 5;
   }
   .lx-hero-copy {
     padding: 72px 24px !important;

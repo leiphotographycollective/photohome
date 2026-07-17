@@ -15,7 +15,7 @@ const LINKS = [
 ];
 
 const WEDDINGS_SUB = [
-  { href: "/portfolio/weddings", label: "The Portfolio" },
+  { href: "/weddings", label: "The Portfolio" },
   { href: "/experience", label: "Experience" },
   { href: "/investment", label: "Investment" },
   { href: "/free-session", label: "Free Session" },

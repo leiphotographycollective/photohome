@@ -11,7 +11,7 @@ import { ADD_ONS, INCLUDED_EVERYWHERE, TIERS } from "@/content/pricing";
 import { img, PHOTOS, type Photo } from "@/content/portfolio";
 
 export const metadata: Metadata = {
-  title: "Wedding Photography Investment — Collections from $2,400",
+  title: "Wedding Photography Investment: Collections from $2,400",
   description: `${POSITIONING} Three wedding collections from $2,400 (The Collection, The Signature and The Intimate) for couples in the ${CITY} & beyond.`,
 };
 

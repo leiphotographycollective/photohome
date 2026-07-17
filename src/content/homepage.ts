@@ -21,12 +21,26 @@ export const POSITIONING = "Your wedding, shot like the cover story it is.";
 export const POSITIONING_SUB =
   "Bay Area wedding photography for couples who want to be present in their wedding, not stressed about it.";
 
-/** Optimized frame for the static split hero, every platform (LCP-critical). */
+/** Optimized frame for the split hero, every platform (LCP-critical).
+ *  Also the first frame of HERO_PHOTOS below — keep the two in sync. */
 export const HERO_PHOTO: Photo = {
   path: "/images/hero-mobile.jpg",
   a: "Bride's veil catching the light at golden hour",
   r: "p",
 };
+
+/** The hero fades and rotates through these frames (~4s each).
+ *  The FIRST frame is the LCP image: it loads first and is the only frame
+ *  present at first paint, so keep it a local, already-sized file identical
+ *  to HERO_PHOTO. The rest are progressive enhancement — they mount after the
+ *  first paint and only cross-fade when the visitor allows motion. Swap or add
+ *  frames freely (one line each); the slideshow renders whatever's listed.
+ *  Prefer portrait frames that don't already appear elsewhere on the homepage. */
+export const HERO_PHOTOS: Photo[] = [
+  HERO_PHOTO, // veil at golden hour — the LCP frame (local, loads first)
+  PHOTOS.danceLift, // groom lifting the bride during their first dance
+  PHOTOS.coastKiss, // coastal kiss, black and white
+];
 
 export interface Testimonial {
   pull: string; // the italic serif pull-quote line
@@ -58,7 +72,6 @@ export interface Door {
 
 /** The Collection — four category doors (routing, not browsing). */
 export const DOORS: Door[] = [
-  { cat: "weddings", label: "Weddings", tagline: "The full arc of the day", photo: SARGON_ODELYA_PHOTOS[16] },
   { cat: "couples", label: "Couples", tagline: "The two of you, as you really are", photo: PHOTOS.coastalCandid },
   { cat: "engagements", label: "Engagements", tagline: "The moment before everything changes", photo: PHOTOS.proposal },
   { cat: "events", label: "Events", tagline: "The room, as it really felt", photo: PHOTOS.eventAssyrian },
@@ -79,7 +92,7 @@ export const RECENT_WEDDINGS: RecentWedding[] = [
     title: "Sargon & Odelya",
     place: "Bay Area, CA",
     year: "2025",
-    href: "/portfolio/weddings/sargon-odelya",
+    href: "/weddings", // the /portfolio/weddings/* galleries were removed; point at the weddings page
     cover: SARGON_ODELYA_PHOTOS[13], // touching the groom's face at golden hour
     frames: [
       SARGON_ODELYA_PHOTOS[8], // veil at golden hour
@@ -100,7 +113,7 @@ export const WEDDING_PORTFOLIO: PortfolioRow[] = [
   // Fulls are natively landscape; pairs natively portrait. No photo here may
   // appear anywhere else on the homepage (hero, manifesto, who-I-photograph…).
   { layout: "full", photos: [SARGON_ODELYA_PHOTOS[13]] }, // touching the groom's face at golden hour
-  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[8], SARGON_ODELYA_PHOTOS[27]] }, // veil golden hour · dip kiss
+  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[9], SARGON_ODELYA_PHOTOS[27]] }, // seated bridal portrait · dip kiss (SO[8] is the hero frame, don't reuse)
   { layout: "full", photos: [SARGON_ODELYA_PHOTOS[25]] }, // carried through the cheering crowd
   { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[2], SARGON_ODELYA_PHOTOS[0]] }, // bride & mother b&w · ring box
   { layout: "full", photos: [SARGON_ODELYA_PHOTOS[29]] }, // embracing on the dance floor

@@ -198,7 +198,7 @@ export default function AboutPage() {
             textWrap: "pretty",
           }}
         >
-          Photos that feel like the day — every time you open them.
+          Photos that feel like the day, every time you open them.
         </p>
         <Link
           data-fadeup=""

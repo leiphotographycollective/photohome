@@ -11,7 +11,7 @@ import { GOLD, SERIF, cream } from "./tokens";
 const CARD_WIDTH = "min(38vw,460px)";
 
 const CARDS = [
-  { label: "Weddings", n: "01", href: "/portfolio/weddings", photo: PHOTOS.firstDanceCine },
+  { label: "Weddings", n: "01", href: "/weddings", photo: PHOTOS.firstDanceCine },
   { label: "Graduations", n: "02", href: "/portfolio/graduations", photo: PHOTOS.gradPortrait },
   { label: "Portraits & Editorials", n: "03", href: "/portfolio/portraits", photo: PHOTOS.editorial },
   { label: "Headshots & Events", n: "04", href: "/portfolio/events", photo: PHOTOS.naomi, alt: "Portrait session, natural light" },
