@@ -233,7 +233,7 @@ export default function FreeSessionForm() {
       )}
 
       <p style={{ textAlign: "center", fontSize: 13, color: "#9C9490", marginTop: 16 }}>
-        Your details go only to me — never sold, never spammed.
+        Your details go only to me. Never sold, never spammed.
       </p>
     </form>
   );

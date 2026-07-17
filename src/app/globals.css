@@ -177,28 +177,22 @@ html.lenis {
 }
 
 /* ── RESPONSIVE FALLBACKS (the design is desktop-first) ────────────────── */
+:root {
+  --lx-header-h: 64px;
+}
 .lx-burger {
-  display: none;
+  display: flex;
 }
 .lx-overlay {
-  display: none;
+  display: flex;
 }
 
 @media (max-width: 860px) {
   .lx-header {
-    padding: 16px 20px !important;
-  }
-  .lx-nav {
-    display: none !important;
-  }
-  .lx-burger {
-    display: flex !important;
-  }
-  .lx-overlay {
-    display: flex !important;
+    padding: 0 20px !important;
   }
   .lx-logo {
-    font-size: 15px !important;
+    font-size: 11px !important;
   }
   .lx-grid-2col {
     grid-template-columns: 1fr !important;
@@ -229,20 +223,21 @@ html.lenis {
   }
 }
 
-/* ── CONVERSION LAYER (static mobile hero = reduced-motion fallback) ───── */
-.lx-hero-mobile {
-  display: none;
+/* ── HERO (static split: photo left at natural size, text right) ───────── */
+.lx-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: var(--lx-header-h);
+  min-height: calc(100svh - var(--lx-header-h));
 }
 
-@media (max-width: 860px) and (prefers-reduced-motion: reduce) {
-  .lx-hero-desktop {
-    display: none !important;
+@media (max-width: 860px) {
+  .lx-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
   }
-  .lx-hero-mobile {
-    display: flex !important;
-  }
-  [data-preloader] {
-    display: none !important;
+  .lx-hero-copy {
+    padding: 72px 24px !important;
   }
 }
 

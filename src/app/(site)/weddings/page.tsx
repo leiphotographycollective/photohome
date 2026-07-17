@@ -11,13 +11,13 @@ import { HOME_PROCESS } from "@/content/experience";
 export const metadata: Metadata = {
   title: "Weddings — Present for All of It",
   description:
-    "Bay Area wedding photography for couples who want to be present in their wedding — not stressed about it. The full arc of your day, from getting ready to the last song.",
+    "Bay Area wedding photography for couples who want to be present in their wedding, not stressed about it. The full arc of your day, from getting ready to the last song.",
 };
 
 export default function WeddingsPage() {
   return (
     <LeiPage style={{ background: "#0E0D0B", color: "#F7F5F2" }}>
-      <Chrome active="weddings" />
+      <Chrome />
 
       {/* ══ Title ══ */}
       <section

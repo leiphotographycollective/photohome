@@ -6,10 +6,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GOLD, SERIF } from "./tokens";
 
-/* Mobile-only navigation: a burger button in the fixed header that opens a
-   full-screen editorial menu. Hidden on desktop via .lx-burger / .lx-overlay
-   rules in globals.css. The overlay is portaled to <body> because the fixed
-   header uses mix-blend-difference, which would bleed into any child. */
+/* Site navigation at every width: a burger button in the fixed header that
+   opens a full-screen editorial menu. The overlay is portaled to <body> so
+   it always sits above the page, independent of the header. */
 
 const LINKS = [
   { href: "/about", label: "About", n: "03" },
@@ -27,7 +26,7 @@ const bar = (open: boolean, top: boolean) =>
     display: "block",
     width: 22,
     height: 1.5,
-    background: "#fff",
+    background: "#0E0D0B",
     transition: "transform .3s ease",
     transform: open
       ? `translateY(${top ? 3.25 : -3.25}px) rotate(${top ? 45 : -45}deg)`

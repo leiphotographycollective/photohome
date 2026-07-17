@@ -14,7 +14,7 @@ export const TIERS: Tier[] = [
     name: "The Collection",
     price: "$3,800",
     blurb:
-      "Ten hours, two photographers. My eye on the big moments, a second lens catching everything else — your partner’s face when you walk in, the details you’ll forget by Monday. For the couples who want the full story told.",
+      "Ten hours, two photographers. My eye on the big moments, a second lens catching everything else: your partner’s face when you walk in, the details you’ll forget by Monday. For the couples who want the full story told.",
     facts: [
       "Up to 10 hours of coverage",
       "Including: getting ready (both sides), portraits, wedding party, family formals, ceremony, cocktail hour, full reception",
@@ -40,7 +40,7 @@ export const TIERS: Tier[] = [
     name: "The Intimate",
     price: "$2,400",
     blurb:
-      "Six hours. No big production — just quiet, focused coverage for the couples who want it kept close. Ceremony, portraits, the in-between moments that actually matter. Full gallery delivered, every image edited.",
+      "Six hours. No big production, just quiet, focused coverage for the couples who want it kept close. Ceremony, portraits, the in-between moments that actually matter. Full gallery delivered, every image edited.",
     facts: [
       "Up to 6 hours of coverage",
       "Including: getting ready, portraits, wedding party, family formals, ceremony, cocktail hour",
@@ -55,7 +55,7 @@ export const INCLUDED_EVERYWHERE = [
   "100–150 fully edited images per hour of coverage",
   "Online gallery to view, download and order prints (Pic-Time, 12-month access)",
   "Full-resolution downloads + printing rights",
-  "Monthly payment plans — every collection can be split into monthly payments",
+  "Monthly payment plans: every collection can be split into monthly payments",
 ];
 
 export interface AddOn {
@@ -73,6 +73,6 @@ export const ADD_ONS: AddOn[] = [
   {
     name: "Second photographer",
     price: "+$600",
-    note: "For The Intimate and The Signature — already included in The Collection",
+    note: "For The Intimate and The Signature, already included in The Collection",
   },
 ];

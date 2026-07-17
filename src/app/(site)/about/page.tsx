@@ -10,13 +10,13 @@ import { img, PHOTOS } from "@/content/portfolio";
 export const metadata: Metadata = {
   title: "About Raymond Lei",
   description:
-    "Meet Raymond Lei — a San Jose photographer who adapts from light and airy to editorial, so your photos look like you, not a formula. Calm, easy shoots across the San Francisco Bay Area.",
+    "Meet Raymond Lei, a San Jose photographer who adapts from light and airy to editorial, so your photos look like you, not a formula. Calm, easy shoots across the San Francisco Bay Area.",
 };
 
 export default function AboutPage() {
   return (
     <LeiPage>
-      <Chrome active="about" />
+      <Chrome />
 
       {/* ══ Intro ══ */}
       <section
@@ -67,7 +67,7 @@ export default function AboutPage() {
               color: MUTED,
             }}
           >
-            Welcome — I&rsquo;m really glad you&rsquo;re here.
+            Welcome. I&rsquo;m really glad you&rsquo;re here.
           </p>
           <p
             data-fadeup=""
@@ -81,7 +81,7 @@ export default function AboutPage() {
           >
             I&rsquo;m a photographer based in San Jose, California. This all
             started with watching my friends&rsquo; faces light up at photos
-            I&rsquo;d made of them — that&rsquo;s the feeling I&rsquo;m chasing
+            I&rsquo;d made of them. That&rsquo;s the feeling I&rsquo;m chasing
             for you, every time you open your gallery.
           </p>
           <p
@@ -94,9 +94,9 @@ export default function AboutPage() {
               color: MUTED,
             }}
           >
-            I don&rsquo;t have one singular style — I adapt from light and airy
+            I don&rsquo;t have one singular style: I adapt from light and airy
             to editorial, so the photos look like you, not like my formula.
-            Shoots with me are calm, easy, and honestly pretty fun — people at
+            Shoots with me are calm, easy, and honestly pretty fun; people at
             ease make the best photos. Most of all, I want you to look and feel
             your absolute best, with the whole experience tailored to you.
           </p>

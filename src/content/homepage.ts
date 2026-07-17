@@ -19,17 +19,10 @@ export const CITY = "San Francisco Bay Area";
  *  Later pages (pricing, about, FAQ) import these — never retype them. */
 export const POSITIONING = "Your wedding, shot like the cover story it is.";
 export const POSITIONING_SUB =
-  "Bay Area wedding photography for couples who want to be present in their wedding — not stressed about it.";
+  "Bay Area wedding photography for couples who want to be present in their wedding, not stressed about it.";
 
-/** Track B soft CTA for early planners — points at the live /free-session
- *  capture page until the Planning Guide funnel ships (then only the href
- *  changes; every placement updates automatically). */
-export const SECONDARY_CTA_LABEL =
-  "Just started planning? Claim a free engagement session";
-export const SECONDARY_CTA_HREF = "/free-session";
-
-/** Optimized full-bleed frame for the static mobile hero (LCP-critical). */
-export const HERO_MOBILE: Photo = {
+/** Optimized frame for the static split hero, every platform (LCP-critical). */
+export const HERO_PHOTO: Photo = {
   path: "/images/hero-mobile.jpg",
   a: "Bride's veil catching the light at golden hour",
   r: "p",
@@ -47,9 +40,9 @@ export interface Testimonial {
 export const TESTIMONIALS: Testimonial[] = [
   {
     pull:
-      "He took the time to understand which shots were critical to our culture — and didn’t miss a single beat.",
+      "He took the time to understand which shots were critical to our culture, and didn’t miss a single beat.",
     quote:
-      "We had a traditional Middle Eastern wedding, and we were so impressed by how quickly Raymond got up to speed on our specific traditions. His organization and talent far exceed his years — really top-tier. He met with us for an engagement shoot to understand our energy and post-production preferences, and on the big day he was a total pro — complete with a full itinerary and backup equipment. He worked seamlessly with our videographer, and his artistic touch resulted in an excellent final gallery. We absolutely loved the photos and can’t wait to book our anniversary shoot with him!",
+      "We had a traditional Middle Eastern wedding, and we were so impressed by how quickly Raymond got up to speed on our specific traditions. His organization and talent far exceed his years, really top-tier. He met with us for an engagement shoot to understand our energy and post-production preferences, and on the big day he was a total pro, complete with a full itinerary and backup equipment. He worked seamlessly with our videographer, and his artistic touch resulted in an excellent final gallery. We absolutely loved the photos and can’t wait to book our anniversary shoot with him!",
     names: "Sargon & Odelya",
     context: "Wedding · Bay Area, CA",
     photo: SARGON_ODELYA_PHOTOS[23], // first dance in fog, black & white — unused elsewhere on the homepage

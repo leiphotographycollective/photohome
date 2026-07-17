@@ -8,7 +8,7 @@ describe("qualifiers", () => {
     expect(QUALIFIERS[3]).toContain("already planned for it");
     // typographic characters are load-bearing copy — regression-guard them
     expect(QUALIFIERS[1]).toContain("“we're not photo people”");
-    expect(QUALIFIERS[3]).toContain("does too — and who's already planned for it");
+    expect(QUALIFIERS[3]).toContain("does too, and who's already planned for it");
   });
 });
 

@@ -217,7 +217,7 @@ export const CATEGORIES: Record<string, Category> = {
     label: "Weddings",
     tagline: "Present for all of it",
     intro:
-      "The full arc of a day — the quiet getting-ready hours, the vows, the dance floor.",
+      "The full arc of a day: the quiet getting-ready hours, the vows, the dance floor.",
     projects: [
       { id: "sargon-odelya", title: "Sargon & Odelya", place: "Bay Area, CA", year: "2025", cover: SARGON_ODELYA_PHOTOS[12], photos: SARGON_ODELYA_CURATED },
       { id: "first-dance-film", title: "The First Dance", place: "Bay Area, CA", year: "2025", cover: P.firstDanceCine, photos: [P.firstDanceCine, P.firstDance04, P.firstDance03] },
@@ -227,7 +227,7 @@ export const CATEGORIES: Record<string, Category> = {
     label: "Couples",
     tagline: "The two of you, as you really are",
     intro:
-      "Unposed sessions for couples — coastal walks, golden hour, the everyday closeness worth keeping.",
+      "Unposed sessions for couples: coastal walks, golden hour, the everyday closeness worth keeping.",
     projects: [
       { id: "along-the-coast", title: "Along the Coast", place: "San Francisco, CA", year: "2025", cover: P.coastalCandid, photos: [P.coastalCandid, P.coastal, P.coastKiss] },
     ],
@@ -236,7 +236,7 @@ export const CATEGORIES: Record<string, Category> = {
     label: "Graduations",
     tagline: "The chapter that closes one and opens another",
     intro:
-      "Candid, natural-light sessions that celebrate the milestone — and the person who earned it.",
+      "Candid, natural-light sessions that celebrate the milestone, and the person who earned it.",
     projects: [
       { id: "naomi-fall-25", title: "Naomi · Fall '25", place: "Berkeley, CA", year: "2025", cover: NAOMI_GRAD[0], photos: NAOMI_GRAD },
       { id: "lauren-fall-25", title: "Lauren · Fall '25", place: "San Jose, CA", year: "2025", cover: LAUREN_GRAD[0], photos: LAUREN_GRAD },
@@ -249,7 +249,7 @@ export const CATEGORIES: Record<string, Category> = {
     label: "Portraits & Editorials",
     tagline: "Honest moments, shaped by light",
     intro:
-      "Natural yet cinematic — imagery built from thoughtful direction and atmosphere.",
+      "Natural yet cinematic: imagery built from thoughtful direction and atmosphere.",
     projects: [
       { id: "in-shadow", title: "In Shadow", place: "Studio, SF", year: "2025", cover: P.editorial, photos: [P.editorial, P.bridal] },
       { id: "natural-light", title: "Natural Light", place: "Bay Area, CA", year: "2025", cover: P.bridal, photos: [P.bridal, P.coastal] },
@@ -271,7 +271,7 @@ export const CATEGORIES: Record<string, Category> = {
     label: "Engagements & Proposals",
     tagline: "The moment before everything changes",
     intro:
-      "The nerves, the question, the yes — and the golden-hour portraits that follow.",
+      "The nerves, the question, the yes, and the golden-hour portraits that follow.",
     projects: [
       { id: "jake-proposal", title: "Jake · The Proposal", place: "Bay Area, CA", year: "2025", cover: P.proposal, photos: [P.proposal, P.coastal] },
     ],

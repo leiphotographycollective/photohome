@@ -4,8 +4,6 @@ import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import { initLeiMotion } from "@/lib/lei/motion";
 
 interface LeiPageProps {
-  /** Enables the home-only preloader, hero bloom and WebGL ripple. */
-  home?: boolean;
   style?: CSSProperties;
   children: ReactNode;
 }
@@ -15,24 +13,14 @@ interface LeiPageProps {
  * mount, wires the shared motion engine (Lenis, cursor, GSAP reveals, …) to
  * the data-* attributes in its server-rendered children.
  */
-export default function LeiPage({ home = false, style, children }: LeiPageProps) {
+export default function LeiPage({ style, children }: LeiPageProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const root = ref.current;
     if (!root) return;
-    // Play the signature preloader once per browser session.
-    let preloader = false;
-    if (home) {
-      try {
-        preloader = !sessionStorage.getItem("lei-preloader");
-        if (preloader) sessionStorage.setItem("lei-preloader", "1");
-      } catch {
-        preloader = true;
-      }
-    }
-    return initLeiMotion(root, { home, preloader });
-  }, [home]);
+    return initLeiMotion(root);
+  }, []);
 
   return (
     <div

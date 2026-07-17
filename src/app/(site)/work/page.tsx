@@ -11,13 +11,13 @@ import { img, PHOTOS } from "@/content/portfolio";
 export const metadata: Metadata = {
   title: "The Work",
   description:
-    "Weddings, graduations, portraits & editorials, headshots & events, engagements & proposals — all over the Bay Area.",
+    "Weddings, graduations, portraits & editorials, headshots & events, engagements & proposals, all over the Bay Area.",
 };
 
 export default function WorkPage() {
   return (
     <LeiPage>
-      <Chrome active="work" />
+      <Chrome />
 
       {/* ══ Title ══ */}
       <section

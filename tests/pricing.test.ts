@@ -24,7 +24,7 @@ describe("investment tiers", () => {
     }
     expect(INCLUDED_EVERYWHERE).toHaveLength(4);
     expect(INCLUDED_EVERYWHERE[3]).toBe(
-      "Monthly payment plans — every collection can be split into monthly payments"
+      "Monthly payment plans: every collection can be split into monthly payments"
     );
   });
 

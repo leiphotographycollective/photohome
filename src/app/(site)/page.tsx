@@ -6,353 +6,80 @@ import LeiFooter from "@/components/lei/LeiFooter";
 import { Marquee, ProcessSteps } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, ink, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
-import { CtaLink, SecondaryCta, SoftLink } from "@/components/lei/Cta";
-import { CITY, HERO_MOBILE, POSITIONING, WEDDING_PORTFOLIO } from "@/content/homepage";
+import { CtaLink, SoftLink } from "@/components/lei/Cta";
+import { CITY, HERO_PHOTO, POSITIONING, WEDDING_PORTFOLIO } from "@/content/homepage";
 import { HOME_PROCESS, QUALIFIERS } from "@/content/experience";
 import TestimonialFeature from "@/components/lei/TestimonialFeature";
 
 export const metadata: Metadata = {
   title: "Editorial Wedding Photography in the San Francisco Bay Area",
   description:
-    `${POSITIONING} Editorial wedding photography for couples who want to be present in their wedding, not stress about it — ${CITY} & beyond, by Raymond Lei.`,
+    `${POSITIONING} Editorial wedding photography for couples who want to be present in their wedding, not stress about it. ${CITY} & beyond, by Raymond Lei.`,
 };
 
 export default function HomePage() {
   return (
-    <LeiPage home>
-      <noscript>
-        <style>{`[data-preloader]{display:none!important}`}</style>
-      </noscript>
+    <LeiPage>
       <Chrome />
 
-      {/* ══ Preloader ══ */}
-      <div
-        data-preloader=""
-        style={{
-          position: "fixed",
-          inset: 0,
-          zIndex: 120,
-          background: "#0E0D0B",
-          color: "#F7F5F2",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          overflow: "hidden",
-        }}
-      >
-        <div style={{ textAlign: "center", maxWidth: "100%", padding: "0 24px" }}>
-          <div
-            data-pl-name=""
-            style={{
-              fontFamily: SERIF,
-              fontSize: "clamp(28px,4.4vw,58px)",
-              fontWeight: 500,
-              letterSpacing: ".02em",
-              lineHeight: 1.1,
-            }}
-          >
-            Lei Photography Collective
-          </div>
-          <div
-            data-pl-sub=""
-            style={{
-              marginTop: 14,
-              fontSize: 10,
-              fontWeight: 700,
-              letterSpacing: ".32em",
-              textTransform: "uppercase",
-              color: cream(0.45),
-            }}
-          >
-            San Francisco Bay Area · Editorial Weddings
-          </div>
-        </div>
-        <div
-          data-pl-counter=""
-          style={{
-            position: "absolute",
-            right: 38,
-            bottom: 30,
-            fontFamily: SERIF,
-            fontSize: "clamp(48px,7vw,96px)",
-            fontWeight: 400,
-            fontStyle: "italic",
-            color: cream(0.85),
-            fontVariantNumeric: "tabular-nums",
-          }}
-        >
-          000
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            left: 38,
-            bottom: 44,
-            width: 180,
-            height: 1,
-            background: cream(0.18),
-          }}
-        >
-          <div
-            data-pl-bar=""
-            style={{
-              height: "100%",
-              width: "100%",
-              background: GOLD,
-              transform: "scaleX(0)",
-              transformOrigin: "left",
-            }}
-          />
-        </div>
-      </div>
-
-      {/* ══ Hero — typographic, image blooms out of the O in STORY ══ */}
+      {/* ══ Hero — static split: photo left, introduction right. No load-in
+          or scroll animation, identical on every platform. ══ */}
       <section
         id="top"
-        data-hero=""
-        className="lx-hero-desktop"
-        style={{ position: "relative", height: "300vh", background: "#F7F5F2" }}
-      >
-        <div
-          style={{
-            position: "sticky",
-            top: 0,
-            height: "100vh",
-            overflow: "hidden",
-          }}
-        >
-          {/* media layer: img fallback + WebGL canvas, revealed by scroll */}
-          <div
-            data-hero-media=""
-            style={{
-              position: "absolute",
-              inset: 0,
-              zIndex: 1,
-              clipPath: "circle(0px at 50% 46%)",
-              background: "#0E0D0B",
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              data-hero-img=""
-              src={img(PHOTOS.receptionEntrance.path, 1500)}
-              alt={PHOTOS.receptionEntrance.a}
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-              }}
-            />
-            <div data-gl-mount="" style={{ position: "absolute", inset: 0 }} />
-            <div
-              data-hero-shade=""
-              style={{
-                position: "absolute",
-                inset: 0,
-                background: "rgba(14,13,11,.18)",
-              }}
-            />
-          </div>
-
-          {/* typographic lockup */}
-          <div
-            data-hero-lockup=""
-            style={{
-              position: "absolute",
-              inset: 0,
-              zIndex: 3,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              color: "#0E0D0B",
-              pointerEvents: "none",
-            }}
-          >
-            <div
-              data-hero-kicker=""
-              style={{
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: ".34em",
-                textTransform: "uppercase",
-                color: "currentColor",
-                opacity: 0.85,
-                marginBottom: "3vh",
-              }}
-            >
-              San Francisco Bay Area · Editorial Wedding Photography
-            </div>
-            <h1
-              style={{
-                margin: 0,
-                fontFamily: SERIF,
-                fontWeight: 600,
-                lineHeight: 0.86,
-                letterSpacing: ".01em",
-              }}
-            >
-              <div data-hero-line="" style={{ fontSize: "clamp(64px,13vw,190px)" }}>
-                YOUR
-              </div>
-              <div data-hero-line="" style={{ fontSize: "clamp(64px,13vw,190px)" }}>
-                COVER
-              </div>
-              <div data-hero-line="" style={{ fontSize: "clamp(64px,13vw,190px)" }}>
-                <em style={{ fontWeight: 500 }}>STORY.</em>
-              </div>
-            </h1>
-            <div
-              data-hero-sub=""
-              style={{
-                marginTop: "4vh",
-                fontSize: 12,
-                fontWeight: 500,
-                letterSpacing: ".2em",
-                textTransform: "uppercase",
-                opacity: 0.8,
-              }}
-            >
-              Your wedding, shot like the cover story it is — for couples who want to be present in their wedding, not stress about it.
-            </div>
-            <div
-              data-hero-sub=""
-              style={{
-                marginTop: "3.5vh",
-                pointerEvents: "auto",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: 18,
-              }}
-            >
-              <CtaLink />
-              <SecondaryCta />
-            </div>
-          </div>
-
-          <div
-            data-hero-hint=""
-            style={{
-              position: "absolute",
-              left: 0,
-              right: 0,
-              bottom: 42,
-              zIndex: 4,
-              textAlign: "center",
-              pointerEvents: "none",
-              color: "#0E0D0B",
-            }}
-          >
-            <div
-              style={{
-                fontSize: 10,
-                fontWeight: 700,
-                letterSpacing: ".28em",
-                textTransform: "uppercase",
-                opacity: 0.6,
-              }}
-            >
-              Scroll
-            </div>
-            <div
-              style={{
-                margin: "12px auto 0",
-                width: 1,
-                height: 42,
-                background: "currentColor",
-                opacity: 0.6,
-                animation: "lxScroll 1.9s ease-in-out infinite",
-              }}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ══ Mobile hero — reduced-motion fallback only; every other phone
-          gets the full hero cinematic above (see globals.css guard) ══ */}
-      <link
-        rel="preload"
-        as="image"
-        href={HERO_MOBILE.path}
-        media="(max-width: 860px) and (prefers-reduced-motion: reduce)"
-      />
-      <section
-        className="lx-hero-mobile"
+        className="lx-hero"
         style={{
           position: "relative",
-          minHeight: "100svh",
-          background: "#0E0D0B",
-          color: "#F7F5F2",
-          flexDirection: "column",
-          justifyContent: "flex-end",
-          overflow: "hidden",
+          background: "#F7F5F2",
+          color: "#0E0D0B",
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={HERO_MOBILE.path}
-          alt={HERO_MOBILE.a}
-          fetchPriority="high"
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
+        <div className="lx-hero-photo">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={HERO_PHOTO.path}
+            alt={HERO_PHOTO.a}
+            fetchPriority="high"
+            style={{ display: "block", width: "100%", height: "auto" }}
+          />
+        </div>
         <div
+          className="lx-hero-copy"
           style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(to top, rgba(14,13,11,.74) 0%, rgba(14,13,11,.12) 55%)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            padding: "10vh 6vw",
           }}
-        />
-        <div style={{ position: "relative", padding: "0 24px 56px" }}>
-          <div style={kicker({ marginBottom: 16 }, 10, ".26em")}>
-            San Francisco Bay Area · Editorial Wedding Photography
-          </div>
+        >
+          <p
+            style={{
+              margin: "0 0 44px",
+              fontSize: 12,
+              fontWeight: 600,
+              letterSpacing: ".18em",
+              textTransform: "uppercase",
+            }}
+          >
+            <span style={{ color: GOLD }}>Hi, I&rsquo;m Raymond,</span>{" "}
+            <span style={{ color: MUTED }}>A Bay Area Wedding Photographer.</span>
+          </p>
           <h1
             style={{
-              margin: "0 0 14px",
+              margin: 0,
               fontFamily: SERIF,
               fontWeight: 500,
-              fontSize: "clamp(34px,9.5vw,46px)",
-              lineHeight: 1.12,
+              fontSize: "clamp(30px,3.2vw,52px)",
+              lineHeight: 1.24,
+              letterSpacing: ".01em",
               textWrap: "pretty",
             }}
           >
-            Your wedding, shot like the <em>cover story</em> it is.
+            UPBEAT, INTENTIONAL
+            <br />
+            and unmistakably YOU
           </h1>
-          <p
-            style={{
-              margin: "0 0 24px",
-              maxWidth: 340,
-              fontSize: 14,
-              lineHeight: 1.6,
-              color: cream(0.85),
-            }}
-          >
-            For couples who want to be present in their wedding — not stress
-            about it.
-          </p>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              gap: 16,
-            }}
-          >
-            <CtaLink />
-            <SecondaryCta dark />
-          </div>
         </div>
       </section>
 
@@ -463,7 +190,7 @@ export default function HomePage() {
             data-fadeup=""
             style={{ margin: "0 0 26px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
           >
-            Hi! I’m Raymond. I shoot weddings the way magazines shoot cover stories — except the story is real, it’s yours, and nobody has to hold a pose through it. If you’re bringing the style and the party, I am SO in.
+            Hi! I’m Raymond. I shoot weddings the way magazines shoot cover stories, except the story is real, it’s yours, and nobody has to hold a pose through it. If you’re bringing the style and the party, I am SO in.
           </p>
           <ul
             style={{
@@ -476,9 +203,9 @@ export default function HomePage() {
             }}
           >
             {[
-              `Weddings, from the quiet getting-ready hours to the last song — I'll work the room all night so you two can just be in it.`,
+              `Weddings, from the quiet getting-ready hours to the last song. I'll work the room all night so you two can just be in it.`,
               `Engagements and couples sessions that feel like a good date, not a photoshoot.`,
-              `Ever said “I'm awkward in front of a camera”? Perfect — you're in good company; most of my favorite people have.`,
+              `Ever said “I'm awkward in front of a camera”? Perfect, you're in good company; most of my favorite people have.`,
             ].map((line) => (
               <li
                 key={line}
@@ -502,9 +229,7 @@ export default function HomePage() {
               gap: 16,
             }}
           >
-            <CtaLink />
-            <SecondaryCta />
-          </div>
+            <CtaLink />          </div>
         </div>
 
         <div style={{ position: "relative", margin: "0 0 12%" }}>
@@ -854,7 +579,7 @@ export default function HomePage() {
             color: MUTED,
           }}
         >
-          Full days, intimate ceremonies, and everything in between — every
+          Full days, intimate ceremonies, and everything in between. Every
           collection is built around how you two actually want the day to go.
           Tell me about yours and I&rsquo;ll send the full breakdown.
         </p>
@@ -871,9 +596,7 @@ export default function HomePage() {
             gap: 16,
           }}
         >
-          <CtaLink />
-          <SecondaryCta />
-        </div>
+          <CtaLink />        </div>
       </section>
 
       {/* ══ The Process — transplanted from /experience: price above, ask below ══ */}
@@ -931,7 +654,7 @@ export default function HomePage() {
               }}
             >
               Serving San Francisco, Berkeley, San Jose and beyond. Tell me about
-              your day — I&rsquo;ll take care of the rest.
+              your day. I&rsquo;ll take care of the rest.
             </p>
             <div
               data-fadeup=""
@@ -1020,12 +743,10 @@ export default function HomePage() {
                 color: MUTED,
               }}
             >
-              Tell me everything — you&rsquo;ll hear back from me personally
+              Tell me everything. You&rsquo;ll hear back from me personally
               within 48 hours. (I genuinely can&rsquo;t wait to read it.)
             </p>
-            <CtaLink />
-            <SecondaryCta />
-          </div>
+            <CtaLink />          </div>
         </div>
 
         <div style={{ padding: "0 38px" }}>

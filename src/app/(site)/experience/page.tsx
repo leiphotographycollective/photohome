@@ -11,7 +11,7 @@ import { PROCESS, QUALIFIERS } from "@/content/experience";
 export const metadata: Metadata = {
   title: "The Experience",
   description:
-    "What it's like to work with me — how I make the day feel easy and the photos feel like you, before, during and after the shutter clicks.",
+    "What it's like to work with me: how I make the day feel easy and the photos feel like you, before, during and after the shutter clicks.",
 };
 
 export default function ExperiencePage() {
@@ -318,7 +318,7 @@ export default function ExperiencePage() {
                   color: cream(0.72),
                 }}
               >
-                The editorial half is training — composition, light, and framing
+                The editorial half is training: composition, light, and framing
                 carried over from fashion work. The feeling half is direction:
                 quiet prompts, calm pacing, never &ldquo;now look at each other
                 and giggle.&rdquo; You don&rsquo;t have to be good in photos. You
@@ -333,7 +333,7 @@ export default function ExperiencePage() {
                   color: cream(0.72),
                 }}
               >
-                And when the weather turns or the timeline slips — that&rsquo;s
+                And when the weather turns or the timeline slips, that&rsquo;s
                 not your problem on the day. I plan for it before the camera ever
                 comes out.
               </p>
@@ -454,7 +454,7 @@ export default function ExperiencePage() {
               >
                 <strong style={{ color: "#0E0D0B", fontWeight: 600 }}>Before.</strong>{" "}
                 Clear communication from the first email, and a real timeline
-                built with you — so the day itself runs without you managing it.
+                built with you, so the day itself runs without you managing it.
               </p>
               <p
                 data-fadeup=""
@@ -468,7 +468,7 @@ export default function ExperiencePage() {
                 style={{ margin: 0, fontSize: 16, lineHeight: 1.85, color: MUTED }}
               >
                 <strong style={{ color: "#0E0D0B", fontWeight: 600 }}>After.</strong>{" "}
-                Your gallery is curated, not dumped — delivered in a designed
+                Your gallery is curated, not dumped, and delivered in a designed
                 online gallery with options to print and keep. It should feel like
                 the day, every time you open it.
               </p>

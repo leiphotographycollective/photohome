@@ -23,22 +23,22 @@ const PIXEL_ID = "REPLACE_ME_PIXEL_ID";
 const BENEFITS = [
   {
     title: "A full session, zero cost",
-    body: "This isn't a five-minute mini-shoot. We plan a real engagement session — location, light, gentle direction — and I edit your photos with the same care I give my weddings.",
+    body: "This isn't a five-minute mini-shoot. We plan a real engagement session (location, light, gentle direction) and I edit your photos with the same care I give my weddings.",
   },
   {
     title: "No obligation to book your wedding",
-    body: "There's no contract hiding behind the word free. If my work feels right for your day, wonderful — we'll talk. If not, the photos are still yours to keep.",
+    body: "There's no contract hiding behind the word free. If my work feels right for your day, wonderful, we'll talk. If not, the photos are still yours to keep.",
   },
   {
     title: "Experience my style before you commit",
-    body: "Your photographer is beside you more than almost any other vendor on your wedding day. Know how it feels to be photographed by me — before you decide anything.",
+    body: "Your photographer is beside you more than almost any other vendor on your wedding day. Know how it feels to be photographed by me, before you decide anything.",
   },
 ];
 
 const STEPS = [
-  { n: "01", title: "Tell us your story", body: "Fill out the form below and tell us your story — how you met, how the proposal happened, what makes you, you." },
-  { n: "02", title: "I read every entry", body: "I personally read every entry, in full, every single month — including yours." },
-  { n: "03", title: "I hand-pick 4 couples", body: "I choose the 4 couples whose story stands out to me the most — it could easily be you." },
+  { n: "01", title: "Tell us your story", body: "Fill out the form below and tell us your story: how you met, how the proposal happened, what makes you, you." },
+  { n: "02", title: "I read every entry", body: "I personally read every entry, in full, every single month, including yours." },
+  { n: "03", title: "I hand-pick 4 couples", body: "I choose the 4 couples whose story stands out to me the most. It could easily be you." },
   { n: "04", title: "You hear back", body: "Winners are contacted by email within a few days to schedule their session." },
 ];
 
@@ -255,11 +255,11 @@ export default function FreeSessionPage() {
               data-fadeup=""
               style={{ marginTop: 18, fontSize: 16, lineHeight: 1.8, color: cream(0.72) }}
             >
-              Most couples who win end up booking me for their wedding — so
+              Most couples who win end up booking me for their wedding, so
               instead of just telling you about the experience, I&rsquo;d
               rather show you. I read every single entry myself and pick the
               4 couples whose story pulls me in. No random drawing, no
-              algorithm — just me looking for couples I&rsquo;m genuinely
+              algorithm, just me looking for couples I&rsquo;m genuinely
               excited to photograph, and maybe that&rsquo;s you.
             </p>
           </div>
@@ -339,7 +339,7 @@ export default function FreeSessionPage() {
           I give away <em style={{ color: GOLD }}>4</em> free engagement
           sessions every month, hand-picked from every couple who applies, so
           every winner — maybe you — gets the same full experience as my paid
-          wedding clients — real time, real coverage, real photos to keep.
+          wedding clients: real time, real coverage, real photos to keep.
         </p>
         <div
           data-fadeup=""
@@ -417,7 +417,7 @@ export default function FreeSessionPage() {
                 color: MUTED,
               }}
             >
-              Tell me about you two — the couples I pick are the ones whose
+              Tell me about you two. The couples I pick are the ones whose
               story I can&rsquo;t stop thinking about.
             </p>
           </div>

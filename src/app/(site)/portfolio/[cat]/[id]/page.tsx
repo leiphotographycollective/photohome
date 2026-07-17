@@ -24,7 +24,7 @@ export async function generateMetadata({
   if (!c || !proj) return {};
   return {
     title: `${proj.title} — ${c.label}`,
-    description: `${proj.title} · ${proj.place} · ${proj.year} — from the ${c.label} collection by Lei Photography Collective.`,
+    description: `${proj.title} · ${proj.place} · ${proj.year}, from the ${c.label} collection by Lei Photography Collective.`,
   };
 }
 

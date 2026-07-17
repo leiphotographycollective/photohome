@@ -1,12 +1,7 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import { GOLD, pill, cream, ink } from "./tokens";
-import {
-  CTA_HREF,
-  CTA_LABEL,
-  SECONDARY_CTA_HREF,
-  SECONDARY_CTA_LABEL,
-} from "@/content/homepage";
+import { CTA_HREF, CTA_LABEL } from "@/content/homepage";
 
 /* The one conversion CTA — a solid gold pill. Gold is reserved for
    conversion actions site-wide so the eye learns "gold = inquire". */
@@ -63,23 +58,5 @@ export function SoftLink({
     >
       {label} &rarr;
     </Link>
-  );
-}
-
-/** Track B soft CTA — hard-wired to the free-session funnel. */
-export function SecondaryCta({
-  dark = false,
-  style,
-}: {
-  dark?: boolean;
-  style?: CSSProperties;
-}) {
-  return (
-    <SoftLink
-      href={SECONDARY_CTA_HREF}
-      label={SECONDARY_CTA_LABEL}
-      dark={dark}
-      style={style}
-    />
   );
 }

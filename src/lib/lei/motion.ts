@@ -1,45 +1,25 @@
 // Shared motion engine for the Lei experience pages.
 // A faithful port of the Claude Design prototypes' logic classes:
-// Lenis smooth scroll, custom gold cursor + magnetic buttons, the Weddings
-// header dropdown, letter-split title entrances, the home preloader + "O in
-// COVER" hero bloom (with WebGL ripple), pinned horizontal collection,
-// parallax columns/floats, manifesto word reveals and all scroll reveals —
-// each keyed off the same data-* attributes as the prototypes.
+// Lenis smooth scroll, custom gold cursor + magnetic buttons, letter-split
+// title entrances, pinned horizontal collection, parallax columns/floats,
+// manifesto word reveals and all scroll reveals — each keyed off the same
+// data-* attributes as the prototypes. The home hero is static (no load-in
+// or scroll animation) and the header bar carries no motion behavior.
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 
-export interface LeiMotionOptions {
-  /** Enables home-only behaviors: preloader, hero bloom, WebGL ripple. */
-  home?: boolean;
-  /** Play the counter/logo preloader before the hero entrance. */
-  preloader?: boolean;
-}
-
 type Cleanup = () => void;
 
-export function initLeiMotion(
-  root: HTMLElement,
-  opts: LeiMotionOptions = {}
-): Cleanup {
+export function initLeiMotion(root: HTMLElement): Cleanup {
   gsap.registerPlugin(ScrollTrigger);
 
   const q = <T extends HTMLElement = HTMLElement>(sel: string): T[] =>
     Array.from(root.querySelectorAll<T>(sel));
-  const pre = root.querySelector<HTMLElement>("[data-preloader]");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // The hero cinematics (preloader, entrance, scroll bloom) run at every
-  // width; only the WebGL mouse ripple stays desktop-only — it has no touch
-  // equivalent and costs GPU on phones. Reduced-motion phones fall back to
-  // the static mobile hero via globals.css (breakpoint matches there).
-  const mobile = window.matchMedia("(max-width: 860px)").matches;
-  const home = !!opts.home;
-  const preloader = !!opts.preloader;
-
   if (reduced) {
-    if (pre) pre.style.display = "none";
     return () => {};
   }
 
@@ -62,12 +42,7 @@ export function initLeiMotion(
   // ── Custom cursor + magnetic buttons ───────────────────────────────────
   cleanups.push(initCursor(root, q, signal));
 
-  // ── Weddings header dropdown ───────────────────────────────────────────
-  initDropdown(root, signal);
-
   // ── GSAP animations (scoped so cleanup reverts everything) ─────────────
-  let computeO: (() => void) | undefined;
-
   const ctx = gsap.context(() => {
     // ── Letter-split title entrance (interior pages) ──
     const titleLetters = splitLines(q("[data-title-line]"));
@@ -80,134 +55,6 @@ export function initLeiMotion(
         stagger: 0.035,
         delay: 0.2,
       });
-    }
-
-    // ── Home hero: split, preloader, bloom from the O in COVER (second lockup line) ──
-    if (home) {
-      const heroLetters = splitLines(q("[data-hero-line]"));
-      gsap.set(heroLetters, { yPercent: 120, opacity: 0 });
-      gsap.set(q("[data-hero-kicker],[data-hero-sub],[data-hero-hint]"), {
-        opacity: 0,
-        y: 20,
-      });
-      const line2 = q("[data-hero-line]")[1];
-      const oSpan = line2
-        ? Array.from(line2.querySelectorAll("span")).find(
-            (s) => s.textContent === "O"
-          )
-        : null;
-
-      const heroIn = gsap
-        .timeline({ paused: true })
-        .to(heroLetters, {
-          yPercent: 0,
-          opacity: 1,
-          duration: 1.1,
-          ease: "expo.out",
-          stagger: 0.035,
-        })
-        .to(
-          "[data-hero-kicker]",
-          { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
-          "-=0.7"
-        )
-        .to(
-          "[data-hero-sub],[data-hero-hint]",
-          { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", stagger: 0.1 },
-          "-=0.6"
-        );
-
-      if (preloader && pre) {
-        const counter = pre.querySelector<HTMLElement>("[data-pl-counter]");
-        const num = { v: 0 };
-        gsap
-          .timeline()
-          .from(pre.querySelector("[data-pl-name]"), {
-            opacity: 0,
-            y: 30,
-            duration: 0.9,
-            ease: "power3.out",
-          })
-          .from(pre.querySelector("[data-pl-sub]"), { opacity: 0, duration: 0.6 }, "-=0.4")
-          .to(
-            num,
-            {
-              v: 100,
-              duration: 1.9,
-              ease: "power2.inOut",
-              onUpdate: () => {
-                if (counter)
-                  counter.textContent = String(Math.round(num.v)).padStart(3, "0");
-              },
-            },
-            0
-          )
-          .to(
-            pre.querySelector("[data-pl-bar]"),
-            { scaleX: 1, duration: 1.9, ease: "power2.inOut" },
-            0
-          )
-          .to(pre, { yPercent: -100, duration: 1.1, ease: "expo.inOut", delay: 0.15 })
-          .set(pre, { display: "none" })
-          .add(() => {
-            heroIn.play();
-          }, "-=1.4");
-      } else {
-        if (pre) pre.style.display = "none";
-        heroIn.play();
-      }
-
-      // Hero scroll cinematics — image blooms out of the O in COVER
-      const heroSec = root.querySelector<HTMLElement>("[data-hero]");
-      const media = root.querySelector<HTMLElement>("[data-hero-media]");
-      if (heroSec && media) {
-        let oPos = { x: window.innerWidth / 2, y: window.innerHeight * 0.46 };
-        const heroTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: heroSec,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.6,
-            invalidateOnRefresh: true,
-          },
-        });
-        computeO = () => {
-          if (heroTl.scrollTrigger && heroTl.scrollTrigger.progress > 0.01) return;
-          if (!oSpan || !media.parentElement) return;
-          const hr = media.parentElement.getBoundingClientRect();
-          const r = oSpan.getBoundingClientRect();
-          if (!r.width) return;
-          oPos = { x: r.left - hr.left + r.width / 2, y: r.top - hr.top + r.height / 2 };
-          if (heroTl.scrollTrigger && heroTl.scrollTrigger.progress === 0) {
-            gsap.set(media, { clipPath: `circle(0px at ${oPos.x}px ${oPos.y}px)` });
-          }
-        };
-        const maxR = () => {
-          const w = window.innerWidth;
-          const h = window.innerHeight;
-          return Math.ceil(
-            Math.hypot(Math.max(oPos.x, w - oPos.x), Math.max(oPos.y, h - oPos.y))
-          );
-        };
-        heroTl
-          .fromTo(
-            media,
-            { clipPath: () => `circle(0px at ${oPos.x}px ${oPos.y}px)` },
-            {
-              clipPath: () => `circle(${maxR()}px at ${oPos.x}px ${oPos.y}px)`,
-              ease: "power1.in",
-              duration: 0.6,
-            },
-            0.05
-          )
-          .to(
-            "[data-hero-lockup]",
-            { opacity: 0, yPercent: -16, scale: 0.94, ease: "none", duration: 0.38 },
-            0.18
-          )
-          .to("[data-hero-hint]", { opacity: 0, ease: "none", duration: 0.12 }, 0);
-        heroIn.eventCallback("onComplete", () => computeO && computeO());
-      }
     }
 
     // ── Floating parallax images ──
@@ -486,26 +333,13 @@ export function initLeiMotion(
   }, root);
   cleanups.push(() => ctx.revert());
 
-  // ── WebGL hero ripple (home + desktop only, loaded lazily) ─────────────
-  let glMouse: ((e: MouseEvent) => void) | null = null;
-  if (home && !mobile) {
-    cleanups.push(
-      initHeroGL(root, (fn) => {
-        glMouse = fn;
-      })
-    );
-    window.addEventListener("mousemove", (e) => glMouse && glMouse(e), { signal });
-  }
-
   // ── Resize + late refresh ──────────────────────────────────────────────
   const onResize = () => {
     ScrollTrigger.refresh();
-    if (computeO) computeO();
   };
   window.addEventListener("resize", onResize, { signal });
   const lateRefresh = window.setTimeout(() => {
     ScrollTrigger.refresh();
-    if (computeO) computeO();
   }, 800);
   cleanups.push(() => window.clearTimeout(lateRefresh));
 
@@ -652,150 +486,3 @@ function initCursor(
   };
 }
 
-function initDropdown(root: HTMLElement, signal: AbortSignal): void {
-  const trig = root.querySelector<HTMLElement>("[data-dd-trigger]");
-  const panel = root.querySelector<HTMLElement>("[data-dd-panel]");
-  if (!trig || !panel) return;
-  let hideT: number | undefined;
-  const place = () => {
-    const r = trig.getBoundingClientRect();
-    panel.style.left =
-      Math.min(r.left - 20, window.innerWidth - panel.offsetWidth - 16) + "px";
-    panel.style.top = r.bottom + 18 + "px";
-  };
-  const show = () => {
-    window.clearTimeout(hideT);
-    place();
-    panel.style.pointerEvents = "auto";
-    gsap.to(panel, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" });
-  };
-  const hide = () => {
-    hideT = window.setTimeout(() => {
-      panel.style.pointerEvents = "none";
-      gsap.to(panel, { opacity: 0, y: 10, duration: 0.3, ease: "power2.in" });
-    }, 180);
-  };
-  trig.addEventListener("mouseenter", show, { signal });
-  trig.addEventListener("mouseleave", hide, { signal });
-  panel.addEventListener("mouseenter", () => window.clearTimeout(hideT), { signal });
-  panel.addEventListener("mouseleave", hide, { signal });
-}
-
-/** Three.js mouse-ripple distortion over the hero image (home page). */
-function initHeroGL(
-  root: HTMLElement,
-  registerMouse: (fn: (e: MouseEvent) => void) => void
-): Cleanup {
-  let dead = false;
-  let raf = 0;
-  let renderer: { dispose(): void; domElement: HTMLCanvasElement } | null = null;
-  let sizeFn: (() => void) | null = null;
-
-  const mount = root.querySelector<HTMLElement>("[data-gl-mount]");
-  const imgEl = root.querySelector<HTMLImageElement>("[data-hero-img]");
-  if (!mount || !imgEl) return () => {};
-
-  import("three")
-    .then((THREE) => {
-      if (dead) return;
-      const loader = new THREE.TextureLoader();
-      loader.setCrossOrigin("anonymous");
-      loader.load(
-        imgEl.src,
-        (tex) => {
-          if (dead) return;
-          tex.minFilter = THREE.LinearFilter;
-          const r = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-          renderer = r;
-          r.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-          const scene = new THREE.Scene();
-          const cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-          const image = tex.image as { width: number; height: number };
-          const uniforms = {
-            uTex: { value: tex },
-            uTime: { value: 0 },
-            uMouse: { value: new THREE.Vector2(0.5, 0.5) },
-            uVel: { value: 0 },
-            uRes: { value: new THREE.Vector2(1, 1) },
-            uImg: { value: new THREE.Vector2(image.width, image.height) },
-          };
-          const mat = new THREE.ShaderMaterial({
-            uniforms,
-            vertexShader:
-              "varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position,1.0); }",
-            fragmentShader: `
-              varying vec2 vUv; uniform sampler2D uTex; uniform float uTime; uniform vec2 uMouse; uniform float uVel; uniform vec2 uRes; uniform vec2 uImg;
-              void main(){
-                vec2 ratio = vec2(min((uRes.x/uRes.y)/(uImg.x/uImg.y),1.0), min((uRes.y/uRes.x)/(uImg.y/uImg.x),1.0));
-                vec2 uv = vec2(vUv.x*ratio.x+(1.0-ratio.x)*0.5, vUv.y*ratio.y+(1.0-ratio.y)*0.5);
-                float d = distance(vUv*vec2(uRes.x/uRes.y,1.0), uMouse*vec2(uRes.x/uRes.y,1.0));
-                float ripple = smoothstep(0.35,0.0,d) * uVel;
-                uv += (vUv-uMouse) * ripple * 0.35;
-                uv.y += sin(uv.x*6.0+uTime*0.4)*0.0035;
-                vec4 c = texture2D(uTex,uv);
-                float ca = ripple*0.02;
-                c.r = texture2D(uTex,uv+vec2(ca,0.0)).r;
-                c.b = texture2D(uTex,uv-vec2(ca,0.0)).b;
-                gl_FragColor = c;
-              }`,
-          });
-          scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
-          mount.appendChild(r.domElement);
-          r.domElement.style.cssText =
-            "position:absolute;inset:0;width:100%;height:100%";
-          const size = () => {
-            const rect = mount.getBoundingClientRect();
-            r.setSize(rect.width, rect.height, false);
-            uniforms.uRes.value.set(rect.width, rect.height);
-          };
-          size();
-          sizeFn = size;
-          window.addEventListener("resize", size);
-
-          let tx = 0.5,
-            ty = 0.5,
-            vel = 0,
-            lx = 0.5,
-            ly = 0.5;
-          registerMouse((e: MouseEvent) => {
-            const rect = mount.getBoundingClientRect();
-            if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-            tx = (e.clientX - rect.left) / rect.width;
-            ty = 1 - (e.clientY - rect.top) / rect.height;
-          });
-          const clock = new THREE.Clock();
-          const loop = () => {
-            if (dead) return;
-            raf = requestAnimationFrame(loop);
-            const m = uniforms.uMouse.value;
-            m.x += (tx - m.x) * 0.08;
-            m.y += (ty - m.y) * 0.08;
-            vel = Math.min(1, Math.hypot(tx - lx, ty - ly) * 14);
-            lx += (tx - lx) * 0.08;
-            ly += (ty - ly) * 0.08;
-            uniforms.uVel.value += (vel - uniforms.uVel.value) * 0.06;
-            uniforms.uTime.value = clock.getElapsedTime();
-            r.render(scene, cam);
-          };
-          loop();
-        },
-        undefined,
-        () => {
-          /* CORS or load failure — the <img> fallback stays visible */
-        }
-      );
-    })
-    .catch(() => {
-      /* three failed to load — fallback img remains */
-    });
-
-  return () => {
-    dead = true;
-    if (raf) cancelAnimationFrame(raf);
-    if (sizeFn) window.removeEventListener("resize", sizeFn);
-    if (renderer) {
-      renderer.domElement.remove();
-      renderer.dispose();
-    }
-  };
-}

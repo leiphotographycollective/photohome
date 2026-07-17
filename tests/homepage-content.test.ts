@@ -7,8 +7,6 @@ import {
   POSITIONING,
   POSITIONING_SUB,
   RECENT_WEDDINGS,
-  SECONDARY_CTA_HREF,
-  SECONDARY_CTA_LABEL,
   TESTIMONIALS,
   WEDDING_PORTFOLIO,
 } from "@/content/homepage";
@@ -26,15 +24,8 @@ describe("positioning constants", () => {
     expect(CITY).toBe("San Francisco Bay Area");
     expect(POSITIONING).toBe("Your wedding, shot like the cover story it is.");
     expect(POSITIONING_SUB).toBe(
-      "Bay Area wedding photography for couples who want to be present in their wedding — not stressed about it."
+      "Bay Area wedding photography for couples who want to be present in their wedding, not stressed about it."
     );
-  });
-
-  it("secondary CTA points at the live free-session page", () => {
-    expect(SECONDARY_CTA_LABEL).toBe(
-      "Just started planning? Claim a free engagement session"
-    );
-    expect(SECONDARY_CTA_HREF).toBe("/free-session");
   });
 });
 
