@@ -231,8 +231,10 @@ html.lenis {
   min-height: calc(100svh - var(--lx-header-h));
 }
 
-/* The photo column stacks the slideshow frames absolutely, so it needs a
-   definite box. On desktop it fills the hero height; the frames cover-crop. */
+/* The photo column stacks the slideshow frames absolutely, so it must be its
+   own positioned containing block (position + overflow) with a definite box,
+   or the absolute frames escape to the section and cover the copy column.
+   On desktop it fills the hero height; the frames cover-crop. */
 .lx-hero-photo {
   position: relative;
   overflow: hidden;
