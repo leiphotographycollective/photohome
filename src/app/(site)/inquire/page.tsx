@@ -37,7 +37,7 @@ export default function InquirePage() {
         className="lx-grid-2col"
         style={{
           position: "relative",
-          minHeight: "100vh",
+          minHeight: "100svh",
           display: "grid",
           gridTemplateColumns: "1.1fr 1fr",
           gap: 0,
@@ -48,8 +48,12 @@ export default function InquirePage() {
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "flex-end",
-            padding: "0 5vw 12vh 38px",
+            // Bottom-aligned by design, but `safe` flips to top-alignment when
+            // the copy is taller than the viewport, so tall type never overflows
+            // upward under the fixed header — it pushes the (scrollable) bottom
+            // instead. Top padding clears the 64px header at all heights.
+            justifyContent: "safe flex-end",
+            padding: "calc(var(--lx-header-h) + 4vh) 5vw 12vh 38px",
           }}
         >
           <div data-fadeup="" style={kicker({ marginBottom: "3vh" }, 11, ".34em")}>
@@ -137,17 +141,23 @@ export default function InquirePage() {
                   href={d.href}
                   data-hover=""
                   style={{
+                    display: "block",
                     fontFamily: SERIF,
                     fontSize: "clamp(18px,1.8vw,24px)",
                     color: "#F7F5F2",
                     textDecoration: "none",
+                    overflowWrap: "anywhere",
                   }}
                 >
                   {d.value}
                 </a>
               ) : (
                 <div
-                  style={{ fontFamily: SERIF, fontSize: "clamp(18px,1.8vw,24px)" }}
+                  style={{
+                    fontFamily: SERIF,
+                    fontSize: "clamp(18px,1.8vw,24px)",
+                    overflowWrap: "anywhere",
+                  }}
                 >
                   {d.value}
                 </div>

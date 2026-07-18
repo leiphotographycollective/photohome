@@ -143,7 +143,7 @@ export default function HomePage() {
             textWrap: "pretty",
           }}
         >
-          You two, at your absolute best: the style, the party, and every real moment in between.
+          Editorial when the moment calls for direction. Documentary when it deserves to unfold.
         </p>
       </section>
 
@@ -165,7 +165,7 @@ export default function HomePage() {
       >
         <div>
           <div data-fadeup="" style={kicker({ marginBottom: 20 }, 10, ".3em")}>
-            For couples like you
+            For couples who love being iconic
           </div>
           <h2
             data-fadeup=""
@@ -178,13 +178,15 @@ export default function HomePage() {
               textWrap: "pretty",
             }}
           >
-            You two are <em>the story.</em> I just know where to point the camera.
+            Main character energy.
+            <br />
+            without missing the moment.
           </h2>
           <p
             data-fadeup=""
             style={{ margin: "0 0 26px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
           >
-            Hi! I’m Raymond. I shoot weddings the way magazines shoot cover stories, except the story is real, it’s yours, and nobody has to hold a pose through it. If you’re bringing the style and the party, I am SO in.
+            Your wedding should feel like the best night of your life, not a day spent performing for the camera. I’ll step in with confident direction when it matters, then give you space to celebrate, cry, laugh, dance, and be completely present with the people you love.
           </p>
           <ul
             style={{
@@ -197,8 +199,8 @@ export default function HomePage() {
             }}
           >
             {[
-              `Weddings, from the quiet getting-ready hours to the last song. I'll work the room all night so you two can just be in it.`,
-              `Engagements and couples sessions that feel like a good date, not a photoshoot.`,
+              `Editorial portraits that feel iconic, never stiff or overproduced.`,
+              `Real moments preserved from the quiet morning hours to the final song.`,
               `Ever said “I'm awkward in front of a camera”? Perfect, you're in good company; most of my favorite people have.`,
             ].map((line) => (
               <li
