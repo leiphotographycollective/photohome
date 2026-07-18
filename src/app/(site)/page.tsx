@@ -4,12 +4,12 @@ import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
 import { Marquee, ProcessSteps } from "@/components/lei/blocks";
-import { GOLD, MUTED, SERIF, cream, ink, kicker, pill } from "@/components/lei/tokens";
+import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
 import { CtaLink, SoftLink } from "@/components/lei/Cta";
 import { CITY, POSITIONING, WEDDING_PORTFOLIO } from "@/content/homepage";
 import HeroSlideshow from "@/components/lei/HeroSlideshow";
-import { HOME_PROCESS, QUALIFIERS } from "@/content/experience";
+import { HOME_PROCESS } from "@/content/experience";
 import TestimonialFeature from "@/components/lei/TestimonialFeature";
 
 export const metadata: Metadata = {
@@ -17,6 +17,59 @@ export const metadata: Metadata = {
   description:
     `${POSITIONING} Editorial wedding photography for couples who want to be present in their wedding, not stress about it. ${CITY} & beyond, by Raymond Lei.`,
 };
+
+/** Labeled gray placeholder rendered as a data-URI SVG. Every STYLE and
+ *  WHAT-TO-EXPECT slot is a real <img> using one of these, so you can drop your
+ *  own photo onto any slot in the editor later; it crops via object-fit: cover. */
+function slotSrc(label: string, w = 800, h = 1000) {
+  const svg =
+    `<svg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'>` +
+    `<rect width='100%' height='100%' fill='#E6E2DB'/>` +
+    `<text x='50%' y='50%' fill='#A79F92' font-family='Helvetica,Arial,sans-serif' ` +
+    `font-size='${Math.round(Math.min(w, h) / 11)}' letter-spacing='6' ` +
+    `text-anchor='middle' dominant-baseline='central'>${label}</text></svg>`;
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
+/** "STYLE" row: how the photos look. */
+const STYLE_PILLARS = [
+  { title: "Fashion Forward", caption: "Editorial framing and composition, styled like a magazine spread." },
+  { title: "Effortless", caption: "Genuine connection and easy direction, never stiff or over-posed." },
+  { title: "Creative", caption: "Cinematic light and angles, not the same tired shots." },
+  { title: "Emotional", caption: "The real moments, preserved so they feel timeless." },
+];
+
+/** "WHAT TO EXPECT" row: how the day works with me. */
+const EXPECT_ITEMS = [
+  {
+    title: "Safe Space",
+    points: [
+      "Warm, low-pressure direction from the first hello.",
+      "You look iconic and timeless while feeling completely like yourselves.",
+    ],
+  },
+  {
+    title: "Inspiration",
+    points: [
+      "A look and mood we build together before the day.",
+      "References and palettes that actually matter to you.",
+    ],
+  },
+  {
+    title: "Perfect Fit",
+    points: [
+      "A plan shaped around your venue and priorities.",
+      "Coverage that fits your day, not a rigid shot list.",
+    ],
+  },
+  {
+    title: "Detail Oriented Approach",
+    points: [
+      "Every detail noticed, from the rings to the room.",
+      "Calm, prepared, and a few steps ahead all day.",
+    ],
+  },
+];
 
 export default function HomePage() {
   return (
@@ -70,9 +123,7 @@ export default function HomePage() {
               textWrap: "pretty",
             }}
           >
-            UPBEAT, INTENTIONAL
-            <br />
-            and unmistakably YOU
+            ICONIC, INTENTIONAL<br />and unmistakably YOU
           </h1>
         </div>
       </section>
@@ -275,88 +326,259 @@ export default function HomePage() {
         />
       </section>
 
-      {/* ══ You're here because… — transplanted from /experience, cream-inverted ══ */}
+      {/* ══ Editorial collage — 2×2 grid + hero portrait, placeholder slots,
+          with the "quiet luxury" positioning line. Sits above STYLE. ══ */}
       <section
         style={{
           position: "relative",
           background: "#F7F5F2",
           color: "#0E0D0B",
-          padding: "16vh 6vw 20vh",
-          overflow: "hidden",
+          padding: "16vh 6vw 6vh",
         }}
       >
-        <div
-          className="lx-grid-2col"
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "1.1fr .9fr",
-            gap: "6vw",
-            alignItems: "center",
-          }}
-        >
-          <div>
-            <div data-fadeup="" style={kicker({ marginBottom: 30 }, 10, ".3em")}>
-              You&rsquo;re here because&hellip;
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
-              {QUALIFIERS.map((text) => (
-                <div
-                  key={text}
-                  data-step=""
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 12,
+              maxWidth: 540,
+              margin: "0 auto",
+            }}
+          >
+            {[1, 2, 3, 4].map((n) => (
+              <div key={n} data-reveal="" style={{ overflow: "hidden" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={slotSrc(`GRID ${n}`, 800, 800)}
+                  alt={`Editorial image ${n} — drop your photo here`}
                   style={{
-                    display: "flex",
-                    gap: 20,
-                    alignItems: "baseline",
-                    borderTop: `1px solid ${ink(0.14)}`,
-                    paddingTop: 26,
+                    width: "100%",
+                    aspectRatio: "1 / 1",
+                    objectFit: "cover",
+                    display: "block",
                   }}
-                >
-                  <span style={{ color: GOLD, fontSize: 20, lineHeight: 1 }}>•</span>
-                  <span
-                    style={{
-                      fontFamily: SERIF,
-                      fontSize: "clamp(20px,2.1vw,30px)",
-                      fontWeight: 500,
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {text}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <div
-              data-fadeup=""
-              style={{
-                marginTop: 44,
-                fontFamily: SERIF,
-                fontStyle: "italic",
-                fontSize: "clamp(26px,3vw,44px)",
-                color: GOLD,
-              }}
-            >
-              That&rsquo;s when I come through for you.
-            </div>
-            <div data-fadeup="" style={{ marginTop: 28 }}>
-              <SoftLink href="/experience" label="Read about the full experience" />
-            </div>
+                />
+              </div>
+            ))}
           </div>
-          <div data-reveal="" style={{ overflow: "hidden" }}>
+
+          <div
+            data-reveal=""
+            style={{ overflow: "hidden", maxWidth: 540, margin: "8vh auto 0" }}
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={img(PHOTOS.marinaKiss.path, 1000)}
-              alt={PHOTOS.marinaKiss.a}
-              loading="lazy"
+              src={slotSrc("PORTRAIT", 800, 1000)}
+              alt="Editorial portrait — drop your photo here"
               style={{
                 width: "100%",
                 aspectRatio: "4 / 5",
                 objectFit: "cover",
                 display: "block",
-                transform: "scale(1.14)",
               }}
             />
+          </div>
+
+          <p
+            data-fadeup=""
+            style={{
+              maxWidth: 620,
+              margin: "5vh auto 0",
+              textAlign: "center",
+              fontSize: "clamp(13px,1.3vw,17px)",
+              fontWeight: 400,
+              letterSpacing: ".14em",
+              textTransform: "uppercase",
+              lineHeight: 1.7,
+              color: "#0E0D0B",
+              textWrap: "balance",
+            }}
+          >
+            For couples who crave <strong style={{ fontWeight: 700 }}>drama</strong>,{" "}
+            <strong style={{ fontWeight: 700 }}>emotional</strong> moments and a{" "}
+            <strong style={{ fontWeight: 700 }}>quiet luxury</strong> feel
+          </p>
+        </div>
+      </section>
+
+      {/* ══ STYLE — four-up "how the photos look" row. Each image is a labeled
+          placeholder slot; drop your own photo onto it in the editor later. ══ */}
+      <section
+        style={{
+          position: "relative",
+          background: "#F7F5F2",
+          color: "#0E0D0B",
+          padding: "16vh 6vw 8vh",
+        }}
+      >
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div
+            data-fadeup=""
+            style={{ ...kicker({ marginBottom: "6vh" }, 11, ".34em"), textAlign: "center" }}
+          >
+            Style
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))",
+              gap: "2vw",
+            }}
+          >
+            {STYLE_PILLARS.map((s, i) => (
+              <div key={s.title} data-fadeup="">
+                <div data-reveal="" style={{ overflow: "hidden", marginBottom: 20 }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={slotSrc(`STYLE ${i + 1}`)}
+                    alt={`${s.title} — drop your photo here`}
+                    style={{
+                      width: "100%",
+                      aspectRatio: "4 / 5",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
+                  />
+                </div>
+                <div
+                  style={{
+                    fontSize: 12,
+                    fontWeight: 700,
+                    letterSpacing: ".16em",
+                    textTransform: "uppercase",
+                    marginBottom: 8,
+                  }}
+                >
+                  {s.title}
+                </div>
+                <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: MUTED }}>
+                  {s.caption}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ Feature image + quote — one large placeholder slot with a
+          swap-in-later testimonial line ══ */}
+      <section style={{ position: "relative", background: "#F7F5F2", padding: "6vh 6vw 8vh" }}>
+        <div style={{ maxWidth: 780, margin: "0 auto" }}>
+          <div data-reveal="" style={{ overflow: "hidden" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={slotSrc("FEATURE", 1200, 800)}
+              alt="Feature image — drop your photo here"
+              style={{
+                width: "100%",
+                aspectRatio: "3 / 2",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          </div>
+          <p
+            data-fadeup=""
+            style={{
+              margin: "5vh 0 0",
+              fontFamily: SERIF,
+              fontStyle: "italic",
+              fontSize: "clamp(16px,1.6vw,22px)",
+              lineHeight: 1.7,
+              color: "#0E0D0B",
+              textAlign: "center",
+              textWrap: "pretty",
+            }}
+          >
+            Your favorite couple&rsquo;s words about the day will live here, ready
+            to swap in whenever you are.
+          </p>
+          <div
+            data-fadeup=""
+            style={{
+              marginTop: 16,
+              textAlign: "center",
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: ".2em",
+              textTransform: "uppercase",
+              color: GOLD,
+            }}
+          >
+            &mdash; Add attribution
+          </div>
+        </div>
+      </section>
+
+      {/* ══ WHAT TO EXPECT — four-up "how the day works" row, placeholder slots ══ */}
+      <section
+        style={{
+          position: "relative",
+          background: "#F7F5F2",
+          color: "#0E0D0B",
+          padding: "8vh 6vw 20vh",
+        }}
+      >
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div
+            data-fadeup=""
+            style={{ ...kicker({ marginBottom: "6vh" }, 11, ".34em"), textAlign: "center" }}
+          >
+            What to expect
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))",
+              gap: "2vw",
+            }}
+          >
+            {EXPECT_ITEMS.map((e, i) => (
+              <div key={e.title} data-fadeup="">
+                <div data-reveal="" style={{ overflow: "hidden", marginBottom: 20 }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={slotSrc(`EXPECT ${i + 1}`)}
+                    alt={`${e.title} — drop your photo here`}
+                    style={{
+                      width: "100%",
+                      aspectRatio: "4 / 5",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
+                  />
+                </div>
+                <div
+                  style={{
+                    fontSize: 12,
+                    fontWeight: 700,
+                    letterSpacing: ".16em",
+                    textTransform: "uppercase",
+                    marginBottom: 12,
+                  }}
+                >
+                  {e.title}
+                </div>
+                <ul
+                  style={{
+                    listStyle: "none",
+                    margin: 0,
+                    padding: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 10,
+                  }}
+                >
+                  {e.points.map((p) => (
+                    <li key={p} style={{ display: "flex", gap: 10, alignItems: "baseline" }}>
+                      <span style={{ color: GOLD, fontSize: 10, flexShrink: 0 }}>★</span>
+                      <span style={{ fontSize: 13, lineHeight: 1.55, color: MUTED }}>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -3,10 +3,10 @@
 
 /** The four "You're here because…" self-selection lines. */
 export const QUALIFIERS = [
-  "You want a photographer you can trust with the day: someone calm, prepared, and impossible to rattle.",
-  "You've said “we're not photo people” on every photographer call. You want to feel at ease, not posed.",
-  "You want the day back the way it felt, not a performance of it.",
-  "You care about how things look. You want a photographer who does too, and who's already planned for it.",
+  "You care about fashion, design, and how the whole day feels. You want photos with an editorial eye, not a cookie-cutter shot list.",
+  "You've told every photographer “we're not really photo people.” You want to feel at ease and like yourselves, never stiff or over-posed.",
+  "You want striking, cinematic portraits without spending the day posing, so you stay present for the moments that matter.",
+  "You want a photographer who is calm, organized, and a few steps ahead when the day shifts: someone you can actually trust with it.",
 ];
 
 export interface ProcessStep {
