@@ -112,12 +112,16 @@ export interface PortfolioRow {
 export const WEDDING_PORTFOLIO: PortfolioRow[] = [
   // Fulls are natively landscape; pairs natively portrait. No photo here may
   // appear anywhere else on the homepage (hero, manifesto, who-I-photograph…).
+  { layout: "full", photos: [SARGON_ODELYA_PHOTOS[33]] }, // bridal details flat lay — heels, perfume, jewelry
   { layout: "full", photos: [SARGON_ODELYA_PHOTOS[13]] }, // touching the groom's face at golden hour
   { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[9], SARGON_ODELYA_PHOTOS[27]] }, // seated bridal portrait · dip kiss (SO[8] is the hero frame, don't reuse)
   { layout: "full", photos: [SARGON_ODELYA_PHOTOS[25]] }, // carried through the cheering crowd
   { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[2], SARGON_ODELYA_PHOTOS[0]] }, // bride & mother b&w · ring box
+  { layout: "full", photos: [SARGON_ODELYA_PHOTOS[34]] }, // bride & bridesmaids toast while getting ready
   { layout: "full", photos: [SARGON_ODELYA_PHOTOS[29]] }, // embracing on the dance floor
   { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[28], SARGON_ODELYA_PHOTOS[22]] }, // mid-twirl · champagne spray
+  { layout: "full", photos: [SARGON_ODELYA_PHOTOS[35]] }, // bride laughing with bridesmaids, champagne toast
   { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[18], SARGON_ODELYA_PHOTOS[7]] }, // veil sunset · staircase aerial
+  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[36], SARGON_ODELYA_PHOTOS[11]] }, // first dance lift · veil portrait b&w
   { layout: "full", photos: [PHOTOS.sargonPrep] }, // first dance in low fog
 ];

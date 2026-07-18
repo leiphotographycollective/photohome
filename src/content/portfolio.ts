@@ -112,6 +112,10 @@ export const SARGON_ODELYA_PHOTOS: Photo[] = [
   { path: `${SO_DIR}/sargon-odelya-31.jpg`, a: "Traditional money dance with the newlyweds, black and white", r: "l", ratio: 1.5 },
   { path: `${SO_DIR}/sargon-odelya-32.jpg`, a: "Groomsmen sharing a laugh while getting ready", r: "l", ratio: 1.4999 },
   { path: `${SO_DIR}/sargon-odelya-33.jpg`, a: "Groomsmen laughing together while adjusting cufflinks", r: "l", ratio: 1.5 },
+  { path: `${SO_DIR}/sargon-odelya-34.jpg`, a: "Bridal details flat lay with pearl-embellished heels, Chanel perfume, pearl jewelry and the wedding invitation", r: "l", ratio: 1.5004 },
+  { path: `${SO_DIR}/sargon-odelya-35.jpg`, a: "Bride and three bridesmaids in sage dresses toasting champagne while getting ready", r: "l", ratio: 1.7778 },
+  { path: `${SO_DIR}/sargon-odelya-36.jpg`, a: "Bride laughing with her three bridesmaids as they clink champagne flutes while getting ready", r: "l", ratio: 1.5004 },
+  { path: `${SO_DIR}/sargon-odelya-37.jpg`, a: "Groom lifting the bride during their first dance amid low fog beneath string lights", r: "p", ratio: 0.6665 },
 ];
 
 // New 2025 sets imported from local exports
@@ -137,6 +141,10 @@ export const SARGON_ODELYA_CURATED: Photo[] = [
   SARGON_ODELYA_PHOTOS[25], // carried through the cheering crowd
   SARGON_ODELYA_PHOTOS[27], // dip kiss by the fireplace
   SARGON_ODELYA_PHOTOS[28], // mid-twirl on the dance floor
+  SARGON_ODELYA_PHOTOS[33], // bridal details flat lay — heels, perfume, jewelry
+  SARGON_ODELYA_PHOTOS[34], // bride & bridesmaids toast while getting ready
+  SARGON_ODELYA_PHOTOS[35], // bride laughing with bridesmaids, champagne toast
+  SARGON_ODELYA_PHOTOS[36], // first dance lift in low fog
 ];
 const DYLAN_GRAD: Photo[] = [
   { path: "/images/portfolio/graduation/dylan/dylan-01.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },

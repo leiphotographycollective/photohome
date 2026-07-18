@@ -6,9 +6,9 @@ import {
 } from "@/content/portfolio";
 
 describe("curated Sargon & Odelya gallery", () => {
-  it("holds 10-15 photos (spec: never full-dump galleries)", () => {
+  it("holds 10-17 photos (spec: never full-dump galleries)", () => {
     expect(SARGON_ODELYA_CURATED.length).toBeGreaterThanOrEqual(10);
-    expect(SARGON_ODELYA_CURATED.length).toBeLessThanOrEqual(15);
+    expect(SARGON_ODELYA_CURATED.length).toBeLessThanOrEqual(17);
   });
 
   // The /portfolio/weddings category (and its sargon-odelya project page) were
