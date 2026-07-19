@@ -1,38 +1,53 @@
 import { describe, expect, it } from "vitest";
 import {
-  HEADER_NAV,
-  MENU_NAV,
+  PRIMARY_NAV,
+  WEDDINGS_MENU,
   FOOTER_EXPLORE,
   FOOTER_CONNECT,
   SOCIALS,
   INQUIRE,
+  isGroup,
+  type NavItem,
 } from "@/content/nav";
 
-const hrefs = (items: { href: string }[]) => items.map((i) => i.href);
+const hrefs = (items: NavItem[]) => items.map((i) => i.href);
+/** Flatten primary nav to its leaf links (groups expand to their children). */
+const leaves = (): NavItem[] =>
+  PRIMARY_NAV.flatMap((e) => (isGroup(e) ? e.children : [e]));
 
 describe("nav config", () => {
-  it("desktop bar is the four priority pages, Inquire kept separate", () => {
-    expect(hrefs(HEADER_NAV)).toEqual([
-      "/portfolio",
-      "/weddings",
-      "/investment",
-      "/about",
+  it("primary nav is Portfolio, Weddings (group), Investment, About", () => {
+    expect(PRIMARY_NAV.map((e) => e.label)).toEqual([
+      "Portfolio",
+      "Weddings",
+      "Investment",
+      "About",
     ]);
     expect(INQUIRE).toEqual({ href: "/inquire", label: "Inquire" });
   });
 
-  it("Investment is reachable from header and footer", () => {
-    expect(hrefs(HEADER_NAV)).toContain("/investment");
+  it("Weddings is a non-clickable group with no href of its own", () => {
+    const weddings = PRIMARY_NAV[1];
+    expect(isGroup(weddings)).toBe(true);
+    expect((weddings as { href?: string }).href).toBeUndefined();
+  });
+
+  it("Weddings group holds Wedding Photography, Engagements, Experience, Free Session", () => {
+    expect(hrefs(WEDDINGS_MENU)).toEqual([
+      "/weddings",
+      "/portfolio/engagements",
+      "/experience",
+      "/free-session",
+    ]);
+  });
+
+  it("Investment is reachable from the header nav and the footer", () => {
+    expect(hrefs(leaves())).toContain("/investment");
     expect(hrefs(FOOTER_EXPLORE)).toContain("/investment");
   });
 
-  it("mobile menu carries the fuller list including Free Session + Experience", () => {
-    expect(hrefs(MENU_NAV)).toContain("/free-session");
-    expect(hrefs(MENU_NAV)).toContain("/experience");
-  });
-
   it("Portfolio always points to the hub (/portfolio), never /weddings", () => {
-    for (const list of [HEADER_NAV, MENU_NAV, FOOTER_EXPLORE]) {
+    for (const list of [leaves(), FOOTER_EXPLORE]) {
       const portfolio = list.find((i) => i.label === "Portfolio");
       expect(portfolio?.href).toBe("/portfolio");
     }
@@ -53,7 +68,7 @@ describe("nav config", () => {
   });
 
   it("every internal nav href is root-relative", () => {
-    for (const list of [HEADER_NAV, MENU_NAV, FOOTER_EXPLORE, FOOTER_CONNECT]) {
+    for (const list of [leaves(), FOOTER_EXPLORE, FOOTER_CONNECT]) {
       for (const item of list) expect(item.href.startsWith("/")).toBe(true);
     }
   });
