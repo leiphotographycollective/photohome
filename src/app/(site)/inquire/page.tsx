@@ -85,7 +85,7 @@ export default function InquirePage() {
               color: MUTED,
             }}
           >
-            Tell me what you&rsquo;re planning — the venue, the vibe, the parts
+            Tell me what you&rsquo;re planning: the venue, the vibe, the parts
             you&rsquo;re most excited about. I read every inquiry personally,
             and you&rsquo;ll hear back within 48 hours.
           </p>
@@ -211,8 +211,20 @@ export default function InquirePage() {
               color: MUTED,
             }}
           >
-            A few details is all it takes to begin. Once you submit, you&rsquo;ll
+            All it takes is a few details. Once you submit, you&rsquo;ll
             hear back from me personally to set up a call.
+          </p>
+          <p
+            data-fadeup=""
+            style={{
+              maxWidth: 560,
+              margin: "14px auto 0",
+              fontSize: 13,
+              lineHeight: 1.7,
+              color: MUTED,
+            }}
+          >
+            Asking about a date? I&rsquo;ll confirm availability in my reply.
           </p>
         </div>
 
