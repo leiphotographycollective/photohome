@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
+import HeaderNav from "./HeaderNav";
 import { DIM, GOLD } from "./tokens";
 
 /* Fixed chrome shared by every Lei page: the custom cursor elements and a
@@ -57,7 +58,7 @@ export default function Chrome() {
         />
       </div>
 
-      {/* ══ Fixed header — centered wordmark, burger right ══ */}
+      {/* ══ Fixed header — wordmark left; desktop nav or burger on the right ══ */}
       <header
         className="lx-header"
         style={{
@@ -69,8 +70,8 @@ export default function Chrome() {
           height: "var(--lx-header-h)",
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
-          padding: "0 38px",
+          justifyContent: "space-between",
+          padding: "0 30px",
           background: "#F7F5F2",
           borderBottom: "1px solid rgba(14,13,11,.08)",
           color: "#0E0D0B",
@@ -93,16 +94,8 @@ export default function Chrome() {
           Lei Photography{" "}
           <span style={{ fontWeight: 400, color: DIM }}>Collective</span>
         </Link>
-        <div
-          style={{
-            position: "absolute",
-            right: 30,
-            top: "50%",
-            transform: "translateY(-50%)",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
+        <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
+          <HeaderNav />
           <MobileMenu />
         </div>
       </header>

@@ -180,8 +180,11 @@ html.lenis {
 :root {
   --lx-header-h: 64px;
 }
-.lx-burger {
+.lx-desknav {
   display: flex;
+}
+.lx-burger {
+  display: none;
 }
 .lx-overlay {
   display: flex;
@@ -193,6 +196,12 @@ html.lenis {
   }
   .lx-logo {
     font-size: 11px !important;
+  }
+  .lx-desknav {
+    display: none !important;
+  }
+  .lx-burger {
+    display: flex !important;
   }
   .lx-grid-2col {
     grid-template-columns: 1fr !important;
