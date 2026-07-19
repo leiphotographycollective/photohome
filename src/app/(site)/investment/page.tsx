@@ -276,6 +276,11 @@ export default function InvestmentPage() {
             </div>
           ))}
         </div>
+
+        {/* Proof, right after the prices: send the price-curious to a real day. */}
+        <div data-fadeup="" style={{ marginTop: "8vh", textAlign: "center" }}>
+          <SoftLink href="/weddings" label="See what a full day looks like" />
+        </div>
       </section>
 
       {/* ══ Every collection includes + Add-ons ══ */}
