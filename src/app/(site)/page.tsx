@@ -252,7 +252,7 @@ export default function HomePage() {
             {[
               `Editorial portraits that feel iconic, never stiff or overproduced.`,
               `Real moments preserved from the quiet morning hours to the final song.`,
-              `Ever said “I'm awkward in front of a camera”? Perfect, you're in good company; most of my favorite people have.`,
+              `Ever said “I'm awkward in front of a camera”? Perfect, you're in good company; most of my favorite couples have.`,
             ].map((line) => (
               <li
                 key={line}
@@ -707,7 +707,7 @@ export default function HomePage() {
         </div>
         <div style={{ maxWidth: 560 }}>
           <div data-fadeup="" style={kicker({ marginBottom: 20 }, 10, ".3em")}>
-            Showcasing the real you
+            You two are the story.
           </div>
           <h2
             data-fadeup=""
@@ -745,10 +745,10 @@ export default function HomePage() {
             data-fadeup=""
             style={{ margin: "0 0 34px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
           >
-            I don&rsquo;t have one singular style: I adapt from light and
-            airy to editorial, so the photos look like you, not like my formula.
-            Most of all, I want you to look and feel your absolute best, with the
-            whole experience tailored personally to you.
+            The editorial eye is constant: the feeling is yours. I shape the
+            light, the pacing, and the direction around who you two actually
+            are, so the photos look like you at your absolute best, never like
+            a formula. The whole experience is tailored personally to you.
           </p>
           <Link
             data-fadeup=""
@@ -962,7 +962,7 @@ export default function HomePage() {
               }}
             >
               Tell me everything. You&rsquo;ll hear back from me personally
-              within 48 hours. (I genuinely can&rsquo;t wait to read it.)
+              within 48 hours. (I can&rsquo;t wait to read it.)
             </p>
             <CtaLink />          </div>
         </div>
