@@ -108,7 +108,7 @@ export default function InvestmentPage() {
               color: cream(0.85),
             }}
           >
-            Collections from $2,400 — each one built around how you two
+            Collections from $2,400, each one built around how you two
             actually want the day to go.
           </p>
         </div>
@@ -134,8 +134,7 @@ export default function InvestmentPage() {
             color: MUTED,
           }}
         >
-          Your day deserves coverage built around how you two actually want it
-          to go. Every collection below can be tailored, and every one can be
+          Every collection below can be tailored, and every one can be
           split into monthly payments. Tell me about your day and I&rsquo;ll
           send the full breakdown.
         </p>
@@ -271,7 +270,7 @@ export default function InvestmentPage() {
                   {t.price}
                 </div>
                 <div data-fadeup="">
-                  <SoftLink href="/inquire#form" label="Click here to inquire" />
+                  <SoftLink href="/inquire#form" label="Check my date" />
                 </div>
               </div>
             </div>
@@ -429,7 +428,7 @@ export default function InvestmentPage() {
             color: MUTED,
           }}
         >
-          — {TESTIMONIALS[0].names}
+          {TESTIMONIALS[0].names}
           {TESTIMONIALS[0].context ? ` · ${TESTIMONIALS[0].context}` : ""}
         </div>
       </section>
@@ -568,7 +567,7 @@ export default function InvestmentPage() {
                 textWrap: "pretty",
               }}
             >
-              Every collection can be tailored — <em>tell me about your day.</em>
+              Every collection can be tailored: <em>tell me about your day.</em>
             </h2>
             <div
               data-fadeup=""
