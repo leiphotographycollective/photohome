@@ -149,7 +149,7 @@ export default function FreeSessionPage() {
             }}
           >
             Every month I hand-pick 4 newly engaged couples for a completely
-            free engagement session — no random drawing, just me reading real
+            free engagement session: no random drawing, just me reading real
             stories, maybe yours, and choosing the ones that pull me in.
           </p>
           <div data-fadeup="" style={{ marginTop: "4vh" }}>
@@ -338,7 +338,7 @@ export default function FreeSessionPage() {
         >
           I give away <em style={{ color: GOLD }}>4</em> free engagement
           sessions every month, hand-picked from every couple who applies, so
-          every winner — maybe you — gets the same full experience as my paid
+          every winner, maybe you, gets the same full experience as my paid
           wedding clients: real time, real coverage, real photos to keep.
         </p>
         <div
@@ -353,7 +353,7 @@ export default function FreeSessionPage() {
             color: "#9C9490",
           }}
         >
-          Entries are read at the end of every month — make yours count
+          Entries are read at the end of every month; make yours count
         </div>
       </section>
 

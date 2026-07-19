@@ -95,7 +95,7 @@ export default function ExperiencePage() {
                 color: cream(0.8),
               }}
             >
-              Here&rsquo;s how I make the day feel easy — and the photos feel
+              Here&rsquo;s how I make the day feel easy, and the photos feel
               like you.
             </p>
             <div data-fadeup="">
@@ -167,7 +167,7 @@ export default function ExperiencePage() {
                 color: GOLD,
               }}
             >
-              That&rsquo;s when I come through for you.
+              That&rsquo;s the exact couple I do my best work for.
             </div>
           </div>
           <div data-reveal="" style={{ overflow: "hidden" }}>
@@ -213,7 +213,7 @@ export default function ExperiencePage() {
             textWrap: "pretty",
           }}
         >
-          Wedding, graduation, or something only you two would think up&hellip;
+          Wedding, elopement, or something only you two would think up&hellip;
         </h2>
         <p
           data-fadeup=""

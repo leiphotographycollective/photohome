@@ -206,7 +206,7 @@ export default async function CategoryPage({
                       marginTop: 8,
                     }}
                   >
-                    {p.place} — {p.year}
+                    {p.place} · {p.year}
                   </div>
                 </div>
                 <span

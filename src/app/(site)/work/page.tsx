@@ -58,7 +58,7 @@ export default function WorkPage() {
             data-fadeup=""
             style={kicker({ marginBottom: "3vh" }, 11, ".34em")}
           >
-            The full portfolio — five chapters
+            The full portfolio: five chapters
           </div>
           <h1
             style={{
@@ -101,7 +101,7 @@ export default function WorkPage() {
               }}
             >
               Weddings, graduations, portraits &amp; editorials, headshots &amp;
-              events, engagements &amp; proposals — all over the Bay Area.
+              events, engagements &amp; proposals, all over the Bay Area.
             </p>
             <div data-fadeup="">
               <ScrollHint color={cream(0.55)} />
