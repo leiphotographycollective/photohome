@@ -64,9 +64,8 @@ export default function TestimonialFeature() {
           />
         </div>
         <div style={{ maxWidth: 560 }}>
-          {/* Assumes the featured couple is the gallery couple above — revisit when a second testimonial arrives. */}
           <div data-fadeup="" style={kicker({ marginBottom: 26 }, 10, ".3em")}>
-            From the couple above
+            From {t.names}
           </div>
           <blockquote
             data-fadeup=""
@@ -90,20 +89,21 @@ export default function TestimonialFeature() {
           >
             {t.quote}
           </p>
-          <div
-            data-fadeup=""
-            style={{
-              marginTop: 30,
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: ".22em",
-              textTransform: "uppercase",
-              color: GOLD,
-            }}
-          >
-            — {t.names}
-            {t.context ? ` · ${t.context}` : ""}
-          </div>
+          {t.context && (
+            <div
+              data-fadeup=""
+              style={{
+                marginTop: 30,
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: ".22em",
+                textTransform: "uppercase",
+                color: GOLD,
+              }}
+            >
+              {t.context}
+            </div>
+          )}
           {many && (
             <div style={{ marginTop: 28, display: "flex", gap: 14 }}>
               <button
