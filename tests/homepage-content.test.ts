@@ -14,7 +14,7 @@ import { CATEGORIES } from "@/content/portfolio";
 
 describe("CTA constants", () => {
   it("match the spec exactly", () => {
-    expect(CTA_LABEL).toBe("Check my availability");
+    expect(CTA_LABEL).toBe("Check my date");
     expect(CTA_HREF).toBe("/inquire#form");
   });
 });

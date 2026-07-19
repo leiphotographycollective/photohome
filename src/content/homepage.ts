@@ -9,7 +9,7 @@ import {
 } from "@/content/portfolio";
 
 /** The one conversion CTA, everywhere: gold pill → HoneyBook form. */
-export const CTA_LABEL = "Check my availability";
+export const CTA_LABEL = "Check my date";
 export const CTA_HREF = "/inquire#form";
 
 /** SEO anchor — must appear in hero kickers, page titles, and footer. */
