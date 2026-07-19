@@ -18,8 +18,7 @@ export interface NavGroup {
 
 export type NavEntry = NavItem | NavGroup;
 
-export const isGroup = (e: NavEntry): e is NavGroup =>
-  (e as NavGroup).children !== undefined;
+export const isGroup = (e: NavEntry): e is NavGroup => "children" in e;
 
 /** Primary CTA, rendered separately from the nav lists. */
 export const INQUIRE: NavItem = { href: "/inquire", label: "Inquire" };

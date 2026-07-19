@@ -29,10 +29,10 @@ const bar = (open: boolean, top: boolean) =>
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [groupOpen, setGroupOpen] = useState(false);
+  const [groupOpen, setGroupOpen] = useState<string | null>(null);
   const pathname = usePathname();
   useEffect(() => setMounted(true), []);
-  useEffect(() => { setOpen(false); setGroupOpen(false); }, [pathname]);
+  useEffect(() => { setOpen(false); setGroupOpen(null); }, [pathname]);
 
   const overlay = (
     <div
@@ -87,11 +87,12 @@ export default function MobileMenu() {
           const n = String(i + 1).padStart(2, "0");
           if (isGroup(item)) {
             const active = item.children.some((c) => pathname === c.href);
+            const expanded = groupOpen === item.label;
             return (
               <div key={item.label}>
                 <button
-                  onClick={() => setGroupOpen((v) => !v)}
-                  aria-expanded={groupOpen}
+                  onClick={() => setGroupOpen((v) => (v === item.label ? null : item.label))}
+                  aria-expanded={expanded}
                   style={{
                     display: "flex", alignItems: "center", gap: 14, width: "100%", textAlign: "left",
                     fontFamily: SERIF, fontSize: 34, fontWeight: 500, lineHeight: 1.35,
@@ -105,7 +106,7 @@ export default function MobileMenu() {
                     width="14" height="9" viewBox="0 0 14 9" fill="none"
                     style={{
                       marginLeft: 6, flexShrink: 0,
-                      transform: groupOpen ? "rotate(180deg)" : "none",
+                      transform: expanded ? "rotate(180deg)" : "none",
                       transition: "transform .35s cubic-bezier(0.4,0,0.2,1)",
                     }}
                   >
@@ -115,8 +116,8 @@ export default function MobileMenu() {
                 <div
                   style={{
                     overflow: "hidden",
-                    maxHeight: groupOpen ? 240 : 0,
-                    opacity: groupOpen ? 1 : 0,
+                    maxHeight: expanded ? 240 : 0,
+                    opacity: expanded ? 1 : 0,
                     transition: "max-height .4s cubic-bezier(0.4,0,0.2,1), opacity .3s ease",
                   }}
                 >

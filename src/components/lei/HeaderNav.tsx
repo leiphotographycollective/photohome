@@ -7,15 +7,26 @@ import { GOLD, INK, cream, navLink, pill } from "./tokens";
 import { PRIMARY_NAV, INQUIRE, isGroup, type NavItem } from "@/content/nav";
 
 /* Visible desktop navigation in the fixed header. Hidden ≤860px (the burger
-   takes over there). "Weddings" is a hover/focus dropdown whose parent is not a
-   link. Active page is gold. */
+   takes over there). "Weddings" is a hover/focus disclosure whose parent is not
+   a link (plain button + disclosure, not an ARIA menu widget). Active page is
+   gold. */
+
+// Paths that belong to a dropdown group, so the top-level "Portfolio" link does
+// not ALSO light up when you are on one of them (e.g. /portfolio/engagements
+// lives under the Weddings group).
+const GROUP_HREFS = new Set(
+  PRIMARY_NAV.flatMap((e) => (isGroup(e) ? e.children.map((c) => c.href) : []))
+);
 
 export default function HeaderNav() {
   const pathname = usePathname();
   const [openGroup, setOpenGroup] = useState<string | null>(null);
 
   const isActive = (href: string) =>
-    pathname === href || (href === "/portfolio" && pathname.startsWith("/portfolio"));
+    pathname === href ||
+    (href === "/portfolio" &&
+      pathname.startsWith("/portfolio") &&
+      !GROUP_HREFS.has(pathname));
 
   const groupActive = (children: NavItem[]) =>
     children.some((c) => pathname === c.href);
@@ -36,10 +47,12 @@ export default function HeaderNav() {
               onBlur={(e) => {
                 if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpenGroup(null);
               }}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") setOpenGroup(null);
+              }}
             >
               <button
                 type="button"
-                aria-haspopup="true"
                 aria-expanded={open}
                 data-hover=""
                 style={{
@@ -66,7 +79,6 @@ export default function HeaderNav() {
                 </svg>
               </button>
               <div
-                role="menu"
                 style={{
                   position: "absolute",
                   top: "calc(100% + 14px)",
@@ -90,7 +102,6 @@ export default function HeaderNav() {
                   <Link
                     key={c.href}
                     href={c.href}
-                    role="menuitem"
                     data-hover=""
                     className="lx-dd-item"
                     aria-current={pathname === c.href ? "page" : undefined}
