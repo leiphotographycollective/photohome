@@ -39,7 +39,7 @@ export default function AboutPage() {
           }}
         >
           <div data-fadeup="" style={kicker({ marginBottom: "3vh" }, 11, ".34em")}>
-            Showcasing the real you
+            You two are the story.
           </div>
           <h1
             style={{
@@ -94,11 +94,11 @@ export default function AboutPage() {
               color: MUTED,
             }}
           >
-            I don&rsquo;t have one singular style: I adapt from light and airy
-            to editorial, so the photos look like you, not like my formula.
-            Shoots with me are calm, easy, and honestly pretty fun; people at
-            ease make the best photos. Most of all, I want you to look and feel
-            your absolute best, with the whole experience tailored to you.
+            The editorial eye is constant: the feeling is yours. Shoots with me
+            are calm, easy, and honestly pretty fun; people at ease make the
+            best photos. I shape the light, the pacing, and the direction
+            around who you two actually are, so the photos look like you at
+            your absolute best, never like a formula.
           </p>
         </div>
         <div
