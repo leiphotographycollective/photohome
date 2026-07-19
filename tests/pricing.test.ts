@@ -4,7 +4,7 @@ import { ADD_ONS, INCLUDED_EVERYWHERE, TIERS } from "@/content/pricing";
 describe("investment tiers", () => {
   it("lists the three collections flagship-first with approved prices", () => {
     expect(TIERS.map((t) => t.name)).toEqual([
-      "The Collection",
+      "The Full Story",
       "The Signature",
       "The Intimate",
     ]);
@@ -22,8 +22,8 @@ describe("investment tiers", () => {
         expect(fact).not.toMatch(/Pic-Time|printing rights|per hour of coverage/);
       }
     }
-    expect(INCLUDED_EVERYWHERE).toHaveLength(4);
-    expect(INCLUDED_EVERYWHERE[3]).toBe(
+    expect(INCLUDED_EVERYWHERE).toHaveLength(3);
+    expect(INCLUDED_EVERYWHERE[2]).toBe(
       "Monthly payment plans: every collection can be split into monthly payments"
     );
   });

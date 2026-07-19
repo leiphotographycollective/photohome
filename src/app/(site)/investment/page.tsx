@@ -12,12 +12,12 @@ import { img, PHOTOS, type Photo } from "@/content/portfolio";
 
 export const metadata: Metadata = {
   title: "Wedding Photography Investment: Collections from $2,400",
-  description: `${POSITIONING} Three wedding collections from $2,400 (The Collection, The Signature and The Intimate) for couples in the ${CITY} & beyond.`,
+  description: `${POSITIONING} Three wedding collections from $2,400 (The Full Story, The Signature and The Intimate) for couples in the ${CITY} & beyond.`,
 };
 
 /* One photo per collection, rendered beside its block (sides alternate). */
 const TIER_PHOTOS: Photo[] = [
-  PHOTOS.shoulderDance, // The Collection: the full party
+  PHOTOS.shoulderDance, // The Full Story: the full party
   PHOTOS.marinaKiss, // The Signature: golden hour couple
   PHOTOS.ringsEmbrace, // The Intimate: quiet and close
 ];
@@ -36,7 +36,7 @@ const FAQS = [
   },
   {
     q: "How many photos do we get, and how fast?",
-    a: "Every image you receive is fully edited: 700+ with The Collection, 500+ with The Signature and 350+ with The Intimate. The Collection and The Signature include a sneak peek gallery within 48 hours, and your full gallery arrives in a designed online gallery with printing rights.",
+    a: "Every image you receive is fully edited: 700+ with The Full Story, 500+ with The Signature and 350+ with The Intimate. The Full Story and The Signature include a sneak peek gallery within 48 hours, and your full gallery arrives in a designed online gallery with printing rights.",
   },
   {
     q: "What if none of these fits our day exactly?",
