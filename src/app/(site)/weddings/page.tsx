@@ -188,39 +188,6 @@ export default function WeddingsPage() {
         </div>
       </section>
 
-      {/* ══ Proof + price anchor ══ */}
-      <section
-        style={{
-          position: "relative",
-          background: "#0E0D0B",
-          padding: "16vh 6vw",
-          textAlign: "center",
-        }}
-      >
-        <div style={{ maxWidth: 760, margin: "0 auto" }}>
-          <blockquote
-            data-fadeup=""
-            style={{
-              margin: 0,
-              fontFamily: SERIF,
-              fontStyle: "italic",
-              fontWeight: 400,
-              fontSize: "clamp(22px,2.6vw,34px)",
-              lineHeight: 1.4,
-              textWrap: "pretty",
-            }}
-          >
-            &ldquo;{TESTIMONIALS[0].pull}&rdquo;
-          </blockquote>
-          <div data-fadeup="" style={kicker({ marginTop: 26 }, 10, ".3em")}>
-            {TESTIMONIALS[0].names}
-          </div>
-          <div data-fadeup="" style={{ marginTop: 34 }}>
-            <SoftLink dark href="/investment" label="Collections from $2,400" />
-          </div>
-        </div>
-      </section>
-
       {/* ══ Parallax gallery ══ */}
       <section
         style={{ position: "relative", background: "#0E0D0B", padding: "14vh 0 0" }}
@@ -256,6 +223,39 @@ export default function WeddingsPage() {
               },
             ]}
           />
+        </div>
+      </section>
+
+      {/* ══ Proof + price anchor ══ */}
+      <section
+        style={{
+          position: "relative",
+          background: "#0E0D0B",
+          padding: "16vh 6vw",
+          textAlign: "center",
+        }}
+      >
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
+          <blockquote
+            data-fadeup=""
+            style={{
+              margin: 0,
+              fontFamily: SERIF,
+              fontStyle: "italic",
+              fontWeight: 400,
+              fontSize: "clamp(22px,2.6vw,34px)",
+              lineHeight: 1.4,
+              textWrap: "pretty",
+            }}
+          >
+            &ldquo;{TESTIMONIALS[0].pull}&rdquo;
+          </blockquote>
+          <div data-fadeup="" style={kicker({ marginTop: 26 }, 10, ".3em")}>
+            {TESTIMONIALS[0].names}
+          </div>
+          <div data-fadeup="" style={{ marginTop: 34 }}>
+            <SoftLink dark href="/investment" label="Collections from $2,400" />
+          </div>
         </div>
       </section>
 
