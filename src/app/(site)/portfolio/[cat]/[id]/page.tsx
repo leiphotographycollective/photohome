@@ -281,14 +281,34 @@ export default async function ProjectPage({
           >
             Have a day worth documenting?
           </span>
-          <Link
-            data-mag=""
-            data-hover=""
-            href="/inquire"
-            style={pill("#F7F5F2", "#0E0D0B")}
-          >
-            Inquire
-          </Link>
+          <div style={{ display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
+            <Link
+              data-hover=""
+              href="/investment"
+              style={{
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: ".22em",
+                textTransform: "uppercase",
+                color: "#F7F5F2",
+                textDecoration: "none",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+              }}
+            >
+              See the collections
+              <span style={{ color: GOLD }}>→</span>
+            </Link>
+            <Link
+              data-mag=""
+              data-hover=""
+              href="/inquire"
+              style={pill("#F7F5F2", "#0E0D0B")}
+            >
+              Inquire
+            </Link>
+          </div>
         </div>
 
         <LeiFooter border={false} padding="0 0 40px" />
