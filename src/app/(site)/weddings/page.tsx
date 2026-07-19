@@ -7,6 +7,8 @@ import { Marquee, ParallaxGallery, ProcessSteps, ScrollHint } from "@/components
 import { GOLD, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
 import { HOME_PROCESS } from "@/content/experience";
+import { TESTIMONIALS } from "@/content/homepage";
+import { SoftLink } from "@/components/lei/Cta";
 
 export const metadata: Metadata = {
   title: "Weddings: Present for All of It",
@@ -92,7 +94,7 @@ export default function WeddingsPage() {
           }}
         >
           <div data-fadeup="" style={kicker({ marginBottom: 24 }, 10, ".3em")}>
-            Chapter 01 — Weddings
+            Weddings
           </div>
           <h1
             style={{
@@ -120,7 +122,7 @@ export default function WeddingsPage() {
               color: cream(0.72),
             }}
           >
-            You two stay in the day — I&rsquo;ll make sure you get it back. The
+            You two stay in the day; I&rsquo;ll make sure you get it back. The
             planning happens before the camera ever comes out.
           </p>
         </div>
@@ -182,6 +184,39 @@ export default function WeddingsPage() {
             >
               The first dance, kept forever.
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ Proof + price anchor ══ */}
+      <section
+        style={{
+          position: "relative",
+          background: "#0E0D0B",
+          padding: "16vh 6vw",
+          textAlign: "center",
+        }}
+      >
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
+          <blockquote
+            data-fadeup=""
+            style={{
+              margin: 0,
+              fontFamily: SERIF,
+              fontStyle: "italic",
+              fontWeight: 400,
+              fontSize: "clamp(22px,2.6vw,34px)",
+              lineHeight: 1.4,
+              textWrap: "pretty",
+            }}
+          >
+            &ldquo;{TESTIMONIALS[0].pull}&rdquo;
+          </blockquote>
+          <div data-fadeup="" style={kicker({ marginTop: 26 }, 10, ".3em")}>
+            {TESTIMONIALS[0].names}
+          </div>
+          <div data-fadeup="" style={{ marginTop: 34 }}>
+            <SoftLink dark href="/investment" label="Collections from $2,400" />
           </div>
         </div>
       </section>
