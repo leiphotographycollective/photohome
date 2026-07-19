@@ -90,7 +90,7 @@ export default async function CategoryPage({
               ...kicker({ textDecoration: "none", marginBottom: "3vh" }, 11),
             }}
           >
-            ← The Work
+            ← The Portfolio
           </Link>
           <h1
             data-fadeup=""
