@@ -12,7 +12,7 @@ export default function HeaderNav() {
   const pathname = usePathname();
 
   const isActive = (href: string) =>
-    pathname === href || (href === "/work" && pathname.startsWith("/portfolio"));
+    pathname === href || (href === "/portfolio" && pathname.startsWith("/portfolio"));
 
   return (
     <div className="lx-desknav" style={{ alignItems: "center", gap: 28 }}>
@@ -21,6 +21,7 @@ export default function HeaderNav() {
           key={item.href}
           href={item.href}
           data-hover=""
+          aria-current={isActive(item.href) ? "page" : undefined}
           style={navLink(isActive(item.href) ? GOLD : INK)}
         >
           {item.label}

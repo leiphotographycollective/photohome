@@ -2,8 +2,7 @@
 // all read from here, so links stay consistent on every page and a destination
 // changes in exactly one place.
 //
-// NOTE: "Portfolio" points to /work until Sub-project B renames the hub to
-// /portfolio; at that point, change the three "/work" entries below.
+// NOTE: "Portfolio" points to /portfolio, the hub page (Sub-project B).
 
 export interface NavItem {
   href: string;
@@ -15,7 +14,7 @@ export const INQUIRE: NavItem = { href: "/inquire", label: "Inquire" };
 
 /** Visible desktop header bar (tight, priority pages only). */
 export const HEADER_NAV: NavItem[] = [
-  { href: "/work", label: "Portfolio" },
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/weddings", label: "Weddings" },
   { href: "/investment", label: "Investment" },
   { href: "/about", label: "About" },
@@ -23,7 +22,7 @@ export const HEADER_NAV: NavItem[] = [
 
 /** Mobile burger menu (fuller list). */
 export const MENU_NAV: NavItem[] = [
-  { href: "/work", label: "Portfolio" },
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/weddings", label: "Weddings" },
   { href: "/experience", label: "Experience" },
   { href: "/investment", label: "Investment" },
@@ -33,7 +32,7 @@ export const MENU_NAV: NavItem[] = [
 
 /** Footer "Explore" column. */
 export const FOOTER_EXPLORE: NavItem[] = [
-  { href: "/work", label: "Portfolio" },
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/weddings", label: "Weddings" },
   { href: "/second-weddings", label: "Second Weddings" },
   { href: "/free-session", label: "Free Session" },

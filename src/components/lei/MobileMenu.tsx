@@ -86,6 +86,7 @@ export default function MobileMenu() {
             key={l.href}
             href={l.href}
             onClick={() => setOpen(false)}
+            aria-current={pathname === l.href ? "page" : undefined}
             style={{
               display: "flex", alignItems: "baseline", gap: 14,
               fontFamily: SERIF, fontSize: 34, fontWeight: 500, lineHeight: 1.35,

@@ -82,7 +82,7 @@ export default async function CategoryPage({
         </div>
         <div style={{ position: "relative", zIndex: 2 }}>
           <Link
-            href="/work"
+            href="/portfolio"
             data-hover=""
             data-fadeup=""
             style={{

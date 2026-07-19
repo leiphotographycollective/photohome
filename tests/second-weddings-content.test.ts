@@ -71,7 +71,7 @@ describe("second-weddings proof, steps, faq, cta", () => {
       expect(p.path.length).toBeGreaterThan(0);
       expect(p.a.length).toBeGreaterThan(0);
     }
-    expect(SOCIAL_PROOF.href).toBe("/work");
+    expect(SOCIAL_PROOF.href).toBe("/portfolio");
     expect(TESTIMONIAL).toBeNull();
   });
 
@@ -83,7 +83,7 @@ describe("second-weddings proof, steps, faq, cta", () => {
       f.a.includes("Lei Photography Collective")
     );
     expect(routes.length).toBeGreaterThanOrEqual(1);
-    expect(FINAL_CTA.secondaryHref).toBe("/work");
+    expect(FINAL_CTA.secondaryHref).toBe("/portfolio");
     expect(FINAL_CTA.heading).toBe("Ready when you are");
   });
 });

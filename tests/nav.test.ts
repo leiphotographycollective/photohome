@@ -13,7 +13,7 @@ const hrefs = (items: { href: string }[]) => items.map((i) => i.href);
 describe("nav config", () => {
   it("desktop bar is the four priority pages, Inquire kept separate", () => {
     expect(hrefs(HEADER_NAV)).toEqual([
-      "/work",
+      "/portfolio",
       "/weddings",
       "/investment",
       "/about",
@@ -31,10 +31,10 @@ describe("nav config", () => {
     expect(hrefs(MENU_NAV)).toContain("/experience");
   });
 
-  it("Portfolio always points to the hub (/work), never /weddings", () => {
+  it("Portfolio always points to the hub (/portfolio), never /weddings", () => {
     for (const list of [HEADER_NAV, MENU_NAV, FOOTER_EXPLORE]) {
       const portfolio = list.find((i) => i.label === "Portfolio");
-      expect(portfolio?.href).toBe("/work");
+      expect(portfolio?.href).toBe("/portfolio");
     }
   });
 
