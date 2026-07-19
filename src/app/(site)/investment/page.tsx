@@ -585,7 +585,7 @@ export default function InvestmentPage() {
           </div>
         </div>
         <div style={{ padding: "0 38px" }}>
-          <LeiFooter links={["home", "work", "about", "inquire"]} />
+          <LeiFooter />
         </div>
       </section>
     </LeiPage>

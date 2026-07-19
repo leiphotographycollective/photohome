@@ -968,7 +968,7 @@ export default function HomePage() {
         </div>
 
         <div style={{ padding: "0 38px" }}>
-          <LeiFooter links={["work", "weddings", "investment", "about", "inquire"]} />
+          <LeiFooter />
         </div>
       </section>
     </LeiPage>

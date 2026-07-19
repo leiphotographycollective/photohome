@@ -276,11 +276,7 @@ export default function AboutPage() {
           padding: "0 38px",
         }}
       >
-        <LeiFooter
-          brand="raymond"
-          links={["home", "work", "about", "inquire"]}
-          border={false}
-        />
+        <LeiFooter brand="raymond" border={false} />
       </section>
     </LeiPage>
   );
