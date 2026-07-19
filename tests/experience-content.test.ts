@@ -4,11 +4,11 @@ import { HOME_PROCESS, PROCESS, QUALIFIERS } from "@/content/experience";
 describe("qualifiers", () => {
   it("has the four approved self-selection lines", () => {
     expect(QUALIFIERS).toHaveLength(4);
-    expect(QUALIFIERS[0]).toContain("trust with the day");
-    expect(QUALIFIERS[3]).toContain("already planned for it");
-    // typographic characters are load-bearing copy — regression-guard them
-    expect(QUALIFIERS[1]).toContain("“we're not photo people”");
-    expect(QUALIFIERS[3]).toContain("does too, and who's already planned for it");
+    expect(QUALIFIERS[0]).toContain("editorial eye");
+    expect(QUALIFIERS[1]).toContain("not really photo people");
+    expect(QUALIFIERS[2]).toContain("cinematic portraits");
+    expect(QUALIFIERS[3]).toContain("calm, organized");
+    expect(QUALIFIERS[3]).toContain("trust with it");
   });
 });
 
