@@ -18,19 +18,6 @@ export const metadata: Metadata = {
     `${POSITIONING} Editorial wedding photography for couples who want to be present in their wedding, not stress about it. ${CITY} & beyond, by Raymond Lei.`,
 };
 
-/** Labeled gray placeholder rendered as a data-URI SVG. Every STYLE and
- *  WHAT-TO-EXPECT slot is a real <img> using one of these, so you can drop your
- *  own photo onto any slot in the editor later; it crops via object-fit: cover. */
-function slotSrc(label: string, w = 800, h = 1000) {
-  const svg =
-    `<svg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'>` +
-    `<rect width='100%' height='100%' fill='#E6E2DB'/>` +
-    `<text x='50%' y='50%' fill='#A79F92' font-family='Helvetica,Arial,sans-serif' ` +
-    `font-size='${Math.round(Math.min(w, h) / 11)}' letter-spacing='6' ` +
-    `text-anchor='middle' dominant-baseline='central'>${label}</text></svg>`;
-  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
-}
-
 /** "STYLE" row: how the photos look. */
 const STYLE_PILLARS = [
   { title: "Fashion Forward", caption: "Editorial framing and composition, styled like a magazine spread." },
@@ -346,12 +333,13 @@ export default function HomePage() {
               margin: "0 auto",
             }}
           >
-            {[1, 2, 3, 4].map((n) => (
-              <div key={n} data-reveal="" style={{ overflow: "hidden" }}>
+            {[PHOTOS.marinaSunsetWalk, PHOTOS.confettiToast, null, null].map((photo, i) => (
+              <div key={i} data-reveal="" style={{ overflow: "hidden" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={slotSrc(`GRID ${n}`, 800, 800)}
-                  alt={`Editorial image ${n} — drop your photo here`}
+                  src={photo ? img(photo.path, 800) : `/images/placeholders/grid-${i + 1}.jpg`}
+                  alt={photo ? photo.a : `Editorial image ${i + 1} — drop your photo here`}
+                  loading="lazy"
                   style={{
                     width: "100%",
                     aspectRatio: "1 / 1",
@@ -369,7 +357,7 @@ export default function HomePage() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={slotSrc("PORTRAIT", 800, 1000)}
+              src="/images/placeholders/portrait.jpg"
               alt="Editorial portrait — drop your photo here"
               style={{
                 width: "100%",
@@ -431,7 +419,7 @@ export default function HomePage() {
                 <div data-reveal="" style={{ overflow: "hidden", marginBottom: 20 }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={slotSrc(`STYLE ${i + 1}`)}
+                    src={`/images/placeholders/style-${i + 1}.jpg`}
                     alt={`${s.title} — drop your photo here`}
                     style={{
                       width: "100%",
@@ -468,7 +456,7 @@ export default function HomePage() {
           <div data-reveal="" style={{ overflow: "hidden" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={slotSrc("FEATURE", 1200, 800)}
+              src="/images/placeholders/feature.jpg"
               alt="Feature image — drop your photo here"
               style={{
                 width: "100%",
@@ -539,7 +527,7 @@ export default function HomePage() {
                 <div data-reveal="" style={{ overflow: "hidden", marginBottom: 20 }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={slotSrc(`EXPECT ${i + 1}`)}
+                    src={`/images/placeholders/expect-${i + 1}.jpg`}
                     alt={`${e.title} — drop your photo here`}
                     style={{
                       width: "100%",

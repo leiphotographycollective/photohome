@@ -40,6 +40,7 @@ export const PHOTOS = {
   ringsEmbrace: { path: "/images/bay-area-wedding-rings-embrace-detail-lei-photography-collective.jpg", a: "Close-up of the couple's hands and rings as the groom embraces the bride in her beaded gown", r: "p" },
   firstDanceClouds: { path: "/images/bay-area-wedding-first-dance-clouds-lei-photography-collective.jpg", a: "First dance on a cloud of fog beneath string lights", r: "p" },
   marinaBoardwalk: { path: "/images/bay-area-wedding-marina-boardwalk-golden-hour-lei-photography-collective.jpg", a: "Bride and groom on the marina boardwalk at golden hour, sailboat masts behind them", r: "l" },
+  marinaSunsetWalk: { path: "/images/bay-area-wedding-couple-marina-sunset-walk-lei-photography-collective.jpg", a: "Bride and groom walking hand in hand along the marina at sunset, sailboat masts behind them", r: "t" },
   firstDance04: { path: "128f88b3-0b33-486f-a168-7d3b3f98bd13/bay-area-wedding-photography-portfolio-first-dance-lei-photography-collective-04.jpg", a: "First dance beneath string lights, fog across the floor", r: "p" },
   firstDance03: { path: "24bb3601-4fd9-49bf-9fa1-8b2ecd9a4057/bay-area-wedding-photography-portfolio-first-dance-lei-photography-collective03.jpg", a: "First dance under warm string lights", r: "l" },
   firstDanceCine: { path: "13b436d7-c955-46a1-bc5c-e4faf35bb78c/bay-area-wedding-first-dance-cinematic-natural-light-lei-photography-collective", a: "Cinematic first dance in low light", r: "p" },
@@ -73,6 +74,7 @@ export const PHOTOS = {
   eventPwc: { path: "/images/portfolio/events/event-pwc.jpg", a: "Colleagues smiling together at a corporate networking event", r: "l" },
   eventAssyrian: { path: "/images/portfolio/events/event-assyrian-5.jpg", a: "Couple in evening attire at a gala, garden view behind them", r: "l" },
   eventEmmys: { path: "/images/portfolio/events/event-emmys.jpg", a: "Emmy award statues in gold light", r: "l" },
+  confettiToast: { path: "/images/bay-area-wedding-reception-confetti-toast-black-and-white-lei-photography-collective.jpg", a: "Bride and groom toasting through a shower of heart confetti at their reception, black and white", r: "t" },
 } satisfies Record<string, Photo>;
 
 // Full "Sargon & Odelya" wedding gallery — local images at native aspect
