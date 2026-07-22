@@ -2,8 +2,12 @@ import type { CSSProperties, ReactNode } from "react";
 
 /* Editorial collage grid (2026-07-21 spec): 4 equal columns on desktop, 2
    below 860px (globals.css). Every tile declares its own aspect ratio so
-   rows auto-size consistently at any column count; sub-percent mismatches
-   between a half-tall and a small are absorbed by object-fit: cover.
+   rows auto-size consistently at any column count.
+
+   The ratios are coupled to the 2px grid gap: a 2/3 tall must equal two
+   stacked smalls plus one seam, so smalls are 4/3 (2 x 3/4 = 3/2 height)
+   and the 2-column wide is 8/3 (height of one small row). Changing one
+   ratio or the gap means re-deriving the others, or seams reopen.
 
    ORIENTATION RULE: portrait natives only in "tall" tiles, landscape
    natives only in "small"/"wide" tiles. Never cross-crop.
@@ -15,8 +19,8 @@ export type TileSize = "tall" | "small" | "wide";
 
 const TILE: Record<TileSize, CSSProperties> = {
   tall: { gridRow: "span 2", aspectRatio: "2 / 3" },
-  small: { aspectRatio: "3 / 2" },
-  wide: { gridColumn: "span 2", aspectRatio: "3 / 1" },
+  small: { aspectRatio: "4 / 3" },
+  wide: { gridColumn: "span 2", aspectRatio: "8 / 3" },
 };
 
 export function Collage({ children }: { children: ReactNode }) {

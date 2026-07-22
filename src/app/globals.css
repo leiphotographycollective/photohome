@@ -175,7 +175,7 @@ html.lenis {
 .lx-collage {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2.4vw;
+  gap: 2px;
 }
 .lx-collage .lx-gitem img {
   width: 100%;
