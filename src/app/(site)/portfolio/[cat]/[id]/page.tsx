@@ -8,7 +8,8 @@ import { DIM, GOLD, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { CATEGORIES, CAT_ORDER, aspect, img } from "@/content/portfolio";
 
 export function generateStaticParams() {
-  return CAT_ORDER.flatMap((cat) =>
+  // Object.keys, not CAT_ORDER: weddings placeholder pages must build.
+  return Object.keys(CATEGORIES).flatMap((cat) =>
     CATEGORIES[cat].projects.map((p) => ({ cat, id: p.id }))
   );
 }
@@ -42,7 +43,7 @@ export default async function ProjectPage({
   // categories' first project (max 3) — as in the prototype.
   const related: Array<{
     href: string;
-    cover: string;
+    cover: string | null;
     alt: string;
     kicker: string;
     title: string;
@@ -52,8 +53,8 @@ export default async function ProjectPage({
     .forEach((p) => {
       related.push({
         href: `/portfolio/${cat}/${p.id}`,
-        cover: img(p.cover.path, 900),
-        alt: p.cover.a,
+        cover: p.cover ? img(p.cover.path, 900) : null,
+        alt: p.cover ? p.cover.a : "",
         kicker: c.label,
         title: p.title,
       });
@@ -64,8 +65,8 @@ export default async function ProjectPage({
     const op = oc.projects[0];
     related.push({
       href: `/portfolio/${k}/${op.id}`,
-      cover: img(op.cover.path, 900),
-      alt: op.cover.a,
+      cover: op.cover ? img(op.cover.path, 900) : null,
+      alt: op.cover ? op.cover.a : "",
       kicker: oc.label,
       title: op.title,
     });
@@ -208,17 +209,35 @@ export default async function ProjectPage({
                   aspectRatio: "4 / 5",
                 }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={r.cover}
-                  alt={r.alt}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    display: "block",
-                  }}
-                />
+                {r.cover ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={r.cover}
+                    alt={r.alt}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  />
+                ) : (
+                  <div
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: SERIF,
+                        fontStyle: "italic",
+                        fontSize: 20,
+                        color: cream(0.5),
+                      }}
+                    >
+                      Coming soon
+                    </span>
+                  </div>
+                )}
               </div>
               <div
                 style={{

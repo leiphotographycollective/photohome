@@ -8,7 +8,9 @@ import { DIM, GOLD, MUTED, SERIF, cream, kicker, ink } from "@/components/lei/to
 import { CATEGORIES, CAT_ORDER, aspect, img } from "@/content/portfolio";
 
 export function generateStaticParams() {
-  return CAT_ORDER.map((cat) => ({ cat }));
+  // Object.keys, not CAT_ORDER: the weddings category must build even
+  // though the hub does not list it.
+  return Object.keys(CATEGORIES).map((cat) => ({ cat }));
 }
 
 export async function generateMetadata({
@@ -173,10 +175,29 @@ export default async function CategoryPage({
             >
               <div
                 className="lx-imgwrap"
-                style={{ aspectRatio: aspect(p.cover) }}
+                style={{ aspectRatio: p.cover ? aspect(p.cover) : "4 / 5" }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={img(p.cover.path, 1200)} alt={p.cover.a} />
+                {p.cover ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img src={img(p.cover.path, 1200)} alt={p.cover.a} />
+                ) : (
+                  <div
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      background: "#ECE7E1",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <span
+                      style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: 22, color: DIM }}
+                    >
+                      Coming soon
+                    </span>
+                  </div>
+                )}
               </div>
               <div
                 style={{
