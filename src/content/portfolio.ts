@@ -213,7 +213,9 @@ export interface Project {
   title: string;
   place: string;
   year: string;
-  cover: Photo;
+  /** null = coming-soon placeholder: render a tone block wherever a cover
+   * would show (project strip, category grid, related cards). */
+  cover: Photo | null;
   photos: Photo[];
 }
 
@@ -278,6 +280,21 @@ export const CATEGORIES: Record<string, Category> = {
       "The nerves, the question, the yes, and the golden-hour portraits that follow.",
     projects: [
       { id: "jake-proposal", title: "Jake · The Proposal", place: "Bay Area, CA", year: "2025", cover: P.proposal, photos: [P.proposal, P.coastal] },
+    ],
+  },
+  // Coming-soon shells for the "A closer look" project strip (2026-07-21
+  // collage spec). Intentionally absent from CAT_ORDER until real weddings
+  // land, so the hub and sitemap do not advertise empty pages.
+  weddings: {
+    label: "Weddings",
+    tagline: "Full days, kept the way they felt",
+    intro: "Complete wedding stories, from getting ready to the last song.",
+    projects: [
+      { id: "wedding-01", title: "Coming Soon", place: "Bay Area, CA", year: "2026", cover: null, photos: [] },
+      { id: "wedding-02", title: "Coming Soon", place: "Bay Area, CA", year: "2026", cover: null, photos: [] },
+      { id: "wedding-03", title: "Coming Soon", place: "Bay Area, CA", year: "2026", cover: null, photos: [] },
+      { id: "wedding-04", title: "Coming Soon", place: "Bay Area, CA", year: "2026", cover: null, photos: [] },
+      { id: "wedding-05", title: "Coming Soon", place: "Bay Area, CA", year: "2026", cover: null, photos: [] },
     ],
   },
 };

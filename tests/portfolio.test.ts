@@ -11,14 +11,36 @@ describe("curated Sargon & Odelya gallery", () => {
     expect(SARGON_ODELYA_CURATED.length).toBeLessThanOrEqual(17);
   });
 
-  // The /portfolio/weddings category (and its sargon-odelya project page) were
-  // removed. The curated array is retained for reuse but is no longer routed.
-  it("is not routed by any portfolio category", () => {
-    for (const cat of CAT_ORDER) {
+  // The routed sargon-odelya project page was removed; the curated array is
+  // retained for reuse but no project routes to it. The weddings category
+  // returned 2026-07-21 as coming-soon placeholders (see the collage spec),
+  // still outside CAT_ORDER.
+  it("is not routed as a project in any category", () => {
+    for (const cat of Object.keys(CATEGORIES)) {
       const projectIds = CATEGORIES[cat].projects.map((p) => p.id);
       expect(projectIds).not.toContain("sargon-odelya");
     }
-    expect(CATEGORIES.weddings).toBeUndefined();
+  });
+});
+
+describe("weddings category (coming-soon placeholders)", () => {
+  it("holds five blank project shells", () => {
+    expect(CATEGORIES.weddings).toBeDefined();
+    expect(CATEGORIES.weddings.projects.map((p) => p.id)).toEqual([
+      "wedding-01",
+      "wedding-02",
+      "wedding-03",
+      "wedding-04",
+      "wedding-05",
+    ]);
+    for (const p of CATEGORIES.weddings.projects) {
+      expect(p.cover).toBeNull();
+      expect(p.photos).toHaveLength(0);
+    }
+  });
+
+  it("is hidden from the /portfolio hub and sitemap (not in CAT_ORDER)", () => {
+    expect(CAT_ORDER).not.toContain("weddings");
   });
 });
 
