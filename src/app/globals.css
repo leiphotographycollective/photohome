@@ -169,16 +169,17 @@ html.lenis {
   grid-column: 1 / -1;
 }
 
-/* Editorial collage (homepage portfolio + /weddings): tiles declare their
-   own aspect-ratio; tall spans 2 rows, wide spans 2 columns. Reuses
-   .lx-gitem for the frame background and hover zoom. */
+/* Editorial collage (homepage portfolio + /weddings): masonry via CSS
+   columns, like a Squarespace portfolio grid. Images keep their native
+   aspect ratio and stack tightly down each column; only the column
+   bottoms are uneven. */
 .lx-collage {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  /* Images keep their native aspect ratio (no cropping), so tiles
-     top-align and row bottoms are intentionally uneven. */
-  align-items: start;
+  columns: 4;
+  column-gap: 10px;
+}
+.lx-collage .lx-gitem {
+  break-inside: avoid;
+  margin-bottom: 10px;
 }
 .lx-collage .lx-gitem img {
   width: 100%;
@@ -248,7 +249,7 @@ html.lenis {
     grid-template-columns: 1fr !important;
   }
   .lx-collage {
-    grid-template-columns: 1fr 1fr !important;
+    columns: 2 !important;
   }
   .lx-doors {
     grid-template-columns: 1fr 1fr !important;
@@ -308,3 +309,4 @@ html.lenis {
   color: #b8905a !important;
   text-decoration-color: #b8905a;
 }
+

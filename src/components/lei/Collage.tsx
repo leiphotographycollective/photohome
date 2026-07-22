@@ -1,11 +1,13 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 
-/* Editorial collage grid: 4 equal columns on desktop, 2 below 860px
-   (globals.css). Every image renders at its native aspect ratio, never
-   cropped, so row bottoms are intentionally uneven; tiles top-align.
+/* Editorial collage: masonry via CSS columns (globals.css), 4 columns on
+   desktop, 2 below 860px. Every image renders at its native aspect
+   ratio, never cropped, and stacks tightly down its column like a
+   Squarespace portfolio grid. Tiles flow column-major, so source order
+   reads down each column, not across rows.
 
    The `size` prop is kept so existing pages compile, but it no longer
-   changes layout — each tile is one cell.
+   changes layout.
 
    Pages write <img> tags out one by one inside CollageTile so each src is
    a literal string the visual editor can swap. */
@@ -23,7 +25,7 @@ export function CollageTile({
   children: ReactNode;
 }) {
   return (
-    <div data-fadeup="" className="lx-gitem" style={{ marginBottom: 0 }}>
+    <div data-fadeup="" className="lx-gitem">
       {children}
     </div>
   );
