@@ -317,7 +317,7 @@ export default function WeddingsPage() {
 
       {/* ══ Parallax gallery ══ */}
       <section
-        style={{ position: "relative", background: "#0E0D0B", padding: "14vh 0 0" }}
+        style={{ position: "relative", background: "#F7F5F2", padding: "14vh 0 0" }}
       >
         <div style={{ padding: "0 4vw 10vh" }}>
           <ParallaxGallery

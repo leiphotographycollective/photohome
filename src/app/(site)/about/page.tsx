@@ -128,7 +128,12 @@ export default function AboutPage() {
 
       {/* ══ Gallery ══ */}
       <section
-        style={{ position: "relative", background: "#0E0D0B", padding: "16vh 4vw" }}
+        style={{
+          position: "relative",
+          background: "#F7F5F2",
+          color: "#0E0D0B",
+          padding: "16vh 4vw",
+        }}
       >
         <div
           style={{
@@ -140,7 +145,7 @@ export default function AboutPage() {
           }}
         >
           <span style={kicker({})}>Selected frames</span>
-          <span style={kicker({ color: cream(0.4) })}>Different styles, same feeling.</span>
+          <span style={kicker({ color: DIM })}>Different styles, same feeling.</span>
         </div>
         <ParallaxGallery
           columns={[

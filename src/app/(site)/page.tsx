@@ -555,8 +555,8 @@ export default function HomePage() {
       <section
         style={{
           position: "relative",
-          background: "#0E0D0B",
-          color: "#F7F5F2",
+          background: "#F7F5F2",
+          color: "#0E0D0B",
           padding: "16vh 6vw",
         }}
       >
@@ -738,13 +738,13 @@ export default function HomePage() {
             </CollageTile>
           </Collage>
           <div style={{ marginTop: "9vh" }}>
-            <ProjectStrip />
+            <ProjectStrip dark={false} />
           </div>
           <div
             data-fadeup=""
             style={{ marginTop: "7vh", display: "flex", justifyContent: "center" }}
           >
-            <SoftLink href="/weddings" label="View the full portfolio" dark />
+            <SoftLink href="/weddings" label="View the full portfolio" />
           </div>
         </div>
       </section>
