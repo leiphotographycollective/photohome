@@ -382,7 +382,7 @@ export default function HomePage() {
             <div data-reveal="" style={{ overflow: "hidden" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/bay-area-wedding-first-dance-fog-string-lights-lei-photography-collective.jpg"
+                src="/images/bay-area-wedding-first-dance-fog-clouds-string-light-canopy-lei-photography-collective.jpg"
                 alt="Bride and groom holding hands during their first dance on a fog-covered floor beneath a canopy of string lights"
                 loading="lazy"
                 style={PORTFOLIO_FULL}
@@ -536,8 +536,8 @@ export default function HomePage() {
               <div data-reveal="" style={{ overflow: "hidden", marginBottom: 20 }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/Lei.Photography.Co-Sargon%20ReEdit2-1.jpg"
-                  alt="Detail Oriented Approach - drop your photo here"
+                  src="/images/bay-area-wedding-first-dance-fog-clouds-string-light-canopy-lei-photography-collective.jpg"
+                  alt="Bride and groom holding hands during their first dance on a fog-covered floor beneath a canopy of string lights"
                   style={EXPECT_IMG}
                 />
               </div>
