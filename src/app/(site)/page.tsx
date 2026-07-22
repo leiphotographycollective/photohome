@@ -382,8 +382,8 @@ export default function HomePage() {
             <div data-reveal="" style={{ overflow: "hidden" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/bay-area-wedding-first-dance-fog-clouds-string-light-canopy-lei-photography-collective.jpg"
-                alt="Bride and groom holding hands during their first dance on a fog-covered floor beneath a canopy of string lights"
+                src="/images/bay-area-wedding-details-flat-lay-jimmy-choo-heels-chanel-perfume-lei-photography-collective.jpg"
+                alt="Bridal details flat lay with pearl Jimmy Choo heels, Chanel perfume, jewelry and the wedding invitation"
                 loading="lazy"
                 style={PORTFOLIO_FULL}
               />
@@ -536,8 +536,8 @@ export default function HomePage() {
               <div data-reveal="" style={{ overflow: "hidden", marginBottom: 20 }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/bay-area-wedding-first-dance-fog-clouds-string-light-canopy-lei-photography-collective.jpg"
-                  alt="Bride and groom holding hands during their first dance on a fog-covered floor beneath a canopy of string lights"
+                  src="/images/bay-area-wedding-details-flat-lay-jimmy-choo-heels-chanel-perfume-lei-photography-collective.jpg"
+                  alt="Bridal details flat lay with pearl Jimmy Choo heels, Chanel perfume, jewelry and the wedding invitation"
                   style={EXPECT_IMG}
                 />
               </div>
