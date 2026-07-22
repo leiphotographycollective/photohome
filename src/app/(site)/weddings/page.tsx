@@ -3,7 +3,7 @@ import Link from "next/link";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
-import { Marquee, ParallaxGallery, ProcessSteps, ScrollHint } from "@/components/lei/blocks";
+import { Marquee, ProcessSteps, ScrollHint } from "@/components/lei/blocks";
 import { GOLD, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
 import { HOME_PROCESS } from "@/content/experience";
@@ -312,46 +312,6 @@ export default function WeddingsPage() {
               The first dance, kept forever.
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ══ Parallax gallery ══ */}
-      <section
-        style={{ position: "relative", background: "#F7F5F2", padding: "14vh 0 0" }}
-      >
-        <div style={{ padding: "0 4vw 10vh" }}>
-          <ParallaxGallery
-            columns={[
-              {
-                speed: -60,
-                marginTop: "10vh",
-                images: [
-                  { src: img(PHOTOS.sargon046.path, 1000), alt: "Bride getting ready, shoe moment", ratio: "4 / 5", cursor: "Getting ready" },
-                  { src: img(PHOTOS.detailsFlat.path, 1000), alt: "Wedding details flat lay", ratio: "1 / 1", cursor: "Details" },
-                  { src: img(PHOTOS.bridal.path, 1000), alt: "Bride holding her veil in soft light", ratio: "3 / 4", cursor: "Portraits" },
-                ],
-              },
-              {
-                speed: 60,
-                images: [
-                  { src: img(PHOTOS.sargon225.path, 1200), alt: PHOTOS.sargon225.a, ratio: "4 / 5", cursor: "Portraits" },
-                  // Not PHOTOS.firstDance03: that CDN file is byte-identical to
-                  // the full-bleed feature image above (PHOTOS.firstDance04).
-                  { src: "/images/portfolio/weddings/sargon-odelya/sargon-odelya-30.jpg", alt: "First dance in low fog, her dress catching the light", ratio: "3 / 2", cursor: "Reception" },
-                  { src: img(PHOTOS.sargonPrep.path, 1200), alt: "Wedding preparation moment", ratio: "4 / 5", cursor: "Getting ready" },
-                ],
-              },
-              {
-                speed: -90,
-                marginTop: "18vh",
-                images: [
-                  { src: img(PHOTOS.bridesmaidsToast.path, 1000), alt: PHOTOS.bridesmaidsToast.a, ratio: "4 / 5", cursor: "Toasts" },
-                  { src: img(PHOTOS.weddingParty.path, 1000), alt: "Wedding party candid", ratio: "4 / 5", cursor: "Wedding party" },
-                  { src: img(PHOTOS.proposal.path, 1000), alt: "Proposal moment", ratio: "3 / 4", cursor: "Proposals" },
-                ],
-              },
-            ]}
-          />
         </div>
       </section>
 
