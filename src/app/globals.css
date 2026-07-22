@@ -169,6 +169,20 @@ html.lenis {
   grid-column: 1 / -1;
 }
 
+/* Editorial collage (homepage portfolio + /weddings): tiles declare their
+   own aspect-ratio; tall spans 2 rows, wide spans 2 columns. Reuses
+   .lx-gitem for the frame background and hover zoom. */
+.lx-collage {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.4vw;
+}
+.lx-collage .lx-gitem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .lx-rel img {
   transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -214,6 +228,9 @@ html.lenis {
   }
   .lx-gallery {
     grid-template-columns: 1fr !important;
+  }
+  .lx-collage {
+    grid-template-columns: 1fr 1fr !important;
   }
   .lx-doors {
     grid-template-columns: 1fr 1fr !important;
