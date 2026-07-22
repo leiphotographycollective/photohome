@@ -296,6 +296,29 @@ html.lenis {
   }
 }
 
+/* ── /links (QR landing) — full-width link rows, invert on hover ───────── */
+.lx-linkrow {
+  display: block;
+  border: 1px solid rgba(14, 13, 11, 0.18);
+  padding: 19px 24px;
+  text-align: center;
+  text-decoration: none;
+  color: #0E0D0B;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transition:
+    background 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.lx-linkrow:hover {
+  background: #0E0D0B;
+  border-color: #0E0D0B;
+  color: #F7F5F2;
+}
+
 /* ── Track B secondary CTA — gold brightens on hover ───────────────────── */
 .lx-cta2 {
   transition: color 0.3s ease, text-decoration-color 0.3s ease;
