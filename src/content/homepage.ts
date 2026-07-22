@@ -106,9 +106,10 @@ export interface PortfolioRow {
   photos: Photo[]; // 1 photo for "full", 2 for "pair"
 }
 
-/** The homepage wedding gallery — the page's centerpiece. Seeded with the
- *  strongest existing selects; Raymond swaps rows as new selects arrive.
- *  Swapping a photo is a one-line edit; the section renders whatever's here. */
+/** The homepage wedding gallery, the page's centerpiece. Since the 2026-07-21
+ *  collage rebuild the section writes its 17 <img> tags out literally in
+ *  page.tsx; this array is the curated mirror of those tiles. Swap a photo
+ *  here AND in the matching collage tile so the two stay in sync. */
 export const WEDDING_PORTFOLIO: PortfolioRow[] = [
   // Fulls are natively landscape; pairs natively portrait. No photo here may
   // appear anywhere else on the homepage (hero, manifesto, who-I-photograph…).

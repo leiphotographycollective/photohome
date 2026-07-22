@@ -90,9 +90,11 @@ describe("wedding portfolio", () => {
     }
   });
 
-  it("holds 10-14 photos (spec: homepage centerpiece density)", () => {
+  it("mirrors the 17 collage tiles (2026-07-21 collage portfolio spec)", () => {
+    // The 10-14 density bound belonged to the old stacked-rows section. The
+    // homepage now renders these photos as a 17-tile editorial collage with
+    // literal <img> tags; this array is the curated mirror of that section.
     const count = WEDDING_PORTFOLIO.reduce((n, r) => n + r.photos.length, 0);
-    expect(count).toBeGreaterThanOrEqual(10);
-    expect(count).toBeLessThanOrEqual(14);
+    expect(count).toBe(17);
   });
 });
