@@ -144,7 +144,14 @@ export default function WeddingsPage() {
       </section>
 
       {/* ══ Collage — the day at a glance, then the closer-look strip ══ */}
-      <section style={{ position: "relative", background: "#0E0D0B", padding: "14vh 4vw 12vh" }}>
+      <section
+        style={{
+          position: "relative",
+          background: "#F7F5F2",
+          color: "#0E0D0B",
+          padding: "14vh 4vw 12vh",
+        }}
+      >
         <Collage>
           <CollageTile size="tall">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -257,7 +264,7 @@ export default function WeddingsPage() {
         </Collage>
 
         <div style={{ marginTop: "9vh" }}>
-          <ProjectStrip />
+          <ProjectStrip dark={false} />
         </div>
       </section>
 
