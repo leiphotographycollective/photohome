@@ -11,6 +11,8 @@ import { CITY, POSITIONING } from "@/content/homepage";
 import HeroSlideshow from "@/components/lei/HeroSlideshow";
 import { HOME_PROCESS } from "@/content/experience";
 import TestimonialFeature from "@/components/lei/TestimonialFeature";
+import { Collage, CollageTile } from "@/components/lei/Collage";
+import ProjectStrip from "@/components/lei/ProjectStrip";
 
 export const metadata: Metadata = {
   title: "Editorial Wedding Photography in the San Francisco Bay Area",
@@ -575,159 +577,168 @@ export default function HomePage() {
           >
             Your day, the way it actually <em>felt.</em>
           </h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: "2.4vw" }}>
-            <div data-reveal="" style={{ overflow: "hidden" }}>
+          <Collage>
+            {/* Block: two tall portraits beside a 2x2 cluster of landscapes */}
+            <CollageTile size="tall">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-10.jpg"
+                alt="Bride's veil lifted and moving in the breeze"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            </CollageTile>
+            <CollageTile size="tall">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-28.jpg"
+                alt="Groom dipping the bride for a kiss by the reception fireplace"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            </CollageTile>
+            <CollageTile size="small">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-34.jpg"
                 alt="Bridal details flat lay with pearl-embellished heels, Chanel perfume, pearl jewelry and the wedding invitation"
-                style={PORTFOLIO_FULL}
+                loading="lazy"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
-            </div>
-            <div data-reveal="" style={{ overflow: "hidden" }}>
+            </CollageTile>
+            <CollageTile size="small">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-14.jpg"
                 alt="Bride touching the groom's face at golden hour"
                 loading="lazy"
-                style={PORTFOLIO_FULL}
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
-            </div>
-            <div className="lx-grid-2col" style={PAIR_ROW}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                data-fadeup=""
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-10.jpg"
-                alt="Bride's veil lifted and moving in the breeze"
-                loading="lazy"
-                style={PORTFOLIO_PAIR}
-              />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                data-fadeup=""
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-28.jpg"
-                alt="Groom dipping the bride for a kiss by the reception fireplace"
-                loading="lazy"
-                style={PORTFOLIO_PAIR}
-              />
-            </div>
-            <div data-reveal="" style={{ overflow: "hidden" }}>
+            </CollageTile>
+            <CollageTile size="small">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-26.jpg"
                 alt="Groom carrying the bride through a cheering crowd"
                 loading="lazy"
-                style={PORTFOLIO_FULL}
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
-            </div>
-            <div className="lx-grid-2col" style={PAIR_ROW}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                data-fadeup=""
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-03.jpg"
-                alt="Bride sharing an emotional moment with her mother, black and white"
-                loading="lazy"
-                style={PORTFOLIO_PAIR}
-              />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                data-fadeup=""
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-01.jpg"
-                alt="Bride's hands holding the wedding ring box"
-                loading="lazy"
-                style={PORTFOLIO_PAIR}
-              />
-            </div>
-            <div data-reveal="" style={{ overflow: "hidden" }}>
+            </CollageTile>
+            <CollageTile size="small">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-35.jpg"
                 alt="Bride and three bridesmaids in sage dresses toasting champagne while getting ready"
                 loading="lazy"
-                style={PORTFOLIO_FULL}
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
-            </div>
-            <div data-reveal="" style={{ overflow: "hidden" }}>
+            </CollageTile>
+
+            {/* Row: four tall portraits */}
+            <CollageTile size="tall">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-30.jpg"
-                alt="Bride and groom embracing on the dance floor, reception lights above"
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-03.jpg"
+                alt="Bride sharing an emotional moment with her mother, black and white"
                 loading="lazy"
-                style={PORTFOLIO_FULL}
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
-            </div>
-            <div className="lx-grid-2col" style={PAIR_ROW}>
+            </CollageTile>
+            <CollageTile size="tall">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                data-fadeup=""
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-01.jpg"
+                alt="Bride's hands holding the wedding ring box"
+                loading="lazy"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            </CollageTile>
+            <CollageTile size="tall">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-29.jpg"
                 alt="Bride and groom laughing mid-twirl on the dance floor"
                 loading="lazy"
-                style={PORTFOLIO_PAIR}
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
+            </CollageTile>
+            <CollageTile size="tall">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                data-fadeup=""
                 src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-23.jpg"
                 alt="Champagne spray celebration, alternate edit"
                 loading="lazy"
-                style={PORTFOLIO_PAIR}
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
-            </div>
-            <div data-reveal="" style={{ overflow: "hidden" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-36.jpg"
-                alt="Bride laughing with her three bridesmaids as they clink champagne flutes while getting ready"
-                loading="lazy"
-                style={PORTFOLIO_FULL}
-              />
-            </div>
-            <div className="lx-grid-2col" style={PAIR_ROW}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                data-fadeup=""
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-19.jpg"
-                alt="Bride looking back over her shoulder, veil catching the sunset"
-                loading="lazy"
-                style={PORTFOLIO_PAIR}
-              />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                data-fadeup=""
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-08.jpg"
-                alt="Family and friends celebrating on the staircase, aerial view"
-                loading="lazy"
-                style={PORTFOLIO_PAIR}
-              />
-            </div>
-            <div className="lx-grid-2col" style={PAIR_ROW}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                data-fadeup=""
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-37.jpg"
-                alt="Groom lifting the bride during their first dance amid low fog beneath string lights"
-                loading="lazy"
-                style={PORTFOLIO_PAIR}
-              />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                data-fadeup=""
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-12.jpg"
-                alt="Bride beneath her veil, black and white portrait"
-                loading="lazy"
-                style={PORTFOLIO_PAIR}
-              />
-            </div>
-            <div data-reveal="" style={{ overflow: "hidden" }}>
+            </CollageTile>
+
+            {/* Row: wide band plus two landscapes */}
+            <CollageTile size="wide">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://images.squarespace-cdn.com/content/v1/697c1d6344a3b1154bcbc39e/652fef9d-196e-4248-92d2-83d8abebf683/Lei.Photography.Co-PreSargon+lReEdit-12.jpg?format=1500w"
                 alt="First dance in low fog beneath string lights, guests watching by the fireplace"
                 loading="lazy"
-                style={PORTFOLIO_FULL}
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
-            </div>
+            </CollageTile>
+            <CollageTile size="small">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-30.jpg"
+                alt="Bride and groom embracing on the dance floor, reception lights above"
+                loading="lazy"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            </CollageTile>
+            <CollageTile size="small">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-36.jpg"
+                alt="Bride laughing with her three bridesmaids as they clink champagne flutes while getting ready"
+                loading="lazy"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            </CollageTile>
+
+            {/* Row: four tall portraits */}
+            <CollageTile size="tall">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-19.jpg"
+                alt="Bride looking back over her shoulder, veil catching the sunset"
+                loading="lazy"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            </CollageTile>
+            <CollageTile size="tall">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-08.jpg"
+                alt="Family and friends celebrating on the staircase, aerial view"
+                loading="lazy"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            </CollageTile>
+            <CollageTile size="tall">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-37.jpg"
+                alt="Groom lifting the bride during their first dance amid low fog beneath string lights"
+                loading="lazy"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            </CollageTile>
+            <CollageTile size="tall">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-12.jpg"
+                alt="Bride beneath her veil, black and white portrait"
+                loading="lazy"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            </CollageTile>
+          </Collage>
+          <div style={{ marginTop: "9vh" }}>
+            <ProjectStrip />
           </div>
           <div
             data-fadeup=""
