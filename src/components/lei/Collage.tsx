@@ -1,13 +1,11 @@
 import type { CSSProperties, ReactNode } from "react";
 
 /* Editorial collage grid (2026-07-21 spec): 4 equal columns on desktop, 2
-   below 860px (globals.css). Every tile declares its own aspect ratio so
-   rows auto-size consistently at any column count.
-
-   The ratios are coupled to the 2px grid gap: a 2/3 tall must equal two
-   stacked smalls plus one seam, so smalls are 4/3 (2 x 3/4 = 3/2 height)
-   and the 2-column wide is 8/3 (height of one small row). Changing one
-   ratio or the gap means re-deriving the others, or seams reopen.
+   below 860px (globals.css). Row height comes from the grid itself
+   (grid-auto-rows in cqw units against the .lx-collage-wrap container),
+   not from per-tile aspect ratios, so every seam stays exactly the grid
+   gap no matter the gap value or column count. Tiles just span rows and
+   columns and stretch to fill; images cover.
 
    ORIENTATION RULE: portrait natives only in "tall" tiles, landscape
    natives only in "small"/"wide" tiles. Never cross-crop.
@@ -18,13 +16,17 @@ import type { CSSProperties, ReactNode } from "react";
 export type TileSize = "tall" | "small" | "wide";
 
 const TILE: Record<TileSize, CSSProperties> = {
-  tall: { gridRow: "span 2", aspectRatio: "2 / 3" },
-  small: { aspectRatio: "4 / 3" },
-  wide: { gridColumn: "span 2", aspectRatio: "8 / 3" },
+  tall: { gridRow: "span 2" },
+  small: {},
+  wide: { gridColumn: "span 2" },
 };
 
 export function Collage({ children }: { children: ReactNode }) {
-  return <div className="lx-collage">{children}</div>;
+  return (
+    <div className="lx-collage-wrap">
+      <div className="lx-collage">{children}</div>
+    </div>
+  );
 }
 
 export function CollageTile({

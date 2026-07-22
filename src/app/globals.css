@@ -172,10 +172,22 @@ html.lenis {
 /* Editorial collage (homepage portfolio + /weddings): tiles declare their
    own aspect-ratio; tall spans 2 rows, wide spans 2 columns. Reuses
    .lx-gitem for the frame background and hover zoom. */
+.lx-collage-wrap {
+  container-type: inline-size;
+}
 .lx-collage {
+  /* Rows are 3/4 of a column's width (a 4:3 small tile); talls span two
+     rows plus a seam. Derived from the container width so every seam is
+     exactly --lx-collage-gap at any column count. */
+  --lx-collage-cols: 4;
+  --lx-collage-gap: 10px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
+  gap: var(--lx-collage-gap);
+  grid-auto-rows: calc(
+    (100cqw - (var(--lx-collage-cols) - 1) * var(--lx-collage-gap)) /
+      var(--lx-collage-cols) * 3 / 4
+  );
 }
 .lx-collage .lx-gitem img {
   width: 100%;
@@ -246,6 +258,7 @@ html.lenis {
   }
   .lx-collage {
     grid-template-columns: 1fr 1fr !important;
+    --lx-collage-cols: 2;
   }
   .lx-doors {
     grid-template-columns: 1fr 1fr !important;
