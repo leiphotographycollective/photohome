@@ -147,7 +147,7 @@ export default async function ProjectPage({
           {proj.photos.map((ph, i) => (
             <div
               key={`${ph.path}-${i}`}
-              className={ph.r === "l" ? "lx-gitem wide" : "lx-gitem"}
+              className="lx-gitem"
               data-gitem=""
               style={{ aspectRatio: aspect(ph) }}
             >

@@ -38,7 +38,7 @@ const PORTFOLIO_PAIR: React.CSSProperties = {
 const PAIR_ROW: React.CSSProperties = {
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
-  gap: "2.4vw",
+  gap: 10,
 };
 
 /** "WHAT TO EXPECT" row: how the day works with me. Cards are written out
@@ -342,7 +342,7 @@ export default function HomePage() {
         }}
       >
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "2.4vw" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             <div className="lx-grid-2col" style={PAIR_ROW}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -382,8 +382,8 @@ export default function HomePage() {
             <div data-reveal="" style={{ overflow: "hidden" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/bay-area-wedding-details-flat-lay-jimmy-choo-heels-chanel-perfume-lei-photography-collective.jpg"
-                alt="Bridal details flat lay with pearl Jimmy Choo heels, Chanel perfume, jewelry and the wedding invitation"
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-13.jpg"
+                alt="Bride and groom laughing with their wedding party in the garden, bridesmaids in sage satin and groomsmen in gray"
                 loading="lazy"
                 style={PORTFOLIO_FULL}
               />
