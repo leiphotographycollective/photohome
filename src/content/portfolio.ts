@@ -75,6 +75,10 @@ export const PHOTOS = {
   eventAssyrian: { path: "/images/portfolio/events/event-assyrian-5.jpg", a: "Couple in evening attire at a gala, garden view behind them", r: "l" },
   eventEmmys: { path: "/images/portfolio/events/event-emmys.jpg", a: "Emmy award statues in gold light", r: "l" },
   confettiToast: { path: "/images/bay-area-wedding-reception-confetti-toast-black-and-white-lei-photography-collective.jpg", a: "Bride and groom toasting through a shower of heart confetti at their reception, black and white", r: "t" },
+  firstDanceFog: { path: "/images/bay-area-wedding-first-dance-fog-string-lights-black-and-white-lei-photography-collective.jpg", a: "Bride and groom sharing their first dance on a fog-covered floor beneath string lights, black and white", r: "p" },
+  marinaSunsetKiss: { path: "/images/bay-area-wedding-marina-sunset-kiss-lei-photography-collective.jpg", a: "Bride and groom kissing at sunset on the marina railing, sailboat masts glowing behind them", r: "t" },
+  firstDanceLights: { path: "/images/bay-area-wedding-first-dance-fog-string-lights-lei-photography-collective.jpg", a: "Bride and groom holding hands during their first dance on a fog-covered floor beneath a canopy of string lights", r: "p" },
+  gettingReadyToast: { path: "/images/bay-area-wedding-bride-bridesmaids-champagne-toast-getting-ready-lei-photography-collective.jpg", a: "Bride toasting champagne with her bridesmaids in sage green dresses while getting ready", r: "l" },
 } satisfies Record<string, Photo>;
 
 // Full "Sargon & Odelya" wedding gallery — local images at native aspect

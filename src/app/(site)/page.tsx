@@ -7,7 +7,7 @@ import { Marquee, ProcessSteps } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
 import { CtaLink, SoftLink } from "@/components/lei/Cta";
-import { CITY, POSITIONING, WEDDING_PORTFOLIO } from "@/content/homepage";
+import { CITY, POSITIONING } from "@/content/homepage";
 import HeroSlideshow from "@/components/lei/HeroSlideshow";
 import { HOME_PROCESS } from "@/content/experience";
 import TestimonialFeature from "@/components/lei/TestimonialFeature";
@@ -18,45 +18,59 @@ export const metadata: Metadata = {
     `${POSITIONING} Editorial wedding photography for couples who want to be present in their wedding, not stress about it. ${CITY} & beyond, by Raymond Lei.`,
 };
 
-/** "STYLE" row: how the photos look. */
-const STYLE_PILLARS = [
-  { title: "Fashion Forward", caption: "Editorial framing and composition, styled like a magazine spread." },
-  { title: "Effortless", caption: "Genuine connection and easy direction, never stiff or over-posed." },
-  { title: "Creative", caption: "Cinematic light and angles, not the same tired shots." },
-  { title: "Emotional", caption: "The real moments, preserved so they feel timeless." },
-];
+/** Portfolio rows are written out one by one (no .map over WEDDING_PORTFOLIO)
+ * so each image src is a literal string the visual editor can swap. No photo
+ * here may appear anywhere else on the homepage (hero, manifesto, etc). */
+const PORTFOLIO_FULL: React.CSSProperties = {
+  width: "100%",
+  aspectRatio: "16 / 10",
+  objectFit: "cover",
+  display: "block",
+};
+const PORTFOLIO_PAIR: React.CSSProperties = {
+  width: "100%",
+  aspectRatio: "4 / 5",
+  objectFit: "cover",
+  display: "block",
+};
+const PAIR_ROW: React.CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr",
+  gap: "2.4vw",
+};
 
-/** "WHAT TO EXPECT" row: how the day works with me. */
-const EXPECT_ITEMS = [
-  {
-    title: "Safe Space",
-    points: [
-      "Warm, low-pressure direction from the first hello.",
-      "You look iconic and timeless while feeling completely like yourselves.",
-    ],
-  },
-  {
-    title: "Inspiration",
-    points: [
-      "A look and mood we build together before the day.",
-      "References and palettes that actually matter to you.",
-    ],
-  },
-  {
-    title: "Perfect Fit",
-    points: [
-      "A plan shaped around your venue and priorities.",
-      "Coverage that fits your day, not a rigid shot list.",
-    ],
-  },
-  {
-    title: "Detail Oriented Approach",
-    points: [
-      "Every detail noticed, from the rings to the room.",
-      "Calm, prepared, and a few steps ahead all day.",
-    ],
-  },
-];
+/** "WHAT TO EXPECT" row: how the day works with me. Cards are written out
+ * one by one (no .map) so each image src is a literal the editor can swap. */
+const EXPECT_IMG: React.CSSProperties = {
+  width: "100%",
+  aspectRatio: "4 / 5",
+  objectFit: "cover",
+  display: "block",
+};
+const EXPECT_TITLE: React.CSSProperties = {
+  fontSize: 12,
+  fontWeight: 700,
+  letterSpacing: ".16em",
+  textTransform: "uppercase",
+  marginBottom: 12,
+};
+const EXPECT_LIST: React.CSSProperties = {
+  listStyle: "none",
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "column",
+  gap: 10,
+};
+
+function ExpectPoint({ children }: { children: React.ReactNode }) {
+  return (
+    <li style={{ display: "flex", gap: 10, alignItems: "baseline" }}>
+      <span style={{ color: GOLD, fontSize: 10, flexShrink: 0 }}>★</span>
+      <span style={{ fontSize: 13, lineHeight: 1.55, color: MUTED }}>{children}</span>
+    </li>
+  );
+}
 
 export default function HomePage() {
   return (
@@ -313,8 +327,10 @@ export default function HomePage() {
         />
       </section>
 
-      {/* ══ Editorial collage — 2×2 grid + hero portrait, placeholder slots,
-          with the "quiet luxury" positioning line. Sits above STYLE. ══ */}
+      {/* ══ Editorial collage — portfolio-style gallery (two pairs + one
+          full-width) with the "quiet luxury" positioning line. Images are
+          written out one by one so each src is a literal the editor can
+          swap. Sits above STYLE. ══ */}
       <section
         style={{
           position: "relative",
@@ -323,49 +339,53 @@ export default function HomePage() {
           padding: "16vh 6vw 6vh",
         }}
       >
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 12,
-              maxWidth: 540,
-              margin: "0 auto",
-            }}
-          >
-            {[PHOTOS.marinaSunsetWalk, PHOTOS.confettiToast, null, null].map((photo, i) => (
-              <div key={i} data-reveal="" style={{ overflow: "hidden" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={photo ? img(photo.path, 800) : `/images/placeholders/grid-${i + 1}.jpg`}
-                  alt={photo ? photo.a : `Editorial image ${i + 1} — drop your photo here`}
-                  loading="lazy"
-                  style={{
-                    width: "100%",
-                    aspectRatio: "1 / 1",
-                    objectFit: "cover",
-                    display: "block",
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-
-          <div
-            data-reveal=""
-            style={{ overflow: "hidden", maxWidth: 540, margin: "8vh auto 0" }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/placeholders/portrait.jpg"
-              alt="Editorial portrait — drop your photo here"
-              style={{
-                width: "100%",
-                aspectRatio: "4 / 5",
-                objectFit: "cover",
-                display: "block",
-              }}
-            />
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "2.4vw" }}>
+            <div className="lx-grid-2col" style={PAIR_ROW}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-fadeup=""
+                src="/Lei%20Photography%20Collective%20-%20Trang%20Wedding-2.jpg"
+                alt="Bride and groom walking hand in hand along the marina at sunset, sailboat masts behind them"
+                loading="lazy"
+                style={PORTFOLIO_PAIR}
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-fadeup=""
+                src="/images/bay-area-wedding-reception-confetti-toast-black-and-white-lei-photography-collective.jpg"
+                alt="Bride and groom toasting through a shower of heart confetti at their reception, black and white"
+                loading="lazy"
+                style={PORTFOLIO_PAIR}
+              />
+            </div>
+            <div className="lx-grid-2col" style={PAIR_ROW}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-fadeup=""
+                src="/images/bay-area-wedding-first-dance-fog-string-lights-black-and-white-lei-photography-collective.jpg"
+                alt="Bride and groom sharing their first dance on a fog-covered floor beneath string lights, black and white"
+                loading="lazy"
+                style={PORTFOLIO_PAIR}
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-fadeup=""
+                src="/images/bay-area-wedding-marina-sunset-kiss-lei-photography-collective.jpg"
+                alt="Bride and groom kissing at sunset on the marina railing, sailboat masts glowing behind them"
+                loading="lazy"
+                style={PORTFOLIO_PAIR}
+              />
+            </div>
+            <div data-reveal="" style={{ overflow: "hidden" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/bay-area-wedding-first-dance-fog-string-lights-lei-photography-collective.jpg"
+                alt="Bride and groom holding hands during their first dance on a fog-covered floor beneath a canopy of string lights"
+                loading="lazy"
+                style={PORTFOLIO_FULL}
+              />
+            </div>
           </div>
 
           <p
@@ -390,65 +410,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ STYLE — four-up "how the photos look" row. Each image is a labeled
-          placeholder slot; drop your own photo onto it in the editor later. ══ */}
-      <section
-        style={{
-          position: "relative",
-          background: "#F7F5F2",
-          color: "#0E0D0B",
-          padding: "16vh 6vw 8vh",
-        }}
-      >
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div
-            data-fadeup=""
-            style={{ ...kicker({ marginBottom: "6vh" }, 11, ".34em"), textAlign: "center" }}
-          >
-            Style
-          </div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))",
-              gap: "2vw",
-            }}
-          >
-            {STYLE_PILLARS.map((s, i) => (
-              <div key={s.title} data-fadeup="">
-                <div data-reveal="" style={{ overflow: "hidden", marginBottom: 20 }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`/images/placeholders/style-${i + 1}.jpg`}
-                    alt={`${s.title} — drop your photo here`}
-                    style={{
-                      width: "100%",
-                      aspectRatio: "4 / 5",
-                      objectFit: "cover",
-                      display: "block",
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 700,
-                    letterSpacing: ".16em",
-                    textTransform: "uppercase",
-                    marginBottom: 8,
-                  }}
-                >
-                  {s.title}
-                </div>
-                <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: MUTED }}>
-                  {s.caption}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ══ Feature image + quote — one large placeholder slot with a
           swap-in-later testimonial line ══ */}
       <section style={{ position: "relative", background: "#F7F5F2", padding: "6vh 6vw 8vh" }}>
@@ -456,8 +417,8 @@ export default function HomePage() {
           <div data-reveal="" style={{ overflow: "hidden" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/placeholders/feature.jpg"
-              alt="Feature image — drop your photo here"
+              src={img(PHOTOS.gettingReadyToast.path, 1600)}
+              alt={PHOTOS.gettingReadyToast.a}
               style={{
                 width: "100%",
                 aspectRatio: "3 / 2",
@@ -522,51 +483,68 @@ export default function HomePage() {
               gap: "2vw",
             }}
           >
-            {EXPECT_ITEMS.map((e, i) => (
-              <div key={e.title} data-fadeup="">
-                <div data-reveal="" style={{ overflow: "hidden", marginBottom: 20 }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`/images/placeholders/expect-${i + 1}.jpg`}
-                    alt={`${e.title} — drop your photo here`}
-                    style={{
-                      width: "100%",
-                      aspectRatio: "4 / 5",
-                      objectFit: "cover",
-                      display: "block",
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 700,
-                    letterSpacing: ".16em",
-                    textTransform: "uppercase",
-                    marginBottom: 12,
-                  }}
-                >
-                  {e.title}
-                </div>
-                <ul
-                  style={{
-                    listStyle: "none",
-                    margin: 0,
-                    padding: 0,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 10,
-                  }}
-                >
-                  {e.points.map((p) => (
-                    <li key={p} style={{ display: "flex", gap: 10, alignItems: "baseline" }}>
-                      <span style={{ color: GOLD, fontSize: 10, flexShrink: 0 }}>★</span>
-                      <span style={{ fontSize: 13, lineHeight: 1.55, color: MUTED }}>{p}</span>
-                    </li>
-                  ))}
-                </ul>
+            <div data-fadeup="">
+              <div data-reveal="" style={{ overflow: "hidden", marginBottom: 20 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/Lei%20Photography%20Collective%20-%20Trang%20Wedding-1.jpg"
+                  alt="Safe Space - drop your photo here"
+                  style={EXPECT_IMG}
+                />
               </div>
-            ))}
+              <div style={EXPECT_TITLE}>Safe Space</div>
+              <ul style={EXPECT_LIST}>
+                <ExpectPoint>Warm, low-pressure direction from the first hello.</ExpectPoint>
+                <ExpectPoint>
+                  You look iconic and timeless while feeling completely like yourselves.
+                </ExpectPoint>
+              </ul>
+            </div>
+            <div data-fadeup="">
+              <div data-reveal="" style={{ overflow: "hidden", marginBottom: 20 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/Lei%20Photography%20Collective%20-%20Trang%20Wedding-5.jpg"
+                  alt="Inspiration - drop your photo here"
+                  style={EXPECT_IMG}
+                />
+              </div>
+              <div style={EXPECT_TITLE}>Inspiration</div>
+              <ul style={EXPECT_LIST}>
+                <ExpectPoint>A look and mood we build together before the day.</ExpectPoint>
+                <ExpectPoint>References and palettes that actually matter to you.</ExpectPoint>
+              </ul>
+            </div>
+            <div data-fadeup="">
+              <div data-reveal="" style={{ overflow: "hidden", marginBottom: 20 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/Sargon%20%26%20Odelya-158.jpg"
+                  alt="Perfect Fit - drop your photo here"
+                  style={EXPECT_IMG}
+                />
+              </div>
+              <div style={EXPECT_TITLE}>Perfect Fit</div>
+              <ul style={EXPECT_LIST}>
+                <ExpectPoint>A plan shaped around your venue and priorities.</ExpectPoint>
+                <ExpectPoint>Coverage that fits your day, not a rigid shot list.</ExpectPoint>
+              </ul>
+            </div>
+            <div data-fadeup="">
+              <div data-reveal="" style={{ overflow: "hidden", marginBottom: 20 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/Lei.Photography.Co-Sargon%20ReEdit2-1.jpg"
+                  alt="Detail Oriented Approach - drop your photo here"
+                  style={EXPECT_IMG}
+                />
+              </div>
+              <div style={EXPECT_TITLE}>Detail Oriented Approach</div>
+              <ul style={EXPECT_LIST}>
+                <ExpectPoint>Every detail noticed, from the rings to the room.</ExpectPoint>
+                <ExpectPoint>Calm, prepared, and a few steps ahead all day.</ExpectPoint>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -598,55 +576,158 @@ export default function HomePage() {
             Your day, the way it actually <em>felt.</em>
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "2.4vw" }}>
-            {WEDDING_PORTFOLIO.map((row, i) =>
-              row.layout === "full" ? (
-                <div
-                  key={row.photos[0].path}
-                  data-reveal=""
-                  style={{ overflow: "hidden" }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={img(row.photos[0].path, 1500)}
-                    alt={row.photos[0].a}
-                    loading={i === 0 ? undefined : "lazy"}
-                    style={{
-                      width: "100%",
-                      aspectRatio: "16 / 10",
-                      objectFit: "cover",
-                      display: "block",
-                    }}
-                  />
-                </div>
-              ) : (
-                <div
-                  key={row.photos[0].path}
-                  className="lx-grid-2col"
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: "2.4vw",
-                  }}
-                >
-                  {row.photos.map((p) => (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      key={p.path}
-                      data-fadeup=""
-                      src={img(p.path, 750)}
-                      alt={p.a}
-                      loading="lazy"
-                      style={{
-                        width: "100%",
-                        aspectRatio: "4 / 5",
-                        objectFit: "cover",
-                        display: "block",
-                      }}
-                    />
-                  ))}
-                </div>
-              )
-            )}
+            <div data-reveal="" style={{ overflow: "hidden" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-34.jpg"
+                alt="Bridal details flat lay with pearl-embellished heels, Chanel perfume, pearl jewelry and the wedding invitation"
+                style={PORTFOLIO_FULL}
+              />
+            </div>
+            <div data-reveal="" style={{ overflow: "hidden" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-14.jpg"
+                alt="Bride touching the groom's face at golden hour"
+                loading="lazy"
+                style={PORTFOLIO_FULL}
+              />
+            </div>
+            <div className="lx-grid-2col" style={PAIR_ROW}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-fadeup=""
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-10.jpg"
+                alt="Bride's veil lifted and moving in the breeze"
+                loading="lazy"
+                style={PORTFOLIO_PAIR}
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-fadeup=""
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-28.jpg"
+                alt="Groom dipping the bride for a kiss by the reception fireplace"
+                loading="lazy"
+                style={PORTFOLIO_PAIR}
+              />
+            </div>
+            <div data-reveal="" style={{ overflow: "hidden" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-26.jpg"
+                alt="Groom carrying the bride through a cheering crowd"
+                loading="lazy"
+                style={PORTFOLIO_FULL}
+              />
+            </div>
+            <div className="lx-grid-2col" style={PAIR_ROW}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-fadeup=""
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-03.jpg"
+                alt="Bride sharing an emotional moment with her mother, black and white"
+                loading="lazy"
+                style={PORTFOLIO_PAIR}
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-fadeup=""
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-01.jpg"
+                alt="Bride's hands holding the wedding ring box"
+                loading="lazy"
+                style={PORTFOLIO_PAIR}
+              />
+            </div>
+            <div data-reveal="" style={{ overflow: "hidden" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-35.jpg"
+                alt="Bride and three bridesmaids in sage dresses toasting champagne while getting ready"
+                loading="lazy"
+                style={PORTFOLIO_FULL}
+              />
+            </div>
+            <div data-reveal="" style={{ overflow: "hidden" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-30.jpg"
+                alt="Bride and groom embracing on the dance floor, reception lights above"
+                loading="lazy"
+                style={PORTFOLIO_FULL}
+              />
+            </div>
+            <div className="lx-grid-2col" style={PAIR_ROW}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-fadeup=""
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-29.jpg"
+                alt="Bride and groom laughing mid-twirl on the dance floor"
+                loading="lazy"
+                style={PORTFOLIO_PAIR}
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-fadeup=""
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-23.jpg"
+                alt="Champagne spray celebration, alternate edit"
+                loading="lazy"
+                style={PORTFOLIO_PAIR}
+              />
+            </div>
+            <div data-reveal="" style={{ overflow: "hidden" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-36.jpg"
+                alt="Bride laughing with her three bridesmaids as they clink champagne flutes while getting ready"
+                loading="lazy"
+                style={PORTFOLIO_FULL}
+              />
+            </div>
+            <div className="lx-grid-2col" style={PAIR_ROW}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-fadeup=""
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-19.jpg"
+                alt="Bride looking back over her shoulder, veil catching the sunset"
+                loading="lazy"
+                style={PORTFOLIO_PAIR}
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-fadeup=""
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-08.jpg"
+                alt="Family and friends celebrating on the staircase, aerial view"
+                loading="lazy"
+                style={PORTFOLIO_PAIR}
+              />
+            </div>
+            <div className="lx-grid-2col" style={PAIR_ROW}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-fadeup=""
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-37.jpg"
+                alt="Groom lifting the bride during their first dance amid low fog beneath string lights"
+                loading="lazy"
+                style={PORTFOLIO_PAIR}
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                data-fadeup=""
+                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-12.jpg"
+                alt="Bride beneath her veil, black and white portrait"
+                loading="lazy"
+                style={PORTFOLIO_PAIR}
+              />
+            </div>
+            <div data-reveal="" style={{ overflow: "hidden" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.squarespace-cdn.com/content/v1/697c1d6344a3b1154bcbc39e/652fef9d-196e-4248-92d2-83d8abebf683/Lei.Photography.Co-PreSargon+lReEdit-12.jpg?format=1500w"
+                alt="First dance in low fog beneath string lights, guests watching by the fireplace"
+                loading="lazy"
+                style={PORTFOLIO_FULL}
+              />
+            </div>
           </div>
           <div
             data-fadeup=""
