@@ -183,6 +183,21 @@ html.lenis {
   object-fit: cover;
 }
 
+/* "A closer look" project strip: native horizontal scroll, snap, no
+   visible scrollbar. */
+.lx-strip {
+  display: flex;
+  gap: 2.4vw;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 6px;
+}
+.lx-strip::-webkit-scrollbar {
+  display: none;
+}
+
 .lx-rel img {
   transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
