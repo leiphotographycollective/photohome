@@ -43,7 +43,11 @@ const textareaStyle: CSSProperties = {
    fields so the notification email shows which ad drove the entry. */
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"] as const;
 
-export default function FreeSessionForm() {
+/* `source` tags every entry with which landing variant it came from (e.g.
+   "ignite-b") via a hidden field, so A/B entries are distinguishable in
+   Formspree. Omit it (the default) and the field simply isn't sent — the
+   original /free-session page renders the form exactly as before. */
+export default function FreeSessionForm({ source }: { source?: string } = {}) {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [noDateYet, setNoDateYet] = useState(false);
   const [utm, setUtm] = useState<Record<string, string>>({});
@@ -201,6 +205,7 @@ export default function FreeSessionForm() {
       {/* honeypot spam trap */}
       <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
       <input type="hidden" name="_subject" value="New Free Engagement Session Giveaway Entry" />
+      {source ? <input type="hidden" name="source" value={source} /> : null}
       {UTM_KEYS.map((key) =>
         utm[key] ? <input key={key} type="hidden" name={key} value={utm[key]} /> : null
       )}

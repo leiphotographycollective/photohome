@@ -12,12 +12,17 @@ interface LeiFooterProps {
   border?: boolean;
   /** Padding shorthand override (e.g. project page uses "0 0 40px"). */
   padding?: string;
+  /** Single-purpose landing pages set this to drop the internal nav columns
+   *  (Explore / Connect) so the page has no links away; only the external
+   *  socials remain. Default false keeps the full footer everywhere else. */
+  minimal?: boolean;
 }
 
 export default function LeiFooter({
   brand = "collective",
   border = true,
   padding = "56px 0 40px",
+  minimal = false,
 }: LeiFooterProps) {
   const blurb =
     brand === "raymond"
@@ -84,14 +89,15 @@ export default function LeiFooter({
         </div>
 
         <div style={{ display: "flex", gap: "clamp(40px,7vw,96px)", flexWrap: "wrap" }}>
-          {col("Explore", FOOTER_EXPLORE)}
+          {!minimal && col("Explore", FOOTER_EXPLORE)}
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={kicker({}, 10, ".24em")}>Connect</div>
-            {FOOTER_CONNECT.map((i) => (
-              <Link key={i.href} href={i.href} data-hover="" style={navLink(cream(0.75))}>
-                {i.label}
-              </Link>
-            ))}
+            {!minimal &&
+              FOOTER_CONNECT.map((i) => (
+                <Link key={i.href} href={i.href} data-hover="" style={navLink(cream(0.75))}>
+                  {i.label}
+                </Link>
+              ))}
             {SOCIALS.map((s) => (
               <a key={s.href} href={s.href} data-hover="" style={navLink(GOLD)}>
                 {s.label}
