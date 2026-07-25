@@ -253,6 +253,13 @@ html.lenis {
   .lx-float {
     display: none !important;
   }
+  /* Floats marked "keep" stay visible on mobile: smaller, hugging the
+     section edges, sliding behind the text (which sits at z-index 2). */
+  .lx-float-keep {
+    display: block !important;
+    width: 26vw !important;
+    min-width: 0 !important;
+  }
 }
 
 /* ── REDUCED MOTION ────────────────────────────────────────────────────── */

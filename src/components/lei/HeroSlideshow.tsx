@@ -38,7 +38,11 @@ export default function HeroSlideshow() {
   }, [photos.length]);
 
   return (
-    <div className="lx-hero-photo">
+    // data-land-photo: the landing sequence sweeps the frame open; the inner
+    // data-land-zoom wrapper settles out of a slow zoom (separate elements so
+    // the clip window and the scale don't distort each other).
+    <div className="lx-hero-photo" data-land-photo="">
+      <div data-land-zoom="" style={{ position: "absolute", inset: 0 }}>
       {photos.map((p, i) => {
         if (i > 0 && !enhanced) return null;
         const on = i === active;
@@ -65,6 +69,7 @@ export default function HeroSlideshow() {
           />
         );
       })}
+      </div>
     </div>
   );
 }

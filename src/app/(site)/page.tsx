@@ -104,6 +104,7 @@ export default function HomePage() {
           }}
         >
           <p
+            data-land-fade=""
             style={{
               margin: "0 0 44px",
               fontSize: 12,
@@ -126,7 +127,8 @@ export default function HomePage() {
               textWrap: "pretty",
             }}
           >
-            ICONIC, INTENTIONAL<br />and unmistakably YOU
+            <div data-title-line="">ICONIC, INTENTIONAL</div>
+            <div data-title-line="">and unmistakably YOU</div>
           </h1>
         </div>
       </section>
@@ -146,7 +148,7 @@ export default function HomePage() {
         <img
           data-float=""
           data-speed="70"
-          className="lx-float"
+          className="lx-float lx-float-keep"
           src={img(PHOTOS.bridal.path, 750)}
           alt="Bride holding her veil in soft light"
           loading="lazy"
@@ -165,7 +167,7 @@ export default function HomePage() {
         <img
           data-float=""
           data-speed="110"
-          className="lx-float"
+          className="lx-float lx-float-keep"
           src={img(PHOTOS.shoulderDance.path, 750)}
           alt={PHOTOS.shoulderDance.a}
           loading="lazy"

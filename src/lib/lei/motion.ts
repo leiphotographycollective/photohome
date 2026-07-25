@@ -3,8 +3,9 @@
 // Lenis smooth scroll, custom gold cursor + magnetic buttons, letter-split
 // title entrances, pinned horizontal collection, parallax columns/floats,
 // manifesto word reveals and all scroll reveals — each keyed off the same
-// data-* attributes as the prototypes. The home hero is static (no load-in
-// or scroll animation) and the header bar carries no motion behavior.
+// data-* attributes as the prototypes. The home hero landing sequence
+// (photo sweep + copy rise) keys off data-land-*; the header bar carries
+// no motion behavior.
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -57,9 +58,47 @@ export function initLeiMotion(root: HTMLElement): Cleanup {
       });
     }
 
+    // ── Homepage landing sequence: the photo sweeps open left-to-right
+    //    while its frame settles out of a slow zoom, then the intro line
+    //    rises once the title letters (above) are mostly in. ──
+    const landPhoto = root.querySelector<HTMLElement>("[data-land-photo]");
+    const landZoom = root.querySelector<HTMLElement>("[data-land-zoom]");
+    const landFades = q("[data-land-fade]");
+    if (landPhoto || landFades.length) {
+      const tl = gsap.timeline();
+      if (landPhoto) {
+        tl.fromTo(
+          landPhoto,
+          { clipPath: "inset(0 100% 0 0)" },
+          { clipPath: "inset(0 0% 0 0)", duration: 1.3, ease: "expo.inOut" },
+          0
+        );
+      }
+      if (landZoom) {
+        tl.fromTo(
+          landZoom,
+          { scale: 1.14 },
+          { scale: 1, duration: 2.4, ease: "expo.out" },
+          0.15
+        );
+      }
+      if (landFades.length) {
+        tl.fromTo(
+          landFades,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 1.1, ease: "power3.out", stagger: 0.12 },
+          0.75
+        );
+      }
+    }
+
     // ── Floating parallax images ──
+    // Phones get less travel: the floats sit close to the copy there, so a
+    // full-size drift would slide them over the text.
+    const floatScale = window.innerWidth < 860 ? 0.4 : 1;
     q("[data-float]").forEach((el) => {
-      const sp = parseFloat(el.getAttribute("data-speed") || "") || 60;
+      const sp =
+        (parseFloat(el.getAttribute("data-speed") || "") || 60) * floatScale;
       gsap.fromTo(
         el,
         { y: sp },
