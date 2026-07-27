@@ -132,8 +132,8 @@ export const SOCIAL_PROOF = {
     SARGON_ODELYA_PHOTOS[22],
     SARGON_ODELYA_PHOTOS[8],
   ] as Photo[],
-  caption: "Real moments, real couples. See the full portfolio",
-  href: "/portfolio",
+  caption: "Real moments, real couples. See the full gallery",
+  href: "/gallery",
 };
 
 export const STEPS = {
@@ -190,6 +190,6 @@ export const FAQ = {
 export const FINAL_CTA = {
   heading: "Ready when you are",
   body: "Tell me your date and what you're planning. If I'm free, I'll hold the date while we talk. No deposit, no pressure.",
-  secondaryLabel: "Prefer to browse first? See the portfolio",
-  secondaryHref: "/portfolio",
+  secondaryLabel: "Prefer to browse first? See the gallery",
+  secondaryHref: "/gallery",
 };

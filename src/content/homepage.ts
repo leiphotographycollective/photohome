@@ -3,10 +3,19 @@
 // placeholder text can never leak to production (see the design spec).
 
 import {
+  MIRANDA_DANNY_PHOTOS,
   PHOTOS,
+  pick,
   SARGON_ODELYA_PHOTOS,
+  SARGON_ODELYA_SELECT,
+  TRANG_PHOTOS,
   type Photo,
 } from "@/content/portfolio";
+
+/** Shorthands for the three wedding sets the homepage draws from. */
+const so = (file: string) => pick(SARGON_ODELYA_SELECT, file);
+const md = (file: string) => pick(MIRANDA_DANNY_PHOTOS, file);
+const tr = (file: string) => pick(TRANG_PHOTOS, file);
 
 /** The one conversion CTA, everywhere: gold pill → HoneyBook form. */
 export const CTA_LABEL = "Check my date";
@@ -63,40 +72,48 @@ export const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
-export interface Door {
-  cat: string; // key into CATEGORIES → /portfolio/<cat>
-  label: string;
-  tagline: string;
-  photo: Photo;
-}
-
-/** The Collection — four category doors (routing, not browsing). */
-export const DOORS: Door[] = [
-  { cat: "couples", label: "Couples", tagline: "The two of you, as you really are", photo: PHOTOS.coastalCandid },
-  { cat: "engagements", label: "Engagements", tagline: "The moment before everything changes", photo: PHOTOS.proposal },
-  { cat: "events", label: "Events", tagline: "The room, as it really felt", photo: PHOTOS.eventAssyrian },
-];
-
 export interface RecentWedding {
   title: string;
-  place: string;
-  year: string;
+  /** Optional: only set where the venue and date are actually known. Nothing
+   *  here is guessed, so a wedding can ship with just its name. */
+  place?: string;
+  year?: string;
   href: string;
   cover: Photo;
   frames: Photo[]; // 1-3 supporting teaser frames
 }
 
-/** Proof of consistency — grows to 3 weddings as Raymond sends selects. */
+/** Proof of consistency: the three weddings behind /gallery, one entry each.
+ *  Nothing renders this array today; it is the content side of the recent-work
+ *  block, ready for the section that reads it. */
 export const RECENT_WEDDINGS: RecentWedding[] = [
   {
     title: "Sargon & Odelya",
     place: "Bay Area, CA",
     year: "2025",
-    href: "/weddings", // the /portfolio/weddings/* galleries were removed; point at the weddings page
-    cover: SARGON_ODELYA_PHOTOS[13], // touching the groom's face at golden hour
+    href: "/gallery", // the one photo page; /weddings and /portfolio redirect here
+    cover: so("so-select-presargon-07.jpg"), // walking the lawn under the olive trees
     frames: [
-      SARGON_ODELYA_PHOTOS[8], // veil at golden hour
-      SARGON_ODELYA_PHOTOS[23], // first dance, black and white
+      so("so-select-062.jpg"), // bride and her mother, black and white
+      so("so-select-641.jpg"), // first dance, black and white
+    ],
+  },
+  {
+    title: "Miranda & Danny",
+    href: "/gallery",
+    cover: md("miranda-danny-03.jpg"), // the marina wide, low sun on the masts
+    frames: [
+      md("miranda-danny-01.jpg"), // veil sweeping across the frame
+      md("miranda-danny-02.jpg"), // leaning together, sun flaring off the water
+    ],
+  },
+  {
+    title: "Trang",
+    href: "/gallery",
+    cover: tr("trang-07.jpg"), // outside the church after the ceremony
+    frames: [
+      tr("trang-03.jpg"), // the altar from the back of the church
+      tr("trang-01.jpg"), // the bands on the red invitation
     ],
   },
 ];
@@ -113,16 +130,16 @@ export interface PortfolioRow {
 export const WEDDING_PORTFOLIO: PortfolioRow[] = [
   // Fulls are natively landscape; pairs natively portrait. No photo here may
   // appear anywhere else on the homepage (hero, manifesto, who-I-photograph…).
-  { layout: "full", photos: [SARGON_ODELYA_PHOTOS[33]] }, // bridal details flat lay — heels, perfume, jewelry
-  { layout: "full", photos: [SARGON_ODELYA_PHOTOS[13]] }, // touching the groom's face at golden hour
-  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[9], SARGON_ODELYA_PHOTOS[27]] }, // seated bridal portrait · dip kiss (SO[8] is the hero frame, don't reuse)
-  { layout: "full", photos: [SARGON_ODELYA_PHOTOS[25]] }, // carried through the cheering crowd
-  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[2], SARGON_ODELYA_PHOTOS[0]] }, // bride & mother b&w · ring box
-  { layout: "full", photos: [SARGON_ODELYA_PHOTOS[34]] }, // bride & bridesmaids toast while getting ready
-  { layout: "full", photos: [SARGON_ODELYA_PHOTOS[29]] }, // embracing on the dance floor
-  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[28], SARGON_ODELYA_PHOTOS[22]] }, // mid-twirl · champagne spray
-  { layout: "full", photos: [SARGON_ODELYA_PHOTOS[35]] }, // bride laughing with bridesmaids, champagne toast
-  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[18], SARGON_ODELYA_PHOTOS[7]] }, // veil sunset · staircase aerial
-  { layout: "pair", photos: [SARGON_ODELYA_PHOTOS[36], SARGON_ODELYA_PHOTOS[11]] }, // first dance lift · veil portrait b&w
-  { layout: "full", photos: [PHOTOS.sargonPrep] }, // first dance in low fog
+  { layout: "full", photos: [so("so-select-686.jpg")] }, // the money dance, black and white
+  { layout: "pair", photos: [so("so-select-204.jpg"), md("miranda-danny-05.jpg")] }, // bride with the ceremonial fan · couple on the dock
+  { layout: "full", photos: [tr("trang-11.jpg")] }, // paddle fans on the red reception table
+  { layout: "full", photos: [so("so-select-177.jpg")] }, // guests cheering, seen from above
+  { layout: "pair", photos: [tr("trang-04.jpg"), so("so-select-167.jpg")] }, // kneeling at the ceremony · groom on the staircase
+  { layout: "full", photos: [so("so-select-112.jpg")] }, // bridesmaids champagne toast
+  { layout: "pair", photos: [md("miranda-danny-07.jpg"), so("so-select-reedit2-14.jpg")] }, // marina kiss · champagne spray
+  { layout: "full", photos: [so("so-select-presargon-12.jpg")] }, // first dance in low fog
+  { layout: "full", photos: [md("miranda-danny-12.jpg")] }, // boardwalk embrace at sunset
+  { layout: "pair", photos: [tr("trang-10.jpg"), so("so-select-580.jpg")] }, // petal recessional · groom on shoulders
+  { layout: "full", photos: [so("so-select-046.jpg")] }, // her mother fastening the shoe
+  { layout: "pair", photos: [so("so-select-300.jpg"), md("miranda-danny-08.jpg")] }, // veil lifted · forehead to forehead in sepia
 ];

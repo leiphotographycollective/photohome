@@ -16,9 +16,9 @@ const leaves = (): NavItem[] =>
   PRIMARY_NAV.flatMap((e) => (isGroup(e) ? e.children : [e]));
 
 describe("nav config", () => {
-  it("primary nav is Portfolio, Weddings (group), Investment, About", () => {
+  it("primary nav is Gallery, Weddings (group), Investment, About", () => {
     expect(PRIMARY_NAV.map((e) => e.label)).toEqual([
-      "Portfolio",
+      "Gallery",
       "Weddings",
       "Investment",
       "About",
@@ -32,11 +32,11 @@ describe("nav config", () => {
     expect((weddings as { href?: string }).href).toBeUndefined();
   });
 
-  it("Weddings group holds Wedding Photography, Engagements, Experience, Free Session", () => {
+  it("Weddings group holds Engagements, Experience, Second Weddings, Free Session", () => {
     expect(hrefs(WEDDINGS_MENU)).toEqual([
-      "/weddings",
-      "/portfolio/engagements",
+      "/gallery#engagements",
       "/experience",
+      "/second-weddings",
       "/free-session",
     ]);
   });
@@ -46,10 +46,22 @@ describe("nav config", () => {
     expect(hrefs(FOOTER_EXPLORE)).toContain("/investment");
   });
 
-  it("Portfolio always points to the hub (/portfolio), never /weddings", () => {
+  it("Gallery always points to /gallery", () => {
     for (const list of [leaves(), FOOTER_EXPLORE]) {
-      const portfolio = list.find((i) => i.label === "Portfolio");
-      expect(portfolio?.href).toBe("/portfolio");
+      const gallery = list.find((i) => i.label === "Gallery");
+      expect(gallery?.href).toBe("/gallery");
+    }
+  });
+
+  // The weddings-only rebuild deleted /portfolio and /weddings; both now 308 to
+  // /gallery. Linking to a redirect from our own nav would be a wasted hop, so
+  // guard against one creeping back in.
+  it("never links to a retired route", () => {
+    for (const list of [leaves(), FOOTER_EXPLORE, FOOTER_CONNECT]) {
+      for (const item of list) {
+        expect(item.href.startsWith("/portfolio")).toBe(false);
+        expect(item.href).not.toBe("/weddings");
+      }
     }
   });
 

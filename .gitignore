@@ -45,3 +45,7 @@ next-env.d.ts
 
 # Superpowers scratch (SDD ledger, brainstorm sessions) — never commit
 .superpowers/
+
+# Camera originals kept on disk for re-exports. Hundreds of MB, and the
+# web-sized copies under public/images/portfolio/ are what the site ships.
+/_originals

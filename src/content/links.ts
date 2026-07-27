@@ -15,7 +15,7 @@ export const LINKS: PageLink[] = [
   // Facebook: uncomment and drop the page URL in when it's ready.
   // { href: "https://facebook.com/REPLACE_ME", label: "Facebook", external: true },
   { href: "/", label: "Website" },
-  { href: "/portfolio", label: "Portfolio" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/free-session", label: "Win a Free Session" },
   { href: "/inquire", label: "Inquire" },
 ];

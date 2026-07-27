@@ -11,22 +11,14 @@ import { PRIMARY_NAV, INQUIRE, isGroup, type NavItem } from "@/content/nav";
    a link (plain button + disclosure, not an ARIA menu widget). Active page is
    gold. */
 
-// Paths that belong to a dropdown group, so the top-level "Portfolio" link does
-// not ALSO light up when you are on one of them (e.g. /portfolio/engagements
-// lives under the Weddings group).
-const GROUP_HREFS = new Set(
-  PRIMARY_NAV.flatMap((e) => (isGroup(e) ? e.children.map((c) => c.href) : []))
-);
-
 export default function HeaderNav() {
   const pathname = usePathname();
   const [openGroup, setOpenGroup] = useState<string | null>(null);
 
-  const isActive = (href: string) =>
-    pathname === href ||
-    (href === "/portfolio" &&
-      pathname.startsWith("/portfolio") &&
-      !GROUP_HREFS.has(pathname));
+  // Every destination is now a single page with no subpaths, so an exact match
+  // is enough. The group's "/gallery#engagements" child never matches, because
+  // usePathname() drops the hash, so Gallery alone lights on /gallery.
+  const isActive = (href: string) => pathname === href;
 
   const groupActive = (children: NavItem[]) =>
     children.some((c) => pathname === c.href);

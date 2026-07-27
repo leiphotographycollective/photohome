@@ -1,16 +1,16 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   CITY,
   CTA_HREF,
   CTA_LABEL,
-  DOORS,
   POSITIONING,
   POSITIONING_SUB,
   RECENT_WEDDINGS,
   TESTIMONIALS,
   WEDDING_PORTFOLIO,
 } from "@/content/homepage";
-import { CATEGORIES } from "@/content/portfolio";
 
 describe("CTA constants", () => {
   it("match the spec exactly", () => {
@@ -29,28 +29,14 @@ describe("positioning constants", () => {
   });
 });
 
-describe("category doors", () => {
-  it("are the approved categories, each routable", () => {
-    // Weddings was removed as a portfolio category; its door went with it.
-    expect(DOORS.map((d) => d.cat)).toEqual([
-      "couples",
-      "engagements",
-      "events",
-    ]);
-    for (const d of DOORS) {
-      expect(CATEGORIES[d.cat]).toBeDefined();
-      expect(d.label.length).toBeGreaterThan(0);
-      expect(d.photo.path.length).toBeGreaterThan(0);
-      expect(d.photo.a.length).toBeGreaterThan(0);
-    }
-  });
-});
+// The category doors were removed with the weddings-only rebuild: they routed
+// into /portfolio/<cat>, and nothing rendered them by then anyway.
 
 describe("recent weddings", () => {
   it("has at least one wedding with 1-3 teaser frames each", () => {
     expect(RECENT_WEDDINGS.length).toBeGreaterThanOrEqual(1);
     for (const w of RECENT_WEDDINGS) {
-      expect(w.href.startsWith("/weddings")).toBe(true);
+      expect(w.href).toBe("/gallery");
       expect(w.frames.length).toBeGreaterThanOrEqual(1);
       expect(w.frames.length).toBeLessThanOrEqual(3);
       expect(w.title.length).toBeGreaterThan(0);
@@ -96,5 +82,24 @@ describe("wedding portfolio", () => {
     // literal <img> tags; this array is the curated mirror of that section.
     const count = WEDDING_PORTFOLIO.reduce((n, r) => n + r.photos.length, 0);
     expect(count).toBe(17);
+  });
+
+  // The mirror is maintained by hand: page.tsx writes its <img> tags out
+  // literally so the visual editor can swap a src, and this array is the copy
+  // the rest of the codebase reads. Counting them is not enough to catch a
+  // photo swapped in one place and not the other.
+  it("names the same frames the collage actually renders", () => {
+    const source = readFileSync(
+      join(process.cwd(), "src/app/(site)/page.tsx"),
+      "utf8"
+    );
+    const block = source.slice(
+      source.indexOf("<Collage>"),
+      source.indexOf("</Collage>")
+    );
+    const rendered = [...block.matchAll(/src="([^"]+)"/g)].map((m) => m[1]);
+    const mirrored = WEDDING_PORTFOLIO.flatMap((r) => r.photos.map((p) => p.path));
+    expect(rendered.length).toBe(17);
+    expect([...rendered].sort()).toEqual([...mirrored].sort());
   });
 });

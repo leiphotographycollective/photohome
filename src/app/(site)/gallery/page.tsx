@@ -4,21 +4,65 @@ import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
 import { Marquee, ProcessSteps, ScrollHint } from "@/components/lei/blocks";
-import { GOLD, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
-import { img, PHOTOS } from "@/content/portfolio";
+import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
+import { aspect, img, type Photo } from "@/content/portfolio";
+import { GALLERY, GALLERY_FEATURE, GALLERY_HERO } from "@/content/gallery";
 import { HOME_PROCESS } from "@/content/experience";
 import { TESTIMONIALS } from "@/content/homepage";
 import { SoftLink } from "@/components/lei/Cta";
 import { Collage, CollageTile } from "@/components/lei/Collage";
-import ProjectStrip from "@/components/lei/ProjectStrip";
 
 export const metadata: Metadata = {
-  title: "Weddings: Present for All of It",
+  title: "Gallery",
   description:
-    "Bay Area wedding photography for couples who want to be present in their wedding, not stressed about it. The full arc of your day, from getting ready to the last song.",
+    "Bay Area wedding photography: full wedding days, couples sessions, and engagements. The whole arc of your day, from getting ready to the last song.",
 };
 
-export default function WeddingsPage() {
+/** The masonry drops columns as a category thins out, so a one-photo section
+ *  reads as a single deliberate plate instead of an orphan quarter-column. */
+function columnsFor(n: number): 1 | 2 | 3 | 4 {
+  if (n >= 7) return 4;
+  if (n >= 4) return 3;
+  if (n >= 2) return 2;
+  return 1;
+}
+
+/** Paired with columnsFor: a narrow grid is centred rather than stretched. */
+function capFor(n: number): number | undefined {
+  if (n >= 7) return undefined;
+  if (n >= 2) return 1180;
+  return 560;
+}
+
+/** One masonry of frames. Shared by a plain category and by each wedding set
+ *  inside Weddings, so both render identically. */
+function PhotoGrid({ photos }: { photos: Photo[] }) {
+  return (
+    <Collage columns={columnsFor(photos.length)}>
+      {photos.map((p) => (
+        <CollageTile key={p.path}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={img(p.path, 1200)}
+            alt={p.a}
+            loading="lazy"
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+              // `auto` keeps the file's real ratio once it decodes; the value
+              // only reserves height before that, so a stale preset can never
+              // squash a photo.
+              aspectRatio: `auto ${aspect(p)}`,
+            }}
+          />
+        </CollageTile>
+      ))}
+    </Collage>
+  );
+}
+
+export default function GalleryPage() {
   return (
     <LeiPage style={{ background: "#0E0D0B", color: "#F7F5F2" }}>
       <Chrome />
@@ -39,8 +83,8 @@ export default function WeddingsPage() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={img(PHOTOS.brideMother.path, 2400)}
-          alt={PHOTOS.brideMother.a}
+          src={img(GALLERY_HERO.path, 2400)}
+          alt={GALLERY_HERO.a}
           style={{
             position: "absolute",
             inset: 0,
@@ -83,7 +127,7 @@ export default function WeddingsPage() {
               whiteSpace: "nowrap",
             }}
           >
-            WEDDINGS
+            GALLERY
           </span>
         </div>
         <div
@@ -96,7 +140,7 @@ export default function WeddingsPage() {
           }}
         >
           <div data-fadeup="" style={kicker({ marginBottom: 24 }, 10, ".3em")}>
-            Weddings
+            The Gallery
           </div>
           <h1
             style={{
@@ -143,7 +187,8 @@ export default function WeddingsPage() {
         </div>
       </section>
 
-      {/* ══ Collage — the day at a glance, then the closer-look strip ══ */}
+      {/* ══ The three category grids. Photos come from src/content/gallery.ts;
+          swap or add frames there, not here. ══ */}
       <section
         style={{
           position: "relative",
@@ -152,120 +197,115 @@ export default function WeddingsPage() {
           padding: "14vh 4vw 12vh",
         }}
       >
-        <Collage>
-          <CollageTile size="tall">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/bay-area-wedding-first-dance-fog-string-lights-black-and-white-lei-photography-collective.jpg"
-              alt="Bride and groom sharing their first dance on a fog-covered floor beneath string lights, black and white"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </CollageTile>
-          <CollageTile size="tall">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/bay-area-wedding-marina-sunset-kiss-lei-photography-collective.jpg"
-              alt="Bride and groom kissing at sunset on the marina railing, sailboat masts glowing behind them"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </CollageTile>
-          <CollageTile size="small">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-33.jpg"
-              alt="Groom laughing as his groomsman helps with his cufflinks while getting ready"
-              loading="lazy"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </CollageTile>
-          <CollageTile size="small">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-26.jpg"
-              alt="Bride and groom moving through a crowd of cheering guests"
-              loading="lazy"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </CollageTile>
-          <CollageTile size="small">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-15.jpg"
-              alt="Bride and her bridesmaids toasting champagne outdoors at golden hour"
-              loading="lazy"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </CollageTile>
-          <CollageTile size="small">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-22.jpg"
-              alt="Bride and groom walking the garden grounds together, bouquet in hand"
-              loading="lazy"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </CollageTile>
-
-          {/* Mirrored block: 2x2 landscapes left, two tall portraits right */}
-          <CollageTile size="small">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-07.jpg"
-              alt="Guests gathered around the staircase for the procession, seen from above"
-              loading="lazy"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </CollageTile>
-          <CollageTile size="small">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-31.jpg"
-              alt="Guests dancing at the reception as money flies through the air, black and white"
-              loading="lazy"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </CollageTile>
-          <CollageTile size="tall">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-09.jpg"
-              alt="Bride beneath her lace veil holding a pearl-beaded wedding ornament beside the roses"
-              loading="lazy"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </CollageTile>
-          <CollageTile size="tall">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-06.jpg"
-              alt="Groom descending the stairs carrying a pearl-beaded scepter"
-              loading="lazy"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </CollageTile>
-          <CollageTile size="small">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-25.jpg"
-              alt="Reception fireplace mantle dressed in black and white florals"
-              loading="lazy"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </CollageTile>
-          <CollageTile size="small">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/portfolio/weddings/sargon-odelya-more/sargon-odelya-more-08.jpg"
-              alt="Bride at ease on the bed in her gown, champagne chilling beside her"
-              loading="lazy"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </CollageTile>
-        </Collage>
-
-        <div style={{ marginTop: "9vh" }}>
-          <ProjectStrip dark={false} />
-        </div>
+        {GALLERY.map((cat, i) => {
+          // A category with sets is as wide as its widest set, not as wide as
+          // every frame it holds put together.
+          const n = cat.sets
+            ? Math.max(...cat.sets.map((s) => s.photos.length))
+            : cat.photos.length;
+          return (
+            <section
+              key={cat.id}
+              id={cat.id}
+              style={{
+                scrollMarginTop: "calc(var(--lx-header-h) + 24px)",
+                marginTop: i === 0 ? 0 : "12vh",
+                // Cap the whole section, not just the grid, so a sparse
+                // category's heading stays aligned to its own left edge
+                // instead of drifting out to the page margin.
+                maxWidth: capFor(n),
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
+            >
+              <div
+                data-fadeup=""
+                style={{ maxWidth: 720, marginBottom: "5vh" }}
+              >
+                <hr
+                  style={{
+                    border: 0,
+                    borderTop: `1px solid ${GOLD}`,
+                    width: 64,
+                    margin: "0 0 26px",
+                  }}
+                />
+                <h2
+                  style={{
+                    margin: 0,
+                    fontFamily: SERIF,
+                    fontWeight: 600,
+                    fontSize: "clamp(30px,4.4vw,64px)",
+                    lineHeight: 1.02,
+                    letterSpacing: ".01em",
+                  }}
+                >
+                  {cat.label}
+                </h2>
+                <p
+                  style={{
+                    margin: "18px 0 0",
+                    maxWidth: 560,
+                    fontSize: 15,
+                    lineHeight: 1.75,
+                    color: MUTED,
+                  }}
+                >
+                  {cat.blurb}
+                </p>
+              </div>
+              <div>
+                {cat.sets ? (
+                  cat.sets.map((set, j) => (
+                    <div
+                      key={set.id}
+                      id={set.id}
+                      style={{
+                        scrollMarginTop: "calc(var(--lx-header-h) + 24px)",
+                        marginTop: j === 0 ? 0 : "9vh",
+                      }}
+                    >
+                      <div
+                        data-fadeup=""
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 22,
+                          marginBottom: "3.5vh",
+                        }}
+                      >
+                        <h3
+                          style={{
+                            margin: 0,
+                            fontFamily: SERIF,
+                            fontStyle: "italic",
+                            fontWeight: 400,
+                            fontSize: "clamp(21px,2.5vw,32px)",
+                            lineHeight: 1.1,
+                            letterSpacing: ".01em",
+                          }}
+                        >
+                          {set.name}
+                        </h3>
+                        <span
+                          aria-hidden="true"
+                          style={{
+                            flex: 1,
+                            height: 1,
+                            background: "rgba(14,13,11,.15)",
+                          }}
+                        />
+                      </div>
+                      <PhotoGrid photos={set.photos} />
+                    </div>
+                  ))
+                ) : (
+                  <PhotoGrid photos={cat.photos} />
+                )}
+              </div>
+            </section>
+          );
+        })}
       </section>
 
       {/* ══ Full-bleed feature ══ */}
@@ -281,8 +321,8 @@ export default function WeddingsPage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             data-feature=""
-            src={img(PHOTOS.firstDance04.path, 2500)}
-            alt={PHOTOS.firstDance04.a}
+            src={img(GALLERY_FEATURE.photo.path, 2500)}
+            alt={GALLERY_FEATURE.photo.a}
             style={{
               position: "absolute",
               inset: 0,
@@ -301,7 +341,9 @@ export default function WeddingsPage() {
             }}
           />
           <div style={{ position: "absolute", left: 38, bottom: 38 }}>
-            <div style={kicker({ marginBottom: 12 })}>Sargon &amp; Odelya</div>
+            <div style={kicker({ marginBottom: 12 })}>
+              {GALLERY_FEATURE.kicker}
+            </div>
             <div
               style={{
                 fontFamily: SERIF,
@@ -309,7 +351,7 @@ export default function WeddingsPage() {
                 fontSize: "clamp(22px,2.6vw,36px)",
               }}
             >
-              The first dance, kept forever.
+              {GALLERY_FEATURE.line}
             </div>
           </div>
         </div>

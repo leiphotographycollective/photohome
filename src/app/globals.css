@@ -181,6 +181,19 @@ html.lenis {
   height: auto;
   display: block;
 }
+/* /gallery category grids: the column count follows the photo count, so a
+   sparse category reads as deliberate instead of leaving empty columns.
+   Compound selectors so these beat .lx-collage on specificity, not just
+   source order. */
+.lx-collage.lx-collage-3 {
+  columns: 3;
+}
+.lx-collage.lx-collage-2 {
+  columns: 2;
+}
+.lx-collage.lx-collage-1 {
+  columns: 1;
+}
 
 /* "A closer look" project strip: native horizontal scroll, snap, no
    visible scrollbar. */
@@ -245,6 +258,11 @@ html.lenis {
   }
   .lx-collage {
     columns: 2 !important;
+  }
+  /* A one-photo category stays one photo wide on phones; the rule above
+     would otherwise halve it into a narrow column. */
+  .lx-collage.lx-collage-1 {
+    columns: 1 !important;
   }
   .lx-doors {
     grid-template-columns: 1fr 1fr !important;

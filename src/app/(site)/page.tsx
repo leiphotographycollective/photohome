@@ -12,7 +12,6 @@ import HeroSlideshow from "@/components/lei/HeroSlideshow";
 import { HOME_PROCESS } from "@/content/experience";
 import TestimonialFeature from "@/components/lei/TestimonialFeature";
 import { Collage, CollageTile } from "@/components/lei/Collage";
-import ProjectStrip from "@/components/lei/ProjectStrip";
 
 export const metadata: Metadata = {
   title: "Editorial Wedding Photography in the San Francisco Bay Area",
@@ -349,8 +348,8 @@ export default function HomePage() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 data-fadeup=""
-                src="/Lei%20Photography%20Collective%20-%20Trang%20Wedding-2.jpg"
-                alt="Bride and groom walking hand in hand along the marina at sunset, sailboat masts behind them"
+                src="/images/portfolio/weddings/trang/trang-02.jpg"
+                alt="Bride and groom at the altar seen from the back of the church, petals scattered down the aisle"
                 loading="lazy"
                 style={PORTFOLIO_PAIR}
               />
@@ -491,8 +490,8 @@ export default function HomePage() {
               <div data-reveal="" style={{ overflow: "hidden", marginBottom: 20 }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/Lei%20Photography%20Collective%20-%20Trang%20Wedding-1.jpg"
-                  alt="Safe Space - drop your photo here"
+                  src="/images/portfolio/weddings/trang/trang-01.jpg"
+                  alt="The wedding bands and earrings resting on a red invitation illustrated with the couple"
                   style={EXPECT_IMG}
                 />
               </div>
@@ -508,8 +507,8 @@ export default function HomePage() {
               <div data-reveal="" style={{ overflow: "hidden", marginBottom: 20 }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/Lei%20Photography%20Collective%20-%20Trang%20Wedding-5.jpg"
-                  alt="Inspiration - drop your photo here"
+                  src="/images/portfolio/weddings/trang/trang-05.jpg"
+                  alt="The couple's hands resting together over the bouquet, both wedding bands on"
                   style={EXPECT_IMG}
                 />
               </div>
@@ -523,8 +522,8 @@ export default function HomePage() {
               <div data-reveal="" style={{ overflow: "hidden", marginBottom: 20 }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/Sargon%20%26%20Odelya-158.jpg"
-                  alt="Perfect Fit - drop your photo here"
+                  src="/images/portfolio/weddings/sargon-odelya-select/so-select-158.jpg"
+                  alt="Bride holding the open ring box in both hands against her beaded gown"
                   style={EXPECT_IMG}
                 />
               </div>
@@ -580,28 +579,30 @@ export default function HomePage() {
             Your day, the way it actually <em>felt.</em>
           </h2>
           <Collage>
-            {/* Block: two tall portraits beside a 2x2 cluster of landscapes */}
+            {/* Block: two tall portraits beside a 2x2 cluster of landscapes.
+                Three weddings are interleaved through the whole collage, so the
+                section reads as a body of work rather than one long day. */}
             <CollageTile size="tall">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-10.jpg"
-                alt="Bride's veil lifted and moving in the breeze"
+                src="/images/portfolio/weddings/sargon-odelya-select/so-select-204.jpg"
+                alt="Bride in profile beneath her lace veil beside the beaded ceremonial fan and scepter"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
             </CollageTile>
             <CollageTile size="tall">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-28.jpg"
-                alt="Groom dipping the bride for a kiss by the reception fireplace"
+                src="/images/portfolio/weddings/miranda-danny/miranda-danny-05.jpg"
+                alt="Bride resting against the groom on the dock, sailboat masts and still water behind them"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
             </CollageTile>
             <CollageTile size="small">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-34.jpg"
-                alt="Bridal details flat lay with pearl-embellished heels, Chanel perfume, pearl jewelry and the wedding invitation"
+                src="/images/portfolio/weddings/sargon-odelya-select/so-select-686.jpg"
+                alt="The money dance, guests pressing in with bills raised, black and white"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
@@ -609,8 +610,8 @@ export default function HomePage() {
             <CollageTile size="small">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-14.jpg"
-                alt="Bride touching the groom's face at golden hour"
+                src="/images/portfolio/weddings/trang/trang-11.jpg"
+                alt="Paddle fans for the bride's side and the groom's side laid out with heart sunglasses on a red reception table"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
@@ -618,8 +619,8 @@ export default function HomePage() {
             <CollageTile size="small">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-26.jpg"
-                alt="Groom carrying the bride through a cheering crowd"
+                src="/images/portfolio/weddings/sargon-odelya-select/so-select-177.jpg"
+                alt="Guests raising pearl ornaments and cheering as the couple enters, seen from above"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
@@ -627,8 +628,8 @@ export default function HomePage() {
             <CollageTile size="small">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-35.jpg"
-                alt="Bride and three bridesmaids in sage dresses toasting champagne while getting ready"
+                src="/images/portfolio/weddings/sargon-odelya-select/so-select-112.jpg"
+                alt="Bride and three bridesmaids in sage dresses laughing over a champagne toast"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
@@ -638,8 +639,8 @@ export default function HomePage() {
             <CollageTile size="tall">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-03.jpg"
-                alt="Bride sharing an emotional moment with her mother, black and white"
+                src="/images/portfolio/weddings/trang/trang-04.jpg"
+                alt="Bride and groom kneeling together during the ceremony, family and wedding party in the pews behind them"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
@@ -647,8 +648,8 @@ export default function HomePage() {
             <CollageTile size="tall">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-01.jpg"
-                alt="Bride's hands holding the wedding ring box"
+                src="/images/portfolio/weddings/sargon-odelya-select/so-select-167.jpg"
+                alt="Groom climbing the staircase carrying the pearl ceremonial scepter, guests waiting below"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
@@ -656,8 +657,8 @@ export default function HomePage() {
             <CollageTile size="tall">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-29.jpg"
-                alt="Bride and groom laughing mid-twirl on the dance floor"
+                src="/images/portfolio/weddings/miranda-danny/miranda-danny-07.jpg"
+                alt="Bride and groom kissing on the marina boardwalk as the sun breaks between them"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
@@ -665,8 +666,8 @@ export default function HomePage() {
             <CollageTile size="tall">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-23.jpg"
-                alt="Champagne spray celebration, alternate edit"
+                src="/images/portfolio/weddings/sargon-odelya-select/so-select-reedit2-14.jpg"
+                alt="Groom spraying champagne over the bride under the redwoods, her veil trailing behind her"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
@@ -676,8 +677,8 @@ export default function HomePage() {
             <CollageTile size="wide">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://images.squarespace-cdn.com/content/v1/697c1d6344a3b1154bcbc39e/652fef9d-196e-4248-92d2-83d8abebf683/Lei.Photography.Co-PreSargon+lReEdit-12.jpg?format=1500w"
-                alt="First dance in low fog beneath string lights, guests watching by the fireplace"
+                src="/images/portfolio/weddings/sargon-odelya-select/so-select-presargon-12.jpg"
+                alt="First dance in low fog beneath string lights, guests watching from the fireplace"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
@@ -685,8 +686,8 @@ export default function HomePage() {
             <CollageTile size="small">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-30.jpg"
-                alt="Bride and groom embracing on the dance floor, reception lights above"
+                src="/images/portfolio/weddings/miranda-danny/miranda-danny-12.jpg"
+                alt="Bride and groom holding each other on the boardwalk at sunset, her train spread across the boards"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
@@ -694,8 +695,8 @@ export default function HomePage() {
             <CollageTile size="small">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-36.jpg"
-                alt="Bride laughing with her three bridesmaids as they clink champagne flutes while getting ready"
+                src="/images/portfolio/weddings/sargon-odelya-select/so-select-046.jpg"
+                alt="Bride's mother kneeling in navy lace to fasten her shoe while the bride laughs on the bed"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
@@ -705,8 +706,8 @@ export default function HomePage() {
             <CollageTile size="tall">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-19.jpg"
-                alt="Bride looking back over her shoulder, veil catching the sunset"
+                src="/images/portfolio/weddings/trang/trang-10.jpg"
+                alt="Bride and groom walking out through a shower of petals with champagne in hand, black and white"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
@@ -714,8 +715,8 @@ export default function HomePage() {
             <CollageTile size="tall">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-08.jpg"
-                alt="Family and friends celebrating on the staircase, aerial view"
+                src="/images/portfolio/weddings/sargon-odelya-select/so-select-580.jpg"
+                alt="Groom lifted on his friends' shoulders holding the pearl scepter beneath the string lights"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
@@ -723,8 +724,8 @@ export default function HomePage() {
             <CollageTile size="tall">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-37.jpg"
-                alt="Groom lifting the bride during their first dance amid low fog beneath string lights"
+                src="/images/portfolio/weddings/sargon-odelya-select/so-select-300.jpg"
+                alt="Bride lifting her cathedral veil overhead in soft window light"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
@@ -732,21 +733,18 @@ export default function HomePage() {
             <CollageTile size="tall">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-12.jpg"
-                alt="Bride beneath her veil, black and white portrait"
+                src="/images/portfolio/weddings/miranda-danny/miranda-danny-08.jpg"
+                alt="Bride and groom forehead to forehead in sepia, the sun flaring behind her veil"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
             </CollageTile>
           </Collage>
-          <div style={{ marginTop: "9vh" }}>
-            <ProjectStrip dark={false} />
-          </div>
           <div
             data-fadeup=""
-            style={{ marginTop: "7vh", display: "flex", justifyContent: "center" }}
+            style={{ marginTop: "9vh", display: "flex", justifyContent: "center" }}
           >
-            <SoftLink href="/weddings" label="View the full portfolio" />
+            <SoftLink href="/gallery" label="View the full gallery" />
           </div>
         </div>
       </section>

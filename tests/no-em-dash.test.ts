@@ -4,6 +4,7 @@ import * as homepage from "@/content/homepage";
 import * as experience from "@/content/experience";
 import * as secondWeddings from "@/content/second-weddings";
 import * as site from "@/content/site";
+import * as gallery from "@/content/gallery";
 
 // Photo alt text ("a") and asset paths are out of scope for the no-em-dash
 // rule (see the 2026-07-19 copy-edit spec). A Photo is identified by shape
@@ -42,6 +43,7 @@ describe("content files contain no em dashes in rendered copy", () => {
     experience,
     "second-weddings": secondWeddings,
     site,
+    gallery,
   };
   for (const [name, mod] of Object.entries(modules)) {
     it(`${name} strings are em-dash free`, () => {

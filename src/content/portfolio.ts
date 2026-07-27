@@ -1,5 +1,9 @@
-// Portfolio data for Lei Photography Collective.
-// Real imagery from leiphotography.co (Squarespace CDN).
+// The photo library for Lei Photography Collective. This file is now purely a
+// catalogue of frames: the category/project structure it used to carry went
+// away when the site narrowed to weddings only. Which photos appear on
+// /gallery is decided in src/content/gallery.ts.
+//
+// Real imagery from leiphotography.co (Squarespace CDN) plus local exports.
 
 const BASE =
   "https://images.squarespace-cdn.com/content/v1/697c1d6344a3b1154bcbc39e/";
@@ -33,6 +37,15 @@ export function aspect(photo: Photo): string {
   return photo.ratio ? String(photo.ratio) : RATIO_CSS[photo.r];
 }
 
+/** Look a frame up by filename rather than by array index, so reordering or
+ *  inserting entries in the arrays below can never silently swap one photo for
+ *  another at a call site. Throws at build time if the frame goes missing. */
+export function pick(photos: Photo[], file: string): Photo {
+  const found = photos.find((p) => p.path.endsWith(`/${file}`));
+  if (!found) throw new Error(`portfolio.ts: no frame named ${file}`);
+  return found;
+}
+
 export const PHOTOS = {
   marinaKiss: { path: "/images/bay-area-wedding-marina-golden-hour-kiss-lei-photography-collective.jpg", a: "Bride and groom kissing at golden hour, sailboat masts behind them at the marina", r: "p" },
   receptionEntrance: { path: "/images/bay-area-wedding-reception-entrance-fog-string-lights-lei-photography-collective.jpg", a: "Bride and groom walking onto a fog-covered dance floor beneath a canopy of string lights", r: "l" },
@@ -56,8 +69,8 @@ export const PHOTOS = {
   naomi: { path: "ed7320b3-281a-4572-b32e-366fd44a63e1/Lei.Photography.Co-Naomi+Grad+Shoot+FA25-1.jpg", a: "Naomi — fall graduation session", r: "p" },
   lauren: { path: "2738f481-52a5-4ea3-bb7a-5a637e7a3ff9/Lei.Photography.Co-Lauren+Grad+Shoot+FA25-8.jpg", a: "Lauren — fall graduation session", r: "p" },
   editorial: { path: "8deaaf49-efac-4491-8299-d815c581bf3b/bay-area-fashion-editorial-portrait-moody-light-lei-photography-collective", a: "Moody editorial portrait in shadow", r: "t" },
-  coastal: { path: "4db9fa99-eb9a-4934-a0c8-434507f6c49d/bay-area-coastal-couples-portrait-natural-light-lei-photography-collective", a: "Couple embracing on the coast", r: "p" },
-  proposal: { path: "fd9815f2-39b8-476e-9b16-bbf4d9b863ea/Lei.Photography.Co-JakeProposalReEdit-09.jpg", a: "The proposal — the moment of yes", r: "p" },
+  coastal: { path: "4db9fa99-eb9a-4934-a0c8-434507f6c49d/bay-area-coastal-couples-portrait-natural-light-lei-photography-collective", a: "Couple embracing on the coast", r: "p", ratio: 0.6667 },
+  proposal: { path: "fd9815f2-39b8-476e-9b16-bbf4d9b863ea/Lei.Photography.Co-JakeProposalReEdit-09.jpg", a: "The proposal, the moment of yes", r: "l", ratio: 1.5 },
   // Used outside the portfolio structure (about / experience pages)
   headshot: { path: "0fb5bd5d-f798-4ff4-a39a-665358854c87/Lei.Photogrpahy.co-Ray+Headshot-2.jpg", a: "Raymond Lei holding a camera outdoors beside yellow flowers", r: "p" },
   archEditorial: { path: "277ae67a-f224-4a1f-b0c1-393118b86947/bay-area-fashion-editorial-portrait-architectural-natural-light-lei-photography-collective", a: "Editorial portrait in an arched architectural walkway", r: "p" },
@@ -65,17 +78,17 @@ export const PHOTOS = {
   gownEditorial: { path: "a4dc9303-abdb-418f-b9df-d2f910a25833/bay-area-fashion-editorial-portrait-evening-gown-lei-photography-collective", a: "Editorial portrait in a flowing evening gown, natural light", r: "p" },
   danceLift: { path: "a1619465-2e25-4145-bb00-b9b588e0d38b/bay-area-wedding-first-dance-lift-cinematic-natural-light-lei-photography-collective", a: "Groom lifting bride during their first dance, cinematic natural light", r: "p" },
   firstDanceBW: { path: "74b02691-e4f6-4e3b-856e-91b2ffedd398/bay-area-wedding-first-dance-black-and-white-lei-photography-collective", a: "First dance in black and white", r: "t" },
-  coastalCandid: { path: "86c4e14a-bd49-4b5b-8bbe-b7ae2881bdb5/san-francisco-coastal-couples-portrait-candid-natural-light-lei-photography-collective", a: "Couple embracing by the ocean, candid natural light", r: "p" },
+  coastalCandid: { path: "86c4e14a-bd49-4b5b-8bbe-b7ae2881bdb5/san-francisco-coastal-couples-portrait-candid-natural-light-lei-photography-collective", a: "Couple embracing by the ocean, candid natural light", r: "l", ratio: 1.5 },
   groomPrep: { path: "bfb2b2c5-62c2-447d-ac15-c7b4ac7b80b2/bay-area-wedding-groom-getting-ready-candid-lei-photography-collective", a: "Groom laughing with a groomsman while getting ready", r: "p" },
   brideMother: { path: "477b873d-0c83-4d5e-8856-d0275ab31300/bay-area-wedding-bride-mother-getting-ready-black-and-white-lei-photography-collective", a: "Bride sharing an emotional moment with her mother, black and white", r: "t" },
-  coastKiss: { path: "8664ce35-1a25-42be-8c14-9f85890ee554/Couple+sharing+an+intimate+kiss+during+a+black+and+white+engagement+session+along+the+San+Francisco+coast%2C+photographed+by+Lei+Photography+Collective.", a: "Couple sharing a kiss on the San Francisco coast, black and white", r: "p" },
+  coastKiss: { path: "8664ce35-1a25-42be-8c14-9f85890ee554/Couple+sharing+an+intimate+kiss+during+a+black+and+white+engagement+session+along+the+San+Francisco+coast%2C+photographed+by+Lei+Photography+Collective.", a: "Couple sharing a kiss on the San Francisco coast, black and white", r: "p", ratio: 0.6667 },
   // Local images — 2025 fall shoots, not yet migrated to the CDN
   gradCapToss: { path: "/images/portfolio/graduation/grad-akp-toss.jpg", a: "AKP graduates tossing their caps on campus", r: "p" },
   eventPwc: { path: "/images/portfolio/events/event-pwc.jpg", a: "Colleagues smiling together at a corporate networking event", r: "l" },
   eventAssyrian: { path: "/images/portfolio/events/event-assyrian-5.jpg", a: "Couple in evening attire at a gala, garden view behind them", r: "l" },
   eventEmmys: { path: "/images/portfolio/events/event-emmys.jpg", a: "Emmy award statues in gold light", r: "l" },
   confettiToast: { path: "/images/bay-area-wedding-reception-confetti-toast-black-and-white-lei-photography-collective.jpg", a: "Bride and groom toasting through a shower of heart confetti at their reception, black and white", r: "t" },
-  firstDanceFog: { path: "/images/bay-area-wedding-first-dance-fog-string-lights-black-and-white-lei-photography-collective.jpg", a: "Bride and groom sharing their first dance on a fog-covered floor beneath string lights, black and white", r: "p" },
+  firstDanceFog: { path: "/images/bay-area-wedding-first-dance-fog-string-lights-black-and-white-lei-photography-collective.jpg", a: "Bride and groom sharing their first dance on a fog-covered floor beneath string lights, black and white", r: "p", ratio: 0.6667 },
   marinaSunsetKiss: { path: "/images/bay-area-wedding-marina-sunset-kiss-lei-photography-collective.jpg", a: "Bride and groom kissing at sunset on the marina railing, sailboat masts glowing behind them", r: "t" },
   firstDanceLights: { path: "/images/bay-area-wedding-first-dance-fog-string-lights-lei-photography-collective.jpg", a: "Bride and groom holding hands during their first dance on a fog-covered floor beneath a canopy of string lights", r: "p" },
   gettingReadyToast: { path: "/images/bay-area-wedding-bride-bridesmaids-champagne-toast-getting-ready-lei-photography-collective.jpg", a: "Bride toasting champagne with her bridesmaids in sage green dresses while getting ready", r: "l" },
@@ -86,48 +99,51 @@ export const PHOTOS = {
 const SO_DIR = "/images/portfolio/weddings/sargon-odelya";
 export const SARGON_ODELYA_PHOTOS: Photo[] = [
   { path: `${SO_DIR}/sargon-odelya-01.jpg`, a: "Bride's hands holding the wedding ring box", r: "p", ratio: 0.6667 },
-  { path: `${SO_DIR}/sargon-odelya-02.jpg`, a: "Bridal shoes, perfume and jewelry flat lay", r: "l", ratio: 1.7778 },
+  { path: `${SO_DIR}/sargon-odelya-02.jpg`, a: "Bridal details flat lay: pearl-strapped Jimmy Choo heels, Chanel perfume, pearl jewelry and the invitation", r: "l", ratio: 1.7778 },
   { path: `${SO_DIR}/sargon-odelya-03.jpg`, a: "Bride sharing an emotional moment with her mother, black and white", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-04.jpg`, a: "Bride and bridesmaids toasting champagne while getting ready", r: "l", ratio: 1.5 },
   { path: `${SO_DIR}/sargon-odelya-05.jpg`, a: "Bridesmaids toasting champagne with the bride, alternate angle", r: "l", ratio: 1.5 },
   { path: `${SO_DIR}/sargon-odelya-06.jpg`, a: "Groom descending the stairs carrying a pearl-beaded scepter", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-07.jpg`, a: "Guests cheering as the couple descends the staircase", r: "l", ratio: 1.5 },
-  { path: `${SO_DIR}/sargon-odelya-08.jpg`, a: "Family and friends celebrating on the staircase, aerial view", r: "p", ratio: 0.6667 },
-  { path: `${SO_DIR}/sargon-odelya-09.jpg`, a: "Bride's veil catching the light in warm golden hour sun", r: "p", ratio: 0.6667 },
+  // Same frame as sargon-odelya-23.jpg below (index 22). Kept so the indices
+  // above stay stable, but never render it: use index 22 instead.
+  { path: `${SO_DIR}/sargon-odelya-08.jpg`, a: "Groom spraying champagne over the bride under a redwood tree, duplicate of sargon-odelya-23.jpg", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-09.jpg`, a: "Bride in her lace veil reaching for the pearl ceremonial scepters against a sunlit garden wall", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-10.jpg`, a: "Bride's veil lifted and moving in the breeze", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-11.jpg`, a: "Close-up of the bride's engagement ring beneath her veil", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-12.jpg`, a: "Bride beneath her veil, black and white portrait", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-13.jpg`, a: "Bridesmaids toasting the bride on a garden balcony at golden hour", r: "l", ratio: 1.4999 },
-  { path: `${SO_DIR}/sargon-odelya-14.jpg`, a: "Bride touching the groom's face at golden hour", r: "l", ratio: 1.5004 },
-  { path: `${SO_DIR}/sargon-odelya-15.jpg`, a: "Bride and groom smiling together on a garden balcony", r: "l", ratio: 1.5 },
+  { path: `${SO_DIR}/sargon-odelya-14.jpg`, a: "Close detail of the bride's beaded gown, her engagement ring and her white cascading bouquet", r: "l", ratio: 1.5004 },
+  { path: `${SO_DIR}/sargon-odelya-15.jpg`, a: "Bride and her three bridesmaids clinking champagne flutes on a garden balcony at golden hour", r: "l", ratio: 1.5 },
   { path: `${SO_DIR}/sargon-odelya-16.jpg`, a: "Bride's veil blowing across her face in soft light", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-17.jpg`, a: "Bride lifting her cathedral veil overhead, laughing", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-18.jpg`, a: "Bride's veil trailing in the wind, black and white", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-19.jpg`, a: "Bride looking back over her shoulder, veil catching the sunset", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-20.jpg`, a: "Bride and groom walking hand in hand across the lawn", r: "l", ratio: 1.5 },
   { path: `${SO_DIR}/sargon-odelya-21.jpg`, a: "Bride and groom walking together, alternate edit", r: "l", ratio: 1.5004 },
-  { path: `${SO_DIR}/sargon-odelya-22.jpg`, a: "Groom spraying champagne over the bride under a redwood tree", r: "l", ratio: 1.5001 },
+  { path: `${SO_DIR}/sargon-odelya-22.jpg`, a: "Bride and groom walking the garden path at golden hour, bouquet in hand", r: "l", ratio: 1.5001 },
   { path: `${SO_DIR}/sargon-odelya-23.jpg`, a: "Champagne spray celebration, alternate edit", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-24.jpg`, a: "First dance beneath string lights, fog across the floor, black and white", r: "p", ratio: 0.6667 },
-  { path: `${SO_DIR}/sargon-odelya-25.jpg`, a: "Reception fireplace mantle dressed in white florals and candlelight", r: "l", ratio: 1.5 },
-  { path: `${SO_DIR}/sargon-odelya-26.jpg`, a: "Groom carrying the bride through a cheering crowd", r: "l", ratio: 1.4999 },
+  { path: `${SO_DIR}/sargon-odelya-25.jpg`, a: "Head table set in front of the reception fireplace, banked with white roses and eucalyptus", r: "l", ratio: 1.5 },
+  { path: `${SO_DIR}/sargon-odelya-26.jpg`, a: "Bride and groom moving through a crowd of cheering guests holding pearl ornaments aloft", r: "l", ratio: 1.4999 },
   { path: `${SO_DIR}/sargon-odelya-27.jpg`, a: "Groom lifted on guests' shoulders during the reception", r: "l", ratio: 1.5 },
-  { path: `${SO_DIR}/sargon-odelya-28.jpg`, a: "Groom dipping the bride for a kiss by the reception fireplace", r: "p", ratio: 0.6667 },
+  { path: `${SO_DIR}/sargon-odelya-28.jpg`, a: "Groom lifted on his friends' shoulders holding the pearl scepter, guests clapping beneath the string lights", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-29.jpg`, a: "Bride and groom laughing mid-twirl on the dance floor", r: "p", ratio: 0.6667 },
   { path: `${SO_DIR}/sargon-odelya-30.jpg`, a: "Bride and groom embracing on the dance floor, reception lights above", r: "l", ratio: 1.5 },
   { path: `${SO_DIR}/sargon-odelya-31.jpg`, a: "Traditional money dance with the newlyweds, black and white", r: "l", ratio: 1.5 },
   { path: `${SO_DIR}/sargon-odelya-32.jpg`, a: "Groomsmen sharing a laugh while getting ready", r: "l", ratio: 1.4999 },
-  { path: `${SO_DIR}/sargon-odelya-33.jpg`, a: "Groomsmen laughing together while adjusting cufflinks", r: "l", ratio: 1.5 },
-  { path: `${SO_DIR}/sargon-odelya-34.jpg`, a: "Bridal details flat lay with pearl-embellished heels, Chanel perfume, pearl jewelry and the wedding invitation", r: "l", ratio: 1.5004 },
+  { path: `${SO_DIR}/sargon-odelya-33.jpg`, a: "Groom laughing while a groomsman fastens his cufflink before the ceremony", r: "l", ratio: 1.5 },
+  { path: `${SO_DIR}/sargon-odelya-34.jpg`, a: "Bride and groom walking hand in hand across the lawn, smiling at each other", r: "l", ratio: 1.5004 },
   { path: `${SO_DIR}/sargon-odelya-35.jpg`, a: "Bride and three bridesmaids in sage dresses toasting champagne while getting ready", r: "l", ratio: 1.7778 },
   { path: `${SO_DIR}/sargon-odelya-36.jpg`, a: "Bride laughing with her three bridesmaids as they clink champagne flutes while getting ready", r: "l", ratio: 1.5004 },
   { path: `${SO_DIR}/sargon-odelya-37.jpg`, a: "Groom lifting the bride during their first dance amid low fog beneath string lights", r: "p", ratio: 0.6665 },
 ];
 
-// New 2025 sets imported from local exports
-const SARGON_ODELYA_MORE: Photo[] = [
-  { path: "/images/portfolio/weddings/sargon-odelya-more/sargon-odelya-more-08.jpg", a: "Sargon & Odelya — couple's portrait at golden hour", r: "l", ratio: 1.5 },
-  { path: "/images/portfolio/weddings/sargon-odelya-more/sargon-odelya-more-32.jpg", a: "Sargon & Odelya — a moment from the wedding day", r: "p", ratio: 0.6667 },
+// New 2025 sets imported from local exports. Exported so /gallery can seed
+// from them; alt text here is what the gallery renders, so keep it accurate.
+export const SARGON_ODELYA_MORE: Photo[] = [
+  { path: "/images/portfolio/weddings/sargon-odelya-more/sargon-odelya-more-08.jpg", a: "Bride sitting at the end of the bed in her gown and veil, champagne chilling on the side table", r: "l", ratio: 1.5 },
+  { path: "/images/portfolio/weddings/sargon-odelya-more/sargon-odelya-more-32.jpg", a: "Bride and groom reaching for each other across a floor of low fog, string lights overhead", r: "p", ratio: 0.6667 },
 ];
 
 // Curated 13-frame selection shown on the project page and homepage —
@@ -152,157 +168,69 @@ export const SARGON_ODELYA_CURATED: Photo[] = [
   SARGON_ODELYA_PHOTOS[35], // bride laughing with bridesmaids, champagne toast
   SARGON_ODELYA_PHOTOS[36], // first dance lift in low fog
 ];
-const DYLAN_GRAD: Photo[] = [
-  { path: "/images/portfolio/graduation/dylan/dylan-01.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/dylan/dylan-02.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/dylan/dylan-03.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/dylan/dylan-04.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/dylan/dylan-05.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/dylan/dylan-06.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/dylan/dylan-07.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/dylan/dylan-08.jpg", a: "Dylan — fall graduation session", r: "p", ratio: 0.6667 },
-];
-const NAOMI_GRAD: Photo[] = [
-  { path: "/images/portfolio/graduation/naomi/naomi-01.jpg", a: "Naomi — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/naomi/naomi-02.jpg", a: "Naomi — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/naomi/naomi-03.jpg", a: "Naomi — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/naomi/naomi-04.jpg", a: "Naomi — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/naomi/naomi-05.jpg", a: "Naomi — fall graduation session", r: "p", ratio: 0.6667 },
-];
-const LAUREN_GRAD: Photo[] = [
-  { path: "/images/portfolio/graduation/lauren/lauren-01.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/lauren/lauren-02.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/lauren/lauren-03.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/lauren/lauren-04.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/lauren/lauren-05.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/lauren/lauren-06.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/lauren/lauren-07.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/lauren/lauren-08.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/lauren/lauren-09.jpg", a: "Lauren — fall graduation session", r: "p", ratio: 0.6667 },
-];
-const REI_GRAD: Photo[] = [
-  { path: "/images/portfolio/graduation/rei/rei-01.jpg", a: "Rei — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/rei/rei-02.jpg", a: "Rei — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/rei/rei-03.jpg", a: "Rei — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/rei/rei-04.jpg", a: "Rei — fall graduation session", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/graduation/rei/rei-05.jpg", a: "Rei — fall graduation session", r: "p", ratio: 0.6667 },
-];
-const ASSYRIAN_EVENT: Photo[] = [
-  { path: "/images/portfolio/events/assyrian/assyrian-01.jpg", a: "The Assyrian gala — guests and celebration", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/events/assyrian/assyrian-02.jpg", a: "The Assyrian gala — guests and celebration", r: "l", ratio: 1.5 },
-  { path: "/images/portfolio/events/assyrian/assyrian-03.jpg", a: "The Assyrian gala — guests and celebration", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/events/assyrian/assyrian-04.jpg", a: "The Assyrian gala — guests and celebration", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/events/assyrian/assyrian-06.jpg", a: "The Assyrian gala — guests and celebration", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/events/assyrian/assyrian-07.jpg", a: "The Assyrian gala — guests and celebration", r: "p", ratio: 0.6667 },
-  { path: "/images/portfolio/events/assyrian/assyrian-08.jpg", a: "The Assyrian gala — guests and celebration", r: "t", ratio: 0.75 },
-  { path: "/images/portfolio/events/assyrian/assyrian-09.jpg", a: "The Assyrian gala — guests and celebration", r: "l", ratio: 1.3333 },
-  { path: "/images/portfolio/events/assyrian/assyrian-10.jpg", a: "The Assyrian gala — guests and celebration", r: "l", ratio: 1.3333 },
-  { path: "/images/portfolio/events/assyrian/assyrian-11.jpg", a: "The Assyrian gala — guests and celebration", r: "l", ratio: 1.3333 },
-  { path: "/images/portfolio/events/assyrian/assyrian-12.jpg", a: "The Assyrian gala — guests and celebration", r: "l", ratio: 1.3333 },
-  { path: "/images/portfolio/events/assyrian/assyrian-13.jpg", a: "The Assyrian gala — guests and celebration", r: "l", ratio: 1.3333 },
-];
-const CORPORATE_EVENT: Photo[] = [
-  { path: "/images/portfolio/events/corporate/corporate-01.jpg", a: "AKP fall banquet — highlight of the evening", r: "l", ratio: 1.5 },
-  { path: "/images/portfolio/events/corporate/corporate-02.jpg", a: "Corporate event coverage", r: "l", ratio: 1.5 },
-  { path: "/images/portfolio/events/corporate/corporate-04.jpg", a: "SJSU University Police — team portrait", r: "l", ratio: 1.3321 },
-  { path: "/images/portfolio/events/corporate/corporate-06.jpg", a: "PwC networking reception", r: "l", ratio: 1.3333 },
+
+// ── The three wedding sets behind /gallery ──────────────────────────────────
+// Web-sized from Raymond's originals (1900px long edge, ~9MB for all 42). Each
+// filename keeps the frame number from the original export, so any photo here
+// traces straight back to the file it came from. `ratio` is the real decoded
+// ratio, measured at export, not a guess: the masonry uses it to reserve the
+// right height before the file loads. Arrays are in story order, getting ready
+// through to the last dance, which is the order the grids render in.
+
+const MD_DIR = "/images/portfolio/weddings/miranda-danny";
+export const MIRANDA_DANNY_PHOTOS: Photo[] = [
+  { path: `${MD_DIR}/miranda-danny-01.jpg`, a: "Bride holding her white bouquet as her veil sweeps across the frame, the harbour behind her", r: "l", ratio: 1.3324 },
+  { path: `${MD_DIR}/miranda-danny-05.jpg`, a: "Bride resting against the groom on the dock, sailboat masts and still water behind them", r: "p", ratio: 0.6668 },
+  { path: `${MD_DIR}/miranda-danny-12.jpg`, a: "Bride and groom holding each other on the boardwalk at sunset, her train spread across the boards", r: "l", ratio: 1.3324 },
+  { path: `${MD_DIR}/miranda-danny-14.jpg`, a: "Groom cupping the bride's face at sunset, her bouquet held between them at the marina railing", r: "l", ratio: 1.3324 },
+  { path: `${MD_DIR}/miranda-danny-02.jpg`, a: "Bride and groom leaning into each other with her white bouquet between them, sun flaring off the marina", r: "l", ratio: 1.4996 },
+  { path: `${MD_DIR}/miranda-danny-07.jpg`, a: "Bride and groom kissing on the marina boardwalk as the sun breaks between them", r: "p", ratio: 0.6668 },
+  { path: `${MD_DIR}/miranda-danny-08.jpg`, a: "Bride and groom forehead to forehead in sepia, the sun flaring behind her veil", r: "t", ratio: 0.7505 },
+  { path: `${MD_DIR}/miranda-danny-03.jpg`, a: "Bride and groom small on the marina boardwalk, sailboat masts and the low sun filling the frame", r: "l", ratio: 1.3324 },
 ];
 
-export interface Project {
-  id: string;
-  title: string;
-  place: string;
-  year: string;
-  /** null = coming-soon placeholder: render a tone block wherever a cover
-   * would show (project strip, category grid, related cards). */
-  cover: Photo | null;
-  photos: Photo[];
-}
+const TR_DIR = "/images/portfolio/weddings/trang";
+export const TRANG_PHOTOS: Photo[] = [
+  { path: `${TR_DIR}/trang-01.jpg`, a: "The wedding bands and earrings resting on a red invitation illustrated with the couple", r: "t", ratio: 0.7505 },
+  { path: `${TR_DIR}/trang-11.jpg`, a: "Paddle fans for the bride's side and the groom's side laid out with heart sunglasses on a red reception table", r: "l", ratio: 1.3324 },
+  // Same frame as trang-03 below, in colour rather than black and white. The
+  // homepage renders this one; the gallery grid renders the black and white,
+  // so the pair never lands side by side (see the filter in gallery.ts).
+  { path: `${TR_DIR}/trang-02.jpg`, a: "Bride and groom at the altar seen from the back of the church, petals scattered down the aisle", r: "t", ratio: 0.7505 },
+  { path: `${TR_DIR}/trang-03.jpg`, a: "Bride and groom at the altar seen from the back of the church, petals scattered down the aisle, black and white", r: "t", ratio: 0.7505 },
+  { path: `${TR_DIR}/trang-04.jpg`, a: "Bride and groom kneeling together during the ceremony, family and wedding party in the pews behind them", r: "t", ratio: 0.7505 },
+  { path: `${TR_DIR}/trang-05.jpg`, a: "The couple's hands resting together over the bouquet, both wedding bands on", r: "t", ratio: 0.7505 },
+  { path: `${TR_DIR}/trang-10.jpg`, a: "Bride and groom walking out through a shower of petals with champagne in hand, black and white", r: "t", ratio: 0.7505 },
+  { path: `${TR_DIR}/trang-07.jpg`, a: "Groom kissing the bride's cheek outside the church, her peach and white bouquet in hand", r: "t", ratio: 0.7511 },
+];
 
-export interface Category {
-  label: string;
-  tagline: string;
-  intro: string;
-  projects: Project[];
-}
-
-const P = PHOTOS;
-
-export const CATEGORIES: Record<string, Category> = {
-  couples: {
-    label: "Couples",
-    tagline: "The two of you, as you really are",
-    intro:
-      "Unposed sessions for couples: coastal walks, golden hour, the everyday closeness worth keeping.",
-    projects: [
-      { id: "along-the-coast", title: "Along the Coast", place: "San Francisco, CA", year: "2025", cover: P.coastalCandid, photos: [P.coastalCandid, P.coastal, P.coastKiss] },
-    ],
-  },
-  graduations: {
-    label: "Graduations",
-    tagline: "The chapter that closes one and opens another",
-    intro:
-      "Candid, natural-light sessions that celebrate the milestone, and the person who earned it.",
-    projects: [
-      { id: "naomi-fall-25", title: "Naomi · Fall '25", place: "Berkeley, CA", year: "2025", cover: NAOMI_GRAD[0], photos: NAOMI_GRAD },
-      { id: "lauren-fall-25", title: "Lauren · Fall '25", place: "San Jose, CA", year: "2025", cover: LAUREN_GRAD[0], photos: LAUREN_GRAD },
-      { id: "dylan-fall-25", title: "Dylan · Fall '25", place: "San Jose, CA", year: "2025", cover: DYLAN_GRAD[0], photos: DYLAN_GRAD },
-      { id: "rei-fall-25", title: "Rei · Fall '25", place: "San Jose, CA", year: "2025", cover: REI_GRAD[0], photos: REI_GRAD },
-      { id: "akp-class-of-25", title: "AKP · Class of 2025", place: "San Jose, CA", year: "2025", cover: P.gradCapToss, photos: [P.gradCapToss] },
-    ],
-  },
-  portraits: {
-    label: "Portraits & Editorials",
-    tagline: "Honest moments, shaped by light",
-    intro:
-      "Natural yet cinematic: imagery built from thoughtful direction and atmosphere.",
-    projects: [
-      { id: "in-shadow", title: "In Shadow", place: "Studio, SF", year: "2025", cover: P.editorial, photos: [P.editorial, P.bridal] },
-      { id: "natural-light", title: "Natural Light", place: "Bay Area, CA", year: "2025", cover: P.bridal, photos: [P.bridal, P.coastal] },
-    ],
-  },
-  events: {
-    label: "Headshots & Events",
-    tagline: "The room, as it really felt",
-    intro:
-      "Candid coverage that keeps the energy of the room without ever interrupting it.",
-    projects: [
-      { id: "on-the-floor", title: "On the Floor", place: "Bay Area, CA", year: "2025", cover: P.weddingParty, photos: [P.bridesmaidsToast, P.weddingParty, P.detailsFlat] },
-      { id: "galas-and-gatherings", title: "Galas & Gatherings", place: "Bay Area, CA", year: "2025", cover: P.eventEmmys, photos: [P.eventEmmys, P.eventPwc, P.eventAssyrian] },
-      { id: "assyrian-gala", title: "The Assyrian Gala", place: "San Jose, CA", year: "2025", cover: ASSYRIAN_EVENT[0], photos: ASSYRIAN_EVENT },
-      { id: "corporate-community", title: "Corporate & Community", place: "Bay Area, CA", year: "2025", cover: CORPORATE_EVENT[0], photos: CORPORATE_EVENT },
-    ],
-  },
-  engagements: {
-    label: "Engagements & Proposals",
-    tagline: "The moment before everything changes",
-    intro:
-      "The nerves, the question, the yes, and the golden-hour portraits that follow.",
-    projects: [
-      { id: "jake-proposal", title: "Jake · The Proposal", place: "Bay Area, CA", year: "2025", cover: P.proposal, photos: [P.proposal, P.coastal] },
-    ],
-  },
-  // Coming-soon shells for the "A closer look" project strip (2026-07-21
-  // collage spec). Intentionally absent from CAT_ORDER until real weddings
-  // land, so the hub and sitemap do not advertise empty pages.
-  weddings: {
-    label: "Weddings",
-    tagline: "Full days, kept the way they felt",
-    intro: "Complete wedding stories, from getting ready to the last song.",
-    projects: [
-      { id: "wedding-01", title: "Coming Soon", place: "Bay Area, CA", year: "2026", cover: null, photos: [] },
-      { id: "wedding-02", title: "Coming Soon", place: "Bay Area, CA", year: "2026", cover: null, photos: [] },
-      { id: "wedding-03", title: "Coming Soon", place: "Bay Area, CA", year: "2026", cover: null, photos: [] },
-      { id: "wedding-04", title: "Coming Soon", place: "Bay Area, CA", year: "2026", cover: null, photos: [] },
-      { id: "wedding-05", title: "Coming Soon", place: "Bay Area, CA", year: "2026", cover: null, photos: [] },
-    ],
-  },
-};
-
-export const CAT_ORDER = [
-  "couples",
-  "graduations",
-  "portraits",
-  "events",
-  "engagements",
-] as const;
+const SOS_DIR = "/images/portfolio/weddings/sargon-odelya-select";
+export const SARGON_ODELYA_SELECT: Photo[] = [
+  { path: `${SOS_DIR}/so-select-reedit2-01.jpg`, a: "Bridal details flat lay: pearl-strapped Jimmy Choo heels, Chanel perfume, jewelry and the invitation", r: "l", ratio: 1.779 },
+  { path: `${SOS_DIR}/so-select-158.jpg`, a: "Bride holding the open ring box in both hands against her beaded gown", r: "p", ratio: 0.6668 },
+  { path: `${SOS_DIR}/so-select-042.jpg`, a: "Hands fastening the bride's pearl-studded heel while the second shoe waits on the rug, sepia", r: "p", ratio: 0.6668 },
+  { path: `${SOS_DIR}/so-select-046.jpg`, a: "Bride's mother kneeling in navy lace to fasten her shoe while the bride laughs on the bed", r: "l", ratio: 1.4996 },
+  { path: `${SOS_DIR}/so-select-062.jpg`, a: "Bride and her mother holding hands before the ceremony, black and white", r: "p", ratio: 0.6663 },
+  { path: `${SOS_DIR}/so-select-reedit2-08.jpg`, a: "Bride and her bridesmaids in matching robes, backs to the camera, arms around each other", r: "l", ratio: 1.4996 },
+  { path: `${SOS_DIR}/so-select-112.jpg`, a: "Bride and three bridesmaids in sage dresses laughing over a champagne toast", r: "l", ratio: 1.4996 },
+  { path: `${SOS_DIR}/so-select-reedit2-02.jpg`, a: "Bride sitting at the end of the bed in her gown and veil, champagne chilling on the side table", r: "l", ratio: 1.4996 },
+  { path: `${SOS_DIR}/so-select-225.jpg`, a: "Bride seated with her cascading white bouquet in a vintage living room", r: "p", ratio: 0.6668 },
+  { path: `${SOS_DIR}/so-select-300.jpg`, a: "Bride lifting her cathedral veil overhead in soft window light", r: "p", ratio: 0.6668 },
+  { path: `${SOS_DIR}/so-select-204.jpg`, a: "Bride in profile beneath her lace veil beside the beaded ceremonial fan and scepter", r: "p", ratio: 0.6668 },
+  { path: `${SOS_DIR}/so-select-248.jpg`, a: "Groom laughing while a groomsman fastens his cufflink before the ceremony", r: "l", ratio: 1.4996 },
+  { path: `${SOS_DIR}/so-select-167.jpg`, a: "Groom climbing the staircase carrying the pearl ceremonial scepter, guests waiting below", r: "p", ratio: 0.6668 },
+  { path: `${SOS_DIR}/so-select-177.jpg`, a: "Guests raising pearl ornaments and cheering as the couple enters, seen from above", r: "l", ratio: 1.4996 },
+  { path: `${SOS_DIR}/so-select-presargon-14.jpg`, a: "The wedding party lined up in the garden at golden hour, bridesmaids in sage and groomsmen in grey", r: "l", ratio: 1.5008 },
+  { path: `${SOS_DIR}/so-select-presargon-07.jpg`, a: "Bride and groom walking hand in hand across the lawn beneath the olive trees", r: "l", ratio: 1.4996 },
+  { path: `${SOS_DIR}/so-select-reedit2-14.jpg`, a: "Groom spraying champagne over the bride under the redwoods, her veil trailing behind her", r: "p", ratio: 0.6668 },
+  { path: `${SOS_DIR}/so-select-retouch-02.jpg`, a: "Groom's arms wrapped around the bride's beaded gown, both wedding bands showing", r: "p", ratio: 0.6668 },
+  { path: `${SOS_DIR}/so-select-540.jpg`, a: "Head table set in front of the reception fireplace, banked with white roses and eucalyptus", r: "l", ratio: 1.4996 },
+  { path: `${SOS_DIR}/so-select-569.jpg`, a: "Bride and groom moving through a crowd of guests with phones and flowers raised", r: "l", ratio: 1.4996 },
+  { path: `${SOS_DIR}/so-select-580.jpg`, a: "Groom lifted on his friends' shoulders holding the pearl scepter beneath the string lights", r: "p", ratio: 0.6668 },
+  { path: `${SOS_DIR}/so-select-presargon-12.jpg`, a: "First dance in low fog beneath string lights, guests watching from the fireplace", r: "l", ratio: 1.4996 },
+  { path: `${SOS_DIR}/so-select-636.jpg`, a: "Bride and groom on the fog-covered dance floor beneath a canopy of string lights, seen from behind", r: "l", ratio: 1.4996 },
+  { path: `${SOS_DIR}/so-select-639.jpg`, a: "Bride and groom reaching for each other across the fog at the start of their first dance", r: "p", ratio: 0.6668 },
+  { path: `${SOS_DIR}/so-select-reedit2-03.jpg`, a: "Groom lifting the bride off the floor during their first dance in low fog", r: "p", ratio: 0.6668 },
+  { path: `${SOS_DIR}/so-select-641.jpg`, a: "First dance in black and white, the couple close together on a floor of low fog", r: "p", ratio: 0.6668 },
+  { path: `${SOS_DIR}/so-select-686.jpg`, a: "The money dance, guests pressing in with bills raised, black and white", r: "l", ratio: 1.4996 },
+];
