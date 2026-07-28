@@ -94,17 +94,34 @@ export function Marquee({
  *  blank placeholder, /images/placeholders/band-<page>-<n>.svg, numbered in
  *  scroll order down the page. They are deliberately not shared: dropping a
  *  photo onto one file would otherwise change every band at once. When adding
- *  a band, give it a new placeholder rather than reusing an existing one. */
+ *  a band, give it a new placeholder rather than reusing an existing one.
+ *
+ *  Adjusting the crop. The band is far wider than it is tall, so `cover`
+ *  fills the width and trims the top and bottom off the photo. Three levers,
+ *  in the order you usually want them:
+ *
+ *  - `objectPosition` — which slice survives the trim. "50% 25%" holds the
+ *    upper part of the frame, "50% 75%" the lower. The first number pans
+ *    horizontally and only bites on photos taller than the band.
+ *  - `height` — a taller band trims less off the photo.
+ *  - `zoom` — how far in the shot starts before motion.ts eases it back to
+ *    1 on scroll. Lower it toward 1 to see more of the frame. */
 export function PhotoBand({
   src,
   alt = "",
   height = "clamp(240px,40vh,460px)",
   background = "#E8E4DE",
+  objectPosition = "50% 50%",
+  zoom = 1.16,
 }: {
   src: string;
   alt?: string;
   height?: string;
   background?: string;
+  /** CSS object-position, e.g. "50% 30%" to favour the top of the photo. */
+  objectPosition?: string;
+  /** Starting scale; motion.ts eases it to 1 as the band scrolls through. */
+  zoom?: number;
 }) {
   return (
     <section style={{ position: "relative", height, overflow: "hidden", background }}>
@@ -121,7 +138,8 @@ export function PhotoBand({
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          transform: "scale(1.16)",
+          objectPosition,
+          transform: `scale(${zoom})`,
         }}
       />
     </section>
