@@ -203,7 +203,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ Spacer band — manifesto into who I photograph ══ */}
-      <PhotoBand src="/Lei.Photography.Co-Sargon%20ReEdit2-1.jpg" />
+      <PhotoBand src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-31.jpg" />
 
       {/* ══ Who I photograph ══ */}
       <section

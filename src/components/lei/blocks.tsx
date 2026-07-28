@@ -105,7 +105,11 @@ export function Marquee({
  *    horizontally and only bites on photos taller than the band.
  *  - `height` — a taller band trims less off the photo.
  *  - `zoom` — how far in the shot starts before motion.ts eases it back to
- *    1 on scroll. Lower it toward 1 to see more of the frame. */
+ *    1 on scroll. Lower it toward 1 to see more of the frame.
+ *
+ *  All three are desktop-only levers. Under 860px the `.lx-band` rules in
+ *  globals.css drop the fixed height and show the whole photo uncropped, so
+ *  there is no crop left to aim. */
 export function PhotoBand({
   src,
   alt = "",
@@ -124,7 +128,10 @@ export function PhotoBand({
   zoom?: number;
 }) {
   return (
-    <section style={{ position: "relative", height, overflow: "hidden", background }}>
+    <section
+      className="lx-band"
+      style={{ position: "relative", height, overflow: "hidden", background }}
+    >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         data-band=""

@@ -278,6 +278,26 @@ html.lenis {
     width: 26vw !important;
     min-width: 0 !important;
   }
+  /* Spacer bands show the whole photo on phones. The desktop band is a wide,
+     short strip that cover-crops the top and bottom off the frame; at phone
+     width that trim eats most of the photo. So the fixed height comes off and
+     the band takes the photo's own shape at full width — uncropped, and
+     shorter than the desktop strip for a landscape frame. max-height is the
+     backstop for a portrait photo dropped in later: `contain` letterboxes it
+     against the band background instead of stretching it. */
+  .lx-band {
+    height: auto !important;
+  }
+  .lx-band img {
+    position: static !important;
+    height: auto !important;
+    max-height: 56vh;
+    object-fit: contain !important;
+    display: block;
+    /* Nothing to ease out of without the crop, so motion.ts's scale-to-1
+       zoom is a no-op here. */
+    transform: none !important;
+  }
 }
 
 /* ── REDUCED MOTION ────────────────────────────────────────────────────── */
