@@ -68,6 +68,46 @@ html.lenis {
   overflow: hidden;
 }
 
+/* ── MOTION START STATES ───────────────────────────────────────────────────
+   These mirror, exactly, the `from` values in src/lib/lei/motion.ts. The
+   engine runs in an effect, so without them the server HTML paints visible
+   and GSAP's `from` states land after first paint: content flashed in, got
+   yanked to hidden, then animated back in (twice over, since React's dev
+   StrictMode runs the mount/cleanup cycle twice).
+
+   Scoped to .lx-motion, which the blocking script in layout.tsx adds only
+   when JS is running and reduced motion is off. If either is false the
+   states never apply and everything renders plainly visible. Keep any change
+   here in sync with motion.ts or elements will jump when the engine takes
+   over. */
+.lx-motion [data-fadeup] {
+  opacity: 0;
+  transform: translateY(44px);
+}
+.lx-motion [data-step] {
+  opacity: 0;
+  transform: translateY(36px);
+}
+.lx-motion [data-proj] {
+  opacity: 0;
+  transform: translateY(60px);
+}
+.lx-motion [data-rel] {
+  opacity: 0;
+  transform: translateY(50px);
+}
+.lx-motion [data-reveal],
+.lx-motion [data-reveal2] {
+  clip-path: inset(0 0 100% 0);
+}
+.lx-motion [data-gitem] {
+  clip-path: inset(10% 0 10% 0);
+}
+.lx-motion [data-gimg] {
+  clip-path: inset(12% 6% 12% 6%);
+  transform: scale(1.12);
+}
+
 /* ── CUSTOM CURSOR ─────────────────────────────────────────────────────── */
 @media (pointer: fine) {
   body.lx-cursor,
