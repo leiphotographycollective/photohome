@@ -202,6 +202,9 @@ export default function HomePage() {
         </p>
       </section>
 
+      {/* ══ Spacer band — manifesto into who I photograph ══ */}
+      <PhotoBand src="/images/placeholders/band.svg" />
+
       {/* ══ Who I photograph ══ */}
       <section
         className="lx-grid-2col"
@@ -209,7 +212,10 @@ export default function HomePage() {
           position: "relative",
           background: "#F7F5F2",
           color: "#0E0D0B",
-          padding: "0 6vw 22vh",
+          /* Top padding added with the band above: this section used to run
+             straight on from the manifesto's bottom padding, so at 0 the
+             kicker butted against the band's hard edge. */
+          padding: "14vh 6vw 22vh",
           display: "grid",
           gridTemplateColumns: "minmax(300px,560px) minmax(280px,440px)",
           gap: "7vw",
