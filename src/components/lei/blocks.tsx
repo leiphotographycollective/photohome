@@ -90,8 +90,11 @@ export function Marquee({
  *  breath between sections. The img carries `data-band`, so motion.ts gives
  *  it the same slow zoom-out as the taller bands on /experience and /gallery.
  *  Every call site passes `src` as a literal string so the visual editor can
- *  swap each band's photo independently; the shipped default is the blank
- *  placeholder at /images/placeholders/band.svg. */
+ *  swap each band's photo independently. Each band ships pointing at its own
+ *  blank placeholder, /images/placeholders/band-<page>-<n>.svg, numbered in
+ *  scroll order down the page. They are deliberately not shared: dropping a
+ *  photo onto one file would otherwise change every band at once. When adding
+ *  a band, give it a new placeholder rather than reusing an existing one. */
 export function PhotoBand({
   src,
   alt = "",

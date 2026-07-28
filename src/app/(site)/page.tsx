@@ -203,7 +203,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ Spacer band — manifesto into who I photograph ══ */}
-      <PhotoBand src="/images/placeholders/band.svg" />
+      <PhotoBand src="/images/placeholders/band-home-1.svg" />
 
       {/* ══ Who I photograph ══ */}
       <section
@@ -559,7 +559,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ Spacer band — a breath before the portfolio collage ══ */}
-      <PhotoBand src="/images/placeholders/band.svg" />
+      <PhotoBand src="/images/placeholders/band-home-2.svg" />
 
       {/* ══ The Wedding Portfolio — the proof, inline ══ */}
       <section
@@ -762,7 +762,7 @@ export default function HomePage() {
       <TestimonialFeature />
 
       {/* ══ Spacer band — testimonial into the About story ══ */}
-      <PhotoBand src="/images/placeholders/band.svg" />
+      <PhotoBand src="/images/placeholders/band-home-3.svg" />
 
       {/* ══ About ══ */}
       <section

@@ -226,7 +226,7 @@ export default function FreeSessionPage() {
       </section>
 
       {/* ══ Spacer band — gallery into the offer ══ */}
-      <PhotoBand src="/images/placeholders/band.svg" />
+      <PhotoBand src="/images/placeholders/band-free-session-1.svg" />
 
       {/* ══ The offer ══ */}
       <section
@@ -361,7 +361,7 @@ export default function FreeSessionPage() {
       </section>
 
       {/* ══ Spacer band — scarcity into how it works ══ */}
-      <PhotoBand src="/images/placeholders/band.svg" />
+      <PhotoBand src="/images/placeholders/band-free-session-2.svg" />
 
       {/* ══ How it works ══ */}
       <section style={{ position: "relative", background: "#0E0D0B", color: "#F7F5F2" }}>

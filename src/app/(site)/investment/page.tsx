@@ -141,7 +141,7 @@ export default function InvestmentPage() {
       </section>
 
       {/* ══ Spacer band — intro note into the collections ══ */}
-      <PhotoBand src="/images/placeholders/band.svg" />
+      <PhotoBand src="/images/placeholders/band-investment-1.svg" />
 
       {/* ══ The collections — alternating photo/text blocks ══ */}
       <section
@@ -398,7 +398,7 @@ export default function InvestmentPage() {
       </section>
 
       {/* ══ Spacer band — the details into the testimonials ══ */}
-      <PhotoBand src="/images/placeholders/band.svg" />
+      <PhotoBand src="/images/placeholders/band-investment-2.svg" />
 
       {/* ══ What my couples are saying ══ */}
       <section

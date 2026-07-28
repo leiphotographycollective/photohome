@@ -177,7 +177,7 @@ export default function AboutPage() {
       </section>
 
       {/* ══ Spacer band — gallery into the pull quote ══ */}
-      <PhotoBand src="/images/placeholders/band.svg" />
+      <PhotoBand src="/images/placeholders/band-about-1.svg" />
 
       {/* ══ Pull quote ══ */}
       <section

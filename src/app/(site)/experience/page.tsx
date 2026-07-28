@@ -478,7 +478,7 @@ export default function ExperiencePage() {
       </section>
 
       {/* ══ Spacer band — what to expect into the process ══ */}
-      <PhotoBand src="/images/placeholders/band.svg" />
+      <PhotoBand src="/images/placeholders/band-experience-1.svg" />
 
       {/* ══ The Process ══ */}
       <section

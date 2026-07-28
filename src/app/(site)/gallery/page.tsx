@@ -391,7 +391,7 @@ export default function GalleryPage() {
       </section>
 
       {/* ══ Spacer band — price anchor into the pull quote ══ */}
-      <PhotoBand src="/images/placeholders/band.svg" />
+      <PhotoBand src="/images/placeholders/band-gallery-1.svg" />
 
       {/* ══ Pull quote ══ */}
       <section

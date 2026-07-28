@@ -127,7 +127,7 @@ export default function SecondWeddingsPage() {
       </section>
 
       {/* ══ Spacer band — opening block into the value props ══ */}
-      <PhotoBand src="/images/placeholders/band.svg" />
+      <PhotoBand src="/images/placeholders/band-second-weddings-1.svg" />
 
       {/* ══ Why couples choose this, value props ══ */}
       <section style={{ position: "relative", background: "#0E0D0B", color: "#F7F5F2", padding: "16vh 6vw" }}>
@@ -281,7 +281,7 @@ export default function SecondWeddingsPage() {
       </section>
 
       {/* ══ Spacer band — packages into the social proof ══ */}
-      <PhotoBand src="/images/placeholders/band.svg" />
+      <PhotoBand src="/images/placeholders/band-second-weddings-2.svg" />
 
       {/* ══ Social proof, candid strip ══ */}
       <section style={{ position: "relative", background: "#F7F5F2", padding: "0 6vw 16vh" }}>
