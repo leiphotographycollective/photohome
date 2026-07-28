@@ -3,7 +3,7 @@ import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
 import HoneyBookEmbed from "@/components/lei/HoneyBookEmbed";
-import { ProcessSteps } from "@/components/lei/blocks";
+import { PhotoBand, ProcessSteps } from "@/components/lei/blocks";
 import { SoftLink } from "@/components/lei/Cta";
 import { GOLD, MUTED, SERIF, cream, ink, kicker, pill } from "@/components/lei/tokens";
 import { img } from "@/content/portfolio";
@@ -125,6 +125,9 @@ export default function SecondWeddingsPage() {
           ))}
         </div>
       </section>
+
+      {/* ══ Spacer band — opening block into the value props ══ */}
+      <PhotoBand src="/images/placeholders/band.svg" />
 
       {/* ══ Why couples choose this, value props ══ */}
       <section style={{ position: "relative", background: "#0E0D0B", color: "#F7F5F2", padding: "16vh 6vw" }}>
@@ -276,6 +279,9 @@ export default function SecondWeddingsPage() {
           </div>
         </div>
       </section>
+
+      {/* ══ Spacer band — packages into the social proof ══ */}
+      <PhotoBand src="/images/placeholders/band.svg" />
 
       {/* ══ Social proof, candid strip ══ */}
       <section style={{ position: "relative", background: "#F7F5F2", padding: "0 6vw 16vh" }}>

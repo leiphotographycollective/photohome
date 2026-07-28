@@ -3,7 +3,7 @@ import Link from "next/link";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
-import { Marquee, ProcessSteps, ScrollHint } from "@/components/lei/blocks";
+import { Marquee, PhotoBand, ProcessSteps, ScrollHint } from "@/components/lei/blocks";
 import { GOLD, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
 import { HOME_PROCESS } from "@/content/experience";
@@ -347,6 +347,9 @@ export default function WeddingsPage() {
           </div>
         </div>
       </section>
+
+      {/* ══ Spacer band — price anchor into the pull quote ══ */}
+      <PhotoBand src="/images/placeholders/band.svg" />
 
       {/* ══ Pull quote ══ */}
       <section

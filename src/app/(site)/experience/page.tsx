@@ -3,7 +3,7 @@ import Link from "next/link";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
-import { ProcessSteps, ScrollHint } from "@/components/lei/blocks";
+import { PhotoBand, ProcessSteps, ScrollHint } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
 import { PROCESS, QUALIFIERS } from "@/content/experience";
@@ -476,6 +476,9 @@ export default function ExperiencePage() {
           </div>
         </div>
       </section>
+
+      {/* ══ Spacer band — what to expect into the process ══ */}
+      <PhotoBand src="/images/placeholders/band.svg" />
 
       {/* ══ The Process ══ */}
       <section
