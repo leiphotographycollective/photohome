@@ -203,7 +203,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ Spacer band — manifesto into who I photograph ══ */}
-      <PhotoBand src="/images/placeholders/band-home-1.svg" />
+      <PhotoBand src="/Lei.Photography.Co-Sargon%20ReEdit2-1.jpg" />
 
       {/* ══ Who I photograph ══ */}
       <section
@@ -419,8 +419,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ Feature image + quote — one large placeholder slot with a
-          swap-in-later testimonial line ══ */}
+      {/* ══ Feature image — one large placeholder slot ══ */}
       <section style={{ position: "relative", background: "#F7F5F2", padding: "6vh 6vw 8vh" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
           <div data-reveal="" style={{ overflow: "hidden" }}>
@@ -435,36 +434,6 @@ export default function HomePage() {
                 display: "block",
               }}
             />
-          </div>
-          <p
-            data-fadeup=""
-            style={{
-              margin: "5vh 0 0",
-              fontFamily: SERIF,
-              fontStyle: "italic",
-              fontSize: "clamp(16px,1.6vw,22px)",
-              lineHeight: 1.7,
-              color: "#0E0D0B",
-              textAlign: "center",
-              textWrap: "pretty",
-            }}
-          >
-            Your favorite couple&rsquo;s words about the day will live here, ready
-            to swap in whenever you are.
-          </p>
-          <div
-            data-fadeup=""
-            style={{
-              marginTop: 16,
-              textAlign: "center",
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: ".2em",
-              textTransform: "uppercase",
-              color: GOLD,
-            }}
-          >
-            &mdash; Add attribution
           </div>
         </div>
       </section>
@@ -559,7 +528,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ Spacer band — a breath before the portfolio collage ══ */}
-      <PhotoBand src="/images/placeholders/band-home-2.svg" />
+      <PhotoBand src="/images/portfolio/weddings/trang/trang-11.jpg" />
 
       {/* ══ The Wedding Portfolio — the proof, inline ══ */}
       <section
@@ -997,25 +966,9 @@ export default function HomePage() {
                   letterSpacing: ".06em",
                 }}
               >
-                @lei.photography.co
+                @leiphotography.co
               </a>
             </div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              data-float=""
-              data-speed="40"
-              className="lx-float"
-              src={img(PHOTOS.editorial.path, 750)}
-              alt={PHOTOS.editorial.a}
-              loading="lazy"
-              style={{
-                marginTop: 48,
-                width: 200,
-                aspectRatio: "3 / 4",
-                objectFit: "cover",
-                boxShadow: "0 30px 60px rgba(0,0,0,.4)",
-              }}
-            />
           </div>
 
           <div
