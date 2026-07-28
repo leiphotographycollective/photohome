@@ -3,7 +3,7 @@ import Link from "next/link";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
-import { Marquee, ProcessSteps } from "@/components/lei/blocks";
+import { Marquee, PhotoBand, ProcessSteps } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
 import { CtaLink, SoftLink } from "@/components/lei/Cta";
@@ -552,6 +552,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ══ Spacer band — a breath before the portfolio collage ══ */}
+      <PhotoBand src="/images/placeholders/band.svg" />
+
       {/* ══ The Wedding Portfolio — the proof, inline ══ */}
       <section
         style={{
@@ -751,6 +754,9 @@ export default function HomePage() {
 
       {/* ══ From the couple above — Sargon & Odelya, on working with me ══ */}
       <TestimonialFeature />
+
+      {/* ══ Spacer band — testimonial into the About story ══ */}
+      <PhotoBand src="/images/placeholders/band.svg" />
 
       {/* ══ About ══ */}
       <section

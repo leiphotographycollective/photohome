@@ -3,7 +3,7 @@ import Link from "next/link";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
-import { Marquee, ProcessSteps, ScrollHint } from "@/components/lei/blocks";
+import { Marquee, PhotoBand, ProcessSteps, ScrollHint } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { aspect, img, type Photo } from "@/content/portfolio";
 import { GALLERY, GALLERY_FEATURE, GALLERY_HERO } from "@/content/gallery";
@@ -389,6 +389,9 @@ export default function GalleryPage() {
           </div>
         </div>
       </section>
+
+      {/* ══ Spacer band — price anchor into the pull quote ══ */}
+      <PhotoBand src="/images/placeholders/band.svg" />
 
       {/* ══ Pull quote ══ */}
       <section

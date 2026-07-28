@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
-import { ProcessSteps } from "@/components/lei/blocks";
+import { PhotoBand, ProcessSteps } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, ink, kicker } from "@/components/lei/tokens";
 import { CtaLink, SoftLink } from "@/components/lei/Cta";
 import { CITY, POSITIONING, TESTIMONIALS } from "@/content/homepage";
@@ -139,6 +139,9 @@ export default function InvestmentPage() {
           send the full breakdown.
         </p>
       </section>
+
+      {/* ══ Spacer band — intro note into the collections ══ */}
+      <PhotoBand src="/images/placeholders/band.svg" />
 
       {/* ══ The collections — alternating photo/text blocks ══ */}
       <section
@@ -393,6 +396,9 @@ export default function InvestmentPage() {
           </div>
         </div>
       </section>
+
+      {/* ══ Spacer band — the details into the testimonials ══ */}
+      <PhotoBand src="/images/placeholders/band.svg" />
 
       {/* ══ What my couples are saying ══ */}
       <section

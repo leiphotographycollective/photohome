@@ -86,6 +86,45 @@ export function Marquee({
   );
 }
 
+/** Full-bleed photo spacer — a short, cropped strip that gives the page a
+ *  breath between sections. The img carries `data-band`, so motion.ts gives
+ *  it the same slow zoom-out as the taller bands on /experience and /gallery.
+ *  Every call site passes `src` as a literal string so the visual editor can
+ *  swap each band's photo independently; the shipped default is the blank
+ *  placeholder at /images/placeholders/band.svg. */
+export function PhotoBand({
+  src,
+  alt = "",
+  height = "clamp(240px,40vh,460px)",
+  background = "#E8E4DE",
+}: {
+  src: string;
+  alt?: string;
+  height?: string;
+  background?: string;
+}) {
+  return (
+    <section style={{ position: "relative", height, overflow: "hidden", background }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        data-band=""
+        src={src}
+        alt={alt}
+        aria-hidden={alt ? undefined : "true"}
+        loading="lazy"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          transform: "scale(1.16)",
+        }}
+      />
+    </section>
+  );
+}
+
 /** Numbered process rows (Inquire / Connect / Customize / Reserve). */
 export function ProcessSteps({
   steps,

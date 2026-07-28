@@ -3,7 +3,7 @@ import Link from "next/link";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
-import { ParallaxGallery } from "@/components/lei/blocks";
+import { ParallaxGallery, PhotoBand } from "@/components/lei/blocks";
 import { DIM, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
 
@@ -175,6 +175,9 @@ export default function AboutPage() {
           ]}
         />
       </section>
+
+      {/* ══ Spacer band — gallery into the pull quote ══ */}
+      <PhotoBand src="/images/placeholders/band.svg" />
 
       {/* ══ Pull quote ══ */}
       <section

@@ -4,7 +4,7 @@ import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
 import FreeSessionForm from "@/components/lei/FreeSessionForm";
-import { ParallaxGallery, ProcessSteps } from "@/components/lei/blocks";
+import { ParallaxGallery, PhotoBand, ProcessSteps } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 
 export const metadata: Metadata = {
@@ -225,6 +225,9 @@ export default function FreeSessionPage() {
         />
       </section>
 
+      {/* ══ Spacer band — gallery into the offer ══ */}
+      <PhotoBand src="/images/placeholders/band.svg" />
+
       {/* ══ The offer ══ */}
       <section
         style={{
@@ -356,6 +359,9 @@ export default function FreeSessionPage() {
           Entries are read at the end of every month; make yours count
         </div>
       </section>
+
+      {/* ══ Spacer band — scarcity into how it works ══ */}
+      <PhotoBand src="/images/placeholders/band.svg" />
 
       {/* ══ How it works ══ */}
       <section style={{ position: "relative", background: "#0E0D0B", color: "#F7F5F2" }}>
