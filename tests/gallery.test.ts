@@ -192,10 +192,13 @@ describe("gallery images stay swappable", () => {
     // `src={`, which a computed src written with a stray space (`src =
     // {img(...)}`) would slip past; this count would still catch it, since a
     // reformatted tag like that no longer matches `src="..."` and total would
-    // drop below 64. It also catches a photo simply being deleted from a
+    // drop below 85. It also catches a photo simply being deleted from a
     // page without the src becoming computed at all.
+    //
+    // 85 = 1 hub hero + 3 card covers + 41 weddings (40 grid + the feature)
+    // + 1 engagement + 39 events. Update deliberately when frames are added.
     expect(cdn).toBe(2);
-    expect(total).toBe(64);
+    expect(total).toBe(85);
   });
 
   // Task 5 wrote the card labels into CategoryCards so each card's src could

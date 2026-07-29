@@ -154,11 +154,11 @@ export default function CategoryCards() {
         <Card
           href="/gallery/events"
           label="Events"
-          blurb="Galas, panels, and the parties after."
+          blurb="Award nights, dinners, and the rooms between."
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/portfolio/events/events-card-cover.jpg"
+            src="/images/portfolio/events/sjsu-pd-emmys/sjsu-pd-emmys-02.jpg"
             alt=""
             loading="lazy"
             style={CARD_IMG}
