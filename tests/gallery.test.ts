@@ -86,32 +86,86 @@ describe("local image paths", () => {
       expect(existsSync(join(PUBLIC, s)), `missing ${s}`).toBe(true);
     }
   });
+});
 
-  // The gallery hub and the three category pages also write their <img> tags
-  // out literally now (see src/components/lei/CategoryCards.tsx and
-  // src/app/(site)/gallery/*/page.tsx), for the same reason: the visual
-  // editor can only swap a src that is a literal string in the page source.
-  it("resolve for every local literal image src on the gallery pages", () => {
-    const files = [
-      "src/components/lei/CategoryCards.tsx",
-      "src/app/(site)/gallery/page.tsx",
-      "src/app/(site)/gallery/weddings/page.tsx",
-      "src/app/(site)/gallery/engagements/page.tsx",
-      "src/app/(site)/gallery/events/page.tsx",
-    ];
-    let total = 0;
-    for (const file of files) {
-      const source = readFileSync(join(process.cwd(), file), "utf8");
-      const srcs = [...source.matchAll(/src="(\/[^"]+)"/g)].map((m) =>
-        decodeURIComponent(m[1])
-      );
-      total += srcs.length;
-      for (const s of srcs) {
-        expect(existsSync(join(PUBLIC, s)), `${file}: missing ${s}`).toBe(
-          true
-        );
-      }
+// The Ship Studio visual editor can only swap an image whose src is a literal
+// string in the page source. A computed src (src={img(...)}, a template
+// literal, a variable) renders correctly and looks fine in review, but the
+// photo silently stops being swappable. Nothing else in this suite would
+// notice, so this is the guard that keeps the gallery editable.
+describe("gallery images stay swappable", () => {
+  const PAGES = [
+    "src/app/(site)/gallery/page.tsx",
+    "src/app/(site)/gallery/weddings/page.tsx",
+    "src/app/(site)/gallery/engagements/page.tsx",
+    "src/app/(site)/gallery/events/page.tsx",
+    "src/components/lei/CategoryCards.tsx",
+  ];
+
+  it("never computes an img src on a gallery page", () => {
+    for (const page of PAGES) {
+      const source = readFileSync(join(process.cwd(), page), "utf8");
+      const computed = [...source.matchAll(/src=\{/g)];
+      expect(computed.length, `${page} computes an img src`).toBe(0);
     }
-    expect(total).toBeGreaterThan(0); // walker sanity check
+  });
+
+  it("resolves every literal image src to a real file", () => {
+    let total = 0;
+    let cdn = 0;
+    for (const page of PAGES) {
+      const source = readFileSync(join(process.cwd(), page), "utf8");
+      // Every literal src, local or absolute. The Engagements page and the
+      // Engagements card cover on the hub both point at the same CDN-hosted
+      // photo (an absolute squarespace-cdn.com URL) instead of a file under
+      // public/, so those two are counted toward the total but not walked
+      // against the filesystem; every other src here is a local /images/...
+      // path and must resolve to a real file.
+      const srcs = [...source.matchAll(/src="([^"]+)"/g)].map((m) => m[1]);
+      expect(srcs.length, `${page} renders no images`).toBeGreaterThan(0);
+      for (const s of srcs) {
+        if (s.startsWith("/")) {
+          const decoded = decodeURIComponent(s);
+          expect(
+            existsSync(join(PUBLIC, decoded)),
+            `missing ${decoded} in ${page}`
+          ).toBe(true);
+        } else {
+          expect(
+            s.startsWith("https://images.squarespace-cdn.com/"),
+            `unexpected absolute src ${s} in ${page}`
+          ).toBe(true);
+          cdn++;
+        }
+      }
+      total += srcs.length;
+    }
+    // Every gallery photo, counted once: 1 hub hero + 3 card covers + 41
+    // weddings (40 grid + 1 feature) + 1 engagement + 18 events = 64. Two of
+    // those (the Engagements grid frame and its card cover on the hub) share
+    // the one CDN photo above; the other 62 are local and were resolved
+    // against public/ in the loop. Update both numbers deliberately when
+    // frames are added.
+    expect(cdn).toBe(2);
+    expect(total).toBe(64);
+  });
+
+  // Task 5 wrote the card labels into CategoryCards so each card's src could
+  // sit beside its text. That is the one place gallery copy lives outside
+  // src/content, so pin it to GALLERY here or the two can drift apart.
+  it("renders a card for every category, labelled to match", () => {
+    const source = readFileSync(
+      join(process.cwd(), "src/components/lei/CategoryCards.tsx"),
+      "utf8"
+    );
+    for (const cat of GALLERY) {
+      expect(source, `no card for ${cat.id}`).toContain(`href="${cat.href}"`);
+      expect(source, `card label for ${cat.id}`).toContain(
+        `label="${cat.label}"`
+      );
+      expect(source, `card blurb for ${cat.id}`).toContain(
+        `blurb="${cat.cardBlurb}"`
+      );
+    }
   });
 });
