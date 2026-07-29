@@ -18,7 +18,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { expect, it } from "vitest";
 import { GALLERY } from "@/content/gallery";
-import { RATIO_CSS, type Photo } from "@/content/portfolio";
+import { RATIO_CSS, img, type Photo } from "@/content/portfolio";
 
 const OUT = ".superpowers/sdd/gallery-jsx";
 
@@ -36,11 +36,16 @@ function cols(n: number): number {
 function tile(p: Photo, indent: number): string {
   const pad = " ".repeat(indent);
   const aspect = p.ratio !== undefined ? String(p.ratio) : RATIO_CSS[p.r];
+  // Run the path through img() exactly as the retired grid did, at the same
+  // 1200 width. Local paths (leading "/") come back unchanged, but a Squarespace
+  // CDN path has no leading slash and img() prefixes it with the CDN base.
+  // Emitting p.path raw would turn those into broken relative URLs.
+  const src = img(p.path, 1200);
   return [
     `${pad}<CollageTile>`,
     `${pad}  {/* eslint-disable-next-line @next/next/no-img-element */}`,
     `${pad}  <img`,
-    `${pad}    src="${p.path}"`,
+    `${pad}    src="${src}"`,
     `${pad}    alt="${attr(p.a)}"`,
     `${pad}    loading="lazy"`,
     `${pad}    style={frame("${aspect}")}`,
