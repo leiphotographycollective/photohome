@@ -165,7 +165,7 @@ guess.
 | --- | --- |
 | `src/content/nav.ts` | `/gallery#engagements` becomes `/gallery/engagements`. No Events entry is added: the only place it could go is the `WEDDINGS_MENU` dropdown, and filing event work under a Weddings parent would be plainly wrong. The hub is the index for all three. |
 | `src/components/lei/HeaderNav.tsx` | The comment explaining that the `#engagements` child never matches an active path is now wrong: the child is a real path and will light up. Rewrite it. |
-| `src/content/homepage.ts` | The three `WEDDING_PORTFOLIO` entries all point at `/gallery`. Point each at its own set: `/gallery/weddings#sargon-odelya`, `#miranda-danny`, `#trang`. |
+| `src/content/homepage.ts` | The three `RECENT_WEDDINGS` entries all point at `/gallery`. Point each at its own set: `/gallery/weddings#sargon-odelya`, `#miranda-danny`, `#trang`. (`WEDDING_PORTFOLIO` is a different array, photo rows with no hrefs, and is not affected.) |
 | `src/app/sitemap.ts` | Add the three new URLs. |
 | `tests/gallery.test.ts` | Asserts the Weddings/Couples/Engagements order and the single-page shape. Rewrite for the new order and add coverage that every event placeholder path resolves to a real file under `public/`. |
 | `tests/no-em-dash.test.ts` | Add the new `events` content module to the modules under test. |
