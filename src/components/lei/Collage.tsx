@@ -9,10 +9,8 @@ import type { ReactNode } from "react";
    The `size` prop is kept so existing pages compile, but it no longer
    changes layout.
 
-   Most pages write <img> tags out one by one inside CollageTile so each src
-   is a literal string the visual editor can swap. /gallery is the exception:
-   its three grids are data-driven, so their swap surface is
-   src/content/gallery.ts.
+   Every page, /gallery included, writes its <img> tags out one by one inside
+   CollageTile so each src is a literal string the visual editor can swap.
 
    `columns` lets a sparse grid drop below the default 4 so a category with
    one or two photos doesn't leave empty columns beside it. */

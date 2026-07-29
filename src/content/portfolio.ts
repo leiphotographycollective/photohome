@@ -1,7 +1,8 @@
 // The photo library for Lei Photography Collective. This file is now purely a
 // catalogue of frames: the category/project structure it used to carry went
 // away when the site narrowed to weddings only. Which photos appear on
-// /gallery is decided in src/content/gallery.ts.
+// /gallery is decided in the four gallery page files under
+// src/app/(site)/gallery/.
 //
 // Real imagery from leiphotography.co (Squarespace CDN) plus local exports.
 

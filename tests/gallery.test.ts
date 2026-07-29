@@ -1,12 +1,16 @@
-import { existsSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { join, sep } from "node:path";
 import { describe, expect, it } from "vitest";
-import { GALLERY, GALLERY_FEATURE, GALLERY_HERO } from "@/content/gallery";
+import { GALLERY } from "@/content/gallery";
 import { WEDDING_PORTFOLIO } from "@/content/homepage";
 import type { Photo } from "@/content/portfolio";
 
 const PUBLIC = join(process.cwd(), "public");
 
+// GALLERY now carries only the copy behind the hub and the three category
+// pages. The photos themselves are literal <img> tags on those pages (and on
+// CategoryCards for the hub cards), so the visual editor can swap any of
+// them; asserting on paths and photo counts moved with the photos.
 describe("gallery categories", () => {
   it("are Weddings, Engagements, Events in that order", () => {
     expect(GALLERY.map((c) => c.id)).toEqual([
@@ -21,15 +25,11 @@ describe("gallery categories", () => {
     ]);
   });
 
-  it("each carry a heading, both blurbs, a cover and at least one photo", () => {
+  it("each carry a heading, both blurbs", () => {
     for (const cat of GALLERY) {
       expect(cat.label.length, cat.id).toBeGreaterThan(0);
       expect(cat.blurb.length, cat.id).toBeGreaterThan(0);
       expect(cat.cardBlurb.length, cat.id).toBeGreaterThan(0);
-      expect(cat.cover.path.length, cat.id).toBeGreaterThan(0);
-      expect(cat.cover.a.length, `${cat.id} cover has no alt`).toBeGreaterThan(0);
-      // An empty category would render a heading over nothing.
-      expect(cat.photos.length, cat.id).toBeGreaterThanOrEqual(1);
     }
   });
 
@@ -59,104 +59,10 @@ describe("gallery categories", () => {
       );
     }
   });
-
-  it("every photo has a path and real alt text", () => {
-    for (const cat of GALLERY) {
-      for (const p of cat.photos) {
-        expect(p.path.length, `${cat.id}: empty path`).toBeGreaterThan(0);
-        expect(p.a.length, `${cat.id}: ${p.path} has no alt`).toBeGreaterThan(0);
-      }
-    }
-  });
-
-  // Two frames of the same moment ship as separate files in this library
-  // (sargon-odelya-08 and -23 are one photo; -22 and -34 are one walk), so a
-  // path landing in a category twice is the failure mode worth guarding.
-  it("never repeats a photo inside a category", () => {
-    for (const cat of GALLERY) {
-      const paths = cat.photos.map((p) => p.path);
-      expect(new Set(paths).size, `${cat.id} has a duplicate frame`).toBe(
-        paths.length
-      );
-    }
-  });
-
-  it("keeps Weddings dense enough for the four-column masonry", () => {
-    const weddings = GALLERY.find((c) => c.id === "weddings");
-    expect(weddings?.photos.length).toBeGreaterThanOrEqual(8);
-  });
-
-  // The hub hero and the weddings feature are rendered standalone. A card
-  // reusing one of them would show the same frame twice on the same journey.
-  it("no card cover reuses the hero or the feature frame", () => {
-    for (const cat of GALLERY) {
-      expect(cat.cover.path, cat.id).not.toBe(GALLERY_HERO.path);
-      expect(cat.cover.path, cat.id).not.toBe(GALLERY_FEATURE.photo.path);
-    }
-  });
 });
 
-describe("wedding sets", () => {
-  const weddings = GALLERY.find((c) => c.id === "weddings")!;
-
-  it("splits Weddings into the three shot weddings", () => {
-    expect(weddings.sets?.map((s) => s.id)).toEqual([
-      "sargon-odelya",
-      "miranda-danny",
-      "trang",
-    ]);
-    expect(weddings.sets?.map((s) => s.name)).toEqual([
-      "Sargon & Odelya",
-      "Miranda & Danny",
-      "Trang",
-    ]);
-  });
-
-  it("gives every set a heading and enough frames to fill a grid", () => {
-    for (const set of weddings.sets ?? []) {
-      expect(set.name.length, set.id).toBeGreaterThan(0);
-      expect(set.photos.length, set.id).toBeGreaterThanOrEqual(4);
-    }
-  });
-
-  // The category's flat list is derived from the sets, so a frame appearing in
-  // two sets would render twice on the page.
-  it("never repeats a frame across sets, and flattens to all of them", () => {
-    const paths = (weddings.sets ?? []).flatMap((s) =>
-      s.photos.map((p) => p.path)
-    );
-    expect(new Set(paths).size).toBe(paths.length);
-    expect(weddings.photos.map((p) => p.path)).toEqual(paths);
-  });
-
-  it("keeps the page's two standalone frames out of the grids", () => {
-    const paths = weddings.photos.map((p) => p.path);
-    expect(paths).not.toContain(GALLERY_HERO.path);
-    expect(paths).not.toContain(GALLERY_FEATURE.photo.path);
-  });
-
-  it("draws every wedding frame from the wedding image directories", () => {
-    for (const p of weddings.photos) {
-      expect(p.path, p.path).toMatch(/^\/images\/portfolio\/weddings\//);
-    }
-  });
-});
-
-// 42 hand-written paths across three new directories: a typo in one of them is
-// a broken image in production that nothing else here would catch.
 describe("local image paths", () => {
   const local = (photos: Photo[]) => photos.filter((p) => p.path.startsWith("/"));
-
-  it("resolve to real files under public/ for every gallery frame", () => {
-    const photos = [
-      ...GALLERY.flatMap((c) => c.photos),
-      GALLERY_HERO,
-      GALLERY_FEATURE.photo,
-    ];
-    for (const p of local(photos)) {
-      expect(existsSync(join(PUBLIC, p.path)), `missing ${p.path}`).toBe(true);
-    }
-  });
 
   it("resolve to real files for every homepage collage frame", () => {
     for (const p of local(WEDDING_PORTFOLIO.flatMap((r) => r.photos))) {
@@ -178,6 +84,229 @@ describe("local image paths", () => {
     expect(srcs.length).toBeGreaterThan(17); // walker sanity check
     for (const s of srcs) {
       expect(existsSync(join(PUBLIC, s)), `missing ${s}`).toBe(true);
+    }
+  });
+});
+
+// The Ship Studio visual editor can only swap an image whose src is a literal
+// string in the page source. A computed src (src={img(...)}, a template
+// literal, a variable) renders correctly and looks fine in review, but the
+// photo silently stops being swappable. Nothing else in this suite would
+// notice, so this is the guard that keeps the gallery editable.
+describe("gallery images stay swappable", () => {
+  // Discovered rather than hand-listed, so a gallery page added later (e.g.
+  // /gallery/portraits) is automatically pulled into every check below
+  // instead of silently sitting outside them. CategoryCards.tsx can't be
+  // found this way, since it's a component, not a route, so it's added back
+  // in explicitly.
+  //
+  // fs.globSync exists at the Node version this repo runs on, but this
+  // project's @types/node (^20) doesn't declare it, so tsc rejects it. A
+  // recursive readdirSync walk needs no new typings and does the same job.
+  const GALLERY_DIR = "src/app/(site)/gallery";
+  const discoveredPages = (
+    readdirSync(join(process.cwd(), GALLERY_DIR), {
+      recursive: true,
+    }) as string[]
+  )
+    .filter((p) => p.endsWith("page.tsx"))
+    .map((p) => `${GALLERY_DIR}/${p.split(sep).join("/")}`);
+
+  // The four pages this suite is known to depend on today. Not used to build
+  // PAGES (that comes from the glob above) — only to prove the glob still
+  // finds all of them, so a change to the pattern or the folder layout that
+  // silently stopped matching a page would fail loudly here instead of
+  // quietly shrinking every check below.
+  const KNOWN_GALLERY_PAGES = [
+    "src/app/(site)/gallery/page.tsx",
+    "src/app/(site)/gallery/weddings/page.tsx",
+    "src/app/(site)/gallery/engagements/page.tsx",
+    "src/app/(site)/gallery/events/page.tsx",
+  ];
+
+  it("discovers every known gallery page on disk", () => {
+    for (const known of KNOWN_GALLERY_PAGES) {
+      expect(discoveredPages, `walk of ${GALLERY_DIR} missed ${known}`).toContain(
+        known
+      );
+    }
+  });
+
+  const PAGES = [...discoveredPages, "src/components/lei/CategoryCards.tsx"];
+
+  // The three category grids, i.e. PAGES minus the hub page (its one hero
+  // image isn't a grid) and CategoryCards (its three card covers aren't
+  // either). Filtered by shape rather than sliced by index so reordering
+  // PAGES can't silently widen or narrow this list.
+  const CATEGORY_PAGES = PAGES.filter(
+    (p) => p.includes("/gallery/") && p !== "src/app/(site)/gallery/page.tsx"
+  );
+
+  it("never computes an img src on a gallery page", () => {
+    for (const page of PAGES) {
+      const source = readFileSync(join(process.cwd(), page), "utf8");
+      const computed = [...source.matchAll(/src=\{/g)];
+      expect(computed.length, `${page} computes an img src`).toBe(0);
+    }
+  });
+
+  it("resolves every literal image src to a real file", () => {
+    let total = 0;
+    let cdn = 0;
+    for (const page of PAGES) {
+      const source = readFileSync(join(process.cwd(), page), "utf8");
+      // Every literal src, local or absolute. The Engagements page and the
+      // Engagements card cover on the hub both point at the same CDN-hosted
+      // photo (an absolute squarespace-cdn.com URL) instead of a file under
+      // public/, so those two are counted toward the total but not walked
+      // against the filesystem; every other src here is a local /images/...
+      // path and must resolve to a real file.
+      const srcs = [...source.matchAll(/src="([^"]+)"/g)].map((m) => m[1]);
+      expect(srcs.length, `${page} renders no images`).toBeGreaterThan(0);
+      for (const s of srcs) {
+        if (s.startsWith("/")) {
+          const decoded = decodeURIComponent(s);
+          expect(
+            existsSync(join(PUBLIC, decoded)),
+            `missing ${decoded} in ${page}`
+          ).toBe(true);
+        } else {
+          expect(
+            s.startsWith("https://images.squarespace-cdn.com/"),
+            `unexpected absolute src ${s} in ${page}`
+          ).toBe(true);
+          cdn++;
+        }
+      }
+      total += srcs.length;
+    }
+    // Every gallery photo, counted once: 1 hub hero + 3 card covers + 41
+    // weddings (40 grid + 1 feature) + 1 engagement + 18 events = 64. Two of
+    // those (the Engagements grid frame and its card cover on the hub) share
+    // the one CDN photo above; the other 62 are local and were resolved
+    // against public/ in the loop. Update both numbers deliberately when
+    // frames are added.
+    //
+    // This fixed count is a deliberate second net, not a duplicate of the
+    // "never computes an img src" check above. That check regexes for
+    // `src={`, which a computed src written with a stray space (`src =
+    // {img(...)}`) would slip past; this count would still catch it, since a
+    // reformatted tag like that no longer matches `src="..."` and total would
+    // drop below 64. It also catches a photo simply being deleted from a
+    // page without the src becoming computed at all.
+    expect(cdn).toBe(2);
+    expect(total).toBe(64);
+  });
+
+  // Task 5 wrote the card labels into CategoryCards so each card's src could
+  // sit beside its text. That is the one place gallery copy lives outside
+  // src/content, so pin it to GALLERY here or the two can drift apart.
+  it("renders a card for every category, labelled to match", () => {
+    const source = readFileSync(
+      join(process.cwd(), "src/components/lei/CategoryCards.tsx"),
+      "utf8"
+    );
+    for (const cat of GALLERY) {
+      expect(source, `no card for ${cat.id}`).toContain(`href="${cat.href}"`);
+      expect(source, `card label for ${cat.id}`).toContain(
+        `label="${cat.label}"`
+      );
+      expect(source, `card blurb for ${cat.id}`).toContain(
+        `blurb="${cat.cardBlurb}"`
+      );
+    }
+  });
+
+  // Every grid photo on the three category pages is content and needs real
+  // alt text. CategoryCards.tsx is deliberately excluded: its three card
+  // covers carry alt="" on purpose, because each card's visible label and
+  // blurb already say where the link goes, and a described photo would make
+  // a screen reader announce the scene, the label and the blurb as one
+  // run-on link name.
+  it("gives every category-page photo real alt text", () => {
+    for (const page of CATEGORY_PAGES) {
+      const source = readFileSync(join(process.cwd(), page), "utf8");
+      expect(source, `${page} has an img with empty alt`).not.toMatch(
+        /alt=""/
+      );
+      // Not empty alt isn't the same as having alt at all: a tag missing the
+      // attribute entirely passes the check above too. Counting img tags
+      // against alt= attributes catches a swap that drops the attribute,
+      // since with no lint step in this project, nothing else would.
+      const imgCount = [...source.matchAll(/<img\b/g)].length;
+      const altCount = [...source.matchAll(/\balt=/g)].length;
+      expect(altCount, `${page} has an <img> with no alt attribute`).toBe(
+        imgCount
+      );
+    }
+  });
+
+  // This library ships two edits of the same moment as separate files
+  // (sargon-odelya-08.jpg and -23.jpg are one photo; -22 and -34 are one
+  // walk), so a frame landing in a grid twice is a real failure mode, not a
+  // hypothetical one.
+  it("never repeats a photo within one category grid", () => {
+    for (const page of CATEGORY_PAGES) {
+      const source = readFileSync(join(process.cwd(), page), "utf8");
+      const srcs = [...source.matchAll(/src="([^"]+)"/g)].map((m) => m[1]);
+      expect(new Set(srcs).size, `${page} repeats a photo`).toBe(srcs.length);
+    }
+  });
+
+  // The hub hero and the weddings feature photo are each shown large and
+  // alone. A card cover reusing either would show the same photo twice on
+  // one journey through the site.
+  it("never reuses the hub hero or weddings feature as a card cover", () => {
+    const hubSource = readFileSync(
+      join(process.cwd(), "src/app/(site)/gallery/page.tsx"),
+      "utf8"
+    );
+    const heroSrcs = [...hubSource.matchAll(/src="([^"]+)"/g)].map(
+      (m) => m[1]
+    );
+    expect(heroSrcs.length, "hub page should render exactly one hero image").toBe(
+      1
+    );
+    const [heroSrc] = heroSrcs;
+
+    const weddingsSource = readFileSync(
+      join(process.cwd(), "src/app/(site)/gallery/weddings/page.tsx"),
+      "utf8"
+    );
+    // Match whole <img ...> tags rather than searching near "data-feature",
+    // so the src pulled out is the one from the same tag as the attribute
+    // regardless of attribute order.
+    // [^>] already matches newlines regardless of the dotAll flag, since it's
+    // a negated character class rather than `.`, so no `s` flag is needed
+    // (and the project's TS target doesn't support one on regex literals).
+    const imgTags = [...weddingsSource.matchAll(/<img\b[^>]*>/g)].map(
+      (m) => m[0]
+    );
+    const featureTags = imgTags.filter((tag) => /\bdata-feature\b/.test(tag));
+    expect(
+      featureTags.length,
+      "expected exactly one <img data-feature> on the weddings page"
+    ).toBe(1);
+    const featureSrcMatch = featureTags[0].match(/src="([^"]+)"/);
+    expect(featureSrcMatch, "feature img has no src").toBeTruthy();
+    const featureSrc = featureSrcMatch![1];
+
+    const cardsSource = readFileSync(
+      join(process.cwd(), "src/components/lei/CategoryCards.tsx"),
+      "utf8"
+    );
+    const cardSrcs = [...cardsSource.matchAll(/src="([^"]+)"/g)].map(
+      (m) => m[1]
+    );
+    expect(cardSrcs.length, "expected three card covers").toBe(3);
+    for (const s of cardSrcs) {
+      expect(s, `CategoryCards.tsx reuses the hub hero (${heroSrc})`).not.toBe(
+        heroSrc
+      );
+      expect(
+        s,
+        `CategoryCards.tsx reuses the weddings feature (${featureSrc})`
+      ).not.toBe(featureSrc);
     }
   });
 });
