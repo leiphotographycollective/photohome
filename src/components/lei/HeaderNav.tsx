@@ -15,10 +15,17 @@ export default function HeaderNav() {
   const pathname = usePathname();
   const [openGroup, setOpenGroup] = useState<string | null>(null);
 
-  // Every destination is now a single page with no subpaths, so an exact match
-  // is enough. The group's "/gallery#engagements" child never matches, because
-  // usePathname() drops the hash, so Gallery alone lights on /gallery.
-  const isActive = (href: string) => pathname === href;
+  // Exact match everywhere except /gallery, which now has three category
+  // subpages. Without the prefix case, clicking a card would un-light Gallery
+  // on the very pages it owns.
+  //
+  // On /gallery/engagements this lights Gallery and the Weddings group at
+  // once, because Engagements sits in that dropdown. That is accurate: you
+  // are in the gallery, under weddings. Not a bug to chase.
+  const isActive = (href: string) =>
+    href === "/gallery"
+      ? pathname === href || pathname.startsWith("/gallery/")
+      : pathname === href;
 
   const groupActive = (children: NavItem[]) =>
     children.some((c) => pathname === c.href);

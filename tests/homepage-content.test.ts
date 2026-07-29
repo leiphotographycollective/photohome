@@ -36,7 +36,7 @@ describe("recent weddings", () => {
   it("has at least one wedding with 1-3 teaser frames each", () => {
     expect(RECENT_WEDDINGS.length).toBeGreaterThanOrEqual(1);
     for (const w of RECENT_WEDDINGS) {
-      expect(w.href).toBe("/gallery");
+      expect(w.href.startsWith("/gallery/weddings#")).toBe(true);
       expect(w.frames.length).toBeGreaterThanOrEqual(1);
       expect(w.frames.length).toBeLessThanOrEqual(3);
       expect(w.title.length).toBeGreaterThan(0);

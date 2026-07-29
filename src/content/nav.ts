@@ -2,8 +2,9 @@
 // all read from here, so links stay consistent on every page and a destination
 // changes in exactly one place.
 //
-// "Gallery" points to /gallery, the one photo page. It replaced the old
-// /portfolio hub and the separate /weddings page; both now redirect there.
+// "Gallery" points to /gallery, the hub for the three category pages
+// (/gallery/weddings, /gallery/engagements, /gallery/events). The old
+// /portfolio hub and /weddings page both redirect to /gallery.
 
 export interface NavItem {
   href: string;
@@ -25,9 +26,13 @@ export const isGroup = (e: NavEntry): e is NavGroup => "children" in e;
 export const INQUIRE: NavItem = { href: "/inquire", label: "Inquire" };
 
 /** Items under the "Weddings" nav group. The "Weddings" parent itself is NOT a
- *  link: on desktop it is a hover dropdown, on mobile a tap-to-expand section. */
+ *  link: on desktop it is a hover dropdown, on mobile a tap-to-expand section.
+ *
+ *  Events is deliberately absent. The only slot for it here is under a
+ *  "Weddings" parent, which would be plainly wrong for event work. /gallery is
+ *  the index for all three categories. */
 export const WEDDINGS_MENU: NavItem[] = [
-  { href: "/gallery#engagements", label: "Engagements" },
+  { href: "/gallery/engagements", label: "Engagements" },
   { href: "/experience", label: "Experience" },
   { href: "/second-weddings", label: "Second Weddings" },
   { href: "/free-session", label: "Free Session" },
