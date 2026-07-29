@@ -1732,8 +1732,10 @@ Report what was verified and anything that looked wrong. Do not fix layout probl
 When the real event photos are ready:
 
 1. Drop each photo over the placeholder it replaces, keeping the filename. Paths are `public/images/portfolio/events/event-one/event-one-1.jpg` and so on. No code change needed.
-2. In `src/content/events.ts`, change each set's `name` (and `id`, if you want the anchor to match) from "Event One" to the real name, and rewrite each frame's `a` alt text to describe the actual photo.
-3. If a replacement is a different shape than the placeholder it replaced, update that frame's `r` and `ratio`. Nothing breaks without it; the grid corrects itself once the file loads.
-4. Run `npm test` to confirm no path or copy rule broke.
+2. In `src/content/events.ts`, change each set's `name` from "Event One" to the real name. Change its `id` too if you want the page anchor to match; nothing depends on the current ids.
+3. Rewrite each frame's `a` alt text to describe the actual photo. Every frame is its own line with its own `a`, `r` and `ratio`, so editing one never touches another.
+4. If a replacement is a different shape than the placeholder it replaced, update that frame's `r` and `ratio`. Nothing breaks without it: the grid corrects itself once the file loads, so a stale value only costs a small reflow.
+5. Add or remove frames freely. The tests check structure, not counts, so a set of four or of nine is fine.
+6. Run `npm test` to confirm every path still resolves and no copy rule broke.
 
 The unsorted originals are still in `public/images/portfolio/events/assyrian/` and `events/corporate/`, plus three loose `event-*.jpg` files. Those two folders each hold frames from more than one event, so they need sorting by hand before they can be used.

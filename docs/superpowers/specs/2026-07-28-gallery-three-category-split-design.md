@@ -89,9 +89,10 @@ together.
 
 A second new component, `src/components/lei/CategoryCards.tsx`, renders the hub
 row. Each card is a single `<Link>` wrapping a 4:5 portrait image, with the
-serif category name and the `cardBlurb` over a bottom gradient. Hover lifts the
-card and slow-zooms the photo, using the same `data-hover` treatment the rest
-of the site uses. Three across on desktop, one column on phones.
+serif category name and the `cardBlurb` over a bottom gradient. Hover slow-zooms
+the photo via the existing `.lx-gitem` rule, which is the hover the rest of the
+site already uses. No lift: it would be a new gesture on a site that does not
+use one. Three across on desktop, one column on phones.
 
 ## Page shapes
 
