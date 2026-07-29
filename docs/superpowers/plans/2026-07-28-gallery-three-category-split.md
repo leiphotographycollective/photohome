@@ -30,6 +30,7 @@ These apply to every task. `tests/voice.test.ts` and `tests/no-em-dash.test.ts` 
 | `src/components/lei/CategoryGallery.tsx` | Renders one category's photos: a single masonry, or one labelled masonry per set. Owns the column-count and max-width heuristics. |
 | `src/components/lei/CategoryCards.tsx` | Renders the hub's row of three linked cards. |
 | `src/components/lei/CategoryHeader.tsx` | The compact dark title band at the top of each category page. |
+| `src/components/lei/GalleryCta.tsx` | The marquee, booking headline, Inquire pill and footer that close all four gallery pages. |
 | `src/app/(site)/gallery/weddings/page.tsx` | The weddings spread, plus the feature photo and testimonial. |
 | `src/app/(site)/gallery/engagements/page.tsx` | The engagements spread. |
 | `src/app/(site)/gallery/events/page.tsx` | The events spread. |
@@ -803,14 +804,17 @@ git commit -m "Extract the gallery grid into a CategoryGallery component"
 
 ---
 
-### Task 5: Build the category title band
+### Task 5: Build the category title band and the shared closing block
 
 **Files:**
 - Create: `src/components/lei/CategoryHeader.tsx`
+- Create: `src/components/lei/GalleryCta.tsx`
 
 **Interfaces:**
-- Consumes: `@/components/lei/tokens`.
-- Produces: `export default function CategoryHeader({ label }: { label: string })`. Tasks 7 and 8 render `<CategoryHeader label={category.label} />`.
+- Consumes: `@/components/lei/tokens`, `Marquee` from `@/components/lei/blocks`, `LeiFooter`.
+- Produces:
+  - `export default function CategoryHeader({ label }: { label: string })`. Tasks 7 and 8 render `<CategoryHeader label={category.label} />`.
+  - `export default function GalleryCta()` from `GalleryCta.tsx`, no props. Tasks 7 and 8 render `<GalleryCta />` as the last thing inside `<LeiPage>`.
 
 **Context:** A compact dark band, not a second full-screen photo hero. It exists so a visitor who has already clicked a card reaches the photos in one scroll rather than two, and so no good frame gets spent on a hero that would then repeat in the grid below.
 
@@ -882,17 +886,82 @@ export default function CategoryHeader({ label }: { label: string }) {
 
 The kicker doubles as the way back to the hub, which is the only navigation these pages need beyond the header.
 
-- [ ] **Step 2: Verify it compiles**
+- [ ] **Step 2: Create the shared closing block**
+
+All four gallery pages end with the same marquee, booking headline, Inquire pill and footer. Copying that block four times would be roughly 150 duplicated lines and four copies of the same imports, so it becomes one component.
+
+Create `src/components/lei/GalleryCta.tsx`:
+
+```tsx
+import Link from "next/link";
+import LeiFooter from "@/components/lei/LeiFooter";
+import { Marquee } from "@/components/lei/blocks";
+import { SERIF, pill } from "@/components/lei/tokens";
+
+/**
+ * The closing block on every gallery page: marquee, booking headline, Inquire
+ * pill, footer. One component because all four pages close identically, and
+ * four copies of it would be four places to forget when the booking years
+ * change.
+ */
+export default function GalleryCta() {
+  return (
+    <section
+      style={{
+        position: "relative",
+        background: "#0E0D0B",
+        color: "#F7F5F2",
+        padding: "0 6vw",
+      }}
+    >
+      <div style={{ margin: "0 -6vw" }}>
+        <Marquee phrase="Your day, felt forever" margin="0" />
+      </div>
+      <div style={{ textAlign: "center", padding: "12vh 0 14vh" }}>
+        <h2
+          data-fadeup=""
+          style={{
+            margin: "0 auto",
+            fontFamily: SERIF,
+            fontWeight: 500,
+            fontSize: "clamp(36px,5vw,64px)",
+            lineHeight: 1.12,
+            maxWidth: 800,
+            textWrap: "pretty",
+          }}
+        >
+          Now booking 2026 &amp; 2027 <em>weddings</em>.
+        </h2>
+        <Link
+          data-fadeup=""
+          data-mag=""
+          data-hover=""
+          href="/inquire"
+          style={{ ...pill("#F7F5F2", "#0E0D0B"), marginTop: 44 }}
+        >
+          Inquire
+        </Link>
+      </div>
+
+      <LeiFooter />
+    </section>
+  );
+}
+```
+
+This is lifted verbatim from the closing section of the current `src/app/(site)/gallery/page.tsx` (its last `<section>`), so the rendered output is unchanged.
+
+- [ ] **Step 3: Verify both compile**
 
 Run: `npx tsc --noEmit`
 
 Expected: no output, exit 0.
 
-- [ ] **Step 3: Commit**
+- [ ] **Step 4: Commit**
 
 ```bash
-git add src/components/lei/CategoryHeader.tsx
-git commit -m "Add the category page title band"
+git add src/components/lei/CategoryHeader.tsx src/components/lei/GalleryCta.tsx
+git commit -m "Add the category title band and the shared gallery CTA block"
 ```
 
 ---
@@ -1052,8 +1121,8 @@ git commit -m "Add the three category cards for the gallery hub"
 - Modify: `src/app/(site)/gallery/page.tsx` (full rewrite)
 
 **Interfaces:**
-- Consumes: `CategoryCards` (Task 6), `GALLERY_HERO` from `@/content/gallery`.
-- Produces: the `/gallery` route rendering hero, cards, marquee, CTA, footer.
+- Consumes: `CategoryCards` (Task 6), `GalleryCta` (Task 5), `GALLERY_HERO` from `@/content/gallery`.
+- Produces: the `/gallery` route rendering hero, cards, then the shared closing block.
 
 **Context:** The hero section (the `<section>` at lines 71 to 188 of the current file, with the background image, the ghost `GALLERY` wordmark, the title lines and the `ScrollHint`) is kept verbatim. Everything between it and the marquee is removed: the category grids, the full-bleed feature, the testimonial and price link, the `PhotoBand`, the pull quote, and `ProcessSteps`.
 
@@ -1065,13 +1134,12 @@ Replace the entire contents of `src/app/(site)/gallery/page.tsx` with:
 
 ```tsx
 import type { Metadata } from "next";
-import Link from "next/link";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
-import LeiFooter from "@/components/lei/LeiFooter";
 import CategoryCards from "@/components/lei/CategoryCards";
-import { Marquee, ScrollHint } from "@/components/lei/blocks";
-import { SERIF, cream, kicker, pill } from "@/components/lei/tokens";
+import GalleryCta from "@/components/lei/GalleryCta";
+import { ScrollHint } from "@/components/lei/blocks";
+import { SERIF, cream, kicker } from "@/components/lei/tokens";
 import { img } from "@/content/portfolio";
 import { GALLERY_HERO } from "@/content/gallery";
 
@@ -1213,46 +1281,7 @@ export default function GalleryPage() {
       {/* ══ The three cards. Order and copy come from src/content/gallery.ts ══ */}
       <CategoryCards />
 
-      {/* ══ CTA + footer ══ */}
-      <section
-        style={{
-          position: "relative",
-          background: "#0E0D0B",
-          color: "#F7F5F2",
-          padding: "0 6vw",
-        }}
-      >
-        <div style={{ margin: "0 -6vw" }}>
-          <Marquee phrase="Your day, felt forever" margin="0" />
-        </div>
-        <div style={{ textAlign: "center", padding: "12vh 0 14vh" }}>
-          <h2
-            data-fadeup=""
-            style={{
-              margin: "0 auto",
-              fontFamily: SERIF,
-              fontWeight: 500,
-              fontSize: "clamp(36px,5vw,64px)",
-              lineHeight: 1.12,
-              maxWidth: 800,
-              textWrap: "pretty",
-            }}
-          >
-            Now booking 2026 &amp; 2027 <em>weddings</em>.
-          </h2>
-          <Link
-            data-fadeup=""
-            data-mag=""
-            data-hover=""
-            href="/inquire"
-            style={{ ...pill("#F7F5F2", "#0E0D0B"), marginTop: 44 }}
-          >
-            Inquire
-          </Link>
-        </div>
-
-        <LeiFooter />
-      </section>
+      <GalleryCta />
     </LeiPage>
   );
 }
@@ -1287,12 +1316,12 @@ git commit -m "Turn /gallery into a three-card hub"
 - Create: `src/app/(site)/gallery/events/page.tsx`
 
 **Interfaces:**
-- Consumes: `CategoryHeader` (Task 5), `CategoryGallery` (Task 4), `GALLERY` and `GALLERY_FEATURE` from `@/content/gallery`, `TESTIMONIALS` from `@/content/homepage`.
+- Consumes: `CategoryHeader` and `GalleryCta` (Task 5), `CategoryGallery` (Task 4), `GALLERY` and `GALLERY_FEATURE` from `@/content/gallery`, `TESTIMONIALS` from `@/content/homepage`.
 - Produces: the three routes.
 
 **Context:** Next 16 static routes: a default-exported component and an exported `metadata` object, no `params`. Nesting under the existing `gallery/` folder needs no `layout.tsx`; the `(site)` group layout already wraps everything.
 
-The three pages deliberately repeat their footer sections rather than sharing a layout component. A shared `layout.tsx` would also wrap `/gallery` itself, which has a different shape, and the alternative of a wrapper component that takes `children` plus four flags would be harder to read than the repetition. If a fourth category ever lands, revisit.
+The pages do not share a `layout.tsx`, because one would also wrap `/gallery` itself and the hub has a different shape. The parts they genuinely share are components instead: `CategoryHeader`, `CategoryGallery` and `GalleryCta`. What remains per page is its metadata, its category lookup, and (for weddings only) the feature and testimonial.
 
 Categories are looked up by id with a non-null assertion. That is safe because `tests/gallery.test.ts` asserts the exact ids, so a rename breaks the test suite before it can break a page.
 
@@ -1302,15 +1331,13 @@ Create `src/app/(site)/gallery/weddings/page.tsx`:
 
 ```tsx
 import type { Metadata } from "next";
-import Link from "next/link";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
-import LeiFooter from "@/components/lei/LeiFooter";
 import CategoryHeader from "@/components/lei/CategoryHeader";
 import CategoryGallery from "@/components/lei/CategoryGallery";
-import { Marquee } from "@/components/lei/blocks";
+import GalleryCta from "@/components/lei/GalleryCta";
 import { SoftLink } from "@/components/lei/Cta";
-import { SERIF, kicker, pill } from "@/components/lei/tokens";
+import { SERIF, kicker } from "@/components/lei/tokens";
 import { img } from "@/content/portfolio";
 import { GALLERY, GALLERY_FEATURE } from "@/content/gallery";
 import { TESTIMONIALS } from "@/content/homepage";
@@ -1408,46 +1435,7 @@ export default function WeddingsGalleryPage() {
         </div>
       </section>
 
-      {/* ══ CTA + footer ══ */}
-      <section
-        style={{
-          position: "relative",
-          background: "#0E0D0B",
-          color: "#F7F5F2",
-          padding: "0 6vw",
-        }}
-      >
-        <div style={{ margin: "0 -6vw" }}>
-          <Marquee phrase="Your day, felt forever" margin="0" />
-        </div>
-        <div style={{ textAlign: "center", padding: "12vh 0 14vh" }}>
-          <h2
-            data-fadeup=""
-            style={{
-              margin: "0 auto",
-              fontFamily: SERIF,
-              fontWeight: 500,
-              fontSize: "clamp(36px,5vw,64px)",
-              lineHeight: 1.12,
-              maxWidth: 800,
-              textWrap: "pretty",
-            }}
-          >
-            Now booking 2026 &amp; 2027 <em>weddings</em>.
-          </h2>
-          <Link
-            data-fadeup=""
-            data-mag=""
-            data-hover=""
-            href="/inquire"
-            style={{ ...pill("#F7F5F2", "#0E0D0B"), marginTop: 44 }}
-          >
-            Inquire
-          </Link>
-        </div>
-
-        <LeiFooter />
-      </section>
+      <GalleryCta />
     </LeiPage>
   );
 }
@@ -1459,14 +1447,11 @@ Create `src/app/(site)/gallery/engagements/page.tsx`:
 
 ```tsx
 import type { Metadata } from "next";
-import Link from "next/link";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
-import LeiFooter from "@/components/lei/LeiFooter";
 import CategoryHeader from "@/components/lei/CategoryHeader";
 import CategoryGallery from "@/components/lei/CategoryGallery";
-import { Marquee } from "@/components/lei/blocks";
-import { SERIF, pill } from "@/components/lei/tokens";
+import GalleryCta from "@/components/lei/GalleryCta";
 import { GALLERY } from "@/content/gallery";
 
 export const metadata: Metadata = {
@@ -1486,47 +1471,7 @@ export default function EngagementsGalleryPage() {
 
       <CategoryHeader label={CATEGORY.label} />
       <CategoryGallery category={CATEGORY} />
-
-      {/* ══ CTA + footer ══ */}
-      <section
-        style={{
-          position: "relative",
-          background: "#0E0D0B",
-          color: "#F7F5F2",
-          padding: "0 6vw",
-        }}
-      >
-        <div style={{ margin: "0 -6vw" }}>
-          <Marquee phrase="Your day, felt forever" margin="0" />
-        </div>
-        <div style={{ textAlign: "center", padding: "12vh 0 14vh" }}>
-          <h2
-            data-fadeup=""
-            style={{
-              margin: "0 auto",
-              fontFamily: SERIF,
-              fontWeight: 500,
-              fontSize: "clamp(36px,5vw,64px)",
-              lineHeight: 1.12,
-              maxWidth: 800,
-              textWrap: "pretty",
-            }}
-          >
-            Now booking 2026 &amp; 2027 <em>weddings</em>.
-          </h2>
-          <Link
-            data-fadeup=""
-            data-mag=""
-            data-hover=""
-            href="/inquire"
-            style={{ ...pill("#F7F5F2", "#0E0D0B"), marginTop: 44 }}
-          >
-            Inquire
-          </Link>
-        </div>
-
-        <LeiFooter />
-      </section>
+      <GalleryCta />
     </LeiPage>
   );
 }
@@ -1534,33 +1479,41 @@ export default function EngagementsGalleryPage() {
 
 - [ ] **Step 3: Create the events page**
 
-Create `src/app/(site)/gallery/events/page.tsx`. It is the engagements page with three identifiers changed. Copy the file from Step 2 and apply exactly these changes:
-
-- `metadata`:
+Create `src/app/(site)/gallery/events/page.tsx`:
 
 ```tsx
+import type { Metadata } from "next";
+import LeiPage from "@/components/lei/LeiPage";
+import Chrome from "@/components/lei/Chrome";
+import CategoryHeader from "@/components/lei/CategoryHeader";
+import CategoryGallery from "@/components/lei/CategoryGallery";
+import GalleryCta from "@/components/lei/GalleryCta";
+import { GALLERY } from "@/content/gallery";
+
 export const metadata: Metadata = {
   title: "Event Galleries",
   description:
     "Bay Area event photography: galas, mixers, panels and award nights, shot so the room still looks like itself.",
 };
-```
 
-- the lookup:
-
-```tsx
 // Safe: tests/gallery.test.ts asserts this id, so a rename fails the suite
 // before it can strand this page.
 const CATEGORY = GALLERY.find((c) => c.id === "events")!;
-```
 
-- the component name:
-
-```tsx
 export default function EventsGalleryPage() {
+  return (
+    <LeiPage style={{ background: "#0E0D0B", color: "#F7F5F2" }}>
+      <Chrome />
+
+      <CategoryHeader label={CATEGORY.label} />
+      <CategoryGallery category={CATEGORY} />
+      <GalleryCta />
+    </LeiPage>
+  );
+}
 ```
 
-Everything else, including every import and the whole CTA and footer section, is identical to the engagements page.
+The engagements and events pages differ only in metadata, the looked-up id and the component name. That is as small as two static routes can get without a dynamic segment, and a dynamic `[category]` route was rejected because the weddings page carries a feature and testimonial the other two do not.
 
 - [ ] **Step 4: Build to confirm all three routes render**
 
