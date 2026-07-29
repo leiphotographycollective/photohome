@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/content/site";
+import { EVENTS } from "@/content/events";
 
 // All indexable routes. The (site) route group does not affect URLs, so paths
 // map 1:1 to the folders under src/app/(site)/.
@@ -16,6 +17,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/gallery/weddings`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/gallery/engagements`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/gallery/events`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    // Derived from EVENTS rather than hardcoded, so a fifth event doesn't
+    // need a sitemap edit. One step below /gallery/events, matching how the
+    // rest of this file grades depth.
+    ...EVENTS.map((event) => ({
+      url: `${SITE_URL}${event.href}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
     { url: `${SITE_URL}/second-weddings`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/investment`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/experience`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },

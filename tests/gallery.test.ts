@@ -164,6 +164,10 @@ describe("gallery images stay swappable", () => {
     "src/app/(site)/gallery/weddings/page.tsx",
     "src/app/(site)/gallery/engagements/page.tsx",
     "src/app/(site)/gallery/events/page.tsx",
+    "src/app/(site)/gallery/events/flora-ai/page.tsx",
+    "src/app/(site)/gallery/events/airaea/page.tsx",
+    "src/app/(site)/gallery/events/sjsu-pd-emmys/page.tsx",
+    "src/app/(site)/gallery/events/other/page.tsx",
   ];
 
   it("discovers every known gallery page on disk", () => {
@@ -312,6 +316,34 @@ describe("gallery images stay swappable", () => {
       const source = readFileSync(join(process.cwd(), page), "utf8");
       const srcs = [...source.matchAll(/src="([^"]+)"/g)].map((m) => m[1]);
       expect(new Set(srcs).size, `${page} repeats a photo`).toBe(srcs.length);
+    }
+  });
+
+  // While all 41 event frames lived on one page, the check above caught a
+  // duplicate anywhere in Events. Now that they're split across four
+  // sub-pages, the same frame could land on two of them undetected: each
+  // page's own grid still has no repeat, but nothing compared the pages to
+  // each other. The page list comes from the discovery walk above (filtered
+  // to event sub-pages, i.e. under gallery/events/ but not the index itself)
+  // rather than hardcoded, so a fifth event page is covered automatically.
+  it("never repeats a photo across the four event sub-pages combined", () => {
+    const eventPages = discoveredPages.filter(
+      (p) =>
+        p.includes("/gallery/events/") &&
+        p !== "src/app/(site)/gallery/events/page.tsx"
+    );
+    const seen = new Map<string, string>();
+    for (const page of eventPages) {
+      const source = readFileSync(join(process.cwd(), page), "utf8");
+      const srcs = [...source.matchAll(/src="([^"]+)"/g)].map((m) => m[1]);
+      for (const s of srcs) {
+        const firstPage = seen.get(s);
+        expect(
+          firstPage,
+          `${s} appears on both ${firstPage} and ${page}`
+        ).toBeUndefined();
+        seen.set(s, page);
+      }
     }
   });
 
