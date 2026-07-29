@@ -13,6 +13,15 @@ import Lenis from "lenis";
 
 type Cleanup = () => void;
 
+/** The live Lenis instance, or null when no page has mounted the engine and
+ *  when prefers-reduced-motion short-circuits it. Exposed so an overlay can
+ *  suspend smooth scroll while it is open; nothing else should touch it. */
+let lenisInstance: Lenis | null = null;
+
+export function getLenis(): Lenis | null {
+  return lenisInstance;
+}
+
 export function initLeiMotion(root: HTMLElement): Cleanup {
   gsap.registerPlugin(ScrollTrigger);
 
@@ -31,6 +40,7 @@ export function initLeiMotion(root: HTMLElement): Cleanup {
 
   // ── Lenis smooth scroll ────────────────────────────────────────────────
   const lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+  lenisInstance = lenis;
   lenis.on("scroll", () => ScrollTrigger.update());
   const tick = (t: number) => lenis.raf(t * 1000);
   gsap.ticker.add(tick);
@@ -38,6 +48,7 @@ export function initLeiMotion(root: HTMLElement): Cleanup {
   cleanups.push(() => {
     gsap.ticker.remove(tick);
     lenis.destroy();
+    lenisInstance = null;
   });
 
   // ── Custom cursor + magnetic buttons ───────────────────────────────────
