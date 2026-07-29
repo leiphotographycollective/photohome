@@ -85,9 +85,11 @@ export const PHOTOS = {
   coastKiss: { path: "8664ce35-1a25-42be-8c14-9f85890ee554/Couple+sharing+an+intimate+kiss+during+a+black+and+white+engagement+session+along+the+San+Francisco+coast%2C+photographed+by+Lei+Photography+Collective.", a: "Couple sharing a kiss on the San Francisco coast, black and white", r: "p", ratio: 0.6667 },
   // Local images — 2025 fall shoots, not yet migrated to the CDN
   gradCapToss: { path: "/images/portfolio/graduation/grad-akp-toss.jpg", a: "AKP graduates tossing their caps on campus", r: "p" },
-  eventPwc: { path: "/images/portfolio/events/event-pwc.jpg", a: "Colleagues smiling together at a corporate networking event", r: "l" },
-  eventAssyrian: { path: "/images/portfolio/events/event-assyrian-5.jpg", a: "Couple in evening attire at a gala, garden view behind them", r: "l" },
-  eventEmmys: { path: "/images/portfolio/events/event-emmys.jpg", a: "Emmy award statues in gold light", r: "l" },
+  // eventPwc / eventAssyrian / eventEmmys were removed on 2026-07-29. They
+  // pointed at three loose frames from the Assyrian Advisors panel and the AA
+  // mansion evening, which the 2026 Events export supersedes: both shoots now
+  // render in full on /gallery/events, where the photos live as literal <img>
+  // tags in the page rather than as entries here. Nothing referenced these.
   confettiToast: { path: "/images/bay-area-wedding-reception-confetti-toast-black-and-white-lei-photography-collective.jpg", a: "Bride and groom toasting through a shower of heart confetti at their reception, black and white", r: "t" },
   firstDanceFog: { path: "/images/bay-area-wedding-first-dance-fog-string-lights-black-and-white-lei-photography-collective.jpg", a: "Bride and groom sharing their first dance on a fog-covered floor beneath string lights, black and white", r: "p", ratio: 0.6667 },
   marinaSunsetKiss: { path: "/images/bay-area-wedding-marina-sunset-kiss-lei-photography-collective.jpg", a: "Bride and groom kissing at sunset on the marina railing, sailboat masts glowing behind them", r: "t" },
