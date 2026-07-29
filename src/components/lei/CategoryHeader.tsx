@@ -9,7 +9,15 @@ import { SERIF, cream, kicker } from "@/components/lei/tokens";
  * The category blurb is not rendered here. CategoryGallery prints it above the
  * grid, and printing it in both places would show it twice.
  */
-export default function CategoryHeader({ label }: { label: string }) {
+export default function CategoryHeader({
+  label,
+  backHref = "/gallery",
+  backLabel = "Gallery",
+}: {
+  label: string;
+  backHref?: string;
+  backLabel?: string;
+}) {
   return (
     <section
       style={{
@@ -22,13 +30,13 @@ export default function CategoryHeader({ label }: { label: string }) {
       <Link
         data-fadeup=""
         data-hover=""
-        href="/gallery"
+        href={backHref}
         style={{
           ...kicker({ display: "inline-block", marginBottom: 24 }, 10, ".3em"),
           textDecoration: "none",
         }}
       >
-        Gallery
+        {backLabel}
       </Link>
       <h1
         style={{

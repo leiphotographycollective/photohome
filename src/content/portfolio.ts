@@ -88,8 +88,9 @@ export const PHOTOS = {
   // eventPwc / eventAssyrian / eventEmmys were removed on 2026-07-29. They
   // pointed at three loose frames from the Assyrian Advisors panel and the AA
   // mansion evening, which the 2026 Events export supersedes: both shoots now
-  // render in full on /gallery/events, where the photos live as literal <img>
-  // tags in the page rather than as entries here. Nothing referenced these.
+  // render in full on /gallery/events' four event sub-pages, where the photos
+  // live as literal <img> tags in each page rather than as entries here.
+  // Nothing referenced these.
   confettiToast: { path: "/images/bay-area-wedding-reception-confetti-toast-black-and-white-lei-photography-collective.jpg", a: "Bride and groom toasting through a shower of heart confetti at their reception, black and white", r: "t" },
   firstDanceFog: { path: "/images/bay-area-wedding-first-dance-fog-string-lights-black-and-white-lei-photography-collective.jpg", a: "Bride and groom sharing their first dance on a fog-covered floor beneath string lights, black and white", r: "p", ratio: 0.6667 },
   marinaSunsetKiss: { path: "/images/bay-area-wedding-marina-sunset-kiss-lei-photography-collective.jpg", a: "Bride and groom kissing at sunset on the marina railing, sailboat masts glowing behind them", r: "t" },
