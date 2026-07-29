@@ -5,8 +5,6 @@ import CategoryCards from "@/components/lei/CategoryCards";
 import GalleryCta from "@/components/lei/GalleryCta";
 import { ScrollHint } from "@/components/lei/blocks";
 import { SERIF, cream, kicker } from "@/components/lei/tokens";
-import { img } from "@/content/portfolio";
-import { GALLERY_HERO } from "@/content/gallery";
 
 export const metadata: Metadata = {
   title: "Gallery",
@@ -39,8 +37,8 @@ export default function GalleryPage() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={img(GALLERY_HERO.path, 2400)}
-          alt={GALLERY_HERO.a}
+          src="/images/portfolio/weddings/sargon-odelya-select/so-select-636.jpg"
+          alt="Bride and groom on the fog-covered dance floor beneath a canopy of string lights, seen from behind"
           style={{
             position: "absolute",
             inset: 0,
