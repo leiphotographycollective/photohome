@@ -5,44 +5,56 @@
 // drop over the same filename with no code change. Regenerate or extend the
 // set with: node scripts/make-event-placeholders.mjs
 //
-// Two things to update when the real frames land:
+// One line per frame below, each with its own `a`, `r` and `ratio` — every
+// value here is independently editable, not shared or derived. Three things
+// to update when the real frames land:
 //   1. `name` on each set, and the ids to match. "Event One" is a deliberate
 //      placeholder so it cannot ship unnoticed.
 //   2. `a` (alt text) on every frame, which is what screen readers announce
 //      and what the gallery test checks for emptiness, not accuracy.
+//   3. `r` and `ratio` on any frame whose real photo has a different shape.
 // `ratio` only reserves height before the file decodes, so a stale value
 // after a swap costs a small reflow, never a squashed photo.
 
 import type { GallerySet } from "@/content/gallery";
 import type { Photo } from "@/content/portfolio";
 
-/** Portrait 2:3 and landscape 3:2, alternating, so the scaffolded masonry has
- *  the rhythm a real one would. Mirrors ORIENTATIONS in the generator script. */
-const SHAPES: Array<Pick<Photo, "r" | "ratio">> = [
-  { r: "l", ratio: 1.5 },
-  { r: "p", ratio: 0.6667 },
-  { r: "p", ratio: 0.6667 },
-  { r: "l", ratio: 1.5 },
-  { r: "p", ratio: 0.6667 },
-  { r: "l", ratio: 1.5 },
-];
-
-/** Six numbered slots for one event, all pointing at generated placeholders. */
-function slots(group: string, eventName: string): Photo[] {
-  return SHAPES.map((shape, i) => ({
-    path: `/images/portfolio/events/${group}/${group}-${i + 1}.jpg`,
-    a: `Placeholder frame ${i + 1} for ${eventName}`,
-    ...shape,
-  }));
-}
-
 export const EVENT_SETS: GallerySet[] = [
-  { id: "event-one", name: "Event One", photos: slots("event-one", "Event One") },
-  { id: "event-two", name: "Event Two", photos: slots("event-two", "Event Two") },
+  {
+    id: "event-one",
+    name: "Event One",
+    photos: [
+      { path: "/images/portfolio/events/event-one/event-one-1.jpg", a: "Placeholder frame 1 for Event One", r: "l", ratio: 1.5 },
+      { path: "/images/portfolio/events/event-one/event-one-2.jpg", a: "Placeholder frame 2 for Event One", r: "p", ratio: 0.6667 },
+      { path: "/images/portfolio/events/event-one/event-one-3.jpg", a: "Placeholder frame 3 for Event One", r: "p", ratio: 0.6667 },
+      { path: "/images/portfolio/events/event-one/event-one-4.jpg", a: "Placeholder frame 4 for Event One", r: "l", ratio: 1.5 },
+      { path: "/images/portfolio/events/event-one/event-one-5.jpg", a: "Placeholder frame 5 for Event One", r: "p", ratio: 0.6667 },
+      { path: "/images/portfolio/events/event-one/event-one-6.jpg", a: "Placeholder frame 6 for Event One", r: "l", ratio: 1.5 },
+    ],
+  },
+  {
+    id: "event-two",
+    name: "Event Two",
+    photos: [
+      { path: "/images/portfolio/events/event-two/event-two-1.jpg", a: "Placeholder frame 1 for Event Two", r: "l", ratio: 1.5 },
+      { path: "/images/portfolio/events/event-two/event-two-2.jpg", a: "Placeholder frame 2 for Event Two", r: "p", ratio: 0.6667 },
+      { path: "/images/portfolio/events/event-two/event-two-3.jpg", a: "Placeholder frame 3 for Event Two", r: "p", ratio: 0.6667 },
+      { path: "/images/portfolio/events/event-two/event-two-4.jpg", a: "Placeholder frame 4 for Event Two", r: "l", ratio: 1.5 },
+      { path: "/images/portfolio/events/event-two/event-two-5.jpg", a: "Placeholder frame 5 for Event Two", r: "p", ratio: 0.6667 },
+      { path: "/images/portfolio/events/event-two/event-two-6.jpg", a: "Placeholder frame 6 for Event Two", r: "l", ratio: 1.5 },
+    ],
+  },
   {
     id: "event-three",
     name: "Event Three",
-    photos: slots("event-three", "Event Three"),
+    photos: [
+      { path: "/images/portfolio/events/event-three/event-three-1.jpg", a: "Placeholder frame 1 for Event Three", r: "l", ratio: 1.5 },
+      { path: "/images/portfolio/events/event-three/event-three-2.jpg", a: "Placeholder frame 2 for Event Three", r: "p", ratio: 0.6667 },
+      { path: "/images/portfolio/events/event-three/event-three-3.jpg", a: "Placeholder frame 3 for Event Three", r: "p", ratio: 0.6667 },
+      { path: "/images/portfolio/events/event-three/event-three-4.jpg", a: "Placeholder frame 4 for Event Three", r: "l", ratio: 1.5 },
+      { path: "/images/portfolio/events/event-three/event-three-5.jpg", a: "Placeholder frame 5 for Event Three", r: "p", ratio: 0.6667 },
+      { path: "/images/portfolio/events/event-three/event-three-6.jpg", a: "Placeholder frame 6 for Event Three", r: "l", ratio: 1.5 },
+    ],
   },
 ];
 

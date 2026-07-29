@@ -42,6 +42,24 @@ describe("gallery categories", () => {
     ]);
   });
 
+  // A card is the only way into a category page: there is no other link, nav
+  // entry, or sitemap pointing at /gallery/weddings et al. A card whose href
+  // points at a route that doesn't exist (e.g. a renamed folder) is a dead
+  // end that nothing else in this suite, or the app, would catch.
+  it("each link to a route that actually exists", () => {
+    for (const cat of GALLERY) {
+      const routePath = join(
+        process.cwd(),
+        "src/app/(site)",
+        ...cat.href.split("/").filter(Boolean),
+        "page.tsx"
+      );
+      expect(existsSync(routePath), `${cat.id}: no page at ${cat.href}`).toBe(
+        true
+      );
+    }
+  });
+
   it("every photo has a path and real alt text", () => {
     for (const cat of GALLERY) {
       for (const p of cat.photos) {

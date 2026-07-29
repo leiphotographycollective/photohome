@@ -10,19 +10,21 @@ import {
 
 const PUBLIC = join(process.cwd(), "public");
 
+// These assertions check structure, not today's literal values. The set
+// names, ids, and per-set photo counts are all expected to change the moment
+// Raymond swaps in real photos and renames "Event One" etc. to what the event
+// actually was, so pinning those exact values here would turn the suite red
+// for doing the documented, expected thing.
 describe("event sets", () => {
-  it("holds three events in order", () => {
-    expect(EVENT_SETS.map((s) => s.id)).toEqual([
-      "event-one",
-      "event-two",
-      "event-three",
-    ]);
+  it("holds three events", () => {
+    expect(EVENT_SETS.length).toBe(3);
   });
 
-  it("gives every event a name and six frames", () => {
+  it("gives every event a non-empty id, name, and at least one photo", () => {
     for (const set of EVENT_SETS) {
+      expect(set.id.length, "empty id").toBeGreaterThan(0);
       expect(set.name.length, set.id).toBeGreaterThan(0);
-      expect(set.photos.length, set.id).toBe(6);
+      expect(set.photos.length, set.id).toBeGreaterThanOrEqual(1);
     }
   });
 
@@ -40,14 +42,14 @@ describe("event sets", () => {
     expect(new Set(paths).size).toBe(paths.length);
   });
 
-  // 19 hand-written paths: a typo in one of them is a broken image in
-  // production that nothing else here would catch.
   it("resolves every frame and the card cover to a real file", () => {
     const paths = [
       ...EVENT_SETS.flatMap((s) => s.photos.map((p) => p.path)),
       EVENTS_CARD_COVER.path,
     ];
-    expect(paths.length).toBe(19); // walker sanity check
+    // Non-empty, not a fixed count: the walker is still guarded without
+    // pinning today's frame count.
+    expect(paths.length).toBeGreaterThan(0);
     for (const path of paths) {
       expect(existsSync(join(PUBLIC, path)), `missing ${path}`).toBe(true);
     }

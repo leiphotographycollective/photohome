@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GOLD, SERIF } from "./tokens";
-import { PRIMARY_NAV, INQUIRE, isGroup } from "@/content/nav";
+import { PRIMARY_NAV, INQUIRE, isActiveHref, isGroup } from "@/content/nav";
 
 /* Site navigation on mobile: a burger button in the fixed header that opens a
    full-screen editorial menu. The overlay is portaled to <body> so it always
@@ -146,11 +146,15 @@ export default function MobileMenu() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
+              // Deliberate split: the gold highlight means "you are in this
+              // section" (isActiveHref, prefix-aware for /gallery);
+              // aria-current means "this is literally this page", so it only
+              // fires on an exact match even when the highlight is on.
               aria-current={pathname === item.href ? "page" : undefined}
               style={{
                 display: "flex", alignItems: "baseline", gap: 14,
                 fontFamily: SERIF, fontSize: 34, fontWeight: 500, lineHeight: 1.35,
-                color: pathname === item.href ? GOLD : "#F7F5F2", textDecoration: "none",
+                color: isActiveHref(item.href, pathname) ? GOLD : "#F7F5F2", textDecoration: "none",
               }}
             >
               {item.label}

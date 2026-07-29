@@ -22,6 +22,21 @@ export type NavEntry = NavItem | NavGroup;
 
 export const isGroup = (e: NavEntry): e is NavGroup => "children" in e;
 
+/** Whether a nav link should render as active (gold) for the given pathname.
+ *  Exact match everywhere except /gallery, which now has three category
+ *  subpages (/gallery/weddings, /gallery/engagements, /gallery/events).
+ *  Without the prefix case, visiting a category page would un-light Gallery
+ *  on the very pages it owns. Shared by HeaderNav and MobileMenu so the two
+ *  surfaces can never drift apart on this rule.
+ *
+ *  Note this is deliberately looser than "is this the current page" — see
+ *  the aria-current handling at each call site, which uses an exact match
+ *  instead. */
+export const isActiveHref = (href: string, pathname: string): boolean =>
+  href === "/gallery"
+    ? pathname === href || pathname.startsWith("/gallery/")
+    : pathname === href;
+
 /** Primary CTA, rendered separately from the nav lists. */
 export const INQUIRE: NavItem = { href: "/inquire", label: "Inquire" };
 

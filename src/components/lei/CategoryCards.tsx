@@ -86,8 +86,9 @@ export default function CategoryCards() {
                 pointerEvents: "none",
               }}
             >
-              <div
+              <h2
                 style={{
+                  margin: 0,
                   fontFamily: SERIF,
                   fontWeight: 600,
                   fontSize: "clamp(24px,2.4vw,36px)",
@@ -96,7 +97,7 @@ export default function CategoryCards() {
                 }}
               >
                 {cat.label}
-              </div>
+              </h2>
               <div
                 style={{
                   marginTop: 10,
