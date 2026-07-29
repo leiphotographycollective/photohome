@@ -103,15 +103,16 @@ export default function EventCards() {
         position: "relative",
         background: "#0E0D0B",
         color: "#F7F5F2",
-        padding: "14vh 6vw",
+        padding: "4vh 6vw 14vh",
       }}
     >
       <div
+        className="lx-cards-4"
         style={{
           display: "grid",
-          // auto-fit collapses this to one column on a phone without a media
-          // query, which inline styles cannot express.
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          // Columns come from .lx-cards-4 in globals.css, not from auto-fit:
+          // four items need to step 4 to 2 to 1, and auto-fit would wrap them
+          // 3 + 1 at mid widths. Inline styles cannot hold a media query.
           gap: "clamp(16px,2.4vw,34px)",
           maxWidth: 1280,
           margin: "0 auto",

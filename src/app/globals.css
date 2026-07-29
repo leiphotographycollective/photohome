@@ -231,6 +231,23 @@ html.lenis {
   display: flex;
 }
 
+/* Four event cards in a row. Not auto-fit: with four items auto-fit drops to
+   three across at mid widths and leaves the fourth stranded on its own line.
+   Stepping 4 to 2 to 1 keeps every row full. */
+.lx-cards-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 1180px) {
+  .lx-cards-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .lx-cards-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 860px) {
   .lx-header {
     padding: 0 20px !important;

@@ -48,26 +48,33 @@ export default function Lightbox({ children }: { children: ReactNode }) {
 
   // Lenis keeps driving the page under the overlay unless it is stopped, and
   // the document needs its own overflow lock for the native scrollbar.
+  // Keyed on open/closed rather than on `index`, so stepping between photos
+  // does not release and re-apply the lock on every arrow press. Doing that
+  // restarts Lenis and un-hides the scrollbar for a frame each time, which
+  // shows up as a flicker at the edge of the overlay.
+  const open = index !== null;
   useEffect(() => {
-    if (index === null) return;
+    if (!open) return;
     const lenis = getLenis();
     lenis?.stop();
     const { overflow } = document.documentElement.style;
     document.documentElement.style.overflow = "hidden";
+    return () => {
+      document.documentElement.style.overflow = overflow;
+      lenis?.start();
+    };
+  }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
       if (e.key === "ArrowRight") step(1);
       if (e.key === "ArrowLeft") step(-1);
     };
     window.addEventListener("keydown", onKey);
-
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      document.documentElement.style.overflow = overflow;
-      lenis?.start();
-    };
-  }, [index, close, step]);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, close, step]);
 
   const frame = index === null ? null : frames[index];
 
