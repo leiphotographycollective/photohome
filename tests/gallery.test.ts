@@ -102,6 +102,14 @@ describe("gallery images stay swappable", () => {
     "src/components/lei/CategoryCards.tsx",
   ];
 
+  // The three category grids, i.e. PAGES minus the hub page (its one hero
+  // image isn't a grid) and CategoryCards (its three card covers aren't
+  // either). Filtered by shape rather than sliced by index so reordering
+  // PAGES can't silently widen or narrow this list.
+  const CATEGORY_PAGES = PAGES.filter(
+    (p) => p.includes("/gallery/") && p !== "src/app/(site)/gallery/page.tsx"
+  );
+
   it("never computes an img src on a gallery page", () => {
     for (const page of PAGES) {
       const source = readFileSync(join(process.cwd(), page), "utf8");
@@ -166,6 +174,90 @@ describe("gallery images stay swappable", () => {
       expect(source, `card blurb for ${cat.id}`).toContain(
         `blurb="${cat.cardBlurb}"`
       );
+    }
+  });
+
+  // Every grid photo on the three category pages is content and needs real
+  // alt text. CategoryCards.tsx is deliberately excluded: its three card
+  // covers carry alt="" on purpose, because each card's visible label and
+  // blurb already say where the link goes, and a described photo would make
+  // a screen reader announce the scene, the label and the blurb as one
+  // run-on link name.
+  it("gives every category-page photo real alt text", () => {
+    for (const page of CATEGORY_PAGES) {
+      const source = readFileSync(join(process.cwd(), page), "utf8");
+      expect(source, `${page} has an img with empty alt`).not.toMatch(
+        /alt=""/
+      );
+    }
+  });
+
+  // This library ships two edits of the same moment as separate files
+  // (sargon-odelya-08.jpg and -23.jpg are one photo; -22 and -34 are one
+  // walk), so a frame landing in a grid twice is a real failure mode, not a
+  // hypothetical one.
+  it("never repeats a photo within one category grid", () => {
+    for (const page of CATEGORY_PAGES) {
+      const source = readFileSync(join(process.cwd(), page), "utf8");
+      const srcs = [...source.matchAll(/src="([^"]+)"/g)].map((m) => m[1]);
+      expect(new Set(srcs).size, `${page} repeats a photo`).toBe(srcs.length);
+    }
+  });
+
+  // The hub hero and the weddings feature photo are each shown large and
+  // alone. A card cover reusing either would show the same photo twice on
+  // one journey through the site.
+  it("never reuses the hub hero or weddings feature as a card cover", () => {
+    const hubSource = readFileSync(
+      join(process.cwd(), "src/app/(site)/gallery/page.tsx"),
+      "utf8"
+    );
+    const heroSrcs = [...hubSource.matchAll(/src="([^"]+)"/g)].map(
+      (m) => m[1]
+    );
+    expect(heroSrcs.length, "hub page should render exactly one hero image").toBe(
+      1
+    );
+    const [heroSrc] = heroSrcs;
+
+    const weddingsSource = readFileSync(
+      join(process.cwd(), "src/app/(site)/gallery/weddings/page.tsx"),
+      "utf8"
+    );
+    // Match whole <img ...> tags rather than searching near "data-feature",
+    // so the src pulled out is the one from the same tag as the attribute
+    // regardless of attribute order.
+    // [^>] already matches newlines regardless of the dotAll flag, since it's
+    // a negated character class rather than `.`, so no `s` flag is needed
+    // (and the project's TS target doesn't support one on regex literals).
+    const imgTags = [...weddingsSource.matchAll(/<img\b[^>]*>/g)].map(
+      (m) => m[0]
+    );
+    const featureTags = imgTags.filter((tag) => /\bdata-feature\b/.test(tag));
+    expect(
+      featureTags.length,
+      "expected exactly one <img data-feature> on the weddings page"
+    ).toBe(1);
+    const featureSrcMatch = featureTags[0].match(/src="([^"]+)"/);
+    expect(featureSrcMatch, "feature img has no src").toBeTruthy();
+    const featureSrc = featureSrcMatch![1];
+
+    const cardsSource = readFileSync(
+      join(process.cwd(), "src/components/lei/CategoryCards.tsx"),
+      "utf8"
+    );
+    const cardSrcs = [...cardsSource.matchAll(/src="([^"]+)"/g)].map(
+      (m) => m[1]
+    );
+    expect(cardSrcs.length, "expected three card covers").toBe(3);
+    for (const s of cardSrcs) {
+      expect(s, `CategoryCards.tsx reuses the hub hero (${heroSrc})`).not.toBe(
+        heroSrc
+      );
+      expect(
+        s,
+        `CategoryCards.tsx reuses the weddings feature (${featureSrc})`
+      ).not.toBe(featureSrc);
     }
   });
 });
