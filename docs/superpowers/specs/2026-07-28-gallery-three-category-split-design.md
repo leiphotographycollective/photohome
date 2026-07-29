@@ -104,7 +104,7 @@ of the site uses. Three across on desktop, one column on phones.
 
 ### `/gallery/weddings`
 
-1. Compact dark title band: kicker, serif title, `blurb`
+1. Compact dark title band: kicker (a link back to the hub) and the serif title. The `blurb` is not here: `CategoryGallery` prints it above the grid, and rendering it in both places would show it twice.
 2. `<CategoryGallery>`: three labelled wedding sets
 3. Full-bleed feature photo (`miranda-danny-14`, moved here from the hub)
 4. Testimonial and the "Collections from $2,400" link
