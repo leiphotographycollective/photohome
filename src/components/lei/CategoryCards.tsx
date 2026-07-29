@@ -52,7 +52,11 @@ export default function CategoryCards() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={img(cat.cover.path, 1000)}
-                alt={cat.cover.a}
+                // Decorative here: the label and blurb below already say where
+                // this link goes, so a described photo would make a screen
+                // reader announce the scene, the label and the blurb as one
+                // run-on link name.
+                alt=""
                 loading="lazy"
                 style={{
                   width: "100%",
