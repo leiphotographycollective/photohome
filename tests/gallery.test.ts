@@ -2,6 +2,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, sep } from "node:path";
 import { describe, expect, it } from "vitest";
 import { GALLERY } from "@/content/gallery";
+import { EVENTS } from "@/content/events";
 import { WEDDING_PORTFOLIO } from "@/content/homepage";
 import type { Photo } from "@/content/portfolio";
 
@@ -61,6 +62,47 @@ describe("gallery categories", () => {
   });
 });
 
+// The four cards on /gallery/events are the only way into an event's own
+// page: no other link, nav entry, or sitemap points at
+// /gallery/events/<slug>. This is the same pair of guards GALLERY gets above:
+// one to catch a href pointing at a route that doesn't exist, one so the
+// copy hardcoded into EventCards.tsx (see the comment there on why it's
+// hardcoded) can't drift from src/content/events.ts.
+describe("event sub-galleries", () => {
+  it("each link to a route that actually exists", () => {
+    for (const event of EVENTS) {
+      const routePath = join(
+        process.cwd(),
+        "src/app/(site)",
+        ...event.href.split("/").filter(Boolean),
+        "page.tsx"
+      );
+      expect(
+        existsSync(routePath),
+        `${event.id}: no page at ${event.href}`
+      ).toBe(true);
+    }
+  });
+
+  it("renders a card for every event, labelled to match", () => {
+    const source = readFileSync(
+      join(process.cwd(), "src/components/lei/EventCards.tsx"),
+      "utf8"
+    );
+    for (const event of EVENTS) {
+      expect(source, `no card for ${event.id}`).toContain(
+        `href="${event.href}"`
+      );
+      expect(source, `card label for ${event.id}`).toContain(
+        `label="${event.name}"`
+      );
+      expect(source, `card blurb for ${event.id}`).toContain(
+        `blurb="${event.cardBlurb}"`
+      );
+    }
+  });
+});
+
 describe("local image paths", () => {
   const local = (photos: Photo[]) => photos.filter((p) => p.path.startsWith("/"));
 
@@ -96,9 +138,9 @@ describe("local image paths", () => {
 describe("gallery images stay swappable", () => {
   // Discovered rather than hand-listed, so a gallery page added later (e.g.
   // /gallery/portraits) is automatically pulled into every check below
-  // instead of silently sitting outside them. CategoryCards.tsx can't be
-  // found this way, since it's a component, not a route, so it's added back
-  // in explicitly.
+  // instead of silently sitting outside them. CategoryCards.tsx and
+  // EventCards.tsx can't be found this way, since they're components, not
+  // routes, so they're added back in explicitly.
   //
   // fs.globSync exists at the Node version this repo runs on, but this
   // project's @types/node (^20) doesn't declare it, so tsc rejects it. A
@@ -132,14 +174,23 @@ describe("gallery images stay swappable", () => {
     }
   });
 
-  const PAGES = [...discoveredPages, "src/components/lei/CategoryCards.tsx"];
+  const PAGES = [
+    ...discoveredPages,
+    "src/components/lei/CategoryCards.tsx",
+    "src/components/lei/EventCards.tsx",
+  ];
 
-  // The three category grids, i.e. PAGES minus the hub page (its one hero
-  // image isn't a grid) and CategoryCards (its three card covers aren't
-  // either). Filtered by shape rather than sliced by index so reordering
-  // PAGES can't silently widen or narrow this list.
+  // The grids that hold actual content photos, i.e. PAGES minus the hub page
+  // (its one hero image isn't a grid), CategoryCards (its three card covers
+  // aren't either) and the /gallery/events index (its four covers live in
+  // EventCards.tsx and are a card index too, not a grid). Filtered by shape
+  // rather than sliced by index so reordering PAGES can't silently widen or
+  // narrow this list.
   const CATEGORY_PAGES = PAGES.filter(
-    (p) => p.includes("/gallery/") && p !== "src/app/(site)/gallery/page.tsx"
+    (p) =>
+      p.includes("/gallery/") &&
+      p !== "src/app/(site)/gallery/page.tsx" &&
+      p !== "src/app/(site)/gallery/events/page.tsx"
   );
 
   it("never computes an img src on a gallery page", () => {
@@ -162,7 +213,15 @@ describe("gallery images stay swappable", () => {
       // against the filesystem; every other src here is a local /images/...
       // path and must resolve to a real file.
       const srcs = [...source.matchAll(/src="([^"]+)"/g)].map((m) => m[1]);
-      expect(srcs.length, `${page} renders no images`).toBeGreaterThan(0);
+      // /gallery/events is now a card index: its four covers live on
+      // EventCards.tsx (already in PAGES above), not on the page itself, so
+      // it legitimately renders zero images here. Every other page must
+      // still render at least one, which is what makes this check worth
+      // having: a src regex that silently stopped matching would show up as
+      // a page with zero images instead of going unnoticed.
+      if (page !== "src/app/(site)/gallery/events/page.tsx") {
+        expect(srcs.length, `${page} renders no images`).toBeGreaterThan(0);
+      }
       for (const s of srcs) {
         if (s.startsWith("/")) {
           const decoded = decodeURIComponent(s);
@@ -180,22 +239,24 @@ describe("gallery images stay swappable", () => {
       }
       total += srcs.length;
     }
-    // Every gallery photo, counted once: 1 hub hero + 3 card covers + 41
-    // weddings (40 grid + 1 feature) + 1 engagement + 41 events = 87. Two of
-    // those (the Engagements grid frame and its card cover on the hub) share
-    // the one CDN photo above; the other 85 are local and were resolved
-    // against public/ in the loop. Update both numbers deliberately when
-    // frames are added.
+    // Every gallery photo, counted once: 1 hub hero + 3 category card covers
+    // + 4 event card covers + 41 weddings (40 grid + 1 feature) + 1
+    // engagement + 41 events = 91. The 41 event frames moved between files
+    // (out of the old stacked page, into the four event pages) rather than
+    // multiplying. Two of those 91 (the Engagements grid frame and its card
+    // cover on the hub) share the one CDN photo above; the other 89 are local
+    // and were resolved against public/ in the loop. Update both numbers
+    // deliberately when frames are added.
     //
     // This fixed count is a deliberate second net, not a duplicate of the
     // "never computes an img src" check above. That check regexes for
     // `src={`, which a computed src written with a stray space (`src =
     // {img(...)}`) would slip past; this count would still catch it, since a
     // reformatted tag like that no longer matches `src="..."` and total would
-    // drop below 87. It also catches a photo simply being deleted from a
+    // drop below 91. It also catches a photo simply being deleted from a
     // page without the src becoming computed at all.
     expect(cdn).toBe(2);
-    expect(total).toBe(87);
+    expect(total).toBe(91);
   });
 
   // Task 5 wrote the card labels into CategoryCards so each card's src could
@@ -217,12 +278,13 @@ describe("gallery images stay swappable", () => {
     }
   });
 
-  // Every grid photo on the three category pages is content and needs real
-  // alt text. CategoryCards.tsx is deliberately excluded: its three card
-  // covers carry alt="" on purpose, because each card's visible label and
-  // blurb already say where the link goes, and a described photo would make
-  // a screen reader announce the scene, the label and the blurb as one
-  // run-on link name.
+  // Every grid photo on a category page is content and needs real alt text.
+  // CategoryCards.tsx and the /gallery/events index are deliberately
+  // excluded: their card covers carry alt="" on purpose, because each card's
+  // visible label and blurb already say where the link goes, and a described
+  // photo would make a screen reader announce the scene, the label and the
+  // blurb as one run-on link name. The four event pages hold actual grid
+  // photos, not card covers, so they stay inside this rule.
   it("gives every category-page photo real alt text", () => {
     for (const page of CATEGORY_PAGES) {
       const source = readFileSync(join(process.cwd(), page), "utf8");
