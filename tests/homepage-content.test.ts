@@ -11,7 +11,6 @@ import {
   TESTIMONIALS,
   WEDDING_PORTFOLIO,
 } from "@/content/homepage";
-import { GALLERY } from "@/content/gallery";
 
 describe("CTA constants", () => {
   it("match the spec exactly", () => {
@@ -37,12 +36,21 @@ describe("recent weddings", () => {
   it("has at least one wedding with 1-3 teaser frames each", () => {
     expect(RECENT_WEDDINGS.length).toBeGreaterThanOrEqual(1);
 
-    // Extract valid set ids from the weddings category to catch anchors that
-    // no set renders — an anchor that doesn't exist is a link that lands on
-    // the page and scrolls nowhere, which nothing else would catch.
-    const weddingCategory = GALLERY.find(c => c.id === "weddings");
-    expect(weddingCategory).toBeDefined();
-    const validSetIds = new Set(weddingCategory?.sets?.map(s => s.id) || []);
+    // Extract valid set ids from the weddings page's own GallerySet tags, to
+    // catch anchors that no set renders: an anchor that doesn't exist is a
+    // link that lands on the page and scrolls nowhere, which nothing else
+    // would catch. The sets are literal JSX now (see gallery.ts's header),
+    // not a content array, so this reads the page source directly.
+    const weddingsSource = readFileSync(
+      join(process.cwd(), "src/app/(site)/gallery/weddings/page.tsx"),
+      "utf8"
+    );
+    const validSetIds = new Set(
+      [...weddingsSource.matchAll(/<GallerySet id="([^"]+)"/g)].map(
+        (m) => m[1]
+      )
+    );
+    expect(validSetIds.size).toBeGreaterThan(0); // walker sanity check
 
     for (const w of RECENT_WEDDINGS) {
       expect(w.href.startsWith("/gallery/weddings#")).toBe(true);
