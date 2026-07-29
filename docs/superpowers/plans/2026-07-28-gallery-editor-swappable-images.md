@@ -940,6 +940,8 @@ Two ways to change a photo, both fine:
 1. **In the editor.** Click the image, pick a new one. It rewrites the `src` in the page file.
 2. **On disk.** Drop a new file over an existing one, keeping the filename. Nothing in the code changes at all.
 
+One exception: the proposal photo on `/gallery/engagements`, and the Engagements card cover on the hub, both point at the same photo hosted on Squarespace's CDN rather than a file under `public/`. There is no file to drop a replacement over. To change that one, use the editor, or replace it with a local file and update its `src` yourself.
+
 After a swap, update that tag's `alt` text to describe the new photo, and its `frame("...")` ratio if the new photo is a different shape. The ratio is only a hint that reserves height while the file loads, so a stale one costs a small reflow and never a squashed photo.
 
 The event frames still carry placeholder alt text (`Placeholder frame 3 for Event One`) and the sets are still named Event One, Two and Three. Those are in `src/app/(site)/gallery/events/page.tsx` now, not in a content file.

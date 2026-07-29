@@ -1,5 +1,5 @@
-import { existsSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { join, sep } from "node:path";
 import { describe, expect, it } from "vitest";
 import { GALLERY } from "@/content/gallery";
 import { WEDDING_PORTFOLIO } from "@/content/homepage";
@@ -94,13 +94,45 @@ describe("local image paths", () => {
 // photo silently stops being swappable. Nothing else in this suite would
 // notice, so this is the guard that keeps the gallery editable.
 describe("gallery images stay swappable", () => {
-  const PAGES = [
+  // Discovered rather than hand-listed, so a gallery page added later (e.g.
+  // /gallery/portraits) is automatically pulled into every check below
+  // instead of silently sitting outside them. CategoryCards.tsx can't be
+  // found this way, since it's a component, not a route, so it's added back
+  // in explicitly.
+  //
+  // fs.globSync exists at the Node version this repo runs on, but this
+  // project's @types/node (^20) doesn't declare it, so tsc rejects it. A
+  // recursive readdirSync walk needs no new typings and does the same job.
+  const GALLERY_DIR = "src/app/(site)/gallery";
+  const discoveredPages = (
+    readdirSync(join(process.cwd(), GALLERY_DIR), {
+      recursive: true,
+    }) as string[]
+  )
+    .filter((p) => p.endsWith("page.tsx"))
+    .map((p) => `${GALLERY_DIR}/${p.split(sep).join("/")}`);
+
+  // The four pages this suite is known to depend on today. Not used to build
+  // PAGES (that comes from the glob above) — only to prove the glob still
+  // finds all of them, so a change to the pattern or the folder layout that
+  // silently stopped matching a page would fail loudly here instead of
+  // quietly shrinking every check below.
+  const KNOWN_GALLERY_PAGES = [
     "src/app/(site)/gallery/page.tsx",
     "src/app/(site)/gallery/weddings/page.tsx",
     "src/app/(site)/gallery/engagements/page.tsx",
     "src/app/(site)/gallery/events/page.tsx",
-    "src/components/lei/CategoryCards.tsx",
   ];
+
+  it("discovers every known gallery page on disk", () => {
+    for (const known of KNOWN_GALLERY_PAGES) {
+      expect(discoveredPages, `walk of ${GALLERY_DIR} missed ${known}`).toContain(
+        known
+      );
+    }
+  });
+
+  const PAGES = [...discoveredPages, "src/components/lei/CategoryCards.tsx"];
 
   // The three category grids, i.e. PAGES minus the hub page (its one hero
   // image isn't a grid) and CategoryCards (its three card covers aren't
@@ -154,6 +186,14 @@ describe("gallery images stay swappable", () => {
     // the one CDN photo above; the other 62 are local and were resolved
     // against public/ in the loop. Update both numbers deliberately when
     // frames are added.
+    //
+    // This fixed count is a deliberate second net, not a duplicate of the
+    // "never computes an img src" check above. That check regexes for
+    // `src={`, which a computed src written with a stray space (`src =
+    // {img(...)}`) would slip past; this count would still catch it, since a
+    // reformatted tag like that no longer matches `src="..."` and total would
+    // drop below 64. It also catches a photo simply being deleted from a
+    // page without the src becoming computed at all.
     expect(cdn).toBe(2);
     expect(total).toBe(64);
   });
@@ -188,6 +228,15 @@ describe("gallery images stay swappable", () => {
       const source = readFileSync(join(process.cwd(), page), "utf8");
       expect(source, `${page} has an img with empty alt`).not.toMatch(
         /alt=""/
+      );
+      // Not empty alt isn't the same as having alt at all: a tag missing the
+      // attribute entirely passes the check above too. Counting img tags
+      // against alt= attributes catches a swap that drops the attribute,
+      // since with no lint step in this project, nothing else would.
+      const imgCount = [...source.matchAll(/<img\b/g)].length;
+      const altCount = [...source.matchAll(/\balt=/g)].length;
+      expect(altCount, `${page} has an <img> with no alt attribute`).toBe(
+        imgCount
       );
     }
   });
