@@ -5,10 +5,14 @@
 // photos a list has, so a grid grows from one frame to a full four-column
 // masonry with no code change.
 //
-// Weddings is the one category with `sets`: it holds three separate weddings,
-// and each renders as its own labelled grid so the page reads as three days
-// rather than one long undifferentiated dump. Couples and Engagements have no
-// sets and render exactly as before.
+// Weddings and Events both use `sets`: each holds several separate shoots, and
+// each set renders as its own labelled grid so the page reads as several days
+// rather than one long undifferentiated dump. Engagements has no sets and
+// renders as a single grid.
+//
+// Couples was retired here on 2026-07-28 when the gallery split into three
+// category pages. Its frames are still in portfolio.ts and still used
+// elsewhere on the site; they are just no longer part of the gallery.
 
 import {
   MIRANDA_DANNY_PHOTOS,
@@ -18,6 +22,12 @@ import {
   TRANG_PHOTOS,
   type Photo,
 } from "@/content/portfolio";
+import {
+  EVENTS_BLURB,
+  EVENTS_CARD_BLURB,
+  EVENTS_CARD_COVER,
+  EVENT_SETS,
+} from "@/content/events";
 
 /** One wedding inside a category: its own heading, its own grid. */
 export interface GallerySet {
@@ -29,12 +39,20 @@ export interface GallerySet {
 }
 
 export interface GalleryCategory {
-  /** Section anchor and React key: /gallery#engagements */
+  /** Section anchor, React key, and the last segment of `href`: "events". */
   id: string;
   /** Section heading, set in the serif face. */
   label: string;
-  /** One line under the heading, in Raymond's voice. */
+  /** One line under the heading on the category page, in Raymond's voice. */
   blurb: string;
+  /** Where the hub card links. Its own page, not an anchor on the hub. */
+  href: string;
+  /** The frame on the hub card. Kept distinct from the hero and the feature
+   *  so no frame appears twice on one journey. */
+  cover: Photo;
+  /** One short line on the card face. Shorter than `blurb`: it sits over a
+   *  photo at small type, so a sentence is already too long. */
+  cardBlurb: string;
   /** When present, the page renders one labelled grid per set instead of a
    *  single grid. `photos` still holds every frame, flattened. */
   sets?: GallerySet[];
@@ -93,21 +111,34 @@ export const GALLERY: GalleryCategory[] = [
     label: "Weddings",
     blurb:
       "The whole day, start to finish. Getting ready, the vows you meant, the last song, and everything in between.",
+    href: "/gallery/weddings",
+    // The cathedral veil frame. Not the hero (so-select-636) and not the
+    // feature (miranda-danny-14), so nothing repeats on one journey.
+    cover: pick(SARGON_ODELYA_SELECT, "so-select-300.jpg"),
+    cardBlurb: "The whole day, start to finish.",
     sets: WEDDING_SETS,
     photos: fromSets(WEDDING_SETS),
-  },
-  {
-    id: "couples",
-    label: "Couples",
-    blurb:
-      "An hour or two with just the two of you. We walk, you talk, I stay out of the way.",
-    photos: [PHOTOS.coastalCandid, PHOTOS.coastal, PHOTOS.coastKiss],
   },
   {
     id: "engagements",
     label: "Engagements",
     blurb:
       "The nerves before, the question, and the yes. I stay hidden until you have said it.",
+    href: "/gallery/engagements",
+    // The one engagement frame there is, so it is both the cover and the
+    // grid. Accepted until there are more; see the 2026-07-28 spec.
+    cover: PHOTOS.proposal,
+    cardBlurb: "The nerves, the question, the yes.",
     photos: [PHOTOS.proposal],
+  },
+  {
+    id: "events",
+    label: "Events",
+    blurb: EVENTS_BLURB,
+    href: "/gallery/events",
+    cover: EVENTS_CARD_COVER,
+    cardBlurb: EVENTS_CARD_BLURB,
+    sets: EVENT_SETS,
+    photos: fromSets(EVENT_SETS),
   },
 ];
