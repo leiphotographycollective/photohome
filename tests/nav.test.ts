@@ -34,7 +34,7 @@ describe("nav config", () => {
 
   it("Weddings group holds Engagements, Experience, Second Weddings, Free Session", () => {
     expect(hrefs(WEDDINGS_MENU)).toEqual([
-      "/gallery#engagements",
+      "/gallery/engagements",
       "/experience",
       "/second-weddings",
       "/free-session",

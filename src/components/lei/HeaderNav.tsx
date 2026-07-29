@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GOLD, INK, cream, navLink, pill } from "./tokens";
-import { PRIMARY_NAV, INQUIRE, isGroup, type NavItem } from "@/content/nav";
+import { PRIMARY_NAV, INQUIRE, isActiveHref, isGroup, type NavItem } from "@/content/nav";
 
 /* Visible desktop navigation in the fixed header. Hidden ≤860px (the burger
    takes over there). "Weddings" is a hover/focus disclosure whose parent is not
@@ -15,10 +15,12 @@ export default function HeaderNav() {
   const pathname = usePathname();
   const [openGroup, setOpenGroup] = useState<string | null>(null);
 
-  // Every destination is now a single page with no subpaths, so an exact match
-  // is enough. The group's "/gallery#engagements" child never matches, because
-  // usePathname() drops the hash, so Gallery alone lights on /gallery.
-  const isActive = (href: string) => pathname === href;
+  // isActiveHref (src/content/nav.ts) decides the gold highlight, including
+  // the /gallery prefix case. On /gallery/engagements this lights Gallery and
+  // the Weddings group at once, because Engagements sits in that dropdown.
+  // That is accurate: you are in the gallery, under weddings. Not a bug to
+  // chase.
+  const isActive = (href: string) => isActiveHref(href, pathname);
 
   const groupActive = (children: NavItem[]) =>
     children.some((c) => pathname === c.href);
@@ -115,7 +117,11 @@ export default function HeaderNav() {
             key={item.href}
             href={item.href}
             data-hover=""
-            aria-current={isActive(item.href) ? "page" : undefined}
+            // Deliberate split: the gold highlight means "you are in this
+            // section" (isActive, prefix-aware for /gallery); aria-current
+            // means "this is literally this page", so it only fires on an
+            // exact match even when the highlight is on.
+            aria-current={pathname === item.href ? "page" : undefined}
             style={navLink(isActive(item.href) ? GOLD : INK)}
           >
             {item.label}

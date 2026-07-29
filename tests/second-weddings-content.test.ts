@@ -71,7 +71,9 @@ describe("second-weddings proof, steps, faq, cta", () => {
       expect(p.path.length).toBeGreaterThan(0);
       expect(p.a.length).toBeGreaterThan(0);
     }
-    expect(SOCIAL_PROOF.href).toBe("/gallery");
+    // /gallery/weddings, not the /gallery hub: this link promises photos of
+    // real weddings, and the hub is now three category cards, not photos.
+    expect(SOCIAL_PROOF.href).toBe("/gallery/weddings");
     expect(TESTIMONIAL).toBeNull();
   });
 

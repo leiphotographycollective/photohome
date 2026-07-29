@@ -8,25 +8,55 @@ import type { Photo } from "@/content/portfolio";
 const PUBLIC = join(process.cwd(), "public");
 
 describe("gallery categories", () => {
-  it("are Weddings, Couples, Engagements in that order", () => {
+  it("are Weddings, Engagements, Events in that order", () => {
     expect(GALLERY.map((c) => c.id)).toEqual([
       "weddings",
-      "couples",
       "engagements",
+      "events",
     ]);
     expect(GALLERY.map((c) => c.label)).toEqual([
       "Weddings",
-      "Couples",
       "Engagements",
+      "Events",
     ]);
   });
 
-  it("each carry a heading, a blurb and at least one photo", () => {
+  it("each carry a heading, both blurbs, a cover and at least one photo", () => {
     for (const cat of GALLERY) {
       expect(cat.label.length, cat.id).toBeGreaterThan(0);
       expect(cat.blurb.length, cat.id).toBeGreaterThan(0);
+      expect(cat.cardBlurb.length, cat.id).toBeGreaterThan(0);
+      expect(cat.cover.path.length, cat.id).toBeGreaterThan(0);
+      expect(cat.cover.a.length, `${cat.id} cover has no alt`).toBeGreaterThan(0);
       // An empty category would render a heading over nothing.
       expect(cat.photos.length, cat.id).toBeGreaterThanOrEqual(1);
+    }
+  });
+
+  // The card is the only way into a category page, so a wrong href strands it.
+  it("each link to their own page under /gallery", () => {
+    expect(GALLERY.map((c) => c.href)).toEqual([
+      "/gallery/weddings",
+      "/gallery/engagements",
+      "/gallery/events",
+    ]);
+  });
+
+  // A card is the only way into a category page: there is no other link, nav
+  // entry, or sitemap pointing at /gallery/weddings et al. A card whose href
+  // points at a route that doesn't exist (e.g. a renamed folder) is a dead
+  // end that nothing else in this suite, or the app, would catch.
+  it("each link to a route that actually exists", () => {
+    for (const cat of GALLERY) {
+      const routePath = join(
+        process.cwd(),
+        "src/app/(site)",
+        ...cat.href.split("/").filter(Boolean),
+        "page.tsx"
+      );
+      expect(existsSync(routePath), `${cat.id}: no page at ${cat.href}`).toBe(
+        true
+      );
     }
   });
 
@@ -54,6 +84,15 @@ describe("gallery categories", () => {
   it("keeps Weddings dense enough for the four-column masonry", () => {
     const weddings = GALLERY.find((c) => c.id === "weddings");
     expect(weddings?.photos.length).toBeGreaterThanOrEqual(8);
+  });
+
+  // The hub hero and the weddings feature are rendered standalone. A card
+  // reusing one of them would show the same frame twice on the same journey.
+  it("no card cover reuses the hero or the feature frame", () => {
+    for (const cat of GALLERY) {
+      expect(cat.cover.path, cat.id).not.toBe(GALLERY_HERO.path);
+      expect(cat.cover.path, cat.id).not.toBe(GALLERY_FEATURE.photo.path);
+    }
   });
 });
 

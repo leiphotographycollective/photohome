@@ -13,6 +13,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${SITE_URL}`, lastModified: now, changeFrequency: "monthly", priority: 1 },
     { url: `${SITE_URL}/gallery`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/gallery/weddings`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/gallery/engagements`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/gallery/events`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/second-weddings`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/investment`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/experience`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },

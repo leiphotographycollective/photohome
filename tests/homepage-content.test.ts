@@ -11,6 +11,7 @@ import {
   TESTIMONIALS,
   WEDDING_PORTFOLIO,
 } from "@/content/homepage";
+import { GALLERY } from "@/content/gallery";
 
 describe("CTA constants", () => {
   it("match the spec exactly", () => {
@@ -35,8 +36,21 @@ describe("positioning constants", () => {
 describe("recent weddings", () => {
   it("has at least one wedding with 1-3 teaser frames each", () => {
     expect(RECENT_WEDDINGS.length).toBeGreaterThanOrEqual(1);
+
+    // Extract valid set ids from the weddings category to catch anchors that
+    // no set renders — an anchor that doesn't exist is a link that lands on
+    // the page and scrolls nowhere, which nothing else would catch.
+    const weddingCategory = GALLERY.find(c => c.id === "weddings");
+    expect(weddingCategory).toBeDefined();
+    const validSetIds = new Set(weddingCategory?.sets?.map(s => s.id) || []);
+
     for (const w of RECENT_WEDDINGS) {
-      expect(w.href).toBe("/gallery");
+      expect(w.href.startsWith("/gallery/weddings#")).toBe(true);
+
+      // Verify the fragment is a real set id
+      const fragment = w.href.split("#")[1];
+      expect(validSetIds.has(fragment)).toBe(true);
+
       expect(w.frames.length).toBeGreaterThanOrEqual(1);
       expect(w.frames.length).toBeLessThanOrEqual(3);
       expect(w.title.length).toBeGreaterThan(0);

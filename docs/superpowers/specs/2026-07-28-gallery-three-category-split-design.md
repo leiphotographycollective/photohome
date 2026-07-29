@@ -89,9 +89,10 @@ together.
 
 A second new component, `src/components/lei/CategoryCards.tsx`, renders the hub
 row. Each card is a single `<Link>` wrapping a 4:5 portrait image, with the
-serif category name and the `cardBlurb` over a bottom gradient. Hover lifts the
-card and slow-zooms the photo, using the same `data-hover` treatment the rest
-of the site uses. Three across on desktop, one column on phones.
+serif category name and the `cardBlurb` over a bottom gradient. Hover slow-zooms
+the photo via the existing `.lx-gitem` rule, which is the hover the rest of the
+site already uses. No lift: it would be a new gesture on a site that does not
+use one. Three across on desktop, one column on phones.
 
 ## Page shapes
 
@@ -104,7 +105,7 @@ of the site uses. Three across on desktop, one column on phones.
 
 ### `/gallery/weddings`
 
-1. Compact dark title band: kicker, serif title, `blurb`
+1. Compact dark title band: kicker (a link back to the hub) and the serif title. The `blurb` is not here: `CategoryGallery` prints it above the grid, and rendering it in both places would show it twice.
 2. `<CategoryGallery>`: three labelled wedding sets
 3. Full-bleed feature photo (`miranda-danny-14`, moved here from the hub)
 4. Testimonial and the "Collections from $2,400" link
@@ -165,7 +166,7 @@ guess.
 | --- | --- |
 | `src/content/nav.ts` | `/gallery#engagements` becomes `/gallery/engagements`. No Events entry is added: the only place it could go is the `WEDDINGS_MENU` dropdown, and filing event work under a Weddings parent would be plainly wrong. The hub is the index for all three. |
 | `src/components/lei/HeaderNav.tsx` | The comment explaining that the `#engagements` child never matches an active path is now wrong: the child is a real path and will light up. Rewrite it. |
-| `src/content/homepage.ts` | The three `WEDDING_PORTFOLIO` entries all point at `/gallery`. Point each at its own set: `/gallery/weddings#sargon-odelya`, `#miranda-danny`, `#trang`. |
+| `src/content/homepage.ts` | The three `RECENT_WEDDINGS` entries all point at `/gallery`. Point each at its own set: `/gallery/weddings#sargon-odelya`, `#miranda-danny`, `#trang`. (`WEDDING_PORTFOLIO` is a different array, photo rows with no hrefs, and is not affected.) |
 | `src/app/sitemap.ts` | Add the three new URLs. |
 | `tests/gallery.test.ts` | Asserts the Weddings/Couples/Engagements order and the single-page shape. Rewrite for the new order and add coverage that every event placeholder path resolves to a real file under `public/`. |
 | `tests/no-em-dash.test.ts` | Add the new `events` content module to the modules under test. |

@@ -2,8 +2,9 @@
 // all read from here, so links stay consistent on every page and a destination
 // changes in exactly one place.
 //
-// "Gallery" points to /gallery, the one photo page. It replaced the old
-// /portfolio hub and the separate /weddings page; both now redirect there.
+// "Gallery" points to /gallery, the hub for the three category pages
+// (/gallery/weddings, /gallery/engagements, /gallery/events). The old
+// /portfolio hub and /weddings page both redirect to /gallery.
 
 export interface NavItem {
   href: string;
@@ -21,13 +22,32 @@ export type NavEntry = NavItem | NavGroup;
 
 export const isGroup = (e: NavEntry): e is NavGroup => "children" in e;
 
+/** Whether a nav link should render as active (gold) for the given pathname.
+ *  Exact match everywhere except /gallery, which now has three category
+ *  subpages (/gallery/weddings, /gallery/engagements, /gallery/events).
+ *  Without the prefix case, visiting a category page would un-light Gallery
+ *  on the very pages it owns. Shared by HeaderNav and MobileMenu so the two
+ *  surfaces can never drift apart on this rule.
+ *
+ *  Note this is deliberately looser than "is this the current page" — see
+ *  the aria-current handling at each call site, which uses an exact match
+ *  instead. */
+export const isActiveHref = (href: string, pathname: string): boolean =>
+  href === "/gallery"
+    ? pathname === href || pathname.startsWith("/gallery/")
+    : pathname === href;
+
 /** Primary CTA, rendered separately from the nav lists. */
 export const INQUIRE: NavItem = { href: "/inquire", label: "Inquire" };
 
 /** Items under the "Weddings" nav group. The "Weddings" parent itself is NOT a
- *  link: on desktop it is a hover dropdown, on mobile a tap-to-expand section. */
+ *  link: on desktop it is a hover dropdown, on mobile a tap-to-expand section.
+ *
+ *  Events is deliberately absent. The only slot for it here is under a
+ *  "Weddings" parent, which would be plainly wrong for event work. /gallery is
+ *  the index for all three categories. */
 export const WEDDINGS_MENU: NavItem[] = [
-  { href: "/gallery#engagements", label: "Engagements" },
+  { href: "/gallery/engagements", label: "Engagements" },
   { href: "/experience", label: "Experience" },
   { href: "/second-weddings", label: "Second Weddings" },
   { href: "/free-session", label: "Free Session" },

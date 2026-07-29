@@ -91,7 +91,7 @@ export const RECENT_WEDDINGS: RecentWedding[] = [
     title: "Sargon & Odelya",
     place: "Bay Area, CA",
     year: "2025",
-    href: "/gallery", // the one photo page; /weddings and /portfolio redirect here
+    href: "/gallery/weddings#sargon-odelya", // straight to this wedding's set
     cover: so("so-select-presargon-07.jpg"), // walking the lawn under the olive trees
     frames: [
       so("so-select-062.jpg"), // bride and her mother, black and white
@@ -100,7 +100,7 @@ export const RECENT_WEDDINGS: RecentWedding[] = [
   },
   {
     title: "Miranda & Danny",
-    href: "/gallery",
+    href: "/gallery/weddings#miranda-danny",
     cover: md("miranda-danny-03.jpg"), // the marina wide, low sun on the masts
     frames: [
       md("miranda-danny-01.jpg"), // veil sweeping across the frame
@@ -109,7 +109,7 @@ export const RECENT_WEDDINGS: RecentWedding[] = [
   },
   {
     title: "Trang",
-    href: "/gallery",
+    href: "/gallery/weddings#trang",
     cover: tr("trang-07.jpg"), // outside the church after the ceremony
     frames: [
       tr("trang-03.jpg"), // the altar from the back of the church

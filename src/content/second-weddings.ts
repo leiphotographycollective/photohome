@@ -133,7 +133,7 @@ export const SOCIAL_PROOF = {
     SARGON_ODELYA_PHOTOS[8],
   ] as Photo[],
   caption: "Real moments, real couples. See the full gallery",
-  href: "/gallery",
+  href: "/gallery/weddings",
 };
 
 export const STEPS = {
