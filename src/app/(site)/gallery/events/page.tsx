@@ -239,6 +239,24 @@ export default function EventsGalleryPage() {
               style={frame("1.3324")}
             />
           </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/events/airaea/airaea-11.jpg"
+              alt="A speaker points out across the room with a microphone in hand, the slide filling the wall behind him reading Leaders take responsibility for impact, not defend intent"
+              loading="lazy"
+              style={frame("1.3324")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/events/airaea/airaea-12.jpg"
+              alt="A speaker in a blue blazer reaches out with an open hand while holding a microphone, a dark stage curtain behind him"
+              loading="lazy"
+              style={frame("1.3324")}
+            />
+          </CollageTile>
         </GallerySet>
         <GallerySet id="sjsu-pd-emmys" name="SJSU PD Emmys" columns={4}>
           <CollageTile>

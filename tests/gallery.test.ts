@@ -181,9 +181,9 @@ describe("gallery images stay swappable", () => {
       total += srcs.length;
     }
     // Every gallery photo, counted once: 1 hub hero + 3 card covers + 41
-    // weddings (40 grid + 1 feature) + 1 engagement + 18 events = 64. Two of
+    // weddings (40 grid + 1 feature) + 1 engagement + 41 events = 87. Two of
     // those (the Engagements grid frame and its card cover on the hub) share
-    // the one CDN photo above; the other 62 are local and were resolved
+    // the one CDN photo above; the other 85 are local and were resolved
     // against public/ in the loop. Update both numbers deliberately when
     // frames are added.
     //
@@ -192,13 +192,10 @@ describe("gallery images stay swappable", () => {
     // `src={`, which a computed src written with a stray space (`src =
     // {img(...)}`) would slip past; this count would still catch it, since a
     // reformatted tag like that no longer matches `src="..."` and total would
-    // drop below 85. It also catches a photo simply being deleted from a
+    // drop below 87. It also catches a photo simply being deleted from a
     // page without the src becoming computed at all.
-    //
-    // 85 = 1 hub hero + 3 card covers + 41 weddings (40 grid + the feature)
-    // + 1 engagement + 39 events. Update deliberately when frames are added.
     expect(cdn).toBe(2);
-    expect(total).toBe(85);
+    expect(total).toBe(87);
   });
 
   // Task 5 wrote the card labels into CategoryCards so each card's src could
