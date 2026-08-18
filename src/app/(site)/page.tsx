@@ -711,8 +711,8 @@ export default function HomePage() {
             <CollageTile size="tall">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/portfolio/weddings/miranda-danny/miranda-danny-08.jpg"
-                alt="Bride and groom forehead to forehead in sepia, the sun flaring behind her veil"
+                src={img(PHOTOS.gownEditorial.path, 1000)}
+                alt={PHOTOS.gownEditorial.a}
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />

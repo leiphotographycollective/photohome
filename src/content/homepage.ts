@@ -141,5 +141,5 @@ export const WEDDING_PORTFOLIO: PortfolioRow[] = [
   { layout: "full", photos: [md("miranda-danny-12.jpg")] }, // boardwalk embrace at sunset
   { layout: "pair", photos: [tr("trang-10.jpg"), so("so-select-580.jpg")] }, // petal recessional · groom on shoulders
   { layout: "full", photos: [so("so-select-046.jpg")] }, // her mother fastening the shoe
-  { layout: "pair", photos: [so("so-select-300.jpg"), md("miranda-danny-08.jpg")] }, // veil lifted · forehead to forehead in sepia
+  { layout: "pair", photos: [so("so-select-300.jpg"), PHOTOS.gownEditorial] }, // veil lifted · editorial gown portrait
 ];
