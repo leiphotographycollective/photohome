@@ -11,8 +11,8 @@ import { ADD_ONS, INCLUDED_EVERYWHERE, TIERS } from "@/content/pricing";
 import { img, PHOTOS, type Photo } from "@/content/portfolio";
 
 export const metadata: Metadata = {
-  title: "Wedding Photography Investment: Collections from $2,400",
-  description: `${POSITIONING} Three wedding collections from $2,400 (The Full Story, The Signature and The Intimate) for couples in the ${CITY} & beyond.`,
+  title: "Wedding Photography Investment: Collections from $2,600",
+  description: `${POSITIONING} Three wedding collections from $2,600 (The Full Story, The Signature and The Intimate) for couples in the ${CITY} & beyond.`,
 };
 
 /* One photo per collection, rendered beside its block (sides alternate). */
@@ -108,7 +108,7 @@ export default function InvestmentPage() {
               color: cream(0.85),
             }}
           >
-            Collections from $2,400, each one built around how you two
+            Collections from $2,600, each one built around how you two
             actually want the day to go.
           </p>
         </div>

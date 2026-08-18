@@ -12,7 +12,7 @@ export interface Tier {
 export const TIERS: Tier[] = [
   {
     name: "The Full Story",
-    price: "$3,800",
+    price: "$4,000",
     blurb:
       "Ten hours, two photographers. My eye on the big moments, a second lens catching everything else: your partner’s face when you walk in, the details you’ll forget by Monday. For the couples who want the full story told.",
     facts: [
@@ -25,7 +25,7 @@ export const TIERS: Tier[] = [
   },
   {
     name: "The Signature",
-    price: "$2,900",
+    price: "$3,100",
     blurb:
       "Eight hours and a full day of coverage. Enough time to breathe, enough time to document everything from getting ready to the first dances. Clean edits, real moments, no posing you into something you’re not.",
     facts: [
@@ -38,7 +38,7 @@ export const TIERS: Tier[] = [
   },
   {
     name: "The Intimate",
-    price: "$2,400",
+    price: "$2,600",
     blurb:
       "Six hours. No big production, just quiet, focused coverage for the couples who want it kept close. Ceremony, portraits, the in-between moments that actually matter. Full gallery delivered, every image edited.",
     facts: [

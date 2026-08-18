@@ -463,7 +463,7 @@ export default function WeddingsGalleryPage() {
             {TESTIMONIALS[0].names}
           </div>
           <div data-fadeup="" style={{ marginTop: 34 }}>
-            <SoftLink dark href="/investment" label="Collections from $2,400" />
+            <SoftLink dark href="/investment" label="Collections from $2,600" />
           </div>
         </div>
       </section>

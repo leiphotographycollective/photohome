@@ -846,7 +846,7 @@ export default function HomePage() {
             lineHeight: 1.1,
           }}
         >
-          Collections from <em>$2,400</em>
+          Collections from <em>$2,600</em>
         </h2>
         <p
           data-fadeup=""
