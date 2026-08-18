@@ -3,7 +3,6 @@ import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import CategoryHeader from "@/components/lei/CategoryHeader";
 import CategoryGallery, {
-  GalleryGrid,
   GallerySet,
 } from "@/components/lei/CategoryGallery";
 import GalleryCta from "@/components/lei/GalleryCta";
@@ -25,7 +24,7 @@ export default function EngagementsGalleryPage() {
 
       <CategoryHeader label="Engagements" />
       <CategoryGallery blurb={ENGAGEMENTS_BLURB}>
-        <GalleryGrid columns={1}>
+        <GallerySet id="jake-priscilla" name="Jake & Priscilla" first columns={4}>
           <CollageTile>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -35,7 +34,79 @@ export default function EngagementsGalleryPage() {
               style={frame("1.5")}
             />
           </CollageTile>
-        </GalleryGrid>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/jake-priscilla/jake-priscilla-01.jpg"
+              alt="Black-and-white shot of him on one knee holding out the ring box as she covers her mouth in surprise, the twin sea stacks behind them"
+              loading="lazy"
+              style={frame("1.5004")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/jake-priscilla/jake-priscilla-02.jpg"
+              alt="Close-up of their clasped hands as they kiss, her new ring catching the light between his fingers"
+              loading="lazy"
+              style={frame("0.6665")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/jake-priscilla/jake-priscilla-03.jpg"
+              alt="They kiss as she holds her ring hand out to the camera, her hair blown across her face, the bluff-top building soft behind them"
+              loading="lazy"
+              style={frame("1.5004")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/jake-priscilla/jake-priscilla-04.jpg"
+              alt="She laughs with her hand on his shoulder, her new ring and gold bracelet on display, the ocean and sea stacks behind them"
+              loading="lazy"
+              style={frame("0.6665")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/jake-priscilla/jake-priscilla-05.jpg"
+              alt="Portrait of the newly engaged couple smiling at the camera, her ring hand resting on his chest, the rocky coastline behind them"
+              loading="lazy"
+              style={frame("0.6665")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/jake-priscilla/jake-priscilla-06.jpg"
+              alt="Couple standing close together at the edge of the old bath ruins, the cliffside building perched on the bluff behind them"
+              loading="lazy"
+              style={frame("0.6665")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/jake-priscilla/jake-priscilla-07.jpg"
+              alt="Wide shot of the couple embracing on the seawall, the twin sea stacks and crashing surf filling the frame behind them"
+              loading="lazy"
+              style={frame("1.5004")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/jake-priscilla/jake-priscilla-08.jpg"
+              alt="Wide shot of the couple standing hand in hand at the edge of the ruins, their reflection in the still water below, sea stacks in the distance"
+              loading="lazy"
+              style={frame("0.6665")}
+            />
+          </CollageTile>
+        </GallerySet>
         <GallerySet id="lisa-ricky" name="Lisa & Ricky" columns={4}>
           <CollageTile>
             {/* eslint-disable-next-line @next/next/no-img-element */}
