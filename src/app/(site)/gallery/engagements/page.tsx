@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import CategoryHeader from "@/components/lei/CategoryHeader";
-import CategoryGallery, { GalleryGrid } from "@/components/lei/CategoryGallery";
+import CategoryGallery, {
+  GalleryGrid,
+  GallerySet,
+} from "@/components/lei/CategoryGallery";
 import GalleryCta from "@/components/lei/GalleryCta";
 import { CollageTile } from "@/components/lei/Collage";
 import { frame } from "@/components/lei/frame";
@@ -21,7 +24,7 @@ export default function EngagementsGalleryPage() {
       <Chrome />
 
       <CategoryHeader label="Engagements" />
-      <CategoryGallery blurb={ENGAGEMENTS_BLURB} cap={560}>
+      <CategoryGallery blurb={ENGAGEMENTS_BLURB}>
         <GalleryGrid columns={1}>
           <CollageTile>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -33,6 +36,224 @@ export default function EngagementsGalleryPage() {
             />
           </CollageTile>
         </GalleryGrid>
+        <GallerySet id="lisa-ricky" name="Lisa & Ricky" columns={4}>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-01.jpg"
+              alt="Man and woman standing face to face on a coastal bluff, a plaid picnic blanket and champagne laid out at their feet, waves breaking below"
+              loading="lazy"
+              style={frame("0.6665")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-02.jpg"
+              alt="Man kneeling on one knee on the picnic blanket, holding the woman's hand mid-proposal above the shoreline"
+              loading="lazy"
+              style={frame("0.6665")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-03.jpg"
+              alt="The newly engaged couple kissing on the bluff, her taupe wrap around her shoulders, the tide rolling in behind them"
+              loading="lazy"
+              style={frame("0.6665")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-04.jpg"
+              alt="Couple embracing face to face on the cliffside path, a concrete piling and the fogged-in ocean behind them"
+              loading="lazy"
+              style={frame("0.6665")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-05.jpg"
+              alt="Couple seated on the picnic blanket toasting with champagne flutes, she's laughing, the rocky shoreline spread out behind them"
+              loading="lazy"
+              style={frame("0.6665")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-06.jpg"
+              alt="Couple seated back to camera on the blanket, raising champagne glasses in a toast over the fog-covered coast"
+              loading="lazy"
+              style={frame("0.6665")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-07.jpg"
+              alt="Wide view of the couple seated cross-legged on the picnic blanket, glasses raised, dwarfed by the cliffs and open water"
+              loading="lazy"
+              style={frame("1.5004")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-08.jpg"
+              alt="Couple kissing seated on the blanket, backs to camera, a concrete piling rising from the water behind them"
+              loading="lazy"
+              style={frame("0.6665")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-09.jpg"
+              alt="Couple seated close on the blanket, champagne bottle and wildflowers beside them, sea cliffs rising in the distance"
+              loading="lazy"
+              style={frame("0.7505")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-10.jpg"
+              alt="Couple kissing on the blanket, the champagne bottle resting in the grass beside them, a sea stack framed over her shoulder"
+              loading="lazy"
+              style={frame("0.7505")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-11.jpg"
+              alt="Close portrait of the couple cheek to cheek, she holds two champagne flutes and smiles past the camera"
+              loading="lazy"
+              style={frame("0.7505")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-12.jpg"
+              alt="Close portrait of the couple forehead to forehead, her new engagement ring catching the light on her champagne glass"
+              loading="lazy"
+              style={frame("0.7505")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-13.jpg"
+              alt="He kisses her cheek as she laughs, her new ring bright against the stem of her champagne flute"
+              loading="lazy"
+              style={frame("0.6665")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-14.jpg"
+              alt="The couple cheek to cheek, her eyes closed and laughing, her ring hand resting on his chest"
+              loading="lazy"
+              style={frame("0.7505")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-15.jpg"
+              alt="Macro detail of the new engagement ring on her hand, resting against his checked shirt"
+              loading="lazy"
+              style={frame("0.6665")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-16.jpg"
+              alt="Couple seated on the blanket embracing, her arm around his neck and her ring catching the light at his collar"
+              loading="lazy"
+              style={frame("1.4993")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-17.jpg"
+              alt="Couple laughing together on the blanket, her arms around his neck, the tide pools spread out below"
+              loading="lazy"
+              style={frame("0.7505")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-18.jpg"
+              alt="Close portrait of the couple foreheads touching, both laughing, her hair loose in the wind"
+              loading="lazy"
+              style={frame("0.7505")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-19.jpg"
+              alt="Macro shot of champagne being poured into her flute, her engagement ring caught in the foreground"
+              loading="lazy"
+              style={frame("0.7505")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-20.jpg"
+              alt="Couple seated close together, her ring hand resting on his chest as they laugh, sea stacks offshore behind them"
+              loading="lazy"
+              style={frame("0.6665")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-21.jpg"
+              alt="Couple embracing from behind on the concrete overlook, her ring hand on his shoulder, sea stacks out past the point"
+              loading="lazy"
+              style={frame("0.7505")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-22.jpg"
+              alt="Couple standing together on the ruined seawall, arms wrapped around each other, the open ocean behind them"
+              loading="lazy"
+              style={frame("0.7505")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-23.jpg"
+              alt="Couple kissing at the edge of the seawall, champagne glasses in hand, the graffitied ruins below"
+              loading="lazy"
+              style={frame("0.7505")}
+            />
+          </CollageTile>
+          <CollageTile>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/portfolio/engagements/lisa-ricky/lisa-ricky-24.jpg"
+              alt="Couple laughing together at the edge of the seawall, holding champagne, the coastline curving away behind them"
+              loading="lazy"
+              style={frame("0.7505")}
+            />
+          </CollageTile>
+        </GallerySet>
       </CategoryGallery>
       <GalleryCta />
     </LeiPage>
