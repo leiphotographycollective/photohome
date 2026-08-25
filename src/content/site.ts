@@ -47,6 +47,7 @@ export const localBusinessJsonLd = {
     "Wedding photography",
     "Engagement photography",
     "Editorial portraiture",
+    "Graduation photography",
   ],
   sameAs: [BUSINESS.instagram],
 } as const;

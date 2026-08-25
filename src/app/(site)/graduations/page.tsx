@@ -12,7 +12,9 @@ import {
   AKS_TRIO_SPREAD,
   HERO_STRIP,
   BAND_1,
+  BAND_1_ALT,
   BAND_2,
+  BAND_2_ALT,
   INTRO,
   TIERS,
   GROUPS,
@@ -92,8 +94,7 @@ export default function GraduationsPage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={HERO.image}
-          alt=""
-          aria-hidden="true"
+          alt={HERO.alt}
           fetchPriority="high"
           style={{
             width: "100%",
@@ -110,8 +111,7 @@ export default function GraduationsPage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={TERESA_SPREAD.image}
-            alt=""
-            aria-hidden="true"
+            alt={TERESA_SPREAD.alt}
             loading="lazy"
             style={{
               display: "block",
@@ -131,13 +131,12 @@ export default function GraduationsPage() {
         className="grad-hero-strip"
         style={{ background: "#F7F5F2", padding: "6vh 6vw" }}
       >
-        {HERO_STRIP.map((src) => (
-          <div key={src} style={{ position: "relative", overflow: "hidden" }}>
+        {HERO_STRIP.map((photo) => (
+          <div key={photo.src} style={{ position: "relative", overflow: "hidden" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={src}
-              alt=""
-              aria-hidden="true"
+              src={photo.src}
+              alt={photo.alt}
               loading="lazy"
               style={{
                 display: "block",
@@ -156,8 +155,7 @@ export default function GraduationsPage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={AKS_TRIO_SPREAD.image}
-            alt=""
-            aria-hidden="true"
+            alt={AKS_TRIO_SPREAD.alt}
             loading="lazy"
             style={{
               display: "block",
@@ -194,7 +192,7 @@ export default function GraduationsPage() {
       </section>
 
       {/* ══ Spacer band — intro note into the experiences ══ */}
-      <PhotoBand src={BAND_1} />
+      <PhotoBand src={BAND_1} alt={BAND_1_ALT} />
 
       {/* ══ The experiences — alternating photo/text blocks ══ */}
       <section
@@ -252,8 +250,7 @@ export default function GraduationsPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={t.image}
-                  alt=""
-                  aria-hidden="true"
+                  alt={t.alt}
                   loading="lazy"
                   style={{
                     display: "block",
@@ -368,7 +365,7 @@ export default function GraduationsPage() {
       </section>
 
       {/* ══ Spacer band — experiences into group sessions ══ */}
-      <PhotoBand src={BAND_2} />
+      <PhotoBand src={BAND_2} alt={BAND_2_ALT} />
 
       {/* ══ Group Sessions ══ */}
       <section
@@ -484,8 +481,7 @@ export default function GraduationsPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={g.image}
-                    alt=""
-                    aria-hidden="true"
+                    alt={g.alt}
                     loading="lazy"
                     style={{
                       display: "block",

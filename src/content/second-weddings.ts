@@ -5,7 +5,7 @@
 import { PHOTOS, SARGON_ODELYA_PHOTOS, type Photo } from "@/content/portfolio";
 
 export const META = {
-  title: "Second Wedding Photographer | Bay Area | Lei Photography Collective",
+  title: "Second Wedding Photographer | Bay Area",
   description:
     "Relaxed, beautiful photography for second weddings, elopements and intimate celebrations across the SF Bay Area. Short coverage, fair prices, photos in 3 weeks.",
 };

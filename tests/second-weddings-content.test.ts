@@ -17,9 +17,7 @@ const SOURCE = readFileSync("src/content/second-weddings.ts", "utf8");
 
 describe("second-weddings SEO + hero", () => {
   it("has the approved meta and headline", () => {
-    expect(META.title).toBe(
-      "Second Wedding Photographer | Bay Area | Lei Photography Collective"
-    );
+    expect(META.title).toBe("Second Wedding Photographer | Bay Area");
     expect(META.description).toBe(
       "Relaxed, beautiful photography for second weddings, elopements and intimate celebrations across the SF Bay Area. Short coverage, fair prices, photos in 3 weeks."
     );
