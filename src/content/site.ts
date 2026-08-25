@@ -20,7 +20,7 @@ export const BUSINESS = {
   name: "Lei Photography Collective",
   founder: "Raymond Lei",
   email: "leiphotography57@gmail.com",
-  instagram: "https://instagram.com/lei.photography.co",
+  instagram: "https://www.instagram.com/leiphotography.co/",
   priceRange: "$$$",
   image: img(PHOTOS.headshot.path, 1200),
 } as const;

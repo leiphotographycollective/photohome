@@ -8,6 +8,7 @@ import { EVENTS } from "@/content/events";
 // /weddings and /portfolio are deliberately absent: they redirect to /gallery,
 // and a redirected URL must never appear in the sitemap. /links is noindex and
 // /wedding-timeline-guide is an unlisted funnel page, so neither is here.
+// /second-weddings is archived (noindex, unlinked from nav) so it's absent too.
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
@@ -26,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),
-    { url: `${SITE_URL}/second-weddings`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/graduations`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/investment`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/experience`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },

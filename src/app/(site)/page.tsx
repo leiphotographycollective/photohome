@@ -711,8 +711,8 @@ export default function HomePage() {
             <CollageTile size="tall">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={img(PHOTOS.gownEditorial.path, 1000)}
-                alt={PHOTOS.gownEditorial.a}
+                src="https://images.squarespace-cdn.com/content/v1/697c1d6344a3b1154bcbc39e/a4dc9303-abdb-418f-b9df-d2f910a25833/bay-area-fashion-editorial-portrait-evening-gown-lei-photography-collective?format=1000w"
+                alt="Editorial portrait in a flowing evening gown, natural light"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
@@ -957,7 +957,7 @@ export default function HomePage() {
                 leiphotography57@gmail.com
               </a>
               <a
-                href="http://instagram.com/lei.photography.co"
+                href="https://www.instagram.com/leiphotography.co/"
                 data-hover=""
                 style={{
                   color: cream(0.6),

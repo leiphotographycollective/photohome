@@ -19,9 +19,12 @@ import {
   FINAL_CTA,
 } from "@/content/second-weddings";
 
+// Archived: unlinked from nav and the sitemap, and noindexed here. The page
+// itself is left intact so it can be reinstated later without rebuilding it.
 export const metadata: Metadata = {
   title: META.title,
   description: META.description,
+  robots: { index: false, follow: false },
 };
 
 export default function SecondWeddingsPage() {

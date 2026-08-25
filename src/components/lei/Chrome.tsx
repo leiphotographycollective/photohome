@@ -82,6 +82,9 @@ export default function Chrome() {
           data-hover=""
           className="lx-logo"
           style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 10,
             whiteSpace: "nowrap",
             fontSize: 13,
             fontWeight: 700,
@@ -91,6 +94,13 @@ export default function Chrome() {
             textDecoration: "none",
           }}
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/brand/rl-mark.png"
+            alt=""
+            aria-hidden="true"
+            style={{ width: 32, height: 32, display: "block" }}
+          />
           Lei Photography{" "}
           <span style={{ fontWeight: 400, color: DIM }}>Collective</span>
         </Link>

@@ -141,5 +141,15 @@ export const WEDDING_PORTFOLIO: PortfolioRow[] = [
   { layout: "full", photos: [md("miranda-danny-12.jpg")] }, // boardwalk embrace at sunset
   { layout: "pair", photos: [tr("trang-10.jpg"), so("so-select-580.jpg")] }, // petal recessional · groom on shoulders
   { layout: "full", photos: [so("so-select-046.jpg")] }, // her mother fastening the shoe
-  { layout: "pair", photos: [so("so-select-300.jpg"), PHOTOS.gownEditorial] }, // veil lifted · editorial gown portrait
+  {
+    layout: "pair",
+    photos: [
+      so("so-select-300.jpg"),
+      {
+        path: "https://images.squarespace-cdn.com/content/v1/697c1d6344a3b1154bcbc39e/a4dc9303-abdb-418f-b9df-d2f910a25833/bay-area-fashion-editorial-portrait-evening-gown-lei-photography-collective?format=1000w",
+        a: PHOTOS.gownEditorial.a,
+        r: PHOTOS.gownEditorial.r,
+      },
+    ],
+  }, // veil lifted · editorial gown portrait
 ];

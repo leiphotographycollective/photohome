@@ -8,7 +8,7 @@ describe("investment tiers", () => {
       "The Signature",
       "The Intimate",
     ]);
-    expect(TIERS.map((t) => t.price)).toEqual(["$3,800", "$2,900", "$2,400"]);
+    expect(TIERS.map((t) => t.price)).toEqual(["$4,000", "$3,100", "$2,600"]);
   });
 
   it("keeps typographic apostrophes in blurb copy", () => {

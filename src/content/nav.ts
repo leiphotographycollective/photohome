@@ -49,7 +49,6 @@ export const INQUIRE: NavItem = { href: "/inquire", label: "Inquire" };
 export const WEDDINGS_MENU: NavItem[] = [
   { href: "/gallery/engagements", label: "Engagements" },
   { href: "/experience", label: "Experience" },
-  { href: "/second-weddings", label: "Second Weddings" },
   { href: "/free-session", label: "Free Session" },
 ];
 
@@ -58,6 +57,7 @@ export const WEDDINGS_MENU: NavItem[] = [
 export const PRIMARY_NAV: NavEntry[] = [
   { href: "/gallery", label: "Gallery" },
   { label: "Weddings", children: WEDDINGS_MENU },
+  { href: "/graduations", label: "Graduations" },
   { href: "/investment", label: "Investment" },
   { href: "/about", label: "About" },
 ];
@@ -66,7 +66,7 @@ export const PRIMARY_NAV: NavEntry[] = [
  *  into plain links here. */
 export const FOOTER_EXPLORE: NavItem[] = [
   { href: "/gallery", label: "Gallery" },
-  { href: "/second-weddings", label: "Second Weddings" },
+  { href: "/graduations", label: "Graduations" },
   { href: "/free-session", label: "Free Session" },
   { href: "/experience", label: "Experience" },
   { href: "/investment", label: "Investment" },
@@ -80,7 +80,7 @@ export const FOOTER_CONNECT: NavItem[] = [
 
 /** Footer socials, external. */
 export const SOCIALS: NavItem[] = [
-  { href: "http://instagram.com/lei.photography.co", label: "Instagram" },
+  { href: "https://www.instagram.com/leiphotography.co/", label: "Instagram" },
   { href: "https://www.pinterest.com/LeiPhotographyCo/", label: "Pinterest" },
   { href: "mailto:leiphotography57@gmail.com", label: "Email" },
 ];
