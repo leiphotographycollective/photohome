@@ -11,8 +11,10 @@ export const META = {
 };
 
 export const HERO = {
+  kicker: "SJSU, UCB, SU, SCU, SFSU",
   headline: "GRADS 2026",
-  subheadline: "Portraits and films for your final season as a student.",
+  subheadline:
+    "Your final documentation of one of the most important times in your life. Make it personal and meaningful, because your kids and grandkids WILL see these pictures.",
   image: "/images/portfolio/graduation/ezirel/ezirel-hero.jpg",
 };
 

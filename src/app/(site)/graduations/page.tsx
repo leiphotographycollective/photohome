@@ -47,6 +47,9 @@ export default function GraduationsPage() {
           textAlign: "center",
         }}
       >
+        <div data-fadeup="" style={kicker({ marginBottom: 14 }, 11, ".3em")}>
+          {HERO.kicker}
+        </div>
         <h1
           data-title-line=""
           style={{
@@ -129,7 +132,7 @@ export default function GraduationsPage() {
         style={{ background: "#F7F5F2", padding: "6vh 6vw" }}
       >
         {HERO_STRIP.map((src) => (
-          <div key={src} data-reveal="" style={{ position: "relative", overflow: "hidden" }}>
+          <div key={src} style={{ position: "relative", overflow: "hidden" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={src}
