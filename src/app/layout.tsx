@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bodoni_Moda, DM_Sans } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE_URL, localBusinessJsonLd } from "@/content/site";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${dmSans.variable} ${bodoni.variable}`}>
       <body>
         {children}
+        <Analytics />
         {/* LocalBusiness structured data (site-wide). Validate with Google's
             Rich Results Test. `<` is escaped to guard against XSS in strings. */}
         <script
