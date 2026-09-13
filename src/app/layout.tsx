@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bodoni_Moda, DM_Sans } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE_URL, localBusinessJsonLd } from "@/content/site";
 import "./globals.css";
 
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </body>
+      <GoogleAnalytics gaId="G-FZPV80DSEF" />
     </html>
   );
 }
