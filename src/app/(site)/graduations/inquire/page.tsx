@@ -23,23 +23,68 @@ export default function GraduationInquiryPage() {
     <LeiPage>
       <Chrome />
 
+      <style>{`
+        .grad-inquiry-hero {
+          min-height: 72svh;
+          grid-template-columns: 1fr 1fr;
+        }
+        .grad-inquiry-copy {
+          padding: calc(var(--lx-header-h) + 7vh) 6vw 9vh;
+        }
+        .grad-inquiry-photo {
+          position: relative;
+          min-height: 72svh;
+          overflow: hidden;
+          background: #EDE9E3;
+        }
+        .grad-inquiry-photo img {
+          position: absolute;
+          inset: 0;
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+        }
+        .grad-inquiry-form {
+          padding: 14vh 38px 16vh;
+        }
+        @media (max-width: 860px) {
+          .grad-inquiry-hero {
+            min-height: auto;
+          }
+          .grad-inquiry-copy {
+            padding: calc(var(--lx-header-h) + 7vh) 24px 8vh;
+          }
+          .grad-inquiry-photo {
+            min-height: 0;
+          }
+          .grad-inquiry-photo img {
+            position: relative;
+            width: 100%;
+            height: auto;
+          }
+          .grad-inquiry-form {
+            padding: 11vh 20px 13vh;
+          }
+        }
+      `}</style>
+
       <section
-        className="lx-grid-2col"
+        className="grad-inquiry-hero lx-grid-2col"
         style={{
           position: "relative",
-          minHeight: "72svh",
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
           background: "#F7F5F2",
           color: "#0E0D0B",
         }}
       >
         <div
+          className="grad-inquiry-copy"
           style={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            padding: "calc(var(--lx-header-h) + 7vh) 6vw 9vh",
           }}
         >
           <div data-fadeup="" style={kicker({ marginBottom: 22 }, 11, ".3em")}>
@@ -76,36 +121,24 @@ export default function GraduationInquiryPage() {
         </div>
 
         <div
+          className="grad-inquiry-photo"
           data-reveal=""
-          style={{
-            position: "relative",
-            minHeight: "52vh",
-            overflow: "hidden",
-            background: "#0E0D0B",
-          }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={GRADUATION_INQUIRY_HERO.image}
             alt={GRADUATION_INQUIRY_HERO.alt}
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
           />
         </div>
       </section>
 
       <section
         id="form"
+        className="grad-inquiry-form"
         style={{
           position: "relative",
           background: "#F7F5F2",
           color: "#0E0D0B",
-          padding: "14vh 38px 16vh",
           scrollMarginTop: "calc(var(--lx-header-h) + 24px)",
         }}
       >
