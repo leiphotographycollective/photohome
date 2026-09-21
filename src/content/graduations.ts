@@ -70,7 +70,7 @@ export const BAND_2_ALT =
   "Graduation cap, heels, and honor cords laid out on the grass at San Jose State";
 
 export const INTRO =
-  "As a San Jose State graduation photographer, I tailor every session below to your cap and gown, your favorite spot on campus, and the people you want in frame. Tell me about your grad date and I’ll send the full breakdown.";
+  "As a San Jose State graduation photographer, I tailor every session below to your cap and gown, your favorite spot on campus, and the people you want in frame. Tell me about your graduation and let’s take some fire photos >:D";
 
 export interface GradTier {
   name: string;
