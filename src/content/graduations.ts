@@ -82,7 +82,7 @@ export interface GradTier {
 export const TIERS: GradTier[] = [
   {
     name: "The Classic Experience",
-    price: "$225",
+    price: "$300",
     kicker: "45 min · 1 location",
     blurb:
       "An introductory and refined graduation session, perfect for graduates who want beautiful portraits without a long shoot.",
@@ -98,7 +98,7 @@ export const TIERS: GradTier[] = [
   },
   {
     name: "The Signature Experience",
-    price: "$350",
+    price: "$450",
     kicker: "90 min · 2 locations",
     popular: true,
     blurb:
@@ -116,7 +116,7 @@ export const TIERS: GradTier[] = [
   {
     name: "The Premium Experience",
     subtitle: "Photo + Film Experience · Only 3 spots available!",
-    price: "$500",
+    price: "$650",
     kicker: "2 to 2.5 hours · 3 locations",
     blurb:
       "A cinematic graduation story, combining portraits with a short graduation film you’ll be able to relive for years.",
@@ -159,7 +159,7 @@ export interface GroupTier {
 export const GROUP_TIERS: GroupTier[] = [
   {
     name: "Two People",
-    price: "$175 / person",
+    price: "$225 / person",
     facts: [
       "60 minutes of shooting time",
       "1 location & outfit",
@@ -172,7 +172,7 @@ export const GROUP_TIERS: GroupTier[] = [
   },
   {
     name: "Three People",
-    price: "$160 / person",
+    price: "$200 / person",
     facts: [
       "90 minutes of shooting time",
       "1 to 2 locations & outfits",
@@ -185,7 +185,7 @@ export const GROUP_TIERS: GroupTier[] = [
   },
   {
     name: "Four People+",
-    price: "$140 / person",
+    price: "$175 / person",
     facts: [
       "120 minutes of shooting time",
       "3 locations & outfits",
