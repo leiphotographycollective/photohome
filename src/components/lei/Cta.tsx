@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { GOLD, pill, cream, ink } from "./tokens";
+import { CREAM, GOLD, INK, pill } from "./tokens";
 import { CTA_HREF, CTA_LABEL } from "@/content/homepage";
 
 /* The one conversion CTA — a solid gold pill. Gold is reserved for
@@ -25,9 +25,8 @@ export function CtaLink({
   );
 }
 
-/** Generic quiet underlined link — the subordinate treatment for non-primary
- *  destinations (free session, experience, investment). Gold appears only in
- *  the underline, so the gold pill stays the page's one conversion action. */
+/** Secondary CTA — still a clear rounded button, with lower visual priority
+ *  than the primary gold conversion action. */
 export function SoftLink({
   href,
   label,
@@ -41,18 +40,13 @@ export function SoftLink({
 }) {
   return (
     <Link
+      data-mag=""
       data-hover=""
       href={href}
       className="lx-cta2"
       style={{
-        fontSize: 12,
-        fontWeight: 500,
-        letterSpacing: ".12em",
-        textTransform: "uppercase",
-        color: dark ? cream(0.72) : ink(0.62),
-        textDecoration: "underline",
-        textUnderlineOffset: 5,
-        textDecorationColor: "rgba(184,144,90,.55)",
+        ...pill(dark ? GOLD : INK, dark ? INK : CREAM, "14px 26px"),
+        borderColor: dark ? GOLD : INK,
         ...style,
       }}
     >

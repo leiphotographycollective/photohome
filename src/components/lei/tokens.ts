@@ -44,15 +44,24 @@ export function navLink(color = "#fff"): CSSProperties {
 /** Rounded pill CTA. */
 export function pill(bg: string, color: string, pad = "16px 34px"): CSSProperties {
   return {
-    display: "inline-block",
-    fontSize: 11,
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: 48,
+    boxSizing: "border-box",
+    fontSize: 12,
     fontWeight: 700,
-    letterSpacing: ".22em",
+    lineHeight: 1.2,
+    letterSpacing: ".18em",
     textTransform: "uppercase",
     color,
     background: bg,
     textDecoration: "none",
     padding: pad,
     borderRadius: 999,
+    border: "1px solid rgba(14,13,11,.14)",
+    boxShadow: "0 10px 28px rgba(14,13,11,.16)",
+    transition: "filter var(--transition), box-shadow var(--transition)",
+    textAlign: "center",
   };
 }

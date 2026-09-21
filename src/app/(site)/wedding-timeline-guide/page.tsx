@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
-import { GOLD, INK, MUTED, SERIF, kicker } from "@/components/lei/tokens";
+import { GOLD, INK, MUTED, SERIF, kicker, pill } from "@/components/lei/tokens";
 
 /*
   FUNNEL LANDING PAGE — /wedding-timeline-guide  (Sub-project E, SCAFFOLD)
@@ -127,16 +127,11 @@ export default function WeddingTimelineGuidePage() {
             />
             <button
               type="button"
+              data-mag=""
+              data-hover=""
               style={{
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: ".22em",
-                textTransform: "uppercase",
-                color: INK,
-                background: GOLD,
+                ...pill(GOLD, INK, "16px 30px"),
                 border: "none",
-                padding: "16px 30px",
-                borderRadius: 999,
                 cursor: "pointer",
               }}
             >
