@@ -10,6 +10,14 @@ export const META = {
     "San Jose State graduation photographer shooting SJSU senior portraits at Tower Lawn, 7th Street, and other campus landmarks. Solo and group sessions available.",
 };
 
+/** Dedicated HoneyBook funnel for every graduation-page conversion action. */
+export const GRADUATION_INQUIRY_HREF = "/graduations/inquire#form";
+
+export const GRADUATION_INQUIRY_HERO = {
+  image: "/images/portfolio/graduation/graduation-inquiry-hero.jpg",
+  alt: "Graduate in cap and gown walking along the coast in warm sunset light",
+};
+
 export const HERO = {
   kicker: "SJSU, UCB, SU, SCU, SFSU",
   headline: "GRADS 2026",

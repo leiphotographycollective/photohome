@@ -8,16 +8,18 @@ import { CTA_HREF, CTA_LABEL } from "@/content/homepage";
 
 export function CtaLink({
   label = CTA_LABEL,
+  href = CTA_HREF,
   style,
 }: {
   label?: string;
+  href?: string;
   style?: CSSProperties;
 }) {
   return (
     <Link
       data-mag=""
       data-hover=""
-      href={CTA_HREF}
+      href={href}
       style={{ ...pill(GOLD, "#0E0D0B"), ...style }}
     >
       {label}
