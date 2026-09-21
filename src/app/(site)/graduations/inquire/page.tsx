@@ -25,44 +25,29 @@ export default function GraduationInquiryPage() {
 
       <style>{`
         .grad-inquiry-hero {
-          min-height: 72svh;
           grid-template-columns: 1fr 1fr;
+          align-items: stretch;
         }
         .grad-inquiry-copy {
           padding: calc(var(--lx-header-h) + 7vh) 6vw 9vh;
         }
         .grad-inquiry-photo {
           position: relative;
-          min-height: 72svh;
           overflow: hidden;
           background: #EDE9E3;
         }
         .grad-inquiry-photo img {
-          position: absolute;
-          inset: 0;
+          position: relative;
           display: block;
           width: 100%;
-          height: 100%;
-          object-fit: contain;
-          object-position: center;
+          height: auto;
         }
         .grad-inquiry-form {
           padding: 14vh 38px 16vh;
         }
         @media (max-width: 860px) {
-          .grad-inquiry-hero {
-            min-height: auto;
-          }
           .grad-inquiry-copy {
             padding: calc(var(--lx-header-h) + 7vh) 24px 8vh;
-          }
-          .grad-inquiry-photo {
-            min-height: 0;
-          }
-          .grad-inquiry-photo img {
-            position: relative;
-            width: 100%;
-            height: auto;
           }
           .grad-inquiry-form {
             padding: 11vh 20px 13vh;
