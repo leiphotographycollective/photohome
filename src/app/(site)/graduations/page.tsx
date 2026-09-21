@@ -21,6 +21,7 @@ import {
   GROUP_TIERS,
   GROUP_FOOTNOTE,
   FINAL_CTA,
+  GRADUATION_INQUIRY_HREF,
 } from "@/content/graduations";
 
 export const metadata: Metadata = {
@@ -356,7 +357,7 @@ export default function GraduationsPage() {
                   {t.price}
                 </div>
                 <div data-fadeup="">
-                  <SoftLink href="/inquire#form" label="Reserve this experience" />
+                  <SoftLink href={GRADUATION_INQUIRY_HREF} label="Reserve this experience" />
                 </div>
               </div>
             </div>
@@ -554,7 +555,11 @@ export default function GraduationsPage() {
                         {GROUP_FOOTNOTE}
                       </p>
                       <div data-fadeup="">
-                        <SoftLink href="/inquire#form" label="Reserve this experience" dark />
+                        <SoftLink
+                          href={GRADUATION_INQUIRY_HREF}
+                          label="Reserve this experience"
+                          dark
+                        />
                       </div>
                     </>
                   )}
@@ -609,7 +614,10 @@ export default function GraduationsPage() {
                 gap: 16,
               }}
             >
-              <CtaLink label={FINAL_CTA.ctaLabel} />
+              <CtaLink
+                href={GRADUATION_INQUIRY_HREF}
+                label={FINAL_CTA.ctaLabel}
+              />
             </div>
           </div>
         </div>
