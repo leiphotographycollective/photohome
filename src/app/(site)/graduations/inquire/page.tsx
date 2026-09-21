@@ -4,7 +4,7 @@ import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
 import { MUTED, SERIF, kicker } from "@/components/lei/tokens";
-import { HERO } from "@/content/graduations";
+import { GRADUATION_INQUIRY_HERO } from "@/content/graduations";
 
 export const metadata: Metadata = {
   title: "Graduation Photography Inquiry",
@@ -86,8 +86,8 @@ export default function GraduationInquiryPage() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={HERO.image}
-            alt={HERO.alt}
+            src={GRADUATION_INQUIRY_HERO.image}
+            alt={GRADUATION_INQUIRY_HERO.alt}
             style={{
               position: "absolute",
               inset: 0,
