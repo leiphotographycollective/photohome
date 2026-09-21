@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Bodoni_Moda, DM_Sans } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { SITE_URL, localBusinessJsonLd } from "@/content/site";
+import { SITE_TITLE, SITE_URL, localBusinessJsonLd } from "@/content/site";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -22,8 +22,7 @@ const bodoni = Bodoni_Moda({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default:
-      "Lei Photography Collective | San Francisco Bay Area Editorial Wedding Photography",
+    default: SITE_TITLE,
     template: "%s | Lei Photography Collective",
   },
   description:

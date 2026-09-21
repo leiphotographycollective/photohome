@@ -10,6 +10,10 @@
 import { CITY, POSITIONING } from "@/content/homepage";
 import { img, PHOTOS } from "@/content/portfolio";
 
+/** Primary browser, search, and social-sharing title. */
+export const SITE_TITLE =
+  "Raymond Lei - Bay Area Photographer - Weddings, events & more";
+
 /** Canonical production origin, no trailing slash. */
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://leiphotography.co"

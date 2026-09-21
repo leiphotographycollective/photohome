@@ -12,11 +12,25 @@ import HeroSlideshow from "@/components/lei/HeroSlideshow";
 import { HOME_PROCESS } from "@/content/experience";
 import TestimonialFeature from "@/components/lei/TestimonialFeature";
 import { Collage, CollageTile } from "@/components/lei/Collage";
+import { SITE_TITLE } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Editorial Wedding Photography in the San Francisco Bay Area",
+  title: { absolute: SITE_TITLE },
   description:
     `${POSITIONING} Editorial wedding photography for couples who want to be present in their wedding, not stress about it. ${CITY} & beyond, by Raymond Lei.`,
+  openGraph: {
+    title: SITE_TITLE,
+    description:
+      `${POSITIONING} Editorial wedding photography for couples who want to be present in their wedding, not stress about it. ${CITY} & beyond, by Raymond Lei.`,
+    siteName: "Lei Photography Collective",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    title: SITE_TITLE,
+    description:
+      `${POSITIONING} Editorial wedding photography for couples who want to be present in their wedding, not stress about it. ${CITY} & beyond, by Raymond Lei.`,
+  },
 };
 
 /** Portfolio rows are written out one by one (no .map over WEDDING_PORTFOLIO)
