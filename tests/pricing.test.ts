@@ -39,6 +39,6 @@ describe("investment tiers", () => {
       "Engagement session",
       "Second photographer",
     ]);
-    expect(ADD_ONS.map((a) => a.price)).toEqual(["+$250", "+$600"]);
+    expect(ADD_ONS.map((a) => a.price)).toEqual(["+$1,000", "+$75 to $100/hr"]);
   });
 });
