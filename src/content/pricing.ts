@@ -66,12 +66,12 @@ export interface AddOn {
 export const ADD_ONS: AddOn[] = [
   {
     name: "Engagement session",
-    price: "+$250",
+    price: "+$1,000",
     note: "Available with every collection",
   },
   {
     name: "Second photographer",
-    price: "+$600",
+    price: "+$75 to $100/hr",
     note: "For The Intimate and The Signature, already included in The Full Story",
   },
 ];
