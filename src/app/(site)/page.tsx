@@ -3,7 +3,7 @@ import Link from "next/link";
 import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
-import { Marquee, PhotoBand, ProcessSteps } from "@/components/lei/blocks";
+import { Marquee, PhotoBand, ProcessSteps, TrustedByMarquee } from "@/components/lei/blocks";
 import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
 import { CtaLink, SoftLink } from "@/components/lei/Cta";
@@ -538,6 +538,9 @@ export default function HomePage() {
               </ul>
             </div>
           </div>
+
+          {/* Partner proof — scrolls under the expect grid */}
+          <TrustedByMarquee />
         </div>
       </section>
 

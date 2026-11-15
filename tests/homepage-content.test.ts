@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import { existsSync } from "node:fs";
 import {
   CITY,
   CTA_HREF,
@@ -11,6 +12,7 @@ import {
   TESTIMONIALS,
   WEDDING_PORTFOLIO,
 } from "@/content/homepage";
+import { TRUSTED_BY_LOGOS } from "@/components/lei/blocks";
 
 describe("CTA constants", () => {
   it("match the spec exactly", () => {
@@ -82,6 +84,28 @@ describe("testimonials", () => {
     expect(TESTIMONIALS[0].names).toBe("Sargon & Odelya");
     expect(TESTIMONIALS[0].pull).toContain("critical to our culture");
     expect(TESTIMONIALS[0].quote).toContain("Middle Eastern wedding");
+  });
+});
+
+describe("trusted by marquee", () => {
+  it("lists Love & Photos with a real local PNG and renders on the homepage", () => {
+    expect(TRUSTED_BY_LOGOS.length).toBeGreaterThanOrEqual(1);
+    expect(TRUSTED_BY_LOGOS[0].alt).toBe("Love & Photos");
+    expect(TRUSTED_BY_LOGOS[0].src).toBe("/images/brand/love-and-photos.png");
+    expect(
+      existsSync(
+        join(process.cwd(), "public", TRUSTED_BY_LOGOS[0].src.replace(/^\//, ""))
+      )
+    ).toBe(true);
+
+    const source = readFileSync(
+      join(process.cwd(), "src/app/(site)/page.tsx"),
+      "utf8"
+    );
+    expect(source).toContain("<TrustedByMarquee");
+    expect(source.indexOf("<TrustedByMarquee")).toBeGreaterThan(
+      source.indexOf("What to expect")
+    );
   });
 });
 

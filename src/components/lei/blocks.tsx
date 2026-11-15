@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { GOLD, SERIF, cream } from "./tokens";
+import { GOLD, SERIF, cream, ink } from "./tokens";
 
 /* Reusable page blocks shared by several Lei pages. */
 
@@ -82,6 +82,139 @@ export function Marquee({
         <span style={span}>{chunk}</span>
         <span style={span}>{chunk}</span>
       </div>
+    </div>
+  );
+}
+
+/** Partner logos that scroll under "As trusted by" on the homepage.
+ *  Duplicate entries intentionally so a single partner still fills the track. */
+export const TRUSTED_BY_LOGOS = [
+  {
+    src: "/images/brand/love-and-photos.png",
+    alt: "Love & Photos",
+    href: "https://loveandphotos.com/",
+  },
+] as const;
+
+/** Light-background logo marquee: "As trusted by" kicker + scrolling logos. */
+export function TrustedByMarquee({
+  logos = TRUSTED_BY_LOGOS,
+  label = "As trusted by",
+}: {
+  logos?: readonly { src: string; alt: string; href?: string }[];
+  label?: string;
+}) {
+  const item: CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: 52,
+    padding: "0 2.8vw",
+    flexShrink: 0,
+    textDecoration: "none",
+  };
+  const img: CSSProperties = {
+    height: "100%",
+    width: "auto",
+    maxWidth: 180,
+    objectFit: "contain",
+    display: "block",
+    opacity: 0.92,
+  };
+
+  // Two identical halves so lxMarquee's -50% translate loops seamlessly.
+  // With a short partner list, repeat logos inside each half so the track
+  // is wide enough that the scroll never looks sparse.
+  const repeats = Math.max(4, Math.ceil(8 / Math.max(logos.length, 1)));
+  const half = Array.from({ length: repeats }, (_, copy) =>
+    logos.map((logo) => {
+      const mark = (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={logo.src} alt="" style={img} />
+      );
+      const key = `${logo.src}-${copy}`;
+      return logo.href ? (
+        <a
+          key={key}
+          href={logo.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={item}
+          tabIndex={-1}
+          aria-hidden="true"
+        >
+          {mark}
+        </a>
+      ) : (
+        <span key={key} style={item} aria-hidden="true">
+          {mark}
+        </span>
+      );
+    })
+  );
+
+  return (
+    <div
+      style={{
+        position: "relative",
+        marginTop: "10vh",
+        paddingTop: "5vh",
+        borderTop: `1px solid ${ink(0.08)}`,
+      }}
+    >
+      <div
+        style={{
+          fontSize: 10,
+          fontWeight: 700,
+          letterSpacing: ".28em",
+          textTransform: "uppercase",
+          color: GOLD,
+          textAlign: "center",
+          marginBottom: 28,
+        }}
+      >
+        {label}
+      </div>
+      <div
+        aria-label={label}
+        style={{
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+          maskImage:
+            "linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)",
+        }}
+      >
+        <div
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            animation: "lxMarquee 28s linear infinite",
+            willChange: "transform",
+          }}
+        >
+          <span style={{ display: "inline-flex", alignItems: "center" }} aria-hidden="true">
+            {half}
+          </span>
+          <span style={{ display: "inline-flex", alignItems: "center" }} aria-hidden="true">
+            {half}
+          </span>
+        </div>
+      </div>
+      <ul
+        style={{
+          position: "absolute",
+          width: 1,
+          height: 1,
+          overflow: "hidden",
+          clip: "rect(0 0 0 0)",
+        }}
+      >
+        {logos.map((logo) => (
+          <li key={logo.src}>{logo.alt}</li>
+        ))}
+      </ul>
     </div>
   );
 }
