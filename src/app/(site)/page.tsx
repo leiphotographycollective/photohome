@@ -959,7 +959,7 @@ export default function HomePage() {
               }}
             >
               <a
-                href="mailto:leiphotography57@gmail.com"
+                href="mailto:raymond@leiphotography.co"
                 data-hover=""
                 style={{
                   color: "#F7F5F2",
@@ -968,7 +968,7 @@ export default function HomePage() {
                   letterSpacing: ".06em",
                 }}
               >
-                leiphotography57@gmail.com
+                raymond@leiphotography.co
               </a>
               <a
                 href="https://www.instagram.com/leiphotography.co/"

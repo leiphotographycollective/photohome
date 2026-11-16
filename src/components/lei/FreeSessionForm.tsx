@@ -225,8 +225,8 @@ export default function FreeSessionForm() {
         <p style={{ marginTop: 18, textAlign: "center", fontSize: 15, color: "#A33A2A" }}>
           Something went wrong sending your message. Please try again, or email me
           directly at{" "}
-          <a href="mailto:leiphotography57@gmail.com" style={{ color: "#A33A2A" }}>
-            leiphotography57@gmail.com
+          <a href="mailto:raymond@leiphotography.co" style={{ color: "#A33A2A" }}>
+            raymond@leiphotography.co
           </a>
           .
         </p>

@@ -41,7 +41,7 @@ export default function HoneyBookEmbed() {
           planning, and I&rsquo;ll reply within a day.
         </p>
         <a
-          href="mailto:leiphotography57@gmail.com?subject=Second%20wedding%20date%20check"
+          href="mailto:raymond@leiphotography.co?subject=Second%20wedding%20date%20check"
           data-hover=""
           style={{
             fontSize: 12,
@@ -54,7 +54,7 @@ export default function HoneyBookEmbed() {
             textDecorationColor: "rgba(184,144,90,.55)",
           }}
         >
-          leiphotography57@gmail.com
+          raymond@leiphotography.co
         </a>
       </div>
     );
