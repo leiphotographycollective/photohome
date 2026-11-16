@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 */
 
 const DETAILS: Array<{ label: string; value: string; href?: string }> = [
-  { label: "Email", value: "leiphotography57@gmail.com", href: "mailto:leiphotography57@gmail.com" },
+  { label: "Email", value: "raymond@leiphotography.co", href: "mailto:raymond@leiphotography.co" },
   { label: "Instagram", value: "@leiphotography.co", href: "https://www.instagram.com/leiphotography.co/" },
   { label: "Based in", value: "San Francisco Bay Area" },
   { label: "Response time", value: "Within 48 hours" },

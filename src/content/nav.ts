@@ -82,5 +82,5 @@ export const FOOTER_CONNECT: NavItem[] = [
 export const SOCIALS: NavItem[] = [
   { href: "https://www.instagram.com/leiphotography.co/", label: "Instagram" },
   { href: "https://www.pinterest.com/LeiPhotographyCo/", label: "Pinterest" },
-  { href: "mailto:leiphotography57@gmail.com", label: "Email" },
+  { href: "mailto:raymond@leiphotography.co", label: "Email" },
 ];
