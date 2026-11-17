@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Bodoni_Moda, DM_Sans } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { SITE_TITLE, SITE_URL, localBusinessJsonLd } from "@/content/site";
+import { HOME_DESCRIPTION, SITE_TITLE, SITE_URL, localBusinessJsonLd } from "@/content/site";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -25,8 +25,7 @@ export const metadata: Metadata = {
     default: SITE_TITLE,
     template: "%s | Lei Photography Collective",
   },
-  description:
-    "Your wedding, shot like the cover story it is. Raymond Lei photographs editorial, fashion-influenced weddings for fun, stylish couples in the San Francisco Bay Area & beyond.",
+  description: HOME_DESCRIPTION,
   applicationName: "Lei Photography Collective",
   openGraph: {
     siteName: "Lei Photography Collective",

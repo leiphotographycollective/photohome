@@ -22,7 +22,8 @@ import { GOLD, INK, MUTED, SERIF, kicker, pill } from "@/components/lei/tokens";
 export const metadata: Metadata = {
   title: "Free Wedding Timeline Guide",
   description:
-    "A free, photographer-built wedding day timeline guide: how to plan a day that stays relaxed, keeps golden hour, and never rushes the photos. San Francisco Bay Area.",
+    "A free, photographer-built wedding day timeline guide: how to plan a day that stays relaxed, keeps golden hour, and never rushes the photos. San Jose and the South Bay.",
+  alternates: { canonical: "/wedding-timeline-guide" },
 };
 
 const INSIDE = [

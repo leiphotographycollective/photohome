@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "Airaea Event Gallery",
   description:
     "A leadership workshop for Airaea: a speaker at the front and a room taking notes.",
+  alternates: { canonical: "/gallery/events/airaea" },
 };
 
 const event = EVENTS.find((e) => e.id === "airaea")!;

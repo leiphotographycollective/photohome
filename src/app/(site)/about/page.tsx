@@ -8,9 +8,10 @@ import { DIM, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens"
 import { img, PHOTOS } from "@/content/portfolio";
 
 export const metadata: Metadata = {
-  title: "About Raymond Lei",
+  title: "About Raymond Lei, San Jose Wedding Photographer",
   description:
-    "Meet Raymond Lei, a San Jose photographer who adapts from light and airy to editorial, so your photos look like you, not a formula. Calm, easy shoots across the San Francisco Bay Area.",
+    "Meet Raymond Lei, a San Jose wedding photographer. Editorial, romantic portraits and real moments for South Bay couples, with travel to San Francisco and the Peninsula.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
@@ -50,11 +51,11 @@ export default function AboutPage() {
               letterSpacing: ".01em",
             }}
           >
-            <div data-title-line="" style={{ fontSize: "clamp(40px,5.6vw,88px)" }}>
-              Hi there,
+            <div data-title-line="" style={{ fontSize: "clamp(36px,4.6vw,72px)" }}>
+              San Jose wedding
             </div>
-            <div data-title-line="" style={{ fontSize: "clamp(40px,5.6vw,88px)" }}>
-              nice to <em style={{ fontWeight: 400 }}>meet you.</em>
+            <div data-title-line="" style={{ fontSize: "clamp(36px,4.6vw,72px)" }}>
+              <em style={{ fontWeight: 400 }}>photographer.</em>
             </div>
           </h1>
           <p
@@ -67,7 +68,7 @@ export default function AboutPage() {
               color: MUTED,
             }}
           >
-            Welcome. I&rsquo;m really glad you&rsquo;re here.
+            Hi there, nice to meet you. I&rsquo;m really glad you&rsquo;re here.
           </p>
           <p
             data-fadeup=""
@@ -79,10 +80,12 @@ export default function AboutPage() {
               color: MUTED,
             }}
           >
-            I&rsquo;m a photographer based in San Jose, California. This all
-            started with watching my friends&rsquo; faces light up at photos
-            I&rsquo;d made of them. That&rsquo;s the feeling I&rsquo;m chasing
-            for you, every time you open your gallery.
+            I&rsquo;m a wedding photographer based in San Jose, California,
+            serving the South Bay and the Bay Area. I also travel to San
+            Francisco and the Peninsula. This all started with watching my
+            friends&rsquo; faces light up at photos I&rsquo;d made of them.
+            That&rsquo;s the feeling I&rsquo;m chasing for you, every time you
+            open your gallery.
           </p>
           <p
             data-fadeup=""
@@ -94,11 +97,13 @@ export default function AboutPage() {
               color: MUTED,
             }}
           >
-            The editorial eye is constant: the feeling is yours. Shoots with me
-            are calm, easy, and honestly pretty fun; people at ease make the
-            best photos. I shape the light, the pacing, and the direction
-            around who you two actually are, so the photos look like you at
-            your absolute best, never like a formula.
+            The editorial eye is constant: the feeling is yours. Portraits are
+            romantic and a little dramatic. Receptions are fun and energetic,
+            because that part of the night should look like a party. Shoots
+            with me are calm, easy, and honestly pretty fun; people at ease
+            make the best photos. I shape the light, the pacing, and the
+            direction around who you two actually are, so the photos look like
+            you at your absolute best, never like a formula.
           </p>
         </div>
         <div

@@ -27,6 +27,7 @@ import {
 export const metadata: Metadata = {
   title: META.title,
   description: META.description,
+  alternates: { canonical: "/graduations" },
 };
 
 export default function GraduationsPage() {

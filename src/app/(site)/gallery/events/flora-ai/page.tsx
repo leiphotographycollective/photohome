@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "Flora.AI Event Gallery",
   description:
     "A private company dinner in the wine cellar at Lazy Bear, shot around one long table.",
+  alternates: { canonical: "/gallery/events/flora-ai" },
 };
 
 const event = EVENTS.find((e) => e.id === "flora-ai")!;

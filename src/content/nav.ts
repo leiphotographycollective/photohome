@@ -57,19 +57,19 @@ export const WEDDINGS_MENU: NavItem[] = [
 export const PRIMARY_NAV: NavEntry[] = [
   { href: "/gallery", label: "Gallery" },
   { label: "Weddings", children: WEDDINGS_MENU },
-  { href: "/graduations", label: "Graduations" },
   { href: "/investment", label: "Investment" },
   { href: "/about", label: "About" },
+  { href: "/graduations", label: "Graduations" },
 ];
 
 /** Footer "Explore" column. Footers stay flat, so the nav group is expanded
  *  into plain links here. */
 export const FOOTER_EXPLORE: NavItem[] = [
   { href: "/gallery", label: "Gallery" },
-  { href: "/graduations", label: "Graduations" },
-  { href: "/free-session", label: "Free Session" },
   { href: "/experience", label: "Experience" },
   { href: "/investment", label: "Investment" },
+  { href: "/free-session", label: "Free Session" },
+  { href: "/graduations", label: "Graduations" },
 ];
 
 /** Footer "Connect" column, internal links. */

@@ -9,7 +9,8 @@ import { img, PHOTOS } from "@/content/portfolio";
 export const metadata: Metadata = {
   title: "Inquire: Let's Make Something Felt",
   description:
-    "Tell me about your day: weddings, graduations, portraits and events across the San Francisco Bay Area. Every inquiry is read personally, with a response within 48 hours.",
+    "Check a wedding date with Raymond Lei, a San Jose wedding photographer for the South Bay. You will hear back personally within 48 hours.",
+  alternates: { canonical: "/inquire" },
 };
 
 /*
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
 const DETAILS: Array<{ label: string; value: string; href?: string }> = [
   { label: "Email", value: "raymond@leiphotography.co", href: "mailto:raymond@leiphotography.co" },
   { label: "Instagram", value: "@leiphotography.co", href: "https://www.instagram.com/leiphotography.co/" },
-  { label: "Based in", value: "San Francisco Bay Area" },
+  { label: "Based in", value: "San Jose, serving the South Bay and the Bay Area" },
   { label: "Response time", value: "Within 48 hours" },
 ];
 

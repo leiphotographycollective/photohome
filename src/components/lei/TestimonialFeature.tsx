@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { GOLD, MUTED, SERIF, ink, kicker } from "./tokens";
 import { img } from "@/content/portfolio";
 import { TESTIMONIALS } from "@/content/homepage";
@@ -37,6 +38,37 @@ export default function TestimonialFeature() {
         padding: "16vh 6vw",
       }}
     >
+      <div style={{ maxWidth: 760, margin: "0 auto 10vh" }}>
+        <h2
+          data-fadeup=""
+          style={{
+            margin: "0 0 22px",
+            fontFamily: SERIF,
+            fontWeight: 500,
+            fontSize: "clamp(34px,4.4vw,58px)",
+            lineHeight: 1.08,
+            textWrap: "pretty",
+          }}
+        >
+          Weddings with traditions to get right
+        </h2>
+        <p
+          data-fadeup=""
+          style={{ margin: "0 0 16px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
+        >
+          Before the day, we go through the ceremony. I want to know which
+          moments your families need to see, and I will not guess at them.
+          Sargon &amp; Odelya had a traditional Middle Eastern wedding, and
+          this is what they wrote.
+        </p>
+        {/* TODO [NEEDS RAYMOND / couple OK]: name Sargon & Odelya's city and venue. */}
+        {/* TODO: link /cultural-weddings when that page exists. Not created here. */}
+        <p data-fadeup="" style={{ margin: 0, fontSize: 16, lineHeight: 1.8 }}>
+          <Link href="/gallery/weddings#sargon-odelya" style={{ color: "#0E0D0B" }}>
+            full wedding galleries
+          </Link>
+        </p>
+      </div>
       <div
         className="lx-grid-2col"
         style={{

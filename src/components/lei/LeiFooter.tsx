@@ -21,8 +21,8 @@ export default function LeiFooter({
 }: LeiFooterProps) {
   const blurb =
     brand === "raymond"
-      ? "Raymond Lei photographs editorial, fashion-influenced weddings, engagements, and portraits for fun, stylish couples in the San Francisco Bay Area."
-      : "Editorial wedding photography for fun, stylish couples in the San Francisco Bay Area & beyond: weddings, couples, engagements, and events.";
+      ? "Raymond Lei is a San Jose wedding photographer. Editorial, romantic portraits for couples in the South Bay, with travel to San Francisco and the Peninsula."
+      : "Editorial, romantic wedding photography in San Jose and the South Bay, with travel to San Francisco and the Peninsula.";
 
   const col = (title: string, items: typeof FOOTER_EXPLORE) => (
     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>

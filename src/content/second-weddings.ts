@@ -5,16 +5,16 @@
 import { PHOTOS, SARGON_ODELYA_PHOTOS, type Photo } from "@/content/portfolio";
 
 export const META = {
-  title: "Second Wedding Photographer | Bay Area",
+  title: "Second Wedding Photographer | San Jose",
   description:
-    "Relaxed, beautiful photography for second weddings, elopements and intimate celebrations across the SF Bay Area. Short coverage, fair prices, photos in 3 weeks.",
+    "Relaxed, beautiful photography for second weddings, elopements and intimate celebrations in San Jose and the South Bay. Short coverage, fair prices, photos in 3 weeks.",
 };
 
 export const HERO = {
-  kicker: "Second Wedding Photographer · SF Bay Area",
+  kicker: "Second Wedding Photographer · San Jose",
   headline: "This time, it's about the two of you.",
   subheadline:
-    "Relaxed second wedding photography across the San Francisco Bay Area. Short, simple coverage for intimate celebrations, from a photographer who keeps you comfortable and gets you back to your guests.",
+    "Relaxed second wedding photography in San Jose and the South Bay, with travel to San Francisco and the Peninsula. Short, simple coverage for intimate celebrations, from a photographer who keeps you comfortable and gets you back to your guests.",
   ctaLabel: "Check my date",
   // Swap for your strongest warm candid: a couple mid-laugh with guests around
   // them, not a posed formal. Landscape reads best full-bleed.
@@ -22,11 +22,11 @@ export const HERO = {
 };
 
 export const OPENING = {
-  kicker: "Bay Area second wedding photography",
+  kicker: "South Bay second wedding photography",
   paragraphs: [
     "You've done the big wedding, or maybe you never wanted one. This time it's smaller, calmer, and exactly how you both want it. A vineyard afternoon, a courthouse and a long dinner, a backyard with the people who matter.",
     "You don't need a photographer who disappears with you for two hours of posing. You need someone who quietly captures the day as it actually happens, takes a handful of beautiful portraits without any fuss, and then gets out of the way.",
-    "That's what I do. I'm Raymond, a Bay Area second wedding photographer with a fashion-trained eye and a calm, gentle way of directing, especially if being in front of a camera isn't your favorite place to be. My aim is simple: by the end of the day, you'll have forgotten I was working at all.",
+    "That's what I do. I'm Raymond, a San Jose second wedding photographer with a fashion-trained eye and a calm, gentle way of directing, especially if being in front of a camera isn't your favorite place to be. My aim is simple: by the end of the day, you'll have forgotten I was working at all.",
   ],
 };
 

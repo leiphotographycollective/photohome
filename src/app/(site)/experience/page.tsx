@@ -9,9 +9,10 @@ import { img, PHOTOS } from "@/content/portfolio";
 import { PROCESS, QUALIFIERS } from "@/content/experience";
 
 export const metadata: Metadata = {
-  title: "The Experience",
+  title: "The San Jose Wedding Experience",
   description:
-    "What it's like to work with me: how I make the day feel easy and the photos feel like you, before, during and after the shutter clicks.",
+    "What it's like to work with a San Jose wedding photographer: how the day stays easy, and the photos still feel like you.",
+  alternates: { canonical: "/experience" },
 };
 
 export default function ExperiencePage() {
@@ -67,11 +68,11 @@ export default function ExperiencePage() {
               letterSpacing: ".01em",
             }}
           >
-            <div data-title-line="" style={{ fontSize: "clamp(40px,8vw,120px)" }}>
-              THE
+            <div data-title-line="" style={{ fontSize: "clamp(40px,7.2vw,108px)" }}>
+              SAN JOSE
             </div>
-            <div data-title-line="" style={{ fontSize: "clamp(40px,8vw,120px)" }}>
-              <em style={{ fontWeight: 400 }}>EXPERIENCE</em>
+            <div data-title-line="" style={{ fontSize: "clamp(40px,7.2vw,108px)" }}>
+              <em style={{ fontWeight: 400 }}>WEDDING DAY</em>
             </div>
           </h1>
           <div
@@ -95,8 +96,8 @@ export default function ExperiencePage() {
                 color: cream(0.8),
               }}
             >
-              Here&rsquo;s how I make the day feel easy, and the photos feel
-              like you.
+              Here&rsquo;s how a San Jose wedding with me feels easy, and how
+              the photos still feel like you.
             </p>
             <div data-fadeup="">
               <ScrollHint color={cream(0.55)} />
