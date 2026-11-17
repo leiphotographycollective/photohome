@@ -10,7 +10,8 @@ import { EVENTS_BLURB } from "@/content/events";
 export const metadata: Metadata = {
   title: "Event Galleries",
   description:
-    "Bay Area event photography: galas, mixers, panels and award nights, shot so the room still looks like itself.",
+    "South Bay event photography: galas, mixers, panels and award nights, shot so the room still looks like itself.",
+  alternates: { canonical: "/gallery/events" },
 };
 
 /* Four events, newest work first, with "Other" last as the catch-all for

@@ -16,13 +16,13 @@ const leaves = (): NavItem[] =>
   PRIMARY_NAV.flatMap((e) => (isGroup(e) ? e.children : [e]));
 
 describe("nav config", () => {
-  it("primary nav is Gallery, Weddings (group), Graduations, Investment, About", () => {
+  it("primary nav leads with weddings and puts Graduations last", () => {
     expect(PRIMARY_NAV.map((e) => e.label)).toEqual([
       "Gallery",
       "Weddings",
-      "Graduations",
       "Investment",
       "About",
+      "Graduations",
     ]);
     expect(INQUIRE).toEqual({ href: "/inquire", label: "Inquire" });
   });

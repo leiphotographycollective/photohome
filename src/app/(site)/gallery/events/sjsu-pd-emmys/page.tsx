@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "SJSU PD Emmys Gallery",
   description:
     "An Emmy awards night for the San Jose State University Police Department: the statuettes, the speeches and the room in between.",
+  alternates: { canonical: "/gallery/events/sjsu-pd-emmys" },
 };
 
 const event = EVENTS.find((e) => e.id === "sjsu-pd-emmys")!;

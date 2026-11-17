@@ -12,7 +12,8 @@ import { img, PHOTOS, type Photo } from "@/content/portfolio";
 
 export const metadata: Metadata = {
   title: "Wedding Photography Investment: Collections from $2,600",
-  description: `${POSITIONING} Three wedding collections from $2,600 (The Full Story, The Signature and The Intimate) for couples in the ${CITY} & beyond.`,
+  description: `${POSITIONING} Three wedding collections from $2,600 (The Full Story, The Signature and The Intimate) for couples in San Jose and the South Bay.`,
+  alternates: { canonical: "/investment" },
 };
 
 /* One photo per collection, rendered beside its block (sides alternate). */

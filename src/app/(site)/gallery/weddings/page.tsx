@@ -12,9 +12,10 @@ import { GALLERY_FEATURE, WEDDINGS_BLURB } from "@/content/gallery";
 import { TESTIMONIALS } from "@/content/homepage";
 
 export const metadata: Metadata = {
-  title: "Wedding Galleries",
+  title: "San Jose Wedding Galleries",
   description:
-    "Full Bay Area wedding days, start to finish. Getting ready, the vows, the last song, and everything in between.",
+    "Full San Jose and South Bay wedding days, start to finish. Getting ready, the vows, the last song, and everything in between.",
+  alternates: { canonical: "/gallery/weddings" },
 };
 
 /* Every src below is a literal string so the visual editor can swap it. */

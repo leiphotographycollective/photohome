@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Graduation Photography Inquiry",
   description:
     "Tell Raymond about your graduation, campus, preferred session date, and the people you want in the photographs.",
+  alternates: { canonical: "/graduations/inquire" },
   robots: {
     index: false,
     follow: true,

@@ -156,12 +156,18 @@ export function PhotoBand({
 /** Numbered process rows (Inquire / Connect / Customize / Reserve). */
 export function ProcessSteps({
   steps,
+  heading = "The Process",
+  headingAs = "div",
 }: {
   steps: Array<{ n: string; title: string; body: string }>;
+  /** Label above the steps. The homepage passes an h2. */
+  heading?: string;
+  headingAs?: "div" | "h2";
 }) {
+  const HeadingTag = headingAs;
   return (
     <div style={{ maxWidth: 1100, margin: "0 auto", padding: "16vh 6vw 14vh" }}>
-      <div
+      <HeadingTag
         data-fadeup=""
         style={{
           fontSize: 10,
@@ -169,11 +175,11 @@ export function ProcessSteps({
           letterSpacing: ".3em",
           textTransform: "uppercase",
           color: GOLD,
-          marginBottom: 10,
+          margin: "0 0 10px",
         }}
       >
-        The Process
-      </div>
+        {heading}
+      </HeadingTag>
       {steps.map((s, i) => (
         <div
           key={s.n}

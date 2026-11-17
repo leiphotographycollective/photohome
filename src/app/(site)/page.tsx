@@ -4,34 +4,50 @@ import LeiPage from "@/components/lei/LeiPage";
 import Chrome from "@/components/lei/Chrome";
 import LeiFooter from "@/components/lei/LeiFooter";
 import { Marquee, PhotoBand, ProcessSteps } from "@/components/lei/blocks";
-import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens";
+import { GOLD, MUTED, SERIF, cream, ink, kicker } from "@/components/lei/tokens";
 import { img, PHOTOS } from "@/content/portfolio";
 import { CtaLink, SoftLink } from "@/components/lei/Cta";
-import { CITY, POSITIONING } from "@/content/homepage";
+import {
+  BASED_LINE,
+  HOME_FAQ,
+  HOME_H1,
+  OPENING_LINE,
+  SOUTH_BAY_CITIES,
+  TAGLINE,
+  faqPageJsonLd,
+} from "@/content/homepage";
 import HeroSlideshow from "@/components/lei/HeroSlideshow";
 import { HOME_PROCESS } from "@/content/experience";
 import TestimonialFeature from "@/components/lei/TestimonialFeature";
 import { Collage, CollageTile } from "@/components/lei/Collage";
-import { SITE_TITLE } from "@/content/site";
+import { HOME_DESCRIPTION, SITE_TITLE } from "@/content/site";
+import { INCLUDED_EVERYWHERE, TIERS } from "@/content/pricing";
 
 export const metadata: Metadata = {
   title: { absolute: SITE_TITLE },
-  description:
-    `${POSITIONING} Editorial wedding photography for couples who want to be present in their wedding, not stress about it. ${CITY} & beyond, by Raymond Lei.`,
+  description: HOME_DESCRIPTION,
+  alternates: { canonical: "/" },
   openGraph: {
     title: SITE_TITLE,
-    description:
-      `${POSITIONING} Editorial wedding photography for couples who want to be present in their wedding, not stress about it. ${CITY} & beyond, by Raymond Lei.`,
+    description: HOME_DESCRIPTION,
     siteName: "Lei Photography Collective",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     title: SITE_TITLE,
-    description:
-      `${POSITIONING} Editorial wedding photography for couples who want to be present in their wedding, not stress about it. ${CITY} & beyond, by Raymond Lei.`,
+    description: HOME_DESCRIPTION,
   },
 };
+
+/** Intimate, Signature, Full Story, so the homepage prices stay tied to /investment. */
+const COLLECTIONS = ["The Intimate", "The Signature", "The Full Story"].map(
+  (name) => {
+    const tier = TIERS.find((t) => t.name === name);
+    if (!tier) throw new Error(`homepage: missing collection ${name}`);
+    return tier;
+  },
+);
 
 /** Portfolio rows are written out one by one (no .map over WEDDING_PORTFOLIO)
  * so each image src is a literal string the visual editor can swap. No photo
@@ -90,6 +106,12 @@ function ExpectPoint({ children }: { children: React.ReactNode }) {
 export default function HomePage() {
   return (
     <LeiPage>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqPageJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <Chrome />
 
       {/* ══ Hero — split: rotating photo left, introduction right. The photo
@@ -116,33 +138,49 @@ export default function HomePage() {
             padding: "10vh 6vw",
           }}
         >
-          <p
-            data-land-fade=""
-            style={{
-              margin: "0 0 44px",
-              fontSize: 12,
-              fontWeight: 600,
-              letterSpacing: ".18em",
-              textTransform: "uppercase",
-            }}
-          >
-            <span style={{ color: GOLD }}>Hi, I&rsquo;m Raymond,</span>{" "}
-            <span style={{ color: MUTED }}>A Bay Area Wedding Photographer.</span>
-          </p>
           <h1
             style={{
               margin: 0,
               fontFamily: SERIF,
               fontWeight: 500,
-              fontSize: "clamp(30px,3.2vw,52px)",
-              lineHeight: 1.24,
+              fontSize: "clamp(30px,3vw,46px)",
+              lineHeight: 1.18,
               letterSpacing: ".01em",
               textWrap: "pretty",
             }}
           >
-            <div data-title-line="">ICONIC, INTENTIONAL</div>
-            <div data-title-line="">and unmistakably YOU</div>
+            <div data-title-line="">{HOME_H1}</div>
           </h1>
+          <p
+            data-land-fade=""
+            style={{
+              margin: "28px 0 0",
+              maxWidth: 420,
+              fontSize: 12,
+              fontWeight: 600,
+              letterSpacing: ".16em",
+              textTransform: "uppercase",
+              textWrap: "balance",
+              color: GOLD,
+            }}
+          >
+            {TAGLINE}
+          </p>
+          <p
+            data-land-fade=""
+            style={{
+              maxWidth: 460,
+              margin: "28px 0 0",
+              fontSize: 16,
+              lineHeight: 1.7,
+              color: MUTED,
+            }}
+          >
+            {OPENING_LINE}
+          </p>
+          <div data-land-fade="" style={{ marginTop: 32 }}>
+            <CtaLink />
+          </div>
         </div>
       </section>
 
@@ -195,29 +233,48 @@ export default function HomePage() {
             boxShadow: "0 30px 60px rgba(14,13,11,.22)",
           }}
         />
-        <p
-          data-manifesto=""
-          style={{
-            position: "relative",
-            zIndex: 2,
-            maxWidth: 1100,
-            margin: 0,
-            textAlign: "center",
-            fontFamily: SERIF,
-            fontStyle: "italic",
-            fontWeight: 400,
-            fontSize: "clamp(30px,4.6vw,64px)",
-            lineHeight: 1.25,
-            color: "#0E0D0B",
-            textWrap: "pretty",
-          }}
-        >
-          Editorial when the moment calls for direction. Documentary when it deserves to unfold.
-        </p>
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 1100 }}>
+          <h2
+            data-manifesto=""
+            style={{
+              margin: 0,
+              textAlign: "center",
+              fontFamily: SERIF,
+              fontStyle: "italic",
+              fontWeight: 400,
+              fontSize: "clamp(30px,4.6vw,64px)",
+              lineHeight: 1.25,
+              color: "#0E0D0B",
+              textWrap: "pretty",
+            }}
+          >
+            Editorial when it calls for direction, documentary when it should unfold
+          </h2>
+          <p
+            data-fadeup=""
+            style={{
+              maxWidth: 640,
+              margin: "36px auto 0",
+              textAlign: "center",
+              fontSize: 16,
+              lineHeight: 1.8,
+              color: MUTED,
+            }}
+          >
+            Editorial, romantic portraits when you want the drama. Candid
+            documentary frames when the moment should stay yours. Quiet luxury
+            lives in the light and the pace, never in a stiff pose. And when
+            the reception starts, the photos get fun and energetic, because
+            that part of the night should look like the party it is.
+          </p>
+        </div>
       </section>
 
       {/* ══ Spacer band — manifesto into who I photograph ══ */}
-      <PhotoBand src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-31.jpg" />
+      <PhotoBand
+        src="/images/portfolio/weddings/sargon-odelya/sargon-odelya-31.jpg"
+        alt="Traditional money dance with the newlyweds, black and white"
+      />
 
       {/* ══ Who I photograph ══ */}
       <section
@@ -240,7 +297,7 @@ export default function HomePage() {
       >
         <div>
           <div data-fadeup="" style={kicker({ marginBottom: 20 }, 10, ".3em")}>
-            For couples who love being iconic
+            Main character energy, without missing the moment
           </div>
           <h2
             data-fadeup=""
@@ -253,15 +310,13 @@ export default function HomePage() {
               textWrap: "pretty",
             }}
           >
-            Main character energy.
-            <br />
-            without missing the moment.
+            Wedding photos for camera-shy couples
           </h2>
           <p
             data-fadeup=""
             style={{ margin: "0 0 26px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
           >
-            Your wedding should feel like the best night of your life, not a day spent performing for the camera. I’ll step in with confident direction when it matters, then give you space to celebrate, cry, laugh, dance, and be completely present with the people you love.
+            Your wedding should feel like the best night of your life, not a day spent performing for the camera. I’ll step in with confident direction when it matters, then give you space to celebrate, cry, laugh, dance, and be completely present with the people you love. Direction is a few clear prompts: where to stand, what to do with your hands, then a conversation so you forget the camera is there. Ever said “I&rsquo;m awkward in front of a camera”? Perfect, you&rsquo;re in good company; most of my favorite couples have.
           </p>
           <ul
             style={{
@@ -274,8 +329,8 @@ export default function HomePage() {
             }}
           >
             {[
-              `Editorial portraits that feel iconic, never stiff or overproduced.`,
-              `Real moments preserved from the quiet morning hours to the final song.`,
+              `Editorial, romantic portraits that feel iconic, never stiff or overproduced.`,
+              `Real moments from the quiet morning through a fun, energetic reception.`,
               `Ever said “I'm awkward in front of a camera”? Perfect, you're in good company; most of my favorite couples have.`,
             ].map((line) => (
               <li
@@ -300,7 +355,15 @@ export default function HomePage() {
               gap: 16,
             }}
           >
-            <CtaLink />          </div>
+            <CtaLink />
+            <Link
+              href="/experience"
+              data-hover=""
+              style={{ fontSize: 15, lineHeight: 1.6, color: "#0E0D0B" }}
+            >
+              what working with me is like
+            </Link>
+          </div>
         </div>
 
         <div style={{ position: "relative", margin: "0 0 12%" }}>
@@ -426,9 +489,10 @@ export default function HomePage() {
               textWrap: "balance",
             }}
           >
-            For couples who crave <strong style={{ fontWeight: 700 }}>drama</strong>,{" "}
-            <strong style={{ fontWeight: 700 }}>emotional</strong> moments and a{" "}
-            <strong style={{ fontWeight: 700 }}>quiet luxury</strong> feel
+            Dramatic portraits, a{" "}
+            <strong style={{ fontWeight: 700 }}>romantic</strong> feeling, and{" "}
+            <strong style={{ fontWeight: 700 }}>quiet luxury</strong> that still
+            looks like you
           </p>
         </div>
       </section>
@@ -501,7 +565,7 @@ export default function HomePage() {
                   style={EXPECT_IMG}
                 />
               </div>
-              <div style={EXPECT_TITLE}>Inspiration</div>
+              <div style={EXPECT_TITLE}>The mood we build</div>
               <ul style={EXPECT_LIST}>
                 <ExpectPoint>A look and mood we build together before the day.</ExpectPoint>
                 <ExpectPoint>References and palettes that actually matter to you.</ExpectPoint>
@@ -516,7 +580,7 @@ export default function HomePage() {
                   style={EXPECT_IMG}
                 />
               </div>
-              <div style={EXPECT_TITLE}>Perfect Fit</div>
+              <div style={EXPECT_TITLE}>Shaped to your day</div>
               <ul style={EXPECT_LIST}>
                 <ExpectPoint>A plan shaped around your venue and priorities.</ExpectPoint>
                 <ExpectPoint>Coverage that fits your day, not a rigid shot list.</ExpectPoint>
@@ -531,7 +595,7 @@ export default function HomePage() {
                   style={EXPECT_IMG}
                 />
               </div>
-              <div style={EXPECT_TITLE}>Detail Oriented Approach</div>
+              <div style={EXPECT_TITLE}>Details, handled</div>
               <ul style={EXPECT_LIST}>
                 <ExpectPoint>Every detail noticed, from the rings to the room.</ExpectPoint>
                 <ExpectPoint>Calm, prepared, and a few steps ahead all day.</ExpectPoint>
@@ -542,7 +606,55 @@ export default function HomePage() {
       </section>
 
       {/* ══ Spacer band — a breath before the portfolio collage ══ */}
-      <PhotoBand src="/images/portfolio/weddings/trang/trang-11.jpg" />
+      <PhotoBand
+        src="/images/portfolio/weddings/trang/trang-11.jpg"
+        alt="Paddle fans for the bride's side and the groom's side laid out with heart sunglasses on a red reception table"
+      />
+
+      {/* ══ South Bay cities. No city pages yet, so the names are text, not links.
+          TODO [NEEDS RAYMOND]: real South Bay venues, by name. Do not invent any.
+          TODO: when /milpitas-wedding-photographer, /los-gatos-saratoga-wedding-photographer
+          and /santa-clara-wedding-photographer exist, link those cities. */}
+      <section
+        style={{
+          position: "relative",
+          background: "#F7F5F2",
+          color: "#0E0D0B",
+          padding: "12vh 6vw 4vh",
+        }}
+      >
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
+          <div data-fadeup="" style={kicker({ marginBottom: 18 }, 10, ".3em")}>
+            South Bay
+          </div>
+          <h2
+            data-fadeup=""
+            style={{
+              margin: "0 0 22px",
+              fontFamily: SERIF,
+              fontWeight: 500,
+              fontSize: "clamp(34px,4.4vw,58px)",
+              lineHeight: 1.08,
+              textWrap: "pretty",
+            }}
+          >
+            Where I photograph in the South Bay
+          </h2>
+          <p
+            data-fadeup=""
+            style={{ margin: "0 0 16px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
+          >
+            {BASED_LINE} I photograph weddings in{" "}
+            {SOUTH_BAY_CITIES.slice(0, -1).join(", ")} and {SOUTH_BAY_CITIES.at(-1)}.
+          </p>
+          <p
+            data-fadeup=""
+            style={{ margin: 0, fontSize: 16, lineHeight: 1.8, color: MUTED }}
+          >
+            I also travel to San Francisco and the Peninsula, and to the rest of the Bay Area when the day is there.
+          </p>
+        </div>
+      </section>
 
       {/* ══ The Wedding Portfolio — the proof, inline ══ */}
       <section
@@ -560,7 +672,7 @@ export default function HomePage() {
           <h2
             data-fadeup=""
             style={{
-              margin: "0 0 7vh",
+              margin: "0 0 18px",
               fontFamily: SERIF,
               fontWeight: 500,
               fontSize: "clamp(34px,4.4vw,58px)",
@@ -570,6 +682,13 @@ export default function HomePage() {
           >
             Your day, the way it actually <em>felt.</em>
           </h2>
+          {/* TODO [NEEDS RAYMOND]: caption each wedding with venue + city once those are confirmed. Couple names below are already on the site. */}
+          <p
+            data-fadeup=""
+            style={{ margin: "0 0 7vh", fontSize: 16, lineHeight: 1.7, color: MUTED }}
+          >
+            Sargon &amp; Odelya, Miranda &amp; Danny, and Trang.
+          </p>
           <Collage>
             {/* Block: two tall portraits beside a 2x2 cluster of landscapes.
                 Three weddings are interleaved through the whole collage, so the
@@ -736,7 +855,7 @@ export default function HomePage() {
             data-fadeup=""
             style={{ marginTop: "9vh", display: "flex", justifyContent: "center" }}
           >
-            <SoftLink href="/gallery" label="View the full gallery" />
+            <SoftLink href="/gallery/weddings" label="full wedding galleries" />
           </div>
         </div>
       </section>
@@ -811,10 +930,11 @@ export default function HomePage() {
             data-fadeup=""
             style={{ margin: "0 0 18px", fontSize: 16, lineHeight: 1.8, color: MUTED }}
           >
-            I&rsquo;m Raymond, a photographer based in San Jose, California.
-            My love for photography began when I saw my friends&rsquo; faces light
-            up at the images I&rsquo;d made for them; the same feeling I want
-            you to have every time you open your gallery.
+            I&rsquo;m Raymond, a San Jose wedding photographer. My love for
+            photography began when I saw my friends&rsquo; faces light up at
+            the images I&rsquo;d made for them; the same feeling I want you to
+            have every time you open your gallery. The portraits are romantic.
+            The reception is fun and energetic.
           </p>
           <p
             data-fadeup=""
@@ -827,12 +947,11 @@ export default function HomePage() {
           </p>
           <Link
             data-fadeup=""
-            data-mag=""
             data-hover=""
             href="/about"
-            style={pill("#0E0D0B", "#F7F5F2", "16px 32px")}
+            style={{ fontSize: 16, lineHeight: 1.6, color: "#0E0D0B" }}
           >
-            More about me
+            about Raymond, a San Jose photographer
           </Link>
         </div>
       </section>
@@ -860,24 +979,43 @@ export default function HomePage() {
             lineHeight: 1.1,
           }}
         >
-          Collections from <em>$2,600</em>
+          Wedding collections from <em>$2,600</em>
         </h2>
-        <p
+        <div
           data-fadeup=""
           style={{
             maxWidth: 520,
             margin: "22px auto 0",
+            display: "flex",
+            flexDirection: "column",
+            gap: 8,
             fontSize: 15,
-            lineHeight: 1.75,
+            lineHeight: 1.7,
             color: MUTED,
           }}
         >
-          Full days, intimate ceremonies, and everything in between. Every
-          collection is built around how you two actually want the day to go.
-          Tell me about yours and I&rsquo;ll send the full breakdown.
-        </p>
+          {COLLECTIONS.map((tier) => {
+            const hours = tier.facts[0].replace(" of coverage", "").replace(/^Up to/, "up to");
+            const second = tier.facts.some((fact) => fact.startsWith("2 photographers"))
+              ? " with a second photographer"
+              : "";
+            return (
+              <p key={tier.name} style={{ margin: 0 }}>
+                {`${tier.name}: ${hours}${second}, ${tier.price}.`}
+              </p>
+            );
+          })}
+          <p style={{ margin: "8px 0 0" }}>{INCLUDED_EVERYWHERE[2]}</p>
+          <p style={{ margin: 0 }}>
+            Want a practice run first? There&rsquo;s a{" "}
+            <Link href="/free-session" style={{ color: "#0E0D0B" }}>
+              free engagement session
+            </Link>
+            .
+          </p>
+        </div>
         <div data-fadeup="" style={{ marginTop: 26 }}>
-          <SoftLink href="/investment" label="See the collections" />
+          <SoftLink href="/investment" label="wedding collections from $2,600" />
         </div>
         <div
           data-fadeup=""
@@ -894,7 +1032,85 @@ export default function HomePage() {
 
       {/* ══ The Process — transplanted from /experience: price above, ask below ══ */}
       <section style={{ position: "relative", background: "#0E0D0B", color: "#F7F5F2" }}>
-        <ProcessSteps steps={HOME_PROCESS} />
+        <ProcessSteps steps={HOME_PROCESS} heading="How it works" headingAs="h2" />
+      </section>
+
+      {/* ══ Questions couples ask — visible copy matches faqPageJsonLd ══ */}
+      <section
+        style={{
+          position: "relative",
+          background: "#F7F5F2",
+          color: "#0E0D0B",
+          padding: "12vh 6vw 14vh",
+        }}
+      >
+        <div style={{ maxWidth: 800, margin: "0 auto" }}>
+          <div data-fadeup="" style={kicker({ marginBottom: 18 }, 10, ".3em")}>
+            FAQ
+          </div>
+          <h2
+            data-fadeup=""
+            style={{
+              margin: "0 0 6vh",
+              fontFamily: SERIF,
+              fontWeight: 500,
+              fontSize: "clamp(34px,4.4vw,58px)",
+              lineHeight: 1.08,
+              textWrap: "pretty",
+            }}
+          >
+            Questions couples ask
+          </h2>
+          {HOME_FAQ.map((item, i) => (
+            <details
+              key={item.q}
+              data-fadeup=""
+              style={{ borderTop: `1px solid ${ink(0.14)}` }}
+            >
+              <summary
+                style={{
+                  display: "flex",
+                  alignItems: "baseline",
+                  gap: 18,
+                  padding: "22px 0",
+                  cursor: "pointer",
+                  listStyle: "none",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 700,
+                    letterSpacing: ".18em",
+                    color: GOLD,
+                  }}
+                >
+                  0{i + 1}
+                </span>
+                <span
+                  style={{
+                    fontFamily: SERIF,
+                    fontWeight: 500,
+                    fontSize: "clamp(18px,1.8vw,24px)",
+                  }}
+                >
+                  {item.q}
+                </span>
+              </summary>
+              <p
+                style={{
+                  margin: "0 0 26px",
+                  paddingLeft: 40,
+                  fontSize: 15,
+                  lineHeight: 1.8,
+                  color: MUTED,
+                }}
+              >
+                {item.a}
+              </p>
+            </details>
+          ))}
+        </div>
       </section>
 
       {/* ══ Inquire ══ */}
@@ -946,8 +1162,8 @@ export default function HomePage() {
                 color: cream(0.7),
               }}
             >
-              Serving San Francisco, Berkeley, San Jose and beyond. Tell me about
-              your day. I&rsquo;ll take care of the rest.
+              {BASED_LINE} Tell me about your day. I&rsquo;ll take care of the rest.
+              Getting married in Milpitas, Santa Clara or Los Gatos? Tell me the venue and date.
             </p>
             <div
               data-fadeup=""

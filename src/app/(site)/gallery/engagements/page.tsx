@@ -13,7 +13,8 @@ import { ENGAGEMENTS_BLURB } from "@/content/gallery";
 export const metadata: Metadata = {
   title: "Engagement Galleries",
   description:
-    "Bay Area engagement and proposal photography. The nerves before, the question, and the yes.",
+    "Engagement and proposal photography in San Jose and the South Bay. The nerves before, the question, and the yes.",
+  alternates: { canonical: "/gallery/engagements" },
 };
 
 /* Every src below is a literal string so the visual editor can swap it. */

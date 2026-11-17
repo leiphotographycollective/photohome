@@ -7,9 +7,10 @@ import { ScrollHint } from "@/components/lei/blocks";
 import { SERIF, cream, kicker } from "@/components/lei/tokens";
 
 export const metadata: Metadata = {
-  title: "Gallery",
+  title: "San Jose Wedding Gallery",
   description:
-    "Bay Area wedding, engagement and event photography. Full wedding days, proposals, and the galas and mixers in between.",
+    "San Jose and South Bay wedding photography. Full wedding days, plus engagements, by Raymond Lei.",
+  alternates: { canonical: "/gallery" },
 };
 
 /* The gallery hub. Three cards, one per category, each onto its own page:
@@ -105,11 +106,11 @@ export default function GalleryPage() {
               letterSpacing: ".01em",
             }}
           >
-            <div data-title-line="" style={{ fontSize: "clamp(40px,9vw,140px)" }}>
-              PRESENT FOR
+            <div data-title-line="" style={{ fontSize: "clamp(40px,8vw,120px)" }}>
+              SAN JOSE
             </div>
-            <div data-title-line="" style={{ fontSize: "clamp(40px,9vw,140px)" }}>
-              <em style={{ fontWeight: 400 }}>ALL OF IT.</em>
+            <div data-title-line="" style={{ fontSize: "clamp(40px,8vw,120px)" }}>
+              <em style={{ fontWeight: 400 }}>WEDDINGS</em>
             </div>
           </h1>
           <p
@@ -122,8 +123,9 @@ export default function GalleryPage() {
               color: cream(0.72),
             }}
           >
-            You two stay in the day; I&rsquo;ll make sure you get it back. The
-            planning happens before the camera ever comes out.
+            Present for all of it. You two stay in the day; I&rsquo;ll make
+            sure you get it back. The planning happens before the camera ever
+            comes out.
           </p>
         </div>
         <div

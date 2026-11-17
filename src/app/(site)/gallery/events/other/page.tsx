@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "Other Events Gallery",
   description:
     "Two smaller nights that did not need a section of their own: a mansion evening and an Assyrian Advisors panel.",
+  alternates: { canonical: "/gallery/events/other" },
 };
 
 const event = EVENTS.find((e) => e.id === "other")!;

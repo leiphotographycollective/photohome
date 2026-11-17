@@ -10,7 +10,8 @@ import { GOLD, MUTED, SERIF, cream, kicker, pill } from "@/components/lei/tokens
 export const metadata: Metadata = {
   title: "Your Free Engagement Session",
   description:
-    "A free engagement session giveaway for newly engaged Bay Area couples. Raymond reads every entry personally and hand-picks 4 couples each month based on their story.",
+    "A free engagement session for newly engaged couples in San Jose and the South Bay. Raymond reads every entry personally and hand-picks 4 couples each month based on their story.",
+  alternates: { canonical: "/free-session" },
 };
 
 /* ── META PIXEL ────────────────────────────────────────────────────────
@@ -120,7 +121,7 @@ export default function FreeSessionPage() {
         />
         <div style={{ position: "relative", zIndex: 2, color: "#F7F5F2" }}>
           <div data-fadeup="" style={kicker({ marginBottom: "3vh" }, 11, ".34em")}>
-            Just engaged · San José &amp; the Bay Area
+            Just engaged · San Jose &amp; the South Bay
           </div>
           <h1
             style={{

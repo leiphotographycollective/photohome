@@ -21,14 +21,86 @@ const tr = (file: string) => pick(TRANG_PHOTOS, file);
 export const CTA_LABEL = "Check my date";
 export const CTA_HREF = "/inquire#form";
 
-/** SEO anchor — must appear in hero kickers, page titles, and footer. */
-export const CITY = "San Francisco Bay Area";
+/** SEO place name. San Jose is home; San Francisco is a travel area, not the lead. */
+export const CITY = "San Jose";
 
 /** The site-wide positioning line (cover-story angle) and support line.
  *  Later pages (pricing, about, FAQ) import these — never retype them. */
 export const POSITIONING = "Your wedding, shot like the cover story it is.";
 export const POSITIONING_SUB =
-  "Bay Area wedding photography for couples who want to be present in their wedding, not stressed about it.";
+  "San Jose and South Bay wedding photography for couples who want to be present in their wedding, not stressed about it.";
+
+/** Homepage H1. The old lockup stays on the page as TAGLINE, under this. */
+export const HOME_H1 = "Editorial, romantic wedding photographer in San Jose";
+
+/** Brand lockup, kept as the tagline under the H1. */
+export const TAGLINE = "Iconic, intentional and unmistakably you";
+
+/** The sentence an answer engine should be able to quote. Keep it in the hero. */
+export const OPENING_LINE =
+  "I’m Raymond Lei, a San Jose wedding photographer for couples who want editorial, romantic portraits and real documentary moments, across Milpitas, Santa Clara, Los Gatos and the rest of the South Bay.";
+
+/** Cities named on the homepage and in areaServed. No city pages yet, so render as text. */
+export const SOUTH_BAY_CITIES = [
+  "San Jose",
+  "Milpitas",
+  "Santa Clara",
+  "Sunnyvale",
+  "Los Gatos",
+  "Saratoga",
+  "Cupertino",
+  "Palo Alto",
+  "Campbell",
+] as const;
+
+export const BASED_LINE =
+  "Based in San Jose, serving the South Bay and the Bay Area.";
+
+/** Visible FAQ. Answers use only facts already on the investment page or in a real testimonial. */
+export const HOME_FAQ: { q: string; a: string }[] = [
+  {
+    q: "Where are you based, and which cities do you cover?",
+    a: "I’m based in San Jose, serving the South Bay and the Bay Area. I photograph weddings in San Jose, Milpitas, Santa Clara, Sunnyvale, Los Gatos, Saratoga, Cupertino, Palo Alto and Campbell. I also travel to San Francisco and the Peninsula.",
+  },
+  {
+    q: "What is your style?",
+    a: "Editorial when a portrait needs direction, documentary when the moment should stay candid. Romantic and a little dramatic, with quiet luxury in the light rather than a stiff setup. Receptions are fun and energetic, because that part of the night should look like a party.",
+  },
+  {
+    q: "How much does wedding photography cost?",
+    a: "Wedding collections start at $2,600. The Intimate is up to 6 hours at $2,600, The Signature is up to 8 hours at $3,100, and The Full Story is up to 10 hours with a second photographer at $4,000. Every collection can be split into monthly payments.",
+  },
+  {
+    q: "We’re awkward on camera. Will that work?",
+    a: "Ever said “I’m awkward in front of a camera”? Perfect, you’re in good company; most of my favorite couples have. I’ll give you a few clear prompts, then step back so you can actually be at your wedding.",
+  },
+  {
+    q: "Can you handle our cultural traditions?",
+    a: "Yes. Before the day we go through the ceremony, so the moments your families need are planned, not guessed. Sargon & Odelya had a traditional Middle Eastern wedding, and they wrote that I learned which shots were critical to their culture and didn’t miss a beat.",
+  },
+  {
+    q: "How many photos do we get, and how fast?",
+    a: "Every image is fully edited: 350+ with The Intimate, 500+ with The Signature and 700+ with The Full Story. The Signature and The Full Story include a sneak peek gallery within 48 hours.",
+  },
+  {
+    q: "Is a second photographer included?",
+    a: "A second photographer is included with The Full Story. On The Intimate and The Signature, you can add one for $75 to $100 an hour.",
+  },
+];
+
+/** FAQPage node for the homepage Q&As. Must match the visible questions. */
+export const faqPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: HOME_FAQ.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
 
 /** Optimized frame for the split hero, every platform (LCP-critical).
  *  Also the first frame of HERO_PHOTOS below — keep the two in sync. */
@@ -67,6 +139,7 @@ export const TESTIMONIALS: Testimonial[] = [
     quote:
       "We had a traditional Middle Eastern wedding, and we were so impressed by how quickly Raymond got up to speed on our specific traditions. His organization and talent far exceed his years, really top-tier. He met with us for an engagement shoot to understand our energy and post-production preferences, and on the big day he was a total pro, complete with a full itinerary and backup equipment. He worked seamlessly with our videographer, and his artistic touch resulted in an excellent final gallery. We absolutely loved the photos and can’t wait to book our anniversary shoot with him!",
     names: "Sargon & Odelya",
+    // TODO [NEEDS RAYMOND / couple OK]: city and venue. Left generic on purpose.
     context: "Wedding · Bay Area, CA",
     photo: SARGON_ODELYA_PHOTOS[23], // first dance in fog, black & white — unused elsewhere on the homepage
   },

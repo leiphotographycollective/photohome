@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "Links",
   description:
     "Every Lei Photography Collective link in one place: Instagram, portfolio, the free session giveaway, and how to inquire.",
+  alternates: { canonical: "/links" },
   robots: { index: false, follow: true },
 };
 
@@ -48,7 +49,7 @@ export default function LinksPage() {
             }}
           />
           <div data-fadeup="" style={kicker({ marginBottom: 16 }, 10, ".3em")}>
-            Bay Area Wedding Photography
+            San Jose Wedding Photography
           </div>
           <h1
             data-fadeup=""
@@ -73,8 +74,8 @@ export default function LinksPage() {
               color: MUTED,
             }}
           >
-            Editorial wedding photography for fun, stylish couples in the San
-            Francisco Bay Area &amp; beyond.
+            Editorial, romantic wedding photography in San Jose and the South
+            Bay, with travel to San Francisco and the Peninsula.
           </p>
 
           {/* ── The links ── */}

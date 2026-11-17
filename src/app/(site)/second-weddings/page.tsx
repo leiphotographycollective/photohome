@@ -24,6 +24,7 @@ import {
 export const metadata: Metadata = {
   title: META.title,
   description: META.description,
+  alternates: { canonical: "/second-weddings" },
   robots: { index: false, follow: false },
 };
 
